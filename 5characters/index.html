@@ -680,6 +680,104 @@ textarea:focus { border-color: var(--navy); background: var(--white); }
 .noise-item:last-child { margin-bottom: 0; }
 .noise-icon { flex-shrink: 0; font-size: 15px; }
 
+/* ── 사회구조 메커니즘 (왜 이것이 욕구를 흐리게 만드는가) ── */
+.mechanism-block {
+  margin-top: 18px; padding: 18px 18px 14px;
+  background: linear-gradient(135deg, rgba(30,39,97,0.04) 0%, rgba(41,121,200,0.04) 100%);
+  border-radius: 12px; border-left: 3px solid var(--navy);
+}
+.mechanism-title {
+  font-size: 13px; font-weight: 800; color: var(--navy);
+  margin-bottom: 10px; letter-spacing: 0.2px;
+}
+.mechanism-sub {
+  font-size: 11.5px; color: var(--gray); margin-bottom: 14px; line-height: 1.6;
+}
+.mechanism-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 0; border-top: 1px dashed rgba(30,39,97,0.12);
+}
+.mechanism-item:first-of-type { border-top: none; padding-top: 4px; }
+.mechanism-tag {
+  flex-shrink: 0; font-size: 11px; font-weight: 800;
+  color: var(--white); background: var(--navy);
+  padding: 4px 10px; border-radius: 20px; letter-spacing: 0.3px;
+  white-space: nowrap; margin-top: 1px;
+}
+.mechanism-text {
+  font-size: 13px; line-height: 1.7; color: var(--dark);
+}
+.mechanism-text strong { color: var(--navy); font-weight: 700; }
+
+/* ── Energy Flow 자가체크 (충전 vs 소모) ── */
+.eflow-check {
+  margin-top: 16px; padding: 16px 18px;
+  background: var(--white); border-radius: 12px;
+  border: 2px dashed var(--green);
+}
+.eflow-check-label {
+  font-size: 11px; font-weight: 800; color: var(--green);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.eflow-check-q {
+  font-size: 14px; font-weight: 700; color: var(--navy);
+  line-height: 1.6; margin-bottom: 4px;
+}
+.eflow-check-sub {
+  font-size: 12px; color: var(--gray); line-height: 1.6;
+}
+
+/* ── 교차 분석 인사이트 카드 ── */
+.cross-insight {
+  background: linear-gradient(135deg, var(--navy) 0%, #2A3678 100%);
+  border-radius: 16px; padding: 22px 22px 20px;
+  margin-bottom: 16px; position: relative; overflow: hidden;
+}
+.cross-insight::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(201,152,58,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cross-insight-label {
+  position: relative; font-size: 11px; font-weight: 800;
+  color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cross-insight-pattern {
+  position: relative; font-size: 17px; font-weight: 900;
+  color: var(--white); line-height: 1.5; margin-bottom: 12px;
+}
+.cross-insight-pattern .pattern-key {
+  background: rgba(201,152,58,0.2); color: var(--gold);
+  padding: 2px 10px; border-radius: 6px;
+  font-size: 15px; margin: 0 2px;
+}
+.cross-insight-text {
+  position: relative; font-size: 13.5px; color: rgba(255,255,255,0.85);
+  line-height: 1.85;
+}
+.cross-insight-hook {
+  position: relative; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 13px; color: var(--gold); font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── 차별화 문구 (signature line) ── */
+.signature-line {
+  text-align: center; margin: 20px 0 8px;
+  padding: 14px 16px; background: rgba(201,152,58,0.08);
+  border-radius: 10px;
+}
+.signature-line-text {
+  font-size: 14px; font-weight: 700; color: var(--navy);
+  letter-spacing: 0.3px; line-height: 1.5;
+}
+.signature-line-text .gold-accent {
+  color: var(--gold);
+}
+
 /* ── SUMMARY CARD (N.E.E.D 연결 결과) ── */
 .summary-card {
   background: var(--white); border-radius: 20px;
@@ -1032,6 +1130,11 @@ const TYPE_DETAIL = {
     daily_yes: 'To-do 리스트 작성이 즐거움, 주말에도 자연스럽게 계획 세움, "이번 주 뭐 이뤘지?" 스스로 점검',
     daily_no:  '결과 없이 과정만 이어지면 급격히 동력 저하, 칭찬보다 성과 미달이 더 오래 기억에 남음',
     noise:   ['성과 없는 반복 회의나 업무', '비교 문화 — "저 사람은 벌써 저기까지 갔는데"', '방향이 없는 칭찬만 있는 환경', 'SNS에서 타인의 성취를 반복해서 보는 것'],
+    noise_mechanism: [
+      { tag:'비교 문화', text:'타인의 성취가 기준이 되는 순간, <strong>내 성취 욕구의 방향이 바깥에서 세팅됩니다.</strong>' },
+      { tag:'SNS 관람', text:'알고리즘이 반복 노출한 성공 이미지가 <strong>내 욕구의 자리를 차지합니다.</strong>' },
+      { tag:'눈치 문화', text:'성과를 인정받지 못할까 봐 <strong>도전 욕구 자체가 표현되기 전에 걸러집니다.</strong>' },
+    ],
     hook:    '지금 이 일이 나를 증명하는 결과로 남는가?',
   },
   B: {
@@ -1044,6 +1147,11 @@ const TYPE_DETAIL = {
     daily_yes: '그룹 채팅 활발하게 참여, 1:1 통화 자연스럽게 즐김, 모임 분위기 자연스럽게 챙김',
     daily_no:  '갈등 회피를 위해 자신의 의견을 접는 경우 있음, 혼자 있는 시간이 길어지면 에너지 급격히 감소',
     noise:   ['혼자 해야 하는 고립된 환경', '관계 갈등이나 신뢰 균열', '"남들 눈에 어떻게 보일까" 눈치 문화', 'SNS 비교 — 남의 관계가 더 풍요로워 보일 때'],
+    noise_mechanism: [
+      { tag:'눈치 문화', text:'주변 반응을 먼저 살피는 사이 <strong>내가 진짜 원하는 관계의 모습이 표현되기 전에 걸러집니다.</strong>' },
+      { tag:'SNS 관람', text:'타인의 관계가 더 풍요로워 보이는 이미지가 반복되면 <strong>내 관계의 만족 기준이 외부에서 세팅됩니다.</strong>' },
+      { tag:'비교 문화', text:'"남들만큼은 어울려야지"가 먼저 작동하면 <strong>진짜 신뢰하는 관계와 의무감 관계가 뒤섞입니다.</strong>' },
+    ],
     hook:    '지금 나는 신뢰할 수 있는 사람들과 함께인가?',
   },
   C: {
@@ -1056,6 +1164,11 @@ const TYPE_DETAIL = {
     daily_yes: '달력이 꽉 차 있어야 마음이 편함, 정리 마니아, 예측 가능한 상황에서 가장 깊이 집중',
     daily_no:  '변화 자체에 저항감 생길 수 있음, 루틴이 깨지면 하루 전체가 흔들리는 느낌',
     noise:   ['갑작스러운 변경 요청과 즉흥적인 환경', '"빠르게빠르게" 압박 문화', '완벽하지 않아도 된다는 주변의 무관심', 'SNS 자극의 연속 — 알림, 트렌드 변화, 정보 과부하'],
+    noise_mechanism: [
+      { tag:'속도 압박 문화', text:'"빠르게빠르게"가 기준이 되는 순간 <strong>깊이 있는 리듬을 원하는 욕구가 표현되기 전에 걸러집니다.</strong>' },
+      { tag:'SNS 관람', text:'알림과 트렌드 변화가 끊임없이 노출되면 <strong>안정된 리듬의 자리를 자극이 차지하게 됩니다.</strong>' },
+      { tag:'비교 문화', text:'"남들은 더 빠르게 가는데"가 작동하면 <strong>내 안정 욕구가 부족함으로 잘못 읽힙니다.</strong>' },
+    ],
     hook:    '지금 내 일상은 흔들리지 않는 질 위에 서 있는가?',
   },
   D: {
@@ -1068,6 +1181,11 @@ const TYPE_DETAIL = {
     daily_yes: '한 주제를 몇 달씩 깊이 파기, 퀄리티에 대한 높은 기준, 의미 없는 일엔 자연스럽게 에너지 안 나옴',
     daily_no:  '완벽주의로 시작을 미루거나 마무리를 못 짓는 경우, 속도보다 깊이를 중시해 답답하다는 말 들을 수 있음',
     noise:   ['"이 정도면 됐잖아" 속도 압박 문화', '의미 없는 업무의 반복', '남들과 비교해 "나는 왜 이렇게 느리지?" 자책', 'SNS 성과 자랑 — 깊이 없는 성공이 더 빛나 보일 때'],
+    noise_mechanism: [
+      { tag:'속도 압박 문화', text:'"이 정도면 됐잖아"가 반복되면 <strong>깊이 있는 완성을 원하는 욕구가 표현되기 전에 걸러집니다.</strong>' },
+      { tag:'비교 문화', text:'"남들은 빠르게 결과 내는데"가 작동하면 <strong>내 깊이 있는 탐구 욕구가 비효율로 잘못 읽힙니다.</strong>' },
+      { tag:'SNS 관람', text:'얕고 빠른 성공 이미지가 반복 노출되면 <strong>본질을 추구하는 욕구의 자리를 \'보여지는 성과\'가 차지합니다.</strong>' },
+    ],
     hook:    '이 과정이 나에게 어떤 본질적인 의미를 주는가?',
   },
   E: {
@@ -1080,6 +1198,11 @@ const TYPE_DETAIL = {
     daily_yes: '플레이리스트 매주 바꿈, 새로운 길로 출근, "한 번 해보자"가 자연스럽게 나오는 입버릇',
     daily_no:  '계획 없이 흘러가다 중요한 것을 놓치기도 함, 새로움에 끌려 시작은 많은데 완성이 적을 수 있음',
     noise:   ['선택권 없는 반복 루틴 강요', '"왜 또 바꿔?" 변화 불허 환경', '"안전하게 가자"는 주변의 압박', 'SNS 알고리즘 — 비슷한 콘텐츠만 반복 노출되는 관람 패턴'],
+    noise_mechanism: [
+      { tag:'눈치 문화', text:'"왜 또 바꿔?"라는 주변 시선이 작동하면 <strong>새로움을 향한 욕구가 표현되기 전에 걸러집니다.</strong>' },
+      { tag:'SNS 관람', text:'알고리즘이 비슷한 콘텐츠만 반복 노출하면 <strong>진짜 새로운 자극을 향한 욕구의 자리를 \'노출된 것\'이 차지합니다.</strong>' },
+      { tag:'비교 문화', text:'"남들처럼 안정적으로 살아야지"가 작동하면 <strong>탐험 욕구가 산만함이나 미성숙으로 잘못 읽힙니다.</strong>' },
+    ],
     hook:    '지금 이 선택의 주도권은 온전히 나에게 있는가?',
   },
 };
@@ -1395,6 +1518,13 @@ function showResult() {
     `<div class="noise-item"><span class="noise-icon">🔇</span><span>${n}</span></div>`
   ).join('');
 
+  const mechanismItems = (pDetail.noise_mechanism || []).map(m =>
+    `<div class="mechanism-item">
+      <span class="mechanism-tag">${m.tag}</span>
+      <div class="mechanism-text">${m.text}</div>
+    </div>`
+  ).join('');
+
   document.getElementById('result-content').innerHTML = `
 
     <!-- 결과 헤더 -->
@@ -1424,10 +1554,10 @@ function showResult() {
       box-shadow: 0 4px 20px rgba(201,152,58,0.3);">
       <div style="flex:1;">
         <div style="font-size:11px; color:rgba(255,255,255,0.75); margin-bottom:4px; line-height:1.4;">
-          아래에 상세 분석이 이어집니다
+          아래는 여러분 성향에 대한 상세분석입니다
         </div>
         <div style="font-size:14px; font-weight:800; color:var(--white); line-height:1.4;">
-          다 읽고 나면 진짜 욕구 찾기로 연결돼요 ✨
+          상세분석을 다 읽으시면, 진짜 욕구 찾는 방법이 나오니 놓치지마세요! ✨
         </div>
       </div>
       <button onclick="document.getElementById('result-next-btn').scrollIntoView({behavior:'smooth'})"
@@ -1515,11 +1645,30 @@ function showResult() {
       </div>
       <div class="noise-body">
         ${noiseItems}
+
+        <!-- 사회구조 메커니즘: 왜 이 잡음이 욕구를 흐리게 만드는가 -->
+        <div class="mechanism-block">
+          <div class="mechanism-title">🧭 이 잡음이 욕구를 흐리게 만드는 방식</div>
+          <div class="mechanism-sub">
+            잡음은 그냥 불편한 환경이 아닙니다. 사회 구조가 욕구가 표현되기도 전에 걸러내거나, 다른 것으로 바꿔치우는 방식으로 작동합니다.
+          </div>
+          ${mechanismItems}
+        </div>
+
         <div style="margin-top:14px; padding:12px 14px; background:var(--light); border-radius:10px;">
           <div style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:4px;">💡 회고 질문</div>
           <div style="font-size:13px; color:var(--dark); line-height:1.7;">
             지금 나의 일상에서 위 상황 중 어떤 것이 가장 자주 나타나고 있나요?<br>
             그것이 나의 에너지를 어떻게 흐리게 만들고 있는지 떠올려보세요.
+          </div>
+        </div>
+
+        <!-- Energy Flow Hook 자가체크 -->
+        <div class="eflow-check">
+          <div class="eflow-check-label">⚡ Energy Flow 자가체크</div>
+          <div class="eflow-check-q">이 활동은 나를 충전시키나, 소모시키나?</div>
+          <div class="eflow-check-sub">
+            오늘 하루 가장 많이 한 활동 하나를 떠올려보세요. 끝난 뒤 에너지가 차오르나요, 빠져나가나요?
           </div>
         </div>
       </div>
@@ -1607,6 +1756,14 @@ function showResult() {
         </button>
       </div>
     </div>
+
+    <!-- 차별화 문구 -->
+    <div class="signature-line">
+      <div class="signature-line-text">
+        더 빠르게가 아니라 <span class="gold-accent">더 선명하게</span>
+      </div>
+    </div>
+
     <div style="text-align:center; margin-bottom:24px;">
       <button class="btn-retry" style="color:var(--gray); border-color:#dce2ee; font-size:13px; padding:10px 24px;"
         onclick="startQuiz()">↺ 다시 진단하기</button>
@@ -1858,7 +2015,7 @@ function showReflectScreen(firstKey, secondKey) {
         <div class="summary-body" id="summary-body"></div>
       </div>
 
-      <!-- 요약 후 결과 보러가기 -->
+      <!-- 요약 후 우선가치 진단으로 -->
       <button onclick="showStep3Screen('${firstKey}','${secondKey}')"
         style="width:100%; background:var(--gold); color:var(--white); border:none; cursor:pointer;
                font-family:'Noto Sans KR',sans-serif; font-size:16px; font-weight:800;
@@ -1866,7 +2023,7 @@ function showReflectScreen(firstKey, secondKey) {
                box-shadow:0 6px 24px rgba(201,152,58,0.45); transition:all 0.2s ease;"
         onmouseover="this.style.transform='translateY(-2px)'"
         onmouseout="this.style.transform=''">
-        결과 보러 가기 →
+        나의 선택 기준 만들러 가기 →
       </button>
     </div>
 
@@ -1926,7 +2083,7 @@ function buildSummary(firstKey, secondKey) {
   const section = document.getElementById('summary-section');
   section.style.display = 'block';
   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  // 답변 정리 후 결과 보러가기 버튼이 보이도록
+  // 답변 정리 후 다음 단계 버튼이 보이도록
   setTimeout(() => {
     const nextBtn = section.querySelector('button');
     if (nextBtn) nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1952,6 +2109,7 @@ function copyResult(firstKey, secondKey) {
     text += `${r.num}. ${r.text.replace(/<[^>]+>/g, '')}\n→ ${ans}\n\n`;
   });
   text += `🧭 Hook: "${pDetail.hook}"\n\n`;
+  text += `더 빠르게가 아니라, 더 선명하게\n`;
   text += `우선가치가 선명하면, 모든 선택이 명료해진다\n`;
   text += `나다움은 발견이 아니라 설계다`;
 
@@ -2207,6 +2365,183 @@ function selectBranch(type) {
   if (taConflict) taConflict.value = '';
 }
 
+// ── 교차 분석 데이터 (5러 × 우선가치 키워드) ──────────────────────────────
+// 각 키워드를 의미 그룹으로 매핑
+const VALUE_GROUPS = {
+  '자유': '자율',  '용기': '자율',  '창의': '자율',
+  '성장': '성장',  '탁월함': '성장', '의미': '성장',
+  '관계': '연결',  '기여': '연결',
+  '안정': '안정',  '균형': '안정',
+  '영향력': '영향', '진정성': '영향',
+};
+
+// 5러 경향성 × 가치 그룹의 패턴 라이브러리
+const CROSS_PATTERNS = {
+  // 열정러 (A)
+  'A_성장': {
+    label: '성취-성장 정렬형',
+    text: '결과로 자신을 증명하고 싶은 에너지가, 더 나은 자신으로 성장하려는 가치와 같은 방향을 향하고 있습니다. 두 힘이 같은 곳을 가리킬 때 가장 큰 추진력이 나옵니다.',
+    hook: '오늘의 성취가 6개월 후의 나에게 어떤 의미로 남을지 물어보세요.',
+  },
+  'A_자율': {
+    label: '주도적 추진형',
+    text: '결과를 만들고 싶은 욕구가, 내 방식대로 가고 싶은 자율 가치와 만났습니다. 누군가 정해준 목표가 아니라 내가 선택한 목표일 때 에너지가 가장 강하게 흐릅니다.',
+    hook: '지금 추구하는 결과는 누가 정한 것인가요?',
+  },
+  'A_연결': {
+    label: '함께 이루는 성취형',
+    text: '결과 지향 에너지가 관계·기여 가치와 만나면, 혼자가 아니라 함께 만든 결과에서 가장 깊은 만족을 느낍니다. 단독 성취보다 공동 성취가 더 오래 남습니다.',
+    hook: '이 성취를 누구와 함께 만들고 싶은가요?',
+  },
+  'A_안정': {
+    label: '지속가능한 성취형',
+    text: '강한 추진력과 안정·균형 가치가 함께 있다면, 단기 폭주가 아니라 길게 꾸준히 가는 성취 패턴이 잘 맞습니다. 번아웃을 가장 경계해야 할 조합입니다.',
+    hook: '이 속도로 1년을 갈 수 있는가요?',
+  },
+  'A_영향': {
+    label: '의미 지향 성취형',
+    text: '성취 욕구가 영향력·진정성 가치와 정렬되면, "무엇을 이루는가"보다 "어떤 영향을 남기는가"가 진짜 동력이 됩니다.',
+    hook: '이 결과가 누구의 무엇을 바꾸나요?',
+  },
+
+  // 협력러 (B)
+  'B_연결': {
+    label: '관계 중심 정렬형',
+    text: '함께할 때 가장 빛나는 에너지와 관계·기여 가치가 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬이지만, 모든 관계가 진짜 충전이 되는지 구분이 중요합니다.',
+    hook: '지금 가까운 관계 중 진짜 충전이 되는 관계는 몇 개인가요?',
+  },
+  'B_성장': {
+    label: '관계 속 성장형',
+    text: '연결 에너지가 성장·의미 가치와 만나면, 혼자 성장하는 것이 아니라 사람을 통해 성장하는 패턴이 됩니다. 멘토·동료가 곧 성장의 주된 통로입니다.',
+    hook: '지금 나를 성장시키는 관계는 누구와의 관계인가요?',
+  },
+  'B_자율': {
+    label: '자유로운 연결형',
+    text: '함께하고 싶은 에너지와 자유·자율 가치가 함께 있다면, 의무로 묶인 관계가 아니라 내가 선택한 관계에서 진짜 에너지가 흐릅니다.',
+    hook: '지금 내 관계 중 의무감으로 유지되는 것과 진짜 원해서 유지되는 것을 구분할 수 있나요?',
+  },
+  'B_안정': {
+    label: '신뢰 기반 연결형',
+    text: '연결 에너지와 안정·균형 가치가 만나면, 넓은 관계보다 깊고 신뢰할 수 있는 소수의 관계에서 가장 잘 작동합니다.',
+    hook: '내가 가장 깊이 신뢰하는 사람은 누구인가요?',
+  },
+  'B_영향': {
+    label: '진정성 있는 연결형',
+    text: '함께하는 에너지가 진정성·영향력 가치와 정렬되면, 표면적 친목보다 서로에게 진짜 영향을 주고받는 관계가 핵심이 됩니다.',
+    hook: '나는 이 사람에게 진짜 영향을 주고 있는가, 받고 있는가?',
+  },
+
+  // 안정러 (C)
+  'C_안정': {
+    label: '깊은 안정 정렬형',
+    text: '리듬과 안정 위에서 깊이 들어가는 에너지가, 안정·균형 가치와 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬입니다. 다만 변화 자체에 저항하지 않도록 주기적인 점검이 필요합니다.',
+    hook: '지금 이 안정은 나를 보호하는가, 멈추게 하는가?',
+  },
+  'C_성장': {
+    label: '점진적 깊이 추구형',
+    text: '안정된 리듬 위에서 깊이 들어가는 에너지가, 성장·탁월함 가치와 만났습니다. 빠른 변화보다 매일 조금씩 쌓아가는 누적의 힘이 가장 강한 패턴입니다.',
+    hook: '지난 한 달 동안 매일 조금씩 쌓인 것은 무엇인가요?',
+  },
+  'C_연결': {
+    label: '안정된 관계형',
+    text: '안정 에너지와 관계·기여 가치가 만나면, 새로운 사람을 자주 만나는 것보다 익숙한 사람들과 깊고 일관된 관계를 유지할 때 가장 만족합니다.',
+    hook: '지난 1년간 한결같이 곁에 있어준 사람은 누구인가요?',
+  },
+  'C_자율': {
+    label: '내 리듬 보호형',
+    text: '안정 에너지와 자유·자율 가치가 만나면, "남들의 리듬에 맞추지 않고 내 리듬을 지킨다"가 핵심 기준이 됩니다.',
+    hook: '내 리듬을 흔드는 외부 압력에 어떻게 대응하고 있나요?',
+  },
+  'C_영향': {
+    label: '꾸준한 영향형',
+    text: '안정 에너지와 영향력·진정성 가치가 정렬되면, 한 번의 큰 임팩트보다 오래 꾸준히 누군가의 곁에 있어주는 방식의 영향력을 발휘합니다.',
+    hook: '내가 1년 동안 한결같이 영향을 주고 있는 대상은 누구인가요?',
+  },
+
+  // 장인러 (D)
+  'D_성장': {
+    label: '본질 추구형',
+    text: '한 가지를 깊게 파는 에너지가, 성장·탁월함·의미 가치와 같은 방향을 향하고 있습니다. 가장 본질적인 정렬이지만, "충분히 좋다"의 기준도 함께 만들어야 완성으로 갈 수 있습니다.',
+    hook: '이 깊이는 어디서 멈추면 충분한가요?',
+  },
+  'D_자율': {
+    label: '깊이 있는 자율형',
+    text: '깊이 파는 에너지와 자유·창의 가치가 만나면, 누군가의 기준이 아니라 내가 정한 기준으로 끝까지 가는 것이 가장 중요합니다.',
+    hook: '지금 내가 따르는 기준은 누가 정한 것인가요?',
+  },
+  'D_연결': {
+    label: '의미 있는 연결형',
+    text: '깊이 파는 에너지와 관계·기여 가치가 만나면, 넓은 인맥보다 같은 깊이로 대화할 수 있는 소수와의 깊은 교류가 핵심이 됩니다.',
+    hook: '내가 진짜 깊이 있게 대화할 수 있는 사람은 몇 명인가요?',
+  },
+  'D_안정': {
+    label: '깊고 흔들림 없는 형',
+    text: '깊이 파는 에너지와 안정·균형 가치가 만나면, 외부 자극에 흔들리지 않고 한 우물을 오래 파는 패턴이 가장 잘 작동합니다.',
+    hook: '지난 6개월간 흔들림 없이 파고 있는 한 가지는 무엇인가요?',
+  },
+  'D_영향': {
+    label: '본질로 영향 주는 형',
+    text: '깊이 파는 에너지와 영향력·진정성 가치가 정렬되면, "보여지는 성과"가 아니라 "본질적 깊이"로 영향을 주는 방식이 자연스럽습니다.',
+    hook: '내 깊이가 누군가에게 어떤 본질적 변화를 만들고 있나요?',
+  },
+
+  // 모험러 (E)
+  'E_자율': {
+    label: '자유로운 탐험형',
+    text: '새로움을 향한 에너지가, 자유·자율·창의 가치와 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬입니다. 다만 시작은 많은데 완성이 적지 않은지 점검이 필요합니다.',
+    hook: '시작한 것 중 끝까지 간 것은 무엇인가요?',
+  },
+  'E_성장': {
+    label: '탐험적 성장형',
+    text: '새로움을 향한 에너지가 성장·탁월함 가치와 만나면, 한 분야에 머무르는 성장이 아니라 여러 영역을 넘나드는 확장형 성장 패턴이 잘 맞습니다.',
+    hook: '내가 넘나든 영역들을 연결하면 어떤 한 가지 방향이 보이나요?',
+  },
+  'E_연결': {
+    label: '새로운 연결 추구형',
+    text: '탐험 에너지가 관계·기여 가치와 만나면, 익숙한 관계보다 새로운 사람과의 만남에서 가장 강한 에너지가 흐릅니다.',
+    hook: '최근 3개월 안에 새로 만난 사람 중 가장 흥미로운 사람은 누구인가요?',
+  },
+  'E_안정': {
+    label: '안정 안의 모험형',
+    text: '탐험 에너지와 안정·균형 가치가 함께 있다면, 모든 것을 흔드는 모험이 아니라 안정된 베이스 위에서 작은 모험을 반복하는 패턴이 가장 잘 작동합니다.',
+    hook: '내 안전 영역과 모험 영역의 비율은 어느 정도가 적당한가요?',
+  },
+  'E_영향': {
+    label: '새로움으로 영향 주는 형',
+    text: '탐험 에너지가 영향력·진정성 가치와 정렬되면, 기존 방식이 아니라 "새로운 방식으로 사람들에게 무언가를 보여주는 것"이 핵심이 됩니다.',
+    hook: '내가 시도한 새로움이 누군가의 시야를 어떻게 넓혔나요?',
+  },
+};
+
+// 패턴 매칭 함수: 주성향 + 우선가치 키워드들 → 가장 적합한 패턴 1개 반환
+function findCrossPattern(typeKey, chips, customKeyword) {
+  if (!typeKey) return null;
+
+  // 모든 키워드 수집 (chip + 직접입력)
+  const allKeywords = [...(chips || [])];
+  if (customKeyword && customKeyword.trim()) {
+    // 직접입력에서 그룹 추출
+    const c = customKeyword.trim();
+    Object.keys(VALUE_GROUPS).forEach(k => {
+      if (c.includes(k)) allKeywords.push(k);
+    });
+  }
+  if (allKeywords.length === 0) return null;
+
+  // 그룹별 빈도 계산
+  const groupCount = {};
+  allKeywords.forEach(k => {
+    const g = VALUE_GROUPS[k];
+    if (g) groupCount[g] = (groupCount[g] || 0) + 1;
+  });
+  if (Object.keys(groupCount).length === 0) return null;
+
+  // 가장 빈도 높은 그룹 선택
+  const topGroup = Object.entries(groupCount).sort((a,b) => b[1]-a[1])[0][0];
+  const patternKey = `${typeKey}_${topGroup}`;
+  return CROSS_PATTERNS[patternKey] || null;
+}
+
 function submitValue() {
   const primary   = TYPES[valueKey];
   const pDetail   = TYPE_DETAIL[valueKey];
@@ -2228,6 +2563,20 @@ function submitValue() {
   const chipsHTML = allChips.map(c =>
     `<span class="vr-value-pill" style="background:${primary.color}">${c}</span>`
   ).join('');
+
+  // ── 교차 분석 인사이트 (5러 × 우선가치 키워드 패턴 매칭) ──
+  const crossPattern = findCrossPattern(valueKey, valueAnswers.chips, valueAnswers.priority);
+  const matchedKeywords = (valueAnswers.chips || []).filter(k => VALUE_GROUPS[k]);
+  const crossInsightHTML = (crossPattern && !isConflict) ? `
+    <div class="cross-insight">
+      <div class="cross-insight-label">🔗 교차 인사이트</div>
+      <div class="cross-insight-pattern">
+        <span class="pattern-key">${primary.name}</span> × <span class="pattern-key">${matchedKeywords.join(', ') || '선택한 가치'}</span><br>
+        = ${crossPattern.label}
+      </div>
+      <div class="cross-insight-text">${crossPattern.text}</div>
+      <div class="cross-insight-hook">💭 ${crossPattern.hook}</div>
+    </div>` : '';
 
   // 분기별 히어로 + 인사이트 카드
   const heroSection = isConflict ? `
@@ -2301,6 +2650,15 @@ function submitValue() {
       </div>
     </div>
 
+    ${crossInsightHTML}
+
+    <!-- 차별화 문구 -->
+    <div class="signature-line">
+      <div class="signature-line-text">
+        더 빠르게가 아니라 <span class="gold-accent">더 선명하게</span>
+      </div>
+    </div>
+
     <!-- 마무리 + 공유 -->
     <div class="closing-card">
       <div class="closing-promise">우선가치가 선명하면,<br>모든 선택이 명료해진다</div>
@@ -2318,21 +2676,21 @@ function submitValue() {
     <div style="background:var(--white); border-radius:16px; padding:20px; margin-top:16px;
                 border-left:4px solid #FF0000;">
       <div style="font-size:12px; color:var(--gray); margin-bottom:8px; font-weight:600;">
-        📺 나다움설계연구소 유튜브
+        📺 나다움설계연구소 유튜브 — 우선가치 시리즈
       </div>
       <div style="font-size:14px; color:var(--dark); line-height:1.7; margin-bottom:4px;">
-        우선가치 발견은 나다움설계연구소 채널과 함께 하세요!
+        우선가치 발견은 나다움설계연구소와 함께 하세요!
       </div>
       <div style="font-size:13px; color:var(--gray); line-height:1.6; margin-bottom:14px;">
-        나의 선택 기준 문장이 완성됐다면, 이제 그것을 <strong style="color:var(--navy)">일상에서 실제로 살아내는 방법</strong>을 유튜브에서 만나보세요.
+        나의 선택 기준 문장이 완성됐다면, 이제 그것을 <strong style="color:var(--navy)">일상에서 실제로 살아내는 방법</strong>을 우선가치 재생목록에서 만나보세요.
       </div>
-      <a href="https://www.youtube.com/@nadaumlab" target="_blank"
+      <a href="https://www.youtube.com/playlist?list=PLwcKc-MRqyaUNxl7pW7l3FAIUASGxz6sP" target="_blank"
         style="display:flex; align-items:center; justify-content:center; gap:8px;
                width:100%; background:#FF0000; color:var(--white);
                text-decoration:none; text-align:center; font-family:'Noto Sans KR',sans-serif;
                font-size:14px; font-weight:700; padding:14px; border-radius:10px;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="flex-shrink:0"><path fill="#fff" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        나다움설계연구소 유튜브 채널 바로가기
+        도움이 되는 영상들 →
       </a>
     </div>
   `;
@@ -2342,12 +2700,22 @@ function copyValueResult() {
   const primary = TYPES[valueKey];
   const pDetail = TYPE_DETAIL[valueKey];
   const allChips = [...valueAnswers.chips, ...(valueAnswers.priority ? [valueAnswers.priority] : [])];
+  const crossPattern = findCrossPattern(valueKey, valueAnswers.chips, valueAnswers.priority);
+
   let text = `✨ 나다움설계연구소 · 나의 선택 기준 결과\n\n`;
   text += `📍 주성향: ${primary.emoji} ${primary.name}\n`;
   text += `🎯 중요한 가치: ${allChips.join(', ') || '탐색 중'}\n\n`;
   text += `✍️ 나의 선택 기준 문장\n${valueAnswers.statement || '(미작성)'}\n\n`;
   text += `💚 에너지가 흘렀던 순간\n${valueAnswers.golden || '(미작성)'}\n\n`;
   text += `🔇 지금 나를 흐리게 만드는 것\n${valueAnswers.obstacle || '(미작성)'}\n\n`;
+
+  if (crossPattern && !valueAnswers.isConflict) {
+    text += `🔗 교차 인사이트 — ${crossPattern.label}\n`;
+    text += `${crossPattern.text}\n`;
+    text += `💭 ${crossPattern.hook}\n\n`;
+  }
+
+  text += `더 빠르게가 아니라, 더 선명하게\n`;
   text += `우선가치가 선명하면, 모든 선택이 명료해진다\n나다움은 발견이 아니라 설계다`;
 
   navigator.clipboard.writeText(text).then(() => {
