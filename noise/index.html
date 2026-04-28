@@ -8,7 +8,10 @@
 <meta property="og:title" content="나의 잡음 오염도는?">
 <meta property="og:description" content="여러분의 욕구가 흐려지는 건 의지가 약해서가 아닙니다. 5분 진단.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://commlovekim70.github.io/need-project/noise/">
 <meta property="og:image" content="https://commlovekim70.github.io/need-project/noise/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F8F9FB;color:#2F2F2F;min-height:100vh}
@@ -1432,16 +1435,15 @@ function buildResultShareText(){
     low: '내 잡음 오염도 '+r.score+'점.\n잡음이 잘 걸러지고 있는 상태예요.\n이제 진짜 에너지 패턴을 만날 시간.'
   };
   return segmentCopy[r.segment] +
-    '\n\n👉 나의 잡음 오염도 진단해보기\n' + DIAGNOSIS_URL +
-    '\n\n#잡음오염도 #나다움설계 #N_E_E_D';
+    '\n\n나의 잡음 오염도 진단해보기 👇\n' + DIAGNOSIS_URL;
 }
 
-// 진단 링크 공유용 — 친구 권유 멘트
+// 진단 링크 공유용 — 친구 권유 멘트 (해시태그 제거, 미리보기 카드 친화적)
 function buildLinkShareText(){
   return '🔍 나의 잡음 오염도는 어느 정도일까?\n\n' +
-    '내 욕구를 흐리게 만드는 잡음이 어디서 오는지\n5분 만에 알아보는 진단이에요.\n\n' +
-    '👉 ' + DIAGNOSIS_URL +
-    '\n\n#잡음오염도 #나다움설계 #N_E_E_D';
+    '내 욕구를 흐리게 만드는 잡음이\n어디서 오는지 알아보는 5분 진단이에요.\n\n' +
+    '아래 링크를 눌러 진단해보세요 👇\n' +
+    DIAGNOSIS_URL;
 }
 
 // ============================================================
