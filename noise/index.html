@@ -1,1072 +1,397 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#1E2761" />
-  <title>사회구조 잡음 노출 지수 — 나다움설계연구소</title>
-  <meta name="description" content="여러분의 욕구를 흐리게 만드는 잡음이 어디서 오는지 살펴봅니다. 5분 진단." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나의 잡음 오염도는? | 나다움설계연구소</title>
+<meta name="description" content="여러분의 욕구를 흐리게 만드는 잡음이 어디서 오는지 살펴봅니다. 5분 진단.">
+<meta property="og:title" content="나의 잡음 오염도는?">
+<meta property="og:description" content="여러분의 욕구가 흐려지는 건 의지가 약해서가 아닙니다. 5분 진단.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://commlovekim70.github.io/need-project/noise/og-image.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F8F9FB;color:#2F2F2F;min-height:100vh}
+.page{max-width:700px;margin:0 auto;padding:2.5rem 1.25rem 5rem}
 
-  <meta property="og:title" content="사회구조 잡음 노출 지수" />
-  <meta property="og:description" content="여러분의 욕구가 흐려지는 건 의지가 약해서가 아닙니다." />
-  <meta property="og:type" content="website" />
+/* LOGO — 5러 진단과 동일 양식 */
+.logo-bar{display:flex;align-items:center;gap:12px;margin-bottom:2.75rem}
+.logo-need{font-size:22px;font-weight:800;letter-spacing:3px;line-height:1}
+.logo-need .n{color:#2979C8}.logo-need .e1{color:#3DAA6B}.logo-need .e2{color:#C9983A}.logo-need .d{color:#8B5CF6}
+.logo-sep{width:1px;height:26px;background:#D1D5DB}
+.logo-right{display:flex;flex-direction:column;gap:2px}
+.logo-scan{font-size:11px;font-weight:600;color:#718096;letter-spacing:1.5px}
+.logo-org{font-size:13px;color:#2F2F2F;font-weight:500}
+.logo-bar-right{margin-left:auto;font-size:13px;font-weight:600;color:#2F2F2F}
+.logo-bar-right .lcur{color:#1E2761}.logo-bar-right .ltot{color:#9CA3AF;font-weight:500}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+.screen{display:none}.screen.active{display:block}
 
-  <style>
-    :root {
-      --c-n: #2979C8;
-      --c-e1: #3DAA6B;
-      --c-e2: #C9983A;
-      --c-d: #8B5CF6;
-      --c-navy: #1E2761;
-      --c-navy-deep: #161B47;
-      --c-text: #2F2F2F;
-      --c-sub: #718096;
-      --c-bg-light: #F5F6FA;
-      --c-white: #FFFFFF;
-      --c-white-70: rgba(255, 255, 255, 0.70);
-      --c-white-50: rgba(255, 255, 255, 0.50);
-      --c-white-15: rgba(255, 255, 255, 0.15);
-      --c-white-08: rgba(255, 255, 255, 0.08);
-      --c-red: #E07A6E;
-      --c-yellow: #C9983A;
-      --c-green: #3DAA6B;
+/* INTRO */
+.badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:4px 12px;font-size:11px;color:#718096;margin-bottom:.9rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#C9983A}
+.intro-h{font-size:26px;font-weight:700;color:#1E2761;line-height:1.3;margin-bottom:.5rem}
+.intro-desc{font-size:13px;color:#718096;line-height:1.65;margin-bottom:1rem}
+.meta-row{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:1rem}
+.meta-card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:.75rem .9rem}
+.meta-lbl{font-size:10px;color:#718096;margin-bottom:3px}
+.meta-val{font-size:13px;font-weight:600;color:#1E2761}
+.intro-box{background:#fff;border-left:3px solid #C9983A;border-radius:0 10px 10px 0;padding:.9rem 1.1rem;font-size:13px;color:#4A5568;line-height:1.7;margin-bottom:1.25rem}
+.intro-box strong{color:#1E2761}
+.btn-start{width:100%;padding:14px;background:#1E2761;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s;font-family:inherit}
+.btn-start:hover{opacity:.88}
 
-      --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      --font-display: 'Montserrat', 'Pretendard Variable', sans-serif;
+/* BRANCH */
+.branch-h{font-size:22px;font-weight:700;color:#1E2761;line-height:1.4;margin-bottom:.5rem;text-align:center}
+.branch-d{font-size:13px;color:#718096;text-align:center;margin-bottom:2rem;line-height:1.6}
+.branch-options{display:flex;flex-direction:column;gap:10px}
+.branch-opt{padding:1.1rem 1.25rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:12px;cursor:pointer;transition:all .15s;text-align:left;font-family:inherit}
+.branch-opt:hover{border-color:#C9983A;background:#FFFBEB}
+.branch-opt-t{font-size:15px;font-weight:600;color:#1E2761;margin-bottom:4px}
+.branch-opt-d{font-size:12px;color:#718096}
 
-      --space-xs: 8px;
-      --space-sm: 16px;
-      --space-md: 24px;
-      --space-lg: 40px;
-      --space-xl: 64px;
+/* QUESTION */
+.prog-wrap{margin-bottom:1.75rem}
+.prog-top{display:flex;justify-content:space-between;margin-bottom:8px}
+.prog-section{font-size:12px;color:#718096}
+.prog-count{font-size:12px;font-weight:600;color:#2F2F2F}
+.prog-bar{height:5px;background:#E2E8F0;border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;transition:width .35s ease}
+.section-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:.75rem;border:1px solid}
+.pill-N{background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE}
+.pill-E1{background:#F0FDF4;color:#166534;border-color:#BBF7D0}
+.pill-E2{background:#FFFBEB;color:#92400E;border-color:#FDE68A}
+.q-text{font-size:19px;font-weight:600;color:#1E2761;line-height:1.55;margin-bottom:.5rem;word-break:keep-all}
+.q-hint{font-size:13px;color:#718096;font-style:italic;margin-bottom:2rem}
+.scale-wrap{margin-bottom:2.5rem}
+.scale-labels{display:flex;justify-content:space-between;margin-bottom:.75rem}
+.scale-labels span{font-size:11px;color:#718096}
+.scale-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scale-btn{display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:12px 6px;border-radius:10px;border:1px solid #E2E8F0;background:#fff;transition:all .15s;user-select:none;font-family:inherit}
+.scale-btn:hover{border-color:#9CA3AF;background:#F9FAFB}
+.scale-num{font-size:17px;font-weight:600;color:#2F2F2F}
+.dots{display:flex;gap:3px}
+.dot{width:5px;height:5px;border-radius:50%;background:#D1D5DB}
+.scale-btn.active-N{border-color:#2979C8!important;background:#EFF6FF!important}
+.scale-btn.active-N .dot{background:#2979C8}.scale-btn.active-N .scale-num{color:#2979C8}
+.scale-btn.active-E1{border-color:#3DAA6B!important;background:#F0FDF4!important}
+.scale-btn.active-E1 .dot{background:#3DAA6B}.scale-btn.active-E1 .scale-num{color:#3DAA6B}
+.scale-btn.active-E2{border-color:#C9983A!important;background:#FFFBEB!important}
+.scale-btn.active-E2 .dot{background:#C9983A}.scale-btn.active-E2 .scale-num{color:#C9983A}
 
-      --radius: 16px;
-      --radius-lg: 24px;
-    }
+/* SLIDER */
+.slider-wrap{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.5rem 1.25rem;margin-bottom:1.5rem}
+.slider-display{text-align:center;padding:.5rem 0 1.5rem}
+.slider-value{font-size:48px;font-weight:800;color:#1E2761;line-height:1;letter-spacing:-1px}
+.slider-unit{font-size:13px;color:#718096;margin-top:6px;letter-spacing:1px}
+.slider-input{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:#E2E8F0;border-radius:3px;outline:none;margin-bottom:10px}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#C9983A;cursor:pointer;box-shadow:0 2px 8px rgba(201,152,58,.4)}
+.slider-input::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#C9983A;cursor:pointer;border:none;box-shadow:0 2px 8px rgba(201,152,58,.4)}
+.slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:#9CA3AF}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html, body { height: 100%; overscroll-behavior: none; }
-    body {
-      font-family: var(--font-sans);
-      background: linear-gradient(180deg, var(--c-navy) 0%, var(--c-navy-deep) 100%);
-      color: var(--c-white);
-      min-height: 100vh;
-      min-height: 100dvh;
-      font-weight: 400;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+.nav-row{display:flex;gap:10px}
+.btn-prev{flex:1;padding:13px;background:#fff;border:1px solid #D1D5DB;border-radius:10px;font-size:14px;color:#718096;cursor:pointer;font-family:inherit}
+.btn-prev:hover{background:#F9FAFB}
+.btn-prev:disabled{opacity:.4;cursor:not-allowed}
+.btn-next{flex:2;padding:13px;border:none;border-radius:10px;font-size:14px;font-weight:600;color:#fff;cursor:pointer;transition:opacity .15s;font-family:inherit;background:#1E2761}
+.btn-next:disabled{opacity:.3;cursor:not-allowed}
+.btn-next:not(:disabled):hover{opacity:.88}
+.btn-N{background:#2979C8}.btn-E1{background:#3DAA6B}.btn-E2{background:#C9983A}
 
-    #app {
-      max-width: 480px;
-      margin: 0 auto;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
+/* LOADING */
+.loading{text-align:center;padding:5rem 1rem}
+.loading-logo{font-size:32px;font-weight:800;letter-spacing:3px;line-height:1;margin-bottom:1.5rem}
+.loading-logo .n{color:#2979C8}.loading-logo .e1{color:#3DAA6B}.loading-logo .e2{color:#C9983A}.loading-logo .d{color:#8B5CF6}
+.loading-text{font-size:14px;color:#718096}
 
-    .need-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      display: inline-block;
-    }
-    .need-logo .n { color: var(--c-n); }
-    .need-logo .e1 { color: var(--c-e1); }
-    .need-logo .e2 { color: var(--c-e2); }
-    .need-logo .d { color: var(--c-d); }
+/* RESULT */
+.res-header{text-align:center;padding:1.5rem 0 1.75rem}
+.res-tag{display:inline-block;font-size:11px;letter-spacing:3px;font-weight:600;color:#718096;margin-bottom:.6rem}
+.res-title{font-size:24px;font-weight:700;color:#1E2761;line-height:1.4;margin-bottom:.5rem;word-break:keep-all}
+.res-sub{font-size:14px;color:#718096;line-height:1.6;word-break:keep-all}
 
-    .header {
-      padding: var(--space-md) var(--space-md) var(--space-sm);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 56px;
-    }
-    .header-back {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--c-white-08);
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--c-white-70);
-      transition: background 0.2s;
-    }
-    .header-back:hover { background: var(--c-white-15); }
-    .header-back:disabled { opacity: 0; pointer-events: none; }
-    .header-back svg { width: 20px; height: 20px; }
-    .header-logo { font-size: 18px; }
-    .header-spacer { width: 36px; }
+.score-card{background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:2rem 1.5rem 1.5rem;text-align:center;margin-bottom:1.5rem}
+.score-ring-wrap{display:flex;justify-content:center;margin-bottom:1rem}
+.score-ring{position:relative;width:200px;height:200px}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring .ring-bg{fill:none;stroke:#F0F1F5;stroke-width:14}
+.score-ring .ring-fg{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dasharray 1s cubic-bezier(0.4,0,0.2,1)}
+.score-ring-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-ring-num{font-size:64px;font-weight:800;color:#1E2761;line-height:1;letter-spacing:-2px}
+.score-ring-max{font-size:13px;color:#9CA3AF;margin-top:4px;letter-spacing:1px}
+.score-label{font-size:13px;color:#718096;margin-top:4px}
 
-    .progress-wrap {
-      padding: 0 var(--space-md);
-      margin-bottom: var(--space-sm);
-    }
-    .progress-track {
-      height: 4px;
-      background: var(--c-white-08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--c-e1), var(--c-e2));
-      border-radius: 2px;
-      width: 0%;
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .progress-text {
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--c-white-50);
-      letter-spacing: 0.5px;
-      font-feature-settings: 'tnum';
-    }
+.axes-card{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.25rem 1.4rem;margin-bottom:1.5rem}
+.axes-tit{font-size:11px;letter-spacing:2px;color:#9CA3AF;font-weight:600;margin-bottom:1rem}
+.axis-row{margin-bottom:1rem}
+.axis-row:last-child{margin-bottom:0}
+.axis-rh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.axis-name{font-size:13px;font-weight:600;color:#2F2F2F}
+.axis-score{font-size:13px;font-weight:700;color:#9CA3AF}
+.axis-bar{height:8px;background:#F0F1F5;border-radius:4px;overflow:hidden}
+.axis-bar-fill{height:100%;border-radius:4px;transition:width 1s cubic-bezier(0.4,0,0.2,1);background:#9CA3AF}
+.axis-bar-fill.primary{background:#C9983A}
 
-    .screen {
-      flex: 1;
-      display: none;
-      flex-direction: column;
-      padding: var(--space-md);
-      animation: fadeIn 0.35s ease-out;
-    }
-    .screen.active { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* 가장 강한 잡음 */
+.primary-card{background:#fff;border:1px solid #E2E8F0;border-left:4px solid #C9983A;border-radius:12px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.primary-tag{font-size:11px;letter-spacing:2px;color:#C9983A;font-weight:700;margin-bottom:8px}
+.primary-name{font-size:22px;font-weight:700;color:#1E2761;margin-bottom:10px;letter-spacing:-.3px}
+.primary-desc{font-size:14px;color:#4A5568;line-height:1.75;word-break:keep-all}
 
-    .intro {
-      text-align: center;
-      padding-top: var(--space-xl);
-    }
-    .intro-tag {
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: var(--c-e2);
-      font-weight: 600;
-      margin-bottom: var(--space-md);
-    }
-    .intro-title {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
-      margin-bottom: var(--space-md);
-    }
-    .intro-subtitle {
-      font-size: 17px;
-      color: var(--c-white-70);
-      line-height: 1.6;
-      margin-bottom: var(--space-xl);
-    }
-    .intro-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      background: var(--c-white-08);
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--c-white-70);
-      letter-spacing: 0.3px;
-      margin-bottom: var(--space-xl);
-    }
-    .intro-meta-divider {
-      width: 3px; height: 3px; border-radius: 50%;
-      background: var(--c-white-50);
-    }
-    .intro-credit {
-      font-size: 12px;
-      color: var(--c-white-50);
-      line-height: 1.7;
-      max-width: 360px;
-      margin: 0 auto var(--space-md);
-    }
-    .intro-credit strong { color: var(--c-white-70); font-weight: 600; }
+/* 진단된 욕구 */
+.need-card{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.need-tag{display:inline-block;font-size:11px;letter-spacing:2px;color:#1D4ED8;font-weight:700;margin-bottom:10px;background:#fff;padding:3px 10px;border-radius:20px;border:1px solid #BFDBFE}
+.need-tit{font-size:17px;font-weight:700;color:#1E3A8A;margin-bottom:12px;line-height:1.5;word-break:keep-all}
+.need-body{font-size:14px;color:#1E40AF;line-height:1.85;word-break:keep-all}
+.need-body p+p{margin-top:14px}
+.need-body strong{color:#1E3A8A;font-weight:700}
 
-    /* SNS 분기 화면 */
-    .branch-question {
-      text-align: center;
-      padding-top: var(--space-lg);
-    }
-    .branch-icon {
-      font-size: 48px;
-      margin-bottom: var(--space-md);
-    }
-    .branch-title {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-    .branch-desc {
-      font-size: 14px;
-      color: var(--c-white-70);
-      margin-bottom: var(--space-xl);
-      line-height: 1.6;
-    }
-    .branch-options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .branch-option {
-      padding: 20px;
-      background: var(--c-white-08);
-      border: 1.5px solid transparent;
-      border-radius: var(--radius);
-      color: var(--c-white);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .branch-option:hover { background: var(--c-white-15); border-color: var(--c-white-15); }
-    .branch-option-sub {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--c-white-50);
-    }
+/* 자기 성찰 */
+.reflect-card{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.reflect-tag{font-size:11px;letter-spacing:2px;color:#718096;font-weight:700;margin-bottom:8px}
+.reflect-tit{font-size:17px;font-weight:700;color:#1E2761;margin-bottom:1.25rem;line-height:1.5;word-break:keep-all}
+.reflect-q{padding:1rem 1.1rem;background:#F8F9FB;border-radius:10px;margin-bottom:10px;border:1px solid #E2E8F0}
+.reflect-q-num{font-size:11px;font-weight:700;color:#C9983A;letter-spacing:1px;margin-bottom:6px}
+.reflect-q-text{font-size:14px;color:#2F2F2F;line-height:1.7;word-break:keep-all;font-weight:500}
 
-    /* 문항 화면 */
-    .axis-tag {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--c-e1);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .question-num {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.1em;
-      color: var(--c-white-50);
-      font-feature-settings: 'tnum';
-      margin-bottom: 12px;
-    }
-    .question-text {
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      margin-bottom: var(--space-xl);
-      word-break: keep-all;
-    }
+/* 작은 실천 */
+.action-card{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.action-tag{display:inline-block;font-size:11px;letter-spacing:2px;color:#92400E;font-weight:700;margin-bottom:10px;background:#fff;padding:3px 10px;border-radius:20px;border:1px solid #FDE68A}
+.action-tit{font-size:18px;font-weight:700;color:#78350F;margin-bottom:12px;line-height:1.5;word-break:keep-all}
+.action-list{list-style:none;padding:0;margin:0 0 12px 0}
+.action-list li{font-size:14px;color:#78350F;line-height:1.7;padding-left:24px;position:relative;margin-bottom:10px;word-break:keep-all}
+.action-list li:last-child{margin-bottom:0}
+.action-list li::before{content:'';position:absolute;left:0;top:9px;width:14px;height:14px;border:2px solid #C9983A;border-radius:4px;background:#fff}
+.action-quote{font-size:13px;color:#92400E;font-style:italic;padding-top:14px;border-top:1px solid #FDE68A;line-height:1.6;word-break:keep-all;margin-top:12px}
 
-    /* SNS 사용량 슬라이더 화면 */
-    .slider-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-bottom: var(--space-md);
-    }
-    .slider-display {
-      text-align: center;
-      padding: var(--space-lg) 0;
-    }
-    .slider-value {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 84px;
-      letter-spacing: -0.04em;
-      color: var(--c-white);
-      line-height: 1;
-    }
-    .slider-unit {
-      font-size: 16px;
-      color: var(--c-white-50);
-      margin-top: 8px;
-      letter-spacing: 0.1em;
-    }
-    .slider-wrap {
-      padding: 0 var(--space-sm);
-      margin-bottom: var(--space-md);
-    }
-    .slider-input {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 8px;
-      background: var(--c-white-08);
-      border-radius: 4px;
-      outline: none;
-    }
-    .slider-input::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--c-e2);
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(201, 152, 58, 0.4);
-    }
-    .slider-input::-moz-range-thumb {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--c-e2);
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 4px 12px rgba(201, 152, 58, 0.4);
-    }
-    .slider-marks {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 12px;
-      font-size: 11px;
-      color: var(--c-white-50);
-      letter-spacing: 0.05em;
-    }
+/* 영상 */
+.video-card{display:block;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:1.25rem 1.4rem;margin-bottom:1.5rem;text-decoration:none;color:inherit;transition:all .15s}
+.video-card:hover{border-color:#C9983A;background:#FFFBEB}
+.video-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.video-icon{width:40px;height:40px;border-radius:10px;background:#FEE2E2;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.video-icon svg{width:20px;height:20px;fill:#DC2626}
+.video-label{flex:1}
+.video-platform{font-size:10px;letter-spacing:2px;color:#9CA3AF;font-weight:700;margin-bottom:2px}
+.video-tit{font-size:14px;font-weight:700;color:#1E2761}
+.video-arrow{color:#C9983A;font-size:18px}
+.video-desc{font-size:13px;color:#718096;line-height:1.6;word-break:keep-all}
 
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: auto;
-      padding-bottom: var(--space-md);
-    }
-    .option {
-      width: 100%;
-      min-height: 56px;
-      padding: 16px 20px;
-      background: var(--c-white-08);
-      border: 1.5px solid transparent;
-      border-radius: var(--radius);
-      color: var(--c-white);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 500;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      letter-spacing: -0.005em;
-    }
-    .option:hover { background: var(--c-white-15); }
-    .option.selected {
-      background: rgba(61, 170, 107, 0.12);
-      border-color: var(--c-e1);
-    }
-    .option-num {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--c-white-15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--c-white-70);
-    }
-    .option.selected .option-num {
-      background: var(--c-e1);
-      color: var(--c-white);
-    }
+/* 공유 */
+.share-wrap{margin:1.5rem 0}
+.share-tit{font-size:12px;letter-spacing:2px;color:#9CA3AF;font-weight:600;text-align:center;margin-bottom:14px}
+.share-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.share-btn{padding:12px 14px;background:#fff;border:1px solid #E2E8F0;border-radius:10px;color:#2F2F2F;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:5px}
+.share-btn:hover{border-color:#C9983A;background:#FFFBEB}
+.share-btn-icon{width:20px;height:20px;color:#718096}
+.share-btn-sub{font-size:10px;color:#9CA3AF;font-weight:500}
+.share-btn-full{grid-column:span 2;flex-direction:row;justify-content:center;gap:8px}
+.share-btn-result{background:#FFFBEB!important;border-color:#FDE68A!important}
+.share-btn-result:hover{background:#FEF3C7!important;border-color:#C9983A!important}
+.share-btn-result span:nth-of-type(1){color:#92400E;font-weight:700}
+.share-btn-result span:nth-of-type(2){color:#B45309}
+.share-btn-link{background:#EFF6FF!important;border-color:#BFDBFE!important}
+.share-btn-link:hover{background:#DBEAFE!important;border-color:#2979C8!important}
+.share-btn-link span:nth-of-type(1){color:#1E3A8A;font-weight:700}
+.share-btn-link span:nth-of-type(2){color:#1D4ED8}
 
-    .btn-primary {
-      width: 100%;
-      min-height: 56px;
-      padding: 16px 24px;
-      background: var(--c-e2);
-      color: var(--c-navy);
-      border: none;
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.005em;
-      cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(201, 152, 58, 0.25);
-    }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(201, 152, 58, 0.35); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-restart{width:100%;padding:12px;background:#fff;border:1px solid #D1D5DB;border-radius:10px;font-size:13px;color:#718096;cursor:pointer;font-family:inherit;margin-top:1rem}
+.btn-restart:hover{background:#F9FAFB}
 
-    .btn-secondary {
-      width: 100%;
-      min-height: 48px;
-      padding: 12px 24px;
-      background: transparent;
-      color: var(--c-white-70);
-      border: 1.5px solid var(--c-white-15);
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 12px;
-    }
-    .btn-secondary:hover { border-color: var(--c-white-50); color: var(--c-white); }
+/* 경각심 카드 (학술적 긴장감) */
+.warning-card{background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.warning-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:2px;color:#B91C1C;font-weight:700;margin-bottom:10px;background:#fff;padding:3px 10px;border-radius:20px;border:1px solid #FECACA}
+.warning-tag.icon-warn::before{content:'⚠';font-size:11px}
+.warning-tag.icon-affirm::before{content:'✓';font-size:11px}
+.warning-body{font-size:14px;color:#7F1D1D;line-height:1.85;word-break:keep-all}
+.warning-body strong{color:#991B1B;font-weight:700}
+.warning-cite{font-size:11px;color:#9F7C7C;margin-top:10px;font-style:italic}
 
-    /* 결과 화면 */
-    .result-tag {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--c-white-50);
-      font-weight: 600;
-      text-align: center;
-      margin-top: var(--space-md);
-      margin-bottom: var(--space-sm);
-    }
-    .result-logo-wrap {
-      text-align: center;
-      margin-bottom: var(--space-lg);
-    }
-    .result-logo-wrap .need-logo {
-      font-size: 28px;
-    }
+/* 작은 실천 카드 — N.E.E.D 단계 표기 추가 */
+.action-need-step{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #FDE68A;border-radius:8px;padding:8px 12px;margin-bottom:14px;font-size:11px;color:#92400E}
+.action-need-step-num{font-weight:800;color:#C9983A;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+.action-need-step-arrow{color:#C9983A}
+.action-need-step-name{font-weight:700}
 
-    .score-ring-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: var(--space-md);
-    }
-    .score-ring {
-      width: 240px;
-      height: 240px;
-      position: relative;
-    }
-    .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-    .score-ring .ring-bg { fill: none; stroke: var(--c-white-08); stroke-width: 14; }
-    .score-ring .ring-fg {
-      fill: none;
-      stroke-width: 14;
-      stroke-linecap: round;
-      transition: stroke-dasharray 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .score-ring-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .score-ring-num {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 72px;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: var(--c-white);
-    }
-    .score-ring-max {
-      font-size: 14px;
-      color: var(--c-white-50);
-      letter-spacing: 0.15em;
-      margin-top: 4px;
-    }
+/* 5러 연결 카드 */
+.next-diagnosis-card{background:linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%);border:1px solid #BBF7D0;border-radius:14px;padding:1.5rem 1.5rem;margin-bottom:1.5rem;text-align:left;text-decoration:none;color:inherit;display:block;transition:all .15s;position:relative;overflow:hidden}
+.next-diagnosis-card:hover{border-color:#3DAA6B;transform:translateY(-1px);box-shadow:0 4px 12px rgba(61,170,107,.12)}
+.next-diagnosis-tag{display:inline-block;font-size:10px;letter-spacing:2.5px;color:#166534;font-weight:700;background:#fff;padding:3px 10px;border-radius:20px;border:1px solid #BBF7D0;margin-bottom:12px}
+.next-diagnosis-h{font-size:18px;font-weight:700;color:#14532D;margin-bottom:10px;line-height:1.5;word-break:keep-all}
+.next-diagnosis-d{font-size:13px;color:#166534;line-height:1.75;margin-bottom:14px;word-break:keep-all}
+.next-diagnosis-types{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.next-diagnosis-type{background:#fff;border:1px solid #BBF7D0;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;color:#166534}
+.next-diagnosis-cta{display:inline-flex;align-items:center;gap:8px;background:#3DAA6B;color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:700;border:none;font-family:inherit;cursor:pointer;transition:opacity .15s}
+.next-diagnosis-cta:hover{opacity:.9}
 
-    .result-headline {
-      text-align: center;
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      word-break: keep-all;
-    }
-    .result-subline {
-      text-align: center;
-      font-size: 15px;
-      color: var(--c-white-70);
-      line-height: 1.6;
-      margin-bottom: var(--space-lg);
-      word-break: keep-all;
-    }
+/* 혼재 단계 가이드 카드 (건강한 사용법 + 조심할 신호) */
+.guide-card{display:none;background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.5rem;overflow:hidden}
+.guide-card.show{display:block}
+.guide-tag{display:inline-block;font-size:11px;letter-spacing:2px;color:#92400E;font-weight:700;background:#FFFBEB;padding:3px 10px;border-radius:20px;border:1px solid #FDE68A;margin-bottom:14px}
+.guide-section{padding:1.1rem 0;border-bottom:1px solid #F0F1F5}
+.guide-section:last-child{border-bottom:none;padding-bottom:0}
+.guide-section:first-of-type{padding-top:0}
+.guide-section-h{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:12px;display:flex;align-items:center;gap:8px;word-break:keep-all}
+.guide-section-h.healthy{color:#166534}
+.guide-section-h.healthy::before{content:'';width:18px;height:18px;border-radius:50%;background:#3DAA6B;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:11px;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.guide-section-h.caution{color:#B45309}
+.guide-section-h.caution::before{content:'';width:18px;height:18px;border-radius:50%;background:#C9983A;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.guide-list{list-style:none;padding:0;margin:0}
+.guide-list li{font-size:14px;line-height:1.7;padding:8px 0 8px 22px;position:relative;word-break:keep-all}
+.guide-list.healthy li{color:#166534}
+.guide-list.healthy li::before{content:'·';position:absolute;left:8px;top:8px;color:#3DAA6B;font-weight:800;font-size:18px;line-height:1}
+.guide-list.caution li{color:#92400E}
+.guide-list.caution li::before{content:'·';position:absolute;left:8px;top:8px;color:#C9983A;font-weight:800;font-size:18px;line-height:1}
 
-    /* 3축 게이지 */
-    .axes {
-      background: var(--c-white-08);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: var(--space-md);
-    }
-    .axes-title {
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      color: var(--c-white-50);
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .axis-row { margin-bottom: 14px; }
-    .axis-row:last-child { margin-bottom: 0; }
-    .axis-row-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 8px;
-    }
-    .axis-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--c-white);
-    }
-    .axis-score {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--c-white-70);
-      font-feature-settings: 'tnum';
-    }
-    .axis-bar {
-      height: 10px;
-      background: var(--c-white-08);
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .axis-bar-fill {
-      height: 100%;
-      border-radius: 5px;
-      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+/* 토스트 */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1E2761;color:#fff;padding:12px 22px;border-radius:24px;font-size:13px;font-weight:500;box-shadow:0 6px 20px rgba(30,39,97,.3);opacity:0;pointer-events:none;transition:opacity .25s;z-index:1000;white-space:nowrap;max-width:90vw}
+.toast.show{opacity:1}
 
-    /* 가장 강한 잡음 */
-    .primary-noise {
-      text-align: center;
-      padding: 24px 20px;
-      background: var(--c-white-08);
-      border-radius: var(--radius);
-      margin-bottom: var(--space-md);
-    }
-    .primary-noise-label {
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: var(--c-white-50);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .primary-noise-name {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-    }
-    .primary-noise-desc {
-      font-size: 14px;
-      color: var(--c-white-70);
-      line-height: 1.6;
-      word-break: keep-all;
-    }
+/* 푸터 */
+.footer-mark{text-align:center;padding:2rem 0 1rem;border-top:1px solid #E2E8F0;margin-top:1.5rem}
+.footer-mark .mini-logo{font-size:16px;font-weight:800;letter-spacing:3px;margin-bottom:8px}
+.footer-mark .mini-logo .n{color:#2979C8}.footer-mark .mini-logo .e1{color:#3DAA6B}.footer-mark .mini-logo .e2{color:#C9983A}.footer-mark .mini-logo .d{color:#8B5CF6}
+.footer-mark-t{font-size:10px;letter-spacing:2px;color:#9CA3AF;font-weight:600;margin-bottom:3px}
+.footer-mark-s{font-size:11px;color:#9CA3AF}
 
-    /* 진단된 욕구 — 새 섹션 */
-    .need-found {
-      background: linear-gradient(135deg, rgba(41, 121, 200, 0.15), rgba(41, 121, 200, 0.04));
-      border: 1px solid rgba(41, 121, 200, 0.3);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      margin-bottom: var(--space-md);
-    }
-    .need-found-tag {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--c-n);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .need-found-title {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-      word-break: keep-all;
-    }
-    .need-found-body {
-      font-size: 14px;
-      color: var(--c-white-70);
-      line-height: 1.7;
-      word-break: keep-all;
-    }
-    .need-found-body p + p { margin-top: 12px; }
+/* 모달 */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(30,39,97,.5);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:16px;padding:2rem 1.5rem;max-width:380px;width:100%;text-align:center}
+.modal-icon{font-size:32px;margin-bottom:12px}
+.modal-tit{font-size:18px;font-weight:700;color:#1E2761;margin-bottom:8px}
+.modal-desc{font-size:13px;color:#718096;line-height:1.6;margin-bottom:1.25rem}
+.modal-prog{font-weight:700;color:#C9983A}
+.modal-btns{display:flex;flex-direction:column;gap:8px}
+.modal-btn-pri{padding:12px;background:#1E2761;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.modal-btn-sec{padding:12px;background:#fff;color:#718096;border:1px solid #D1D5DB;border-radius:10px;font-size:13px;cursor:pointer;font-family:inherit}
 
-    /* N.E.E.D 노하우 — 핵심 섹션 */
-    .know-how {
-      background: var(--c-white-08);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      margin-bottom: var(--space-md);
-    }
-    .know-how-tag {
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--c-e2);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .know-how-title {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
-      margin-bottom: var(--space-md);
-      word-break: keep-all;
-    }
-
-    .step-list {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .step-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-    .step-num {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(201, 152, 58, 0.18);
-      color: var(--c-e2);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 0;
-    }
-    .step-content {
-      flex: 1;
-      padding-top: 4px;
-    }
-    .step-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--c-white);
-      margin-bottom: 4px;
-      letter-spacing: -0.005em;
-    }
-    .step-desc {
-      font-size: 14px;
-      color: var(--c-white-70);
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-
-    /* 다음 한 걸음 — 챌린지 */
-    .challenge {
-      background: linear-gradient(135deg, rgba(201, 152, 58, 0.18), rgba(201, 152, 58, 0.04));
-      border: 1px solid rgba(201, 152, 58, 0.4);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      margin-bottom: var(--space-md);
-      position: relative;
-      overflow: hidden;
-    }
-    .challenge::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: var(--c-e2);
-    }
-    .challenge-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      background: rgba(201, 152, 58, 0.2);
-      border-radius: 999px;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--c-e2);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .challenge-title {
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-      color: var(--c-white);
-      margin-bottom: 14px;
-      word-break: keep-all;
-    }
-    .challenge-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-    }
-    .challenge-list li {
-      font-size: 14px;
-      color: var(--c-white-70);
-      line-height: 1.7;
-      padding-left: 22px;
-      position: relative;
-      margin-bottom: 8px;
-      word-break: keep-all;
-    }
-    .challenge-list li:last-child { margin-bottom: 0; }
-    .challenge-list li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--c-e2);
-      font-weight: 700;
-    }
-    .challenge-quote {
-      font-size: 13px;
-      color: var(--c-white-50);
-      font-style: italic;
-      padding-top: 12px;
-      border-top: 1px solid var(--c-white-08);
-      line-height: 1.6;
-    }
-
-    /* 영상 학습 자원 */
-    .video-resource {
-      background: var(--c-navy-deep);
-      border: 1px solid var(--c-white-08);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: var(--space-md);
-      display: block;
-      text-decoration: none;
-      color: var(--c-white);
-      transition: all 0.2s;
-    }
-    .video-resource:hover {
-      border-color: var(--c-e2);
-      transform: translateY(-1px);
-    }
-    .video-resource-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .video-icon {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: #FF4444;
-    }
-    .video-label {
-      flex: 1;
-    }
-    .video-platform {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--c-white-50);
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .video-title {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.005em;
-    }
-    .video-desc {
-      font-size: 13px;
-      color: var(--c-white-70);
-      line-height: 1.5;
-    }
-    .video-arrow {
-      flex-shrink: 0;
-      color: var(--c-e2);
-    }
-
-    /* 공유 섹션 */
-    .share-section { margin-top: var(--space-md); margin-bottom: var(--space-md); }
-    .share-title {
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      color: var(--c-white-50);
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .share-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .share-btn {
-      padding: 14px 16px;
-      background: var(--c-white-08);
-      border: 1px solid var(--c-white-15);
-      border-radius: var(--radius);
-      color: var(--c-white);
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: -0.005em;
-    }
-    .share-btn:hover { background: var(--c-white-15); }
-    .share-btn-label { font-size: 11px; color: var(--c-white-50); font-weight: 500; }
-    .share-btn svg { width: 22px; height: 22px; }
-
-    .copy-feedback {
-      position: fixed;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--c-navy-deep);
-      color: var(--c-white);
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      z-index: 100;
-    }
-    .copy-feedback.show { opacity: 1; }
-
-    /* 모달 */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(22, 27, 71, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-md);
-      animation: fadeIn 0.2s ease-out;
-    }
-    .modal-overlay.show { display: flex; }
-    .modal {
-      max-width: 400px;
-      width: 100%;
-      background: var(--c-navy);
-      border: 1px solid var(--c-white-15);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg);
-      text-align: center;
-    }
-    .modal-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
-    .modal-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .modal-desc {
-      font-size: 14px;
-      color: var(--c-white-70);
-      line-height: 1.6;
-      margin-bottom: var(--space-md);
-    }
-    .modal-progress {
-      font-family: var(--font-display);
-      font-weight: 700;
-      color: var(--c-e2);
-      font-feature-settings: 'tnum';
-    }
-
-    /* 푸터 워터마크 */
-    .footer-watermark {
-      text-align: center;
-      padding: var(--space-md) var(--space-md) var(--space-lg);
-      border-top: 1px solid var(--c-white-08);
-      margin-top: var(--space-md);
-    }
-    .footer-watermark .need-logo {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-    .footer-watermark-text {
-      font-size: 11px;
-      color: var(--c-white-50);
-      letter-spacing: 0.2em;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .footer-watermark-sub {
-      font-size: 12px;
-      color: var(--c-white-50);
-      letter-spacing: 0.05em;
-    }
-
-    @media (max-width: 360px) {
-      .intro-title { font-size: 28px; }
-      .question-text { font-size: 21px; }
-      .result-headline { font-size: 22px; }
-      .score-ring { width: 200px; height: 200px; }
-      .score-ring-num { font-size: 60px; }
-      .challenge-title { font-size: 20px; }
-      .slider-value { font-size: 72px; }
-    }
-
-    @media (min-width: 768px) {
-      #app { box-shadow: 0 0 60px rgba(0, 0, 0, 0.3); border-radius: 24px; margin-top: 40px; margin-bottom: 40px; min-height: calc(100vh - 80px); overflow: hidden; }
-    }
-  </style>
+@media (max-width:380px){
+  .scale-num{font-size:15px}
+  .scale-btn{padding:10px 4px}
+  .q-text{font-size:17px}
+  .res-title{font-size:21px}
+  .score-ring{width:170px;height:170px}
+  .score-ring-num{font-size:54px}
+  .primary-name{font-size:19px}
+  .slider-value{font-size:42px}
+}
+</style>
 </head>
 <body>
-  <div id="app">
-    <div class="header">
-      <button class="header-back" id="backBtn" aria-label="이전으로">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
+<div class="page">
+
+  <div class="logo-bar">
+    <span class="logo-need"><span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D</span></span>
+    <span class="logo-sep"></span>
+    <div class="logo-right">
+      <span class="logo-scan">NEED SCAN · 나다움설계연구소</span>
+      <span class="logo-org">나다움을 설계하다</span>
+    </div>
+    <div class="logo-bar-right" id="topCounter" style="display:none">
+      <span class="lcur" id="topCur">1</span><span class="ltot" id="topTot"> / 18</span>
+    </div>
+  </div>
+
+  <div class="screen active" id="screen-intro">
+    <div class="badge"><span class="badge-dot"></span><span>ELIMINATE NOISE · 잡음 제거</span></div>
+    <h1 class="intro-h">나의 잡음 오염도는?</h1>
+    <p class="intro-desc">여러분의 욕구를 흐리게 만드는 잡음이 어디서 오는지 살펴봅니다.<br/><span style="font-size:11px;color:#9CA3AF">사회구조 잡음 노출 지수</span></p>
+    <div class="meta-row">
+      <div class="meta-card"><div class="meta-lbl">문항 수</div><div class="meta-val">18문항</div></div>
+      <div class="meta-card"><div class="meta-lbl">소요 시간</div><div class="meta-val">약 5분</div></div>
+    </div>
+    <div class="intro-box">
+      이 진단은 <strong>Heo &amp; Park (2013)</strong> 눈치 척도, <strong>Festinger (1954)</strong> 사회비교 이론, <strong>Charry &amp; Tessitore (2021)</strong> SNS 동조 효과 연구를 바탕으로 설계되었습니다.
+    </div>
+    <button class="btn-start" id="startBtn">진단 시작하기</button>
+  </div>
+
+  <div class="screen" id="screen-branch">
+    <div style="text-align:center;font-size:36px;margin:1rem 0 .5rem">📱</div>
+    <h2 class="branch-h">시작하기 전,<br/>한 가지만 먼저 알려주세요</h2>
+    <p class="branch-d">SNS 사용 여부에 따라<br/>맞춤 문항으로 진단됩니다</p>
+    <div class="branch-options">
+      <button class="branch-opt" data-branch="sns">
+        <div class="branch-opt-t">SNS 계정을 사용하고 있어요</div>
+        <div class="branch-opt-d">인스타그램, 페이스북, 트위터(X), 틱톡 등</div>
       </button>
-      <span class="need-logo header-logo">
-        <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span>
-      </span>
-      <div class="header-spacer"></div>
+      <button class="branch-opt" data-branch="kakao">
+        <div class="branch-opt-t">SNS는 안 하고 카톡만 써요</div>
+        <div class="branch-opt-d">카카오톡 프로필, 단톡방, 카카오스토리 등</div>
+      </button>
     </div>
+  </div>
 
-    <div class="progress-wrap" id="progressWrap" style="display: none;">
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
+  <div class="screen" id="screen-question">
+    <div class="prog-wrap">
+      <div class="prog-top">
+        <span class="prog-section" id="progSection">눈치 압력 · 1/6</span>
+        <span class="prog-count" id="progCount">1 / 18</span>
       </div>
-      <div class="progress-text" id="progressText">1 / 18</div>
+      <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%;background:#2979C8"></div></div>
     </div>
-
-    <!-- 시작 화면 -->
-    <div class="screen active" id="screen-intro">
-      <div class="intro">
-        <div class="intro-tag">ELIMINATE NOISE</div>
-        <h1 class="intro-title">사회구조 잡음<br/>노출 지수</h1>
-        <p class="intro-subtitle">
-          여러분의 욕구를 흐리게 만드는 잡음이<br/>
-          어디서 오는지 살펴봅니다
-        </p>
-        <div class="intro-meta">
-          <span>18문항</span>
-          <span class="intro-meta-divider"></span>
-          <span>약 5분</span>
-        </div>
-        <p class="intro-credit">
-          이 진단은 <strong>Heo &amp; Park (2013)</strong> 눈치 척도, <strong>Festinger (1954)</strong> 사회비교 이론, <strong>Charry &amp; Tessitore (2021)</strong> SNS 동조 효과 연구를 바탕으로 설계되었습니다.
-        </p>
-        <button class="btn-primary" id="startBtn">진단 시작하기</button>
+    <div class="section-pill" id="secPill">눈치 압력</div>
+    <h2 class="q-text" id="qText"></h2>
+    <div class="scale-wrap" style="margin-top:1.5rem">
+      <div class="scale-labels">
+        <span>전혀 그렇지 않다</span>
+        <span>매우 그렇다</span>
       </div>
+      <div class="scale-row" id="scaleRow"></div>
     </div>
+    <div class="nav-row">
+      <button class="btn-prev" id="prevBtn">← 이전</button>
+      <button class="btn-next" id="nextBtn" disabled>다음 →</button>
+    </div>
+  </div>
 
-    <!-- SNS 분기 화면 -->
-    <div class="screen" id="screen-branch">
-      <div class="branch-question">
-        <div class="branch-icon">📱</div>
-        <h2 class="branch-title">시작하기 전, 한 가지만<br/>먼저 알려주세요</h2>
-        <p class="branch-desc">SNS 사용 여부에 따라<br/>맞춤 문항으로 진단됩니다</p>
-        <div class="branch-options">
-          <button class="branch-option" data-branch="sns">
-            <span>SNS 계정을 사용하고 있어요</span>
-            <span class="branch-option-sub">인스타그램, 페이스북, 트위터(X), 틱톡 등</span>
-          </button>
-          <button class="branch-option" data-branch="kakao">
-            <span>SNS는 안 하고 카톡만 써요</span>
-            <span class="branch-option-sub">카카오톡 프로필, 단톡방, 카카오스토리 등</span>
-          </button>
-        </div>
+  <div class="screen" id="screen-slider">
+    <div class="prog-wrap">
+      <div class="prog-top">
+        <span class="prog-section">비교 노출 · 1/6</span>
+        <span class="prog-count">13 / 18</span>
       </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:67%;background:#C9983A"></div></div>
     </div>
-
-    <!-- 문항 화면 -->
-    <div class="screen" id="screen-question">
-      <div class="axis-tag" id="axisTag"></div>
-      <div class="question-num" id="questionNum">Q.1</div>
-      <div class="question-text" id="questionText"></div>
-      <div class="options" id="optionsList"></div>
-    </div>
-
-    <!-- SNS 사용 시간 슬라이더 화면 -->
-    <div class="screen" id="screen-slider">
-      <div class="axis-tag">SNS 알고리즘 노출</div>
-      <div class="question-num">Q.13</div>
-      <div class="question-text" id="sliderQuestionText">하루에 평균 SNS를 얼마나 보시나요?</div>
-
-      <div class="slider-section">
-        <div>
-          <div class="slider-display">
-            <div class="slider-value" id="sliderValue">30</div>
-            <div class="slider-unit">분 / 하루</div>
-          </div>
-          <div class="slider-wrap">
-            <input type="range" class="slider-input" id="sliderInput" min="0" max="240" step="10" value="30" />
-            <div class="slider-marks">
-              <span>0분</span>
-              <span>1시간</span>
-              <span>2시간</span>
-              <span>3시간</span>
-              <span>4시간+</span>
-            </div>
-          </div>
-        </div>
-        <button class="btn-primary" id="sliderNextBtn">다음</button>
+    <div class="section-pill pill-E2">비교 노출</div>
+    <h2 class="q-text" id="sliderQText">하루에 평균 SNS를 얼마나 보시나요?</h2>
+    <p class="q-hint" style="display:block">대략적인 평균값으로 답해주시면 됩니다.</p>
+    <div class="slider-wrap">
+      <div class="slider-display">
+        <div class="slider-value" id="sliderValue">30</div>
+        <div class="slider-unit">분 / 하루</div>
+      </div>
+      <input type="range" class="slider-input" id="sliderInput" min="0" max="240" step="10" value="30" />
+      <div class="slider-marks">
+        <span>0분</span><span>1시간</span><span>2시간</span><span>3시간</span><span>4시간+</span>
       </div>
     </div>
+    <div class="nav-row">
+      <button class="btn-prev" id="sliderPrevBtn">← 이전</button>
+      <button class="btn-next btn-E2" id="sliderNextBtn">다음 →</button>
+    </div>
+  </div>
 
-    <!-- 로딩 -->
-    <div class="screen" id="screen-loading">
-      <div style="margin: auto; text-align: center;">
-        <div class="need-logo" style="font-size: 32px; margin-bottom: 24px;">
-          <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span>
-        </div>
-        <p style="color: var(--c-white-70); font-size: 15px;">
-          여러분의 잡음 지수를 계산하고 있어요...
-        </p>
-      </div>
+  <div class="screen" id="screen-loading">
+    <div class="loading">
+      <div class="loading-logo"><span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span></div>
+      <p class="loading-text">여러분의 잡음 오염도를 계산하고 있어요...</p>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-result">
+    <div class="res-header">
+      <div class="res-tag">나의 잡음 오염도</div>
+      <h2 class="res-title" id="resTitle"></h2>
+      <p class="res-sub" id="resSub"></p>
     </div>
 
-    <!-- 결과 화면 -->
-    <div class="screen" id="screen-result">
-      <div class="result-tag">사회구조 잡음 노출 지수</div>
-      <div class="result-logo-wrap">
-        <span class="need-logo">
-          <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span>
-        </span>
-      </div>
-
+    <div class="score-card">
       <div class="score-ring-wrap">
         <div class="score-ring">
           <svg viewBox="0 0 240 240">
-            <circle class="ring-bg" cx="120" cy="120" r="105" />
-            <circle class="ring-fg" id="ringFg" cx="120" cy="120" r="105" />
+            <circle class="ring-bg" cx="120" cy="120" r="105"/>
+            <circle class="ring-fg" id="ringFg" cx="120" cy="120" r="105"/>
           </svg>
           <div class="score-ring-content">
             <div class="score-ring-num" id="scoreNum">0</div>
@@ -1074,847 +399,1381 @@
           </div>
         </div>
       </div>
+      <div class="score-label" id="scoreLabel"></div>
+    </div>
 
-      <h2 class="result-headline" id="resultHeadline"></h2>
-      <p class="result-subline" id="resultSubline"></p>
-
-      <!-- 3축 게이지 -->
-      <div class="axes">
-        <div class="axes-title">잡음의 출처</div>
-        <div class="axis-row">
-          <div class="axis-row-head">
-            <span class="axis-name">눈치 압력</span>
-            <span class="axis-score" id="ax1Score">0</span>
-          </div>
-          <div class="axis-bar">
-            <div class="axis-bar-fill" id="ax1Bar"></div>
-          </div>
-        </div>
-        <div class="axis-row">
-          <div class="axis-row-head">
-            <span class="axis-name">비교 압력</span>
-            <span class="axis-score" id="ax2Score">0</span>
-          </div>
-          <div class="axis-bar">
-            <div class="axis-bar-fill" id="ax2Bar"></div>
-          </div>
-        </div>
-        <div class="axis-row">
-          <div class="axis-row-head">
-            <span class="axis-name" id="ax3Label">SNS 알고리즘 노출</span>
-            <span class="axis-score" id="ax3Score">0</span>
-          </div>
-          <div class="axis-bar">
-            <div class="axis-bar-fill" id="ax3Bar"></div>
-          </div>
-        </div>
+    <div class="axes-card">
+      <div class="axes-tit">잡음의 출처 분석</div>
+      <div class="axis-row">
+        <div class="axis-rh"><span class="axis-name">눈치 압력</span><span class="axis-score" id="ax1Score">0</span></div>
+        <div class="axis-bar"><div class="axis-bar-fill" id="ax1Bar"></div></div>
       </div>
-
-      <!-- 가장 강한 잡음 -->
-      <div class="primary-noise">
-        <div class="primary-noise-label">가장 강한 한 가지 잡음</div>
-        <div class="primary-noise-name" id="primaryNoise"></div>
-        <div class="primary-noise-desc" id="primaryNoiseDesc"></div>
+      <div class="axis-row">
+        <div class="axis-rh"><span class="axis-name">비교 압력</span><span class="axis-score" id="ax2Score">0</span></div>
+        <div class="axis-bar"><div class="axis-bar-fill" id="ax2Bar"></div></div>
       </div>
-
-      <!-- 진단된 욕구 -->
-      <div class="need-found">
-        <div class="need-found-tag">NEED SCAN · 진단된 욕구</div>
-        <h3 class="need-found-title" id="needFoundTitle"></h3>
-        <div class="need-found-body" id="needFoundBody"></div>
-      </div>
-
-      <!-- N.E.E.D 노하우 -->
-      <div class="know-how">
-        <div class="know-how-tag">N.E.E.D 루틴 적용</div>
-        <h3 class="know-how-title" id="knowHowTitle"></h3>
-        <div class="step-list" id="knowHowSteps"></div>
-      </div>
-
-      <!-- 챌린지 (다음 한 걸음) -->
-      <div class="challenge">
-        <div class="challenge-tag">▸ 다음 한 걸음 · 7일 챌린지</div>
-        <h3 class="challenge-title" id="challengeTitle"></h3>
-        <ul class="challenge-list" id="challengeList"></ul>
-        <p class="challenge-quote" id="challengeQuote"></p>
-      </div>
-
-      <!-- 영상 학습 자원 -->
-      <a class="video-resource" id="videoResource" target="_blank" rel="noopener noreferrer">
-        <div class="video-resource-head">
-          <div class="video-icon">
-            <svg viewBox="0 0 24 24"><path d="M23 7s-.2-1.6-.8-2.3c-.7-.9-1.5-.9-1.9-1C17.5 3.5 12 3.5 12 3.5s-5.5 0-8.3.2c-.4.1-1.2.1-1.9 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.8v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.7.9 1.7.9 2.1 1 1.5.1 6.4.2 8.1.2 0 0 5.5 0 8.3-.2.4-.1 1.2-.1 1.9-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.8C23.2 8.9 23 7 23 7zM9.7 14.6V8.2l6.4 3.2-6.4 3.2z"/></svg>
-          </div>
-          <div class="video-label">
-            <div class="video-platform">YOUTUBE</div>
-            <div class="video-title">잡음 제거 시리즈</div>
-          </div>
-          <div class="video-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </div>
-        </div>
-        <div class="video-desc">
-          잡음을 제거하는 방법이 더 궁금하시다면<br/>
-          나다움설계연구소의 N.E.E.D 영상을 함께 보세요
-        </div>
-      </a>
-
-      <!-- 공유 -->
-      <div class="share-section">
-        <div class="share-title">결과 공유하기</div>
-        <div class="share-buttons">
-          <button class="share-btn" id="downloadSquareBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-            </svg>
-            <span>정사각 카드</span>
-            <span class="share-btn-label">피드 · 카톡</span>
-          </button>
-          <button class="share-btn" id="downloadStoryBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="6" y="2" width="12" height="20" rx="2"/>
-            </svg>
-            <span>스토리 카드</span>
-            <span class="share-btn-label">인스타 스토리</span>
-          </button>
-          <button class="share-btn" id="copyTextBtn" style="grid-column: span 2;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2"/>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-            </svg>
-            <span>공유 문구 복사</span>
-            <span class="share-btn-label">바로 SNS에 붙여넣기</span>
-          </button>
-        </div>
-      </div>
-
-      <button class="btn-secondary" id="restartBtn">처음부터 다시 진단하기</button>
-
-      <div class="footer-watermark">
-        <span class="need-logo">
-          <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span>
-        </span>
-        <div class="footer-watermark-text">나다움설계연구소 · NEED SCAN</div>
-        <div class="footer-watermark-sub">나다움을 설계하다</div>
+      <div class="axis-row">
+        <div class="axis-rh"><span class="axis-name" id="ax3Label">SNS 알고리즘 노출</span><span class="axis-score" id="ax3Score">0</span></div>
+        <div class="axis-bar"><div class="axis-bar-fill" id="ax3Bar"></div></div>
       </div>
     </div>
 
-    <div class="copy-feedback" id="copyFeedback"></div>
-  </div>
+    <div class="primary-card">
+      <div class="primary-tag">가장 강한 한 가지 잡음</div>
+      <div class="primary-name" id="primaryName"></div>
+      <div class="primary-desc" id="primaryDesc"></div>
+    </div>
 
-  <!-- 이어서 하기 모달 -->
-  <div class="modal-overlay" id="resumeModal">
-    <div class="modal">
-      <div class="modal-icon">↻</div>
-      <h3 class="modal-title">이어서 진행하시겠어요?</h3>
-      <p class="modal-desc">
-        지난 진행 상황이 저장되어 있습니다.<br/>
-        <span class="modal-progress" id="resumeProgress">0 / 18</span> 까지 응답하셨어요.
+    <!-- 경각심 카드 -->
+    <div class="warning-card">
+      <span class="warning-tag icon-warn">이 상태가 지속되면</span>
+      <div class="warning-body" id="warningBody"></div>
+      <div class="warning-cite" id="warningCite"></div>
+    </div>
+
+    <div class="need-card">
+      <span class="need-tag">NEED SCAN · 진단된 욕구</span>
+      <h3 class="need-tit" id="needTit"></h3>
+      <div class="need-body" id="needBody"></div>
+    </div>
+
+    <div class="reflect-card">
+      <div class="reflect-tag">잠시, 스스로에게 물어보세요</div>
+      <h3 class="reflect-tit" id="reflectTit"></h3>
+      <div id="reflectQuestions"></div>
+    </div>
+
+    <!-- 혼재 단계 전용 가이드 카드 -->
+    <div class="guide-card" id="guideCard">
+      <span class="guide-tag">▸ 이 단계에서 알아두면 좋은 것</span>
+      <div class="guide-section">
+        <h4 class="guide-section-h healthy" id="guideHealthyTitle"></h4>
+        <ul class="guide-list healthy" id="guideHealthyList"></ul>
+      </div>
+      <div class="guide-section">
+        <h4 class="guide-section-h caution" id="guideCautionTitle"></h4>
+        <ul class="guide-list caution" id="guideCautionList"></ul>
+      </div>
+    </div>
+
+    <div class="action-card">
+      <span class="action-tag">▸ 오늘 시작하는 작은 실천</span>
+      <div class="action-need-step">
+        <span class="action-need-step-num">N.E.E.D 2단계</span>
+        <span class="action-need-step-arrow">→</span>
+        <span class="action-need-step-name">Eliminate Noise · 잡음 지도의 첫걸음</span>
+      </div>
+      <h3 class="action-tit" id="actionTit"></h3>
+      <ul class="action-list" id="actionList"></ul>
+      <p class="action-quote" id="actionQuote"></p>
+    </div>
+
+    <!-- 영상 카드 컨테이너 (단계별 동적 생성) -->
+    <div id="videoCardsContainer"></div>
+
+    <!-- 5러 진단 연결 카드 -->
+    <a class="next-diagnosis-card" href="https://commlovekim70.github.io/need-project/5characters/" target="_blank" rel="noopener noreferrer">
+      <span class="next-diagnosis-tag">NEED SCAN · 다음 단계</span>
+      <h3 class="next-diagnosis-h">잡음이 걷히면, 무엇이 남을까요?</h3>
+      <p class="next-diagnosis-d">
+        잡음이 걷히면, 억지로 힘을 내지 않아도 에너지가 자연스럽게 흐르기 시작합니다. 여러분 안에는 고유한 에너지 패턴이 숨어 있어요.
       </p>
-      <button class="btn-primary" id="resumeYesBtn">이어서 하기</button>
-      <button class="btn-secondary" id="resumeNoBtn">처음부터 다시 시작</button>
+      <div class="next-diagnosis-types">
+        <span class="next-diagnosis-type">🔥 열정러</span>
+        <span class="next-diagnosis-type">🤝 협력러</span>
+        <span class="next-diagnosis-type">⚓ 안정러</span>
+        <span class="next-diagnosis-type">🔧 장인러</span>
+        <span class="next-diagnosis-type">🧭 모험러</span>
+      </div>
+      <p class="next-diagnosis-d" style="margin-bottom:14px">
+        잡음에 가려져 있던 <strong style="color:#14532D">진짜 내 에너지 패턴</strong>은 무엇일까요?
+      </p>
+      <span class="next-diagnosis-cta">5러 경향성 진단하기 →</span>
+    </a>
+
+    <div class="share-wrap">
+      <div class="share-tit">결과 공유하기</div>
+      <div class="share-grid">
+        <button class="share-btn" id="dlSquareBtn">
+          <svg class="share-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          <span>정사각 카드 저장</span>
+          <span class="share-btn-sub">피드 · 카톡</span>
+        </button>
+        <button class="share-btn" id="dlStoryBtn">
+          <svg class="share-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/></svg>
+          <span>스토리 카드 저장</span>
+          <span class="share-btn-sub">인스타 스토리</span>
+        </button>
+        <button class="share-btn share-btn-full share-btn-result" id="shareResultBtn">
+          <svg class="share-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="11.49"/></svg>
+          <span>🎴 내 결과 공유하기</span>
+          <span class="share-btn-sub">카드 이미지 + 결과 멘트 함께</span>
+        </button>
+        <button class="share-btn share-btn-full share-btn-link" id="shareLinkBtn">
+          <svg class="share-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span>🔗 진단 링크 공유하기</span>
+          <span class="share-btn-sub">친구에게 이 진단 권하기</span>
+        </button>
+      </div>
+    </div>
+
+    <button class="btn-restart" id="restartBtn">처음부터 다시 진단하기</button>
+
+    <div class="footer-mark">
+      <div class="mini-logo"><span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D.</span></div>
+      <div class="footer-mark-t">나다움설계연구소 · NEED SCAN</div>
+      <div class="footer-mark-s">나다움을 설계하다</div>
     </div>
   </div>
 
-  <script>
-    'use strict';
+  <div class="toast" id="toast"></div>
+</div>
 
-    // ============================================================
-    // 유튜브 재생목록
-    // ============================================================
-    const YT_PLAYLIST = 'https://youtube.com/playlist?list=PLwcKc-MRqyaXck4nny4-oqBt-jax5DQ6-&si=5dm-VXr0mAqKnum8';
+<div class="modal-bg" id="resumeModal">
+  <div class="modal">
+    <div class="modal-icon">↻</div>
+    <div class="modal-tit">이어서 진행하시겠어요?</div>
+    <div class="modal-desc">지난 진행 상황이 저장되어 있습니다.<br/><span class="modal-prog" id="resumeProg">0 / 18</span> 까지 응답하셨어요.</div>
+    <div class="modal-btns">
+      <button class="modal-btn-pri" id="resumeYes">이어서 하기</button>
+      <button class="modal-btn-sec" id="resumeNo">처음부터 다시 시작</button>
+    </div>
+  </div>
+</div>
 
-    // ============================================================
-    // 데이터: 18문항 (3축 × 6문항) — Q13/Q17은 분기에 따라 동적 처리
-    // ============================================================
-    const QUESTIONS = [
-      // 축 1: 눈치 압력 (Q1~Q6)
-      { axis: 1, axisLabel: '눈치 압력', text: '내가 모임에서 의견을 말하기 전, 분위기부터 살피게 된다.' },
-      { axis: 1, axisLabel: '눈치 압력', text: '어떤 자리에서 "여기서 받아들여질 만한 답"을 먼저 계산한다.' },
-      { axis: 1, axisLabel: '눈치 압력', text: '내가 진심으로 원하는 것을 말하기 전, 어떻게 받아들여질지 먼저 떠올린다.' },
-      { axis: 1, axisLabel: '눈치 압력', text: '주변 사람들의 표정과 반응이 내 다음 행동을 결정한다.' },
-      { axis: 1, axisLabel: '눈치 압력', text: '내 의견과 다른 분위기가 감지되면, 자연스럽게 내 의견을 누른다.' },
-      { axis: 1, axisLabel: '눈치 압력', text: '"이런 말 해도 될까"를 머릿속에서 여러 번 검토하고 말한다.' },
-      // 축 2: 비교 압력 (Q7~Q12) — 수정 3·4·5·6 반영
-      { axis: 2, axisLabel: '비교 압력', text: '또래들의 생활수준, 취미, 취향 등을 따라하는 나를 발견한다.' },
-      { axis: 2, axisLabel: '비교 압력', text: '"남들만큼은 해야 한다"는 압박이 늘 배경에 있다.' },
-      { axis: 2, axisLabel: '비교 압력', text: '내가 잘 살고 있다는 기준을 정할 때 다른 사람과의 비교가 반영된다.' },
-      { axis: 2, axisLabel: '비교 압력', text: '나보다 잘 나가는 또래의 소식을 들으면 마음이 흔들린다.' },
-      { axis: 2, axisLabel: '비교 압력', text: '내가 무엇을 원하는지보다 "다른 사람들이 무엇을 원하는지"를 먼저 고려할 때가 있다.' },
-      { axis: 2, axisLabel: '비교 압력', text: '무언가를 이뤄도 "이 정도로는 부족하다"는 느낌이 들 때가 많다.' },
-      // 축 3: 비교 노출 환경 (Q13~Q18) — Q13/Q17은 SNS/카톡 분기
-      // Q13 (인덱스 12): 슬라이더 화면으로 분리 처리. axis 3에 포함되지만 별도 화면
-      // Q14 (인덱스 13): 빈도
-      { axis: 3, axisLabel: '비교 노출', text: '별 일 없는 시간에 무의식적으로 SNS나 카카오톡을 켜고 있는 나를 발견한다.' },
-      // Q15 (인덱스 14): 욕구 외주화
-      { axis: 3, axisLabel: '비교 노출', text: '온라인에서 자주 보던 라이프스타일이 어느새 내가 원하는 것이 되어 있다.' },
-      // Q16 (인덱스 15): 자기 전 노출
-      { axis: 3, axisLabel: '비교 노출', text: '자기 전, 마지막으로 보는 것이 휴대폰 화면인 날이 많다.' },
-      // Q17 (인덱스 16): 좋아요/반응 — 분기 처리
-      // Q18 (인덱스 17): 시간 손실
-      { axis: 3, axisLabel: '비교 노출', text: '쇼츠/릴스/유튜브를 보다가 시간이 어디로 갔는지 모를 때가 있다.' }
-    ];
+<!-- 다시 진단 확인 모달 -->
+<div class="modal-bg" id="restartModal">
+  <div class="modal">
+    <div class="modal-icon">↻</div>
+    <div class="modal-tit">처음부터 다시 진단하시겠어요?</div>
+    <div class="modal-desc">현재 결과는 저장되지 않습니다.<br/>다시 진단을 시작합니다.</div>
+    <div class="modal-btns">
+      <button class="modal-btn-pri" id="restartYes">다시 진단하기</button>
+      <button class="modal-btn-sec" id="restartNo">취소</button>
+    </div>
+  </div>
+</div>
 
-    // 분기 처리되는 문항: Q13(슬라이더), Q17(좋아요)
-    const Q13_TEXT = {
-      sns: '하루에 평균 SNS를 얼마나 보시나요?',
-      kakao: '하루에 평균 카카오톡 프사·단톡방·카카오스토리를 얼마나 보시나요?'
-    };
+<script>
+'use strict';
 
-    const Q17 = {
-      axis: 3, axisLabel: '비교 노출',
-      sns: '"좋아요"나 댓글 수가 내 콘텐츠의 가치 판단에 영향을 준다.',
-      kakao: '카톡 프사 좋아요나 단톡방에 올린 사진에 대한 친구들의 반응이 신경 쓰인다.'
-    };
+const YT_PLAYLIST = 'https://youtube.com/playlist?list=PLwcKc-MRqyaXck4nny4-oqBt-jax5DQ6-&si=5dm-VXr0mAqKnum8'; // 잡음 제거 시리즈
+const YT_PLAYLIST_ROUTINE = 'https://youtube.com/playlist?list=PLwcKc-MRqyaUNxl7pW7l3FAIUASGxz6sP&si=EzzZ4xZRrFWj7P92'; // 일상 루틴 설계 시리즈
 
-    const OPTIONS = [
-      { num: 1, text: '전혀 그렇지 않다' },
-      { num: 2, text: '별로 그렇지 않다' },
-      { num: 3, text: '보통이다' },
-      { num: 4, text: '그런 편이다' },
-      { num: 5, text: '매우 그렇다' }
-    ];
+const QUESTIONS = [
+  { axis:1, text:'모임에 갔을 때 내 의견을 말하기 전 분위기를 살피는 편이다.' },
+  { axis:1, text:'말하기 전 "여기서 받아들여질 만한 답"인가를 먼저 고려하는 편이다.' },
+  { axis:1, text:'내가 진심으로 원하는 것을 말하기 전, 어떻게 받아들여질지 먼저 떠올린다.' },
+  { axis:1, text:'나의 행동은 주변 사람들의 표정과 반응에 영향을 받을 때가 많다.' },
+  { axis:1, text:'내 의견과 다른 분위기가 감지되면, 자연스럽게 내 의견을 누른다.' },
+  { axis:1, text:'"이런 말 해도 될까"를 머릿속에서 여러 번 검토하고 말한다.' },
+  { axis:2, text:'또래들의 생활수준, 취미, 취향 등을 따라하는 나를 발견한다.' },
+  { axis:2, text:'"남들만큼은 해야 한다"는 압박이 늘 배경에 있다.' },
+  { axis:2, text:'내가 잘 살고 있다는 기준을 정할 때 다른 사람과의 비교가 반영된다.' },
+  { axis:2, text:'나보다 잘 나가는 또래의 소식을 들으면 마음이 흔들린다.' },
+  { axis:2, text:'내가 무엇을 원하는지보다 "다른 사람들이 무엇을 원하는지"를 먼저 고려할 때가 있다.' },
+  { axis:2, text:'무언가를 이뤄도 "이 정도로는 부족하다"는 느낌이 들 때가 많다.' },
+  { axis:3, text:'별 일 없는 시간에 무의식적으로 SNS나 카카오톡을 켜고 있는 나를 발견한다.' },
+  { axis:3, text:'온라인에서 자주 보던 라이프스타일이 어느새 내가 원하는 것이 되어 있다.' },
+  { axis:3, text:'자기 전, 마지막으로 보는 것이 휴대폰 화면인 날이 많다.' },
+  { axis:3, text:'쇼츠/릴스/유튜브를 보다가 시간이 어디로 갔는지 모를 때가 있다.' }
+];
 
-    // ============================================================
-    // 결과 메시지 (확장된 결과 — 수정 9·10·11·12 반영)
-    // ============================================================
-    const RESULT_MESSAGES = {
-      high: {
-        color: '#E07A6E',
-        headline: '잡음이 가득 들어오고 있습니다',
-        subline: '여러분의 욕구가 흐려지는 건 의지가 약해서가 아닙니다'
-      },
-      mid: {
-        color: '#C9983A',
-        headline: '잡음이 흔들리며 들어오고 있습니다',
-        subline: '맑아지는 순간과 흐려지는 순간이 함께 있습니다'
-      },
-      low: {
-        color: '#3DAA6B',
-        headline: '잡음이 잘 걸러지고 있습니다',
-        subline: '여러분의 욕구가 비교적 선명하게 들어오는 상태예요'
-      }
-    };
+const Q13_TEXT = {
+  sns: '하루에 평균 SNS를 얼마나 보시나요?',
+  kakao: '하루에 평균 카카오톡 프사·단톡방·카카오스토리를 얼마나 보시나요?'
+};
 
-    // 가장 강한 잡음별 상세 분석 (수정 9·10 — 응답자 욕구 파악)
-    const PRIMARY_NOISE_DETAIL = {
-      1: {
-        name: '눈치 압력',
-        desc: '여러분은 자신을 표현하기 전 주변의 반응을 먼저 살피는 패턴이 가장 강하게 작동하고 있어요. 이건 사려 깊은 성품의 표현이지만, 내 진심을 말할 기회가 줄어든다는 신호이기도 합니다.',
-        // 응답자가 가진 욕구
-        needFoundTitle: '여러분 안에서 작동 중인 욕구',
-        needFoundBody: [
-          '여러분 안에는 <strong>"안전하게 받아들여지고 싶다"</strong>는 깊은 욕구와, 그 아래에 <strong>"내 진짜 모습으로 인정받고 싶다"</strong>는 더 본질적인 욕구가 함께 있습니다.',
-          '눈치는 첫 번째 욕구를 위해 작동하지만, 두 번째 욕구를 점점 멀게 만듭니다. 진짜 인정은 진짜 모습을 보여줄 때만 가능하기 때문이에요.'
-        ],
-        knowHowTitle: '욕구를 충족시키는 N.E.E.D 4단계',
-        steps: [
-          { name: 'Need Scan — 욕구 발견', desc: '한 자리에서 "지금 내가 진짜 원하는 것"을 한 문장으로 적어봅니다. 분위기 살피기 전에 먼저요.' },
-          { name: 'Eliminate Noise — 잡음 제거', desc: '"이렇게 말하면 어떻게 보일까"라는 질문을 의식적으로 멈춥니다. 분위기는 결과지 기준이 아닙니다.' },
-          { name: 'Energy Flow — 에너지 흐름', desc: '내 의견을 말한 뒤 따라오는 작은 후련함을 느껴봅니다. 그게 여러분의 진짜 에너지 신호입니다.' },
-          { name: 'Daily Drive — 일상 설계', desc: '하루에 한 번, "받아들여질 답" 대신 "내 답"을 말하는 작은 자리를 만듭니다.' }
-        ],
-        challengeTitle: '7일 눈치 비우기 챌린지',
-        challengeList: [
-          '하루에 단 한 번, 작은 자리에서 "분위기 살피기 전에" 의견을 먼저 말해보기',
-          '말한 직후의 호흡 한 번 — "그래도 나는 나로 있다"',
-          '저녁에 그 순간을 한 줄로 기록 — 무엇을 느꼈는지'
-        ],
-        challengeQuote: '진짜 인정은, 진짜 모습으로만 받을 수 있습니다'
-      },
-      2: {
-        name: '비교 압력',
-        desc: '여러분은 다른 사람의 위치를 통해 자신의 위치를 가늠하는 패턴이 가장 강하게 작동하고 있어요. 이건 자기 점검의 한 방식이지만, 내 기준이 점점 외부로 빠져나간다는 신호입니다.',
-        needFoundTitle: '여러분 안에서 작동 중인 욕구',
-        needFoundBody: [
-          '여러분 안에는 <strong>"제대로 살고 싶다"</strong>는 강한 욕구와, 그 아래에 <strong>"내 인생을 내가 정의하고 싶다"</strong>는 더 깊은 욕구가 함께 있습니다.',
-          '비교는 첫 번째 욕구의 잘못된 해법이에요. 다른 사람의 기준으로 내 인생을 채점하면, 아무리 잘 살아도 "내 인생"이 되지 않습니다.'
-        ],
-        knowHowTitle: '욕구를 충족시키는 N.E.E.D 4단계',
-        steps: [
-          { name: 'Need Scan — 욕구 발견', desc: '"내가 잘 살고 있는가"를 묻기 전에 "내가 무엇을 원하는가"를 먼저 묻습니다. 비교 없이요.' },
-          { name: 'Eliminate Noise — 잡음 제거', desc: '비교가 자주 일어나는 단 1개 채널(SNS 계정·단톡방·뉴스 등)을 일주일 음소거합니다.' },
-          { name: 'Energy Flow — 에너지 흐름', desc: '비교에서 자유로워진 시간에 무엇이 충전되는지 살핍니다. 그게 여러분 본연의 에너지 방향입니다.' },
-          { name: 'Daily Drive — 일상 설계', desc: '여러분만의 "잘 살고 있다는 기준" 3가지를 적어 매일 봅니다. 외부 비교 없이.' }
-        ],
-        challengeTitle: '7일 비교 끊기 챌린지',
-        challengeList: [
-          '비교가 자주 일어나는 단 1개 채널을 일주일 음소거 또는 친구 끊기',
-          '매일 저녁 "오늘 내 기준에서 잘한 일 1가지" 기록하기 (남과 무관하게)',
-          '7일째, 음소거 전과 후의 마음 상태를 비교 — 어떻게 달라졌는지'
-        ],
-        challengeQuote: '내 인생의 기준은, 다른 사람의 인생에 없습니다'
-      },
-      3: {
-        name: '비교 노출',
-        desc: '여러분은 알고리즘이 큐레이션한 콘텐츠에 가장 많이 노출되고 있어요. 그 노출이 어느새 "내가 원하는 것"의 모습을 결정하고 있습니다. 이건 의지의 문제가 아니라 환경 설계의 문제입니다.',
-        needFoundTitle: '여러분 안에서 작동 중인 욕구',
-        needFoundBody: [
-          '여러분 안에는 <strong>"세상과 연결되고 싶다"</strong>는 자연스러운 욕구와, 그 아래에 <strong>"내 시간을 내 의도대로 쓰고 싶다"</strong>는 회복의 욕구가 함께 있습니다.',
-          '알고리즘은 첫 번째 욕구를 이용해 두 번째 욕구를 침식합니다. 무한 스크롤은 연결이 아닌 노출이고, 노출이 욕구의 자리를 차지합니다.'
-        ],
-        knowHowTitle: '욕구를 충족시키는 N.E.E.D 4단계',
-        steps: [
-          { name: 'Need Scan — 욕구 발견', desc: '앱을 켜기 전, "지금 내가 진짜 원하는 것이 무엇인지" 3초만 멈추고 묻습니다.' },
-          { name: 'Eliminate Noise — 잡음 제거', desc: '자기 전 1시간, 침대에서 손에 닿지 않는 곳에 휴대폰을 둡니다. 환경부터 바꿉니다.' },
-          { name: 'Energy Flow — 에너지 흐름', desc: '무의식 사용을 알아차린 순간 멈추고, 그 시간에 진짜 충전되는 활동 1가지를 미리 정해둡니다.' },
-          { name: 'Daily Drive — 일상 설계', desc: '하루의 첫 30분, 마지막 30분을 화면 없는 시간으로 설계합니다. 시작과 끝을 내가 정합니다.' }
-        ],
-        challengeTitle: '7일 알고리즘 잡음 차단 챌린지',
-        challengeList: [
-          '자기 전 1시간 휴대폰을 침대 밖에 두기',
-          '앱 켜기 전 3초 멈춤 — "지금 내가 진짜 원하는 것은?"',
-          '무의식 사용을 알아차리는 순간 화면 끄고 호흡 한 번'
-        ],
-        challengeQuote: '여러분의 시간은, 알고리즘이 아닌 여러분 자신이 설계해야 합니다'
-      }
-    };
+const Q17 = {
+  sns: '"좋아요"나 댓글 수가 내 콘텐츠의 가치 판단에 영향을 준다.',
+  kakao: '카톡 프사 좋아요나 단톡방에 올린 사진에 대한 친구들의 반응이 신경 쓰인다.'
+};
 
-    const STORAGE_KEY = 'core3_diagnosis_v2';
+const RESULT_MESSAGES = {
+  high: {
+    color: '#E07A6E', segmentLabel: '잡음이 가득 들어오고 있어요',
+    headline: '외부 잡음이 마음을 가득 채우고 있으시군요',
+    subline: '여러분의 욕구가 흐려지는 건 의지가 약해서가 아닙니다'
+  },
+  mid: {
+    color: '#C9983A', segmentLabel: '잡음에 흔들릴 때가 가끔 있어요',
+    headline: '외부 잡음에 흔들릴 때도 가끔 있으시군요',
+    subline: '맑아지는 순간과 흐려지는 순간이 함께 있는 상태입니다'
+  },
+  low: {
+    color: '#3DAA6B', segmentLabel: '잡음이 잘 걸러지고 있어요',
+    headline: '외부 잡음이 잘 걸러지고 있는 편이에요',
+    subline: '여러분의 욕구가 비교적 선명하게 들어오는 상태입니다'
+  }
+};
 
-    let state = {
-      currentIdx: 0,
-      answers: new Array(QUESTIONS.length + 1).fill(null), // 18칸
-      branch: null, // 'sns' | 'kakao'
-      snsMinutes: null, // Q13 슬라이더 값
-      startedAt: null
-    };
+// ============================================================
+// 결과 메시지 — 세그먼트(low/mid/high) × 가장 강한 잡음(1/2/3)
+// 9가지 조합으로 완전히 다른 메시지 출력
+// ============================================================
 
-    function saveState() {
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+// 잡음별 기본 정보 (이름 + 표면/본질 욕구는 공통)
+const NOISE_BASE = {
+  1: {
+    name: '눈치 압력',
+    surfaceNeed: '안전하게 받아들여지고 싶다',
+    coreNeed: '있는 그대로의 나로 인정받고 싶다'
+  },
+  2: {
+    name: '비교 압력',
+    surfaceNeed: '제대로 살고 싶다',
+    coreNeed: '내 인생을 내 손으로 정의하고 싶다'
+  },
+  3: {
+    name: '비교 노출',
+    surfaceNeed: '세상과 연결되고 싶다',
+    coreNeed: '내 시간을 내 의도대로 쓰고 싶다'
+  }
+};
+
+// 세그먼트 × 잡음별 상세 메시지 (3 × 3 = 9개 조합)
+const RESULT_DETAIL = {
+  // ============================================================
+  // 양호 (low, 0~33점) — 칭찬 + 다음 단계 초대
+  // ============================================================
+  'low-1': {
+    desc: '여러분은 주변과 조화를 이루면서도 자신의 진심을 잘 지켜내고 있어요. 눈치를 살피는 마음이 있어도, 그것이 자신을 누르는 무게로까지 자라지 않은 상태입니다.',
+    affirmTitle: '여러분이 잘 만들어 가고 있는 것',
+    affirmBody: [
+      '여러분은 <strong>"받아들여지고 싶다"</strong>는 자연스러운 욕구와 <strong>"나답게 존재하고 싶다"</strong>는 본질 욕구 사이에서 건강한 균형을 찾고 계세요.',
+      '많은 사람들이 이 균형점을 찾지 못해 한쪽으로 쏠리는데, 여러분은 사려 깊으면서도 자신을 잃지 않는 드문 자리에 있습니다. 이 자리는 노력 없이 유지되지 않아요. 여러분이 의식적이든 무의식적이든 만들어온 결과입니다.'
+    ],
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"안전하게 받아들여지고 싶다"</strong>는 따뜻한 욕구와 <strong>"있는 그대로의 나로 인정받고 싶다"</strong>는 본질 욕구가 함께 있어요.',
+      '두 욕구가 서로 잡아당기지 않고 같은 방향을 향하도록, 여러분은 이미 작은 균형을 만들고 있습니다. 이제는 이 균형을 더 선명하게 만들 시간이에요.'
+    ],
+    reflectTitle: '한 걸음 더 나아가는 질문',
+    reflectQuestions: [
+      { num:'01', text:'잡음에 흔들리지 않는 이 시간에, 정말로 내 마음이 흐르고 있는 곳은 어디인가요?' },
+      { num:'02', text:'요즘 가장 자연스럽게 몰입되었던 순간은 언제였나요? 어떤 활동이었나요?' },
+      { num:'03', text:'여러분이 진짜 우선시하고 싶은 한 가지가 있다면, 그것은 무엇인가요?' }
+    ]
+  },
+  'low-2': {
+    desc: '여러분은 비교의 소용돌이에 휩쓸리지 않고 자신만의 기준을 잘 지켜내고 있어요. SNS와 또래 압박이 일상이 된 시대에, 이건 결코 쉬운 일이 아닙니다.',
+    affirmTitle: '여러분이 잘 만들어 가고 있는 것',
+    affirmBody: [
+      '여러분은 <strong>"제대로 살고 싶다"</strong>는 욕구를 다른 사람의 기준이 아닌 <strong>자신만의 잣대</strong>로 가늠할 줄 아세요.',
+      '비교 본능은 인간의 자연스러운 작동 방식이에요. 그것을 완전히 없애기는 어렵지만, 여러분은 그 본능에 휘둘리지 않는 균형을 만들고 있습니다. 이제 이 단단함을 자산으로, 더 또렷한 방향성을 그릴 때예요.'
+    ],
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"제대로 살고 싶다"</strong>는 욕구와 <strong>"내 인생을 내 손으로 정의하고 싶다"</strong>는 본질 욕구가 함께 살아 숨쉬고 있어요.',
+      '두 번째 욕구가 첫 번째를 안내하고 있다는 것이, 여러분의 중심을 단단하게 만드는 비결입니다. 이제는 이 중심을 더 선명한 방향으로 옮길 때예요.'
+    ],
+    reflectTitle: '한 걸음 더 나아가는 질문',
+    reflectQuestions: [
+      { num:'01', text:'비교의 잡음이 적은 지금, 여러분이 진짜 향하고 싶은 한 가지 방향은 무엇인가요?' },
+      { num:'02', text:'"이 정도면 충분하다"의 기준이 여러분에게 있다면, 그것은 어떤 모습인가요?' },
+      { num:'03', text:'여러분이 가장 자기답게 느낄 때는 어떤 활동을 할 때인가요?' }
+    ]
+  },
+  'low-3': {
+    desc: '여러분은 디지털 환경 속에서도 자신의 시간과 마음을 잘 지켜내고 있어요. 알고리즘이 끊임없이 손짓하는 시대에, 이건 결코 흔한 일이 아닙니다.',
+    affirmTitle: '여러분이 잘 만들어 가고 있는 것',
+    affirmBody: [
+      '여러분은 <strong>"세상과 연결되고 싶다"</strong>는 욕구를 채우면서도, <strong>"내 시간은 내가 쓴다"</strong>는 회복의 욕구를 함께 지켜내고 있어요.',
+      '대부분의 사람들이 알고리즘에 시간과 욕구를 빼앗기는 이 시대에, 여러분은 환경을 의식적으로 설계하고 있는 드문 사람입니다. 이제 이 회복의 시간을 더 선명한 방향에 쓸 때예요.'
+    ],
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"세상과 연결되고 싶다"</strong>는 자연스러운 욕구와 <strong>"내 시간을 내 의도대로 쓰고 싶다"</strong>는 회복의 욕구가 함께 있어요.',
+      '두 욕구가 서로 침범하지 않도록 여러분은 이미 환경을 잘 설계하고 있습니다. 이제는 이 회복된 시간을 어디에 흐르게 할지 그려볼 차례예요.'
+    ],
+    reflectTitle: '한 걸음 더 나아가는 질문',
+    reflectQuestions: [
+      { num:'01', text:'화면을 보지 않는 시간에, 여러분의 마음은 어디로 흘러가나요?' },
+      { num:'02', text:'요즘 시간 가는 줄 모르고 몰입했던 활동이 있다면 무엇이었나요?' },
+      { num:'03', text:'여러분이 진짜 보고 싶은 풍경, 진짜 만나고 싶은 사람은 누구·무엇인가요?' }
+    ]
+  },
+
+  // ============================================================
+  // 혼재 (mid, 34~66점) — 자기 인식 + 잡음 감지력 키우기
+  // ============================================================
+  'mid-1': {
+    desc: '여러분은 자신의 진심을 지키려 노력하지만, 어떤 자리에서는 분위기 살피기가 먼저 작동하고 있어요. 두 가지가 번갈아 나타나는 시기입니다.',
+    warningBody: '눈치를 완전히 없앨 필요는 없어요. 다만 어떤 순간에 눈치가 켜지고, 어떤 순간에 진심이 켜지는지 <strong>그 패턴을 알아차리는 것</strong>이 다음 단계의 시작입니다. 알아차림 없이는 변화도 없으니까요.',
+    warningCite: 'Heo & Park, 한국형 눈치 척도 (2013) 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"안전하게 받아들여지고 싶다"</strong>는 따뜻한 욕구와 <strong>"있는 그대로의 나로 인정받고 싶다"</strong>는 본질 욕구가 함께 있어요.',
+      '지금 여러분은 두 욕구 사이에서 흔들리고 있습니다. 어떤 자리에서는 첫 번째 욕구가, 어떤 자리에서는 두 번째 욕구가 더 강하게 작동해요. 이 패턴을 알아차리는 것이 잡음 지도의 시작입니다.'
+    ],
+    reflectTitle: '여러분 안의 패턴을 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'어떤 자리에서 더 자주 눈치를 보게 되시나요? 어떤 자리에서 더 자유로우신가요?' },
+      { num:'02', text:'분위기를 살피지 않고 솔직하게 말했을 때, 의외로 잘 받아들여졌던 순간이 있었나요?' },
+      { num:'03', text:'"이 말 하면 안 될까?" 하고 멈춘 순간, 그때 진짜 하고 싶었던 말은 무엇이었나요?' },
+      { num:'04', text:'눈치가 자동으로 켜지는 사람·자리가 있다면, 그 관계의 어떤 점이 그렇게 만드는 걸까요?' }
+    ],
+    midGuide: {
+      healthyTitle: '건강한 균형을 위한 사용법',
+      healthyItems: [
+        '눈치는 사회생활에 필요한 능력이에요. 완전히 없애려 하지 말고, "켜고 끌 수 있는" 능력으로 다루세요.',
+        '안전한 관계 1~2명을 정해두고, 그 자리에서는 의식적으로 "분위기 살피기 모드 OFF"를 연습합니다.',
+        '눈치를 본 후 "이게 진짜 나의 선택인가?"를 한 번 더 묻는 습관을 들이세요.'
+      ],
+      cautionTitle: '아직은 괜찮지만, 이런 신호가 오면 주의',
+      cautionItems: [
+        '혼자 있을 때조차 "이렇게 행동해도 될까?"가 떠오를 때',
+        '편한 사람 앞에서도 본심을 말하기까지 시간이 오래 걸릴 때',
+        '"내가 진짜 뭘 원하는지 모르겠다"는 느낌이 자주 들 때'
+      ]
     }
-    function loadState() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return null;
-        const parsed = JSON.parse(raw);
-        if (!parsed || !Array.isArray(parsed.answers)) return null;
-        return parsed;
-      } catch (e) { return null; }
+  },
+  'mid-2': {
+    desc: '여러분은 자신의 기준을 지키려 하지만, 비교의 자기 점검이 종종 작동하고 있어요. 두 가지 기준이 번갈아 나타나는 시기입니다.',
+    warningBody: '비교는 인간의 자연스러운 작동 방식이라 완전히 없앨 수는 없어요. 다만 어떤 순간에 비교가 작동하고, 그것이 내 선택을 어떻게 바꾸는지 <strong>그 패턴을 알아차리는 것</strong>이 다음 단계의 시작입니다.',
+    warningCite: 'Festinger, A Theory of Social Comparison (1954) 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"제대로 살고 싶다"</strong>는 진실된 욕구와 <strong>"내 인생을 내 손으로 정의하고 싶다"</strong>는 본질 욕구가 함께 있어요.',
+      '지금 여러분은 두 욕구 사이에서 흔들리고 있습니다. 어떤 결정은 본인 기준으로, 어떤 결정은 비교 기준으로 내려져요. 이 패턴을 알아차리면 어디서 외부 기준에 휘둘리는지 보이기 시작합니다.'
+    ],
+    reflectTitle: '여러분 안의 패턴을 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'어떤 영역에서 더 자주 비교가 일어나시나요? (외모·일·관계·물건·시간 사용 등)' },
+      { num:'02', text:'비교 없이 내린 최근의 결정이 있다면, 그때 마음은 어땠나요?' },
+      { num:'03', text:'"남들만큼"이 아니라 "내 정도면 충분하다"의 기준이 있다면, 어떤 모습일까요?' },
+      { num:'04', text:'비교가 가장 강해지는 시기·계기가 있다면, 그것은 무엇인가요? (연말, 명절, 동창회 등)' }
+    ],
+    midGuide: {
+      healthyTitle: '독립적인 나를 위한 건강한 비교법',
+      healthyItems: [
+        '"비교"보다 "참고"로 바꿔보세요. 다른 사람의 삶을 보되, 내 기준으로 가져올 것만 선별하는 연습.',
+        '비교가 강해지는 채널·계정·관계 1개를 일주일 음소거하고 마음 변화를 관찰하세요.',
+        '"내가 어제보다 한 발 나아갔는가"라는 시간 비교(과거의 나 vs 지금의 나)로 방향을 옮기세요.'
+      ],
+      cautionTitle: '아직은 괜찮지만, 이런 신호가 오면 주의',
+      cautionItems: [
+        '성취 후에도 "다른 사람은 더 잘하고 있다"는 느낌이 먼저 올라올 때',
+        '내 결정의 기준이 "내가 원해서"보다 "남들이 그렇게 하니까"가 더 자주 작동할 때',
+        '나만의 기쁨·만족을 떠올려도 잘 떠오르지 않을 때'
+      ]
     }
-    function clearState() {
-      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-      state = { currentIdx: 0, answers: new Array(QUESTIONS.length + 1).fill(null), branch: null, snsMinutes: null, startedAt: null };
+  },
+  'mid-3': {
+    desc: '여러분은 디지털 사용을 조절하려 노력하지만, 어떤 시간대·어떤 상황에서는 알고리즘에 끌려가고 있어요. 두 가지가 번갈아 나타나는 시기입니다.',
+    warningBody: '디지털 환경은 의지만으로 통제하기 어렵게 설계되어 있어요. 다만 어떤 시간·어떤 마음 상태에서 무의식 사용이 시작되는지 <strong>그 패턴을 알아차리는 것</strong>이 환경 설계의 출발점입니다.',
+    warningCite: 'Charry & Tessitore, Social Media Conformity (2021) 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"세상과 연결되고 싶다"</strong>는 자연스러운 욕구와 <strong>"내 시간을 내 의도대로 쓰고 싶다"</strong>는 회복의 욕구가 함께 있어요.',
+      '지금 여러분은 두 욕구 사이에서 흔들리고 있습니다. 어떤 시간엔 의도된 사용을, 어떤 시간엔 무의식 사용을 하고 있어요. 이 경계가 어디인지 알아차리는 것이 환경 설계의 시작입니다.'
+    ],
+    reflectTitle: '여러분의 사용 패턴을 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'어떤 마음 상태에서 무의식적으로 화면을 켜게 되시나요? (피곤할 때, 외로울 때, 지루할 때 등)' },
+      { num:'02', text:'화면을 끄고 났을 때, 보통 어떤 기분이 드시나요?' },
+      { num:'03', text:'화면을 보지 않는 시간에 진짜로 하고 싶은 한 가지가 있다면 무엇인가요?' },
+      { num:'04', text:'하루 중 가장 길게 화면 없이 있을 수 있는 시간대는 언제인가요?' }
+    ],
+    midGuide: {
+      healthyTitle: '건강한 SNS·디지털 사용법',
+      healthyItems: [
+        '"의도된 사용"과 "무의식 사용"을 구분하세요. 앱을 켜기 전 3초 멈춤 — "지금 내가 진짜 보고 싶은 것은?" 한 번만 묻습니다.',
+        '시간 단위가 아닌 목적 단위로 사용하세요. "30분 보기"보다 "이 한 가지를 확인하기"가 더 회복적입니다.',
+        '자기 전 1시간, 아침 기상 후 30분 — 이 두 시간만이라도 화면 없이 보내보세요.'
+      ],
+      cautionTitle: '아직은 괜찮지만, 이런 신호가 오면 주의',
+      cautionItems: [
+        '화면을 끄고 나서도 마음이 채워지지 않고 허전한 느낌이 더 강해질 때',
+        'SNS에서 본 라이프스타일이 어느새 내 목표·욕망이 되어 있을 때',
+        '화면 없는 시간에 "뭘 해야 할지 모르겠다"는 느낌이 자주 들 때'
+      ]
     }
+  },
 
-    function showScreen(id) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
+  // ============================================================
+  // 심각 (high, 67~100점) — 경각심 + 잡음 차단부터
+  // ============================================================
+  'high-1': {
+    desc: '여러분은 자신을 표현하기 전 거의 항상 주변의 반응을 먼저 살피는 패턴이 작동하고 있어요. 사려 깊음이 자신을 누르는 무게로 자라난 상태입니다.',
+    warningBody: '이런 눈치 압력이 오래 지속되면, 내 안에서 우러나온 진짜 마음(<strong>내부 발생 동기</strong>)과 주변이 기대해서 만들어진 마음(<strong>외부 유도 동기</strong>)을 구분하는 능력 자체가 흐려집니다. 시간이 지날수록 "내가 정말 원하는 게 뭐였지?"라는 질문조차 낯설어지게 돼요.',
+    warningCite: 'Ryan & Deci, Self-Determination Theory (2017) 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"안전하게 받아들여지고 싶다"</strong>는 따뜻한 욕구가 있고, 그 아래 더 깊은 곳에 <strong>"있는 그대로의 나로 인정받고 싶다"</strong>는 본질적인 욕구가 함께 살아 숨쉬고 있습니다.',
+      '눈치는 첫 번째 욕구를 지키기 위해 발달한 마음의 방패예요. 그런데 이 방패가 너무 두꺼워지면, 진짜 나를 보여줄 기회마저 차단해버립니다. 진짜 인정은 진짜 모습을 보여줄 때만 받을 수 있는데 말이에요.',
+      '여러분의 사려 깊음은 그대로 둔 채, 나를 누르는 무게만 조금씩 덜어내는 연습이 필요한 시점입니다.'
+    ],
+    reflectTitle: '여러분 안의 진짜 모습을 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'오늘 하루, "이 말 하면 안 될까?" 하고 입에서 삼킨 말이 있었나요? 그 말은 무엇이었나요?' },
+      { num:'02', text:'만약 누구의 시선도 의식하지 않아도 된다면, 지금 가장 하고 싶은 한 가지는 무엇인가요?' },
+      { num:'03', text:'내가 분위기를 살피지 않고 솔직하게 말했을 때, 의외로 잘 받아들여졌던 순간이 있었나요?' }
+    ]
+  },
+  'high-2': {
+    desc: '여러분은 거의 항상 다른 사람의 위치를 통해 자신을 가늠하는 패턴이 작동하고 있어요. 내 인생의 기준이 점점 외부로 빠져나가고 있는 상태입니다.',
+    warningBody: '비교가 일상이 되면, 내 안에서 자연스럽게 솟아나온 욕구(<strong>내부 발생 동기</strong>)와 비교를 통해 만들어진 욕구(<strong>외부 유도 동기</strong>)가 뒤섞입니다. 결국 내가 진짜 원해서 한 선택과 남에게 뒤지지 않으려고 한 선택이 헷갈리게 되고, 어떤 성취를 이뤄도 채워지지 않는 공허감이 따라옵니다.',
+    warningCite: 'Festinger (1954) + SDT 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"제대로 살고 싶다"</strong>는 진실된 욕구가 있고, 그 아래 더 깊은 곳에는 <strong>"내 인생을 내 손으로 정의하고 싶다"</strong>는 본질적인 욕구가 함께 자리하고 있습니다.',
+      '비교는 첫 번째 욕구를 위한 잘못된 해법이에요. 다른 사람의 기준으로 내 인생을 채점하면, 아무리 잘 살아도 그것은 "내 인생"이 되지 못합니다. 만점을 받아도 남의 시험지에 답하는 것이니까요.',
+      '여러분이 진짜 잘 살고 있는지는, 다른 누구도 채점할 수 없습니다. 오직 여러분만이 알 수 있는 영역이에요.'
+    ],
+    reflectTitle: '여러분 인생의 기준을 다시 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'"남들만큼"의 기준이 사라진다면, 여러분은 무엇으로 잘 살고 있다고 느낄 것 같나요?' },
+      { num:'02', text:'비교가 잠잠해진 순간, 의외로 만족스럽게 흘러갔던 시간이 있었다면 언제였나요?' },
+      { num:'03', text:'여러분만의 "이 정도면 충분하다"는 기준이 있다면, 그것은 무엇일까요?' }
+    ]
+  },
+  'high-3': {
+    desc: '여러분은 알고리즘이 큐레이션한 콘텐츠에 거의 끊임없이 노출되고 있어요. 그 노출이 어느새 "내가 원하는 것"의 모습을 결정하고 있습니다. 이건 의지의 문제가 아니라 환경 설계의 문제입니다.',
+    warningBody: '잦은 노출은 내 안의 진짜 욕구(<strong>내부 발생 동기</strong>)와 알고리즘이 반복 노출해 만든 욕구(<strong>외부 유도 동기</strong>)의 경계를 무너뜨립니다. 더 무서운 건, 어느 순간부터는 "이게 내가 원해서 보는 건지, 그냥 보다 보니 원하게 된 건지" 스스로도 알 수 없게 된다는 점입니다.',
+    warningCite: 'Charry & Tessitore (2021) + SDT 기반 해석',
+    needFoundTitle: '여러분 안에서 작동 중인 욕구',
+    needFoundBody: [
+      '여러분 안에는 <strong>"세상과 연결되고 싶다"</strong>는 자연스러운 욕구가 있고, 그 아래 더 깊은 곳에는 <strong>"내 시간을 내 의도대로 쓰고 싶다"</strong>는 회복의 욕구가 함께 있습니다.',
+      '무한 스크롤은 세상과 진짜 연결되는 시간이라기보다는, 허무한 마음의 소비적 향유에 가깝습니다. 그런데 문제는 이걸 자주 하다 보면, 내 내면의 소리나 욕구에 집중하기보다 외부의 소음이 여러분 마음을 장악하게 된다는 거예요.',
+      '여러분의 마음이 휘저어지고 있다면, 그것은 여러분의 잘못이 아닙니다. 알고리즘은 잠시라도 머무를 시간을 주지 않도록 설계되어 있으니까요. 환경부터 바꿔야 마음이 회복될 수 있습니다.'
+    ],
+    reflectTitle: '여러분의 시간을 다시 만나는 질문',
+    reflectQuestions: [
+      { num:'01', text:'오늘 마지막으로 휴대폰을 켰을 때, 정말 보고 싶어서였나요, 아니면 그냥 손이 갔나요?' },
+      { num:'02', text:'화면을 보지 않고 있는 시간에는 보통 어떤 마음이 드시나요? 불안한가요, 평온한가요?' },
+      { num:'03', text:'하루 중 "이 시간만큼은 나의 것"이라고 부를 수 있는 시간이 있다면, 언제일까요?' }
+    ]
+  }
+};
+
+// 세그먼트별 작은 실천 카드 (잡음별 + 세그먼트별)
+const ACTION_DETAIL = {
+  // 양호 — 다음 단계로 (몰입·루틴 만들기)
+  'low': {
+    needStepBadge: { num: 'N.E.E.D 3·4단계', name: 'Energy Flow + Daily Drive · 다음 단계로' },
+    title: '잡음이 적은 지금, 우선가치로 흐를 시간',
+    items: [
+      '하루에 단 한 번, "지금 내가 진짜 원하는 것"을 한 줄로 적어보기',
+      '몰입이 잘 되는 시간대·환경을 발견했다면, 그것을 일정에 고정하기',
+      '주말에 "이번 주, 내가 가장 자기답게 산 순간"을 떠올려보기'
+    ],
+    quote: '잡음이 걷힌 자리에, 진짜 내 욕구가 흐를 공간을 만들 시간입니다'
+  },
+  // 혼재 — Eliminate Noise 본격 시작
+  'mid': {
+    needStepBadge: { num: 'N.E.E.D 2단계', name: 'Eliminate Noise · 잡음 지도 그리기' },
+    title: '오늘부터 작은 한 걸음',
+    items: [
+      '하루에 한 번, 잡음이 작동한 순간을 알아차리고 한 줄로 기록하기',
+      '잡음이 적게 느껴지는 시간·장소·관계를 찾아 일주일 관찰하기',
+      '주말에 그 기록을 다시 보며, 어디서 잡음이 강한지 패턴 발견하기'
+    ],
+    quote: '잡음을 보는 눈이 길러지면, 잡음에 휘둘리지 않는 자유가 따라옵니다'
+  },
+  // 심각 — Eliminate Noise 응급 처치
+  'high': {
+    needStepBadge: { num: 'N.E.E.D 2단계', name: 'Eliminate Noise · 잡음 차단 응급 처치' },
+    title: '오늘 시작하는, 가장 작은 한 걸음',
+    items: [], // 잡음별로 다름 — 아래에서 동적 매핑
+    quote: '환경을 바꿔야, 마음이 회복됩니다'
+  }
+};
+
+// 심각 단계 잡음별 응급 처치 (구체 행동)
+const HIGH_ACTION_BY_AXIS = {
+  1: [
+    '하루에 단 한 번, 작은 자리에서 "분위기 살피기 전에" 의견을 먼저 말해보기',
+    '말한 직후, 호흡을 한 번 깊게 — "그래도 나는 나로 있다"',
+    '저녁에 그 순간을 한 줄로 기록 — 무엇을 느꼈는지'
+  ],
+  2: [
+    '비교가 자주 일어나는 단 1개 채널을 일주일 음소거 또는 친구 끊기',
+    '매일 저녁 "오늘 내 기준에서 잘한 일 1가지" 기록하기 (남과 무관하게)',
+    '7일째, 음소거 전과 후의 마음 상태를 비교 — 어떻게 달라졌는지'
+  ],
+  3: [
+    '자기 전 1시간, 휴대폰을 침대 밖에 두기',
+    '앱 켜기 전 3초 멈춤 — "지금 내가 진짜 원하는 것은?"',
+    '무의식 사용을 알아차리는 순간, 화면 끄고 호흡 한 번'
+  ]
+};
+
+// 결과별 시그니처 인용
+const SIGNATURE_QUOTE = {
+  'low-1': '여러분의 사려 깊음과 단단함, 그 균형을 응원합니다',
+  'low-2': '여러분만의 기준이 흔들리지 않는 그 자리, 단단하게 지켜내고 계세요',
+  'low-3': '여러분의 시간을 의도대로 쓸 줄 아는 힘, 이 시대의 드문 자산입니다',
+  'mid-1': '알아차림이 시작되는 곳에, 변화가 자라납니다',
+  'mid-2': '비교의 자리를 알아차리면, 내 자리가 보이기 시작합니다',
+  'mid-3': '환경을 알아차리면, 환경을 바꿀 수 있습니다',
+  'high-1': '진짜 인정은, 진짜 모습으로만 받을 수 있습니다',
+  'high-2': '내 인생의 기준은, 다른 사람의 인생에 없습니다',
+  'high-3': '여러분의 시간은, 알고리즘이 아닌 여러분 자신이 설계해야 합니다'
+};
+
+const STORAGE_KEY = 'noise_diagnosis_v3';
+let state = {
+  currentIdx: 0,
+  answers: new Array(18).fill(null),
+  branch: null,
+  snsMinutes: null,
+  startedAt: null
+};
+
+function saveState(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+function loadState(){ try{ const r=localStorage.getItem(STORAGE_KEY); if(!r) return null; const p=JSON.parse(r); if(!p||!Array.isArray(p.answers)) return null; return p; }catch(e){ return null; } }
+function clearState(){ try{ localStorage.removeItem(STORAGE_KEY); }catch(e){} state={currentIdx:0,answers:new Array(18).fill(null),branch:null,snsMinutes:null,startedAt:null}; }
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+
+// 진행 흐름 인덱스 매핑:
+// idx 0~5 → QUESTIONS[0~5] (Q1~Q6, axis 1)
+// idx 6~11 → QUESTIONS[6~11] (Q7~Q12, axis 2)
+// idx 12 → 슬라이더 (Q13)
+// idx 13~15 → QUESTIONS[12~14] (Q14~Q16, axis 3)
+// idx 16 → Q17 분기 (axis 3)
+// idx 17 → QUESTIONS[15] (Q18, axis 3)
+
+function getQuestionText(idx){
+  if (idx <= 11) return QUESTIONS[idx].text;
+  if (idx === 12) return null;
+  if (idx >= 13 && idx <= 15) return QUESTIONS[idx-1].text;
+  if (idx === 16) return state.branch==='sns'?Q17.sns:Q17.kakao;
+  if (idx === 17) return QUESTIONS[15].text;
+}
+
+function getSectionInfo(idx){
+  if (idx <= 5) return {section:'눈치 압력', sectionNum:idx+1, sectionTotal:6, color:'#2979C8', cls:'pill-N', btnCls:'btn-N', activeCls:'active-N'};
+  if (idx <= 11) return {section:'비교 압력', sectionNum:idx-5, sectionTotal:6, color:'#3DAA6B', cls:'pill-E1', btnCls:'btn-E1', activeCls:'active-E1'};
+  return {section:'비교 노출', sectionNum:idx-11, sectionTotal:6, color:'#C9983A', cls:'pill-E2', btnCls:'btn-E2', activeCls:'active-E2'};
+}
+
+function updateProgress(){
+  const total=18;
+  const cur=state.currentIdx+1;
+  const pct=(state.currentIdx/total)*100;
+  const sec=getSectionInfo(state.currentIdx);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progFill').style.background=sec.color;
+  document.getElementById('progSection').textContent=sec.section+' · '+sec.sectionNum+'/'+sec.sectionTotal;
+  document.getElementById('progCount').textContent=cur+' / '+total;
+  document.getElementById('topCounter').style.display='block';
+  document.getElementById('topCur').textContent=cur;
+  document.getElementById('topTot').textContent=' / '+total;
+}
+
+function renderQuestion(){
+  // 슬라이더 화면
+  if (state.currentIdx === 12) {
+    document.getElementById('sliderQText').textContent = Q13_TEXT[state.branch];
+    const slider = document.getElementById('sliderInput');
+    const display = document.getElementById('sliderValue');
+    const initial = state.snsMinutes !== null ? state.snsMinutes : 30;
+    slider.value = initial;
+    display.textContent = initial;
+    showScreen('screen-slider');
+    updateProgress();
+    return;
+  }
+  
+  const sec = getSectionInfo(state.currentIdx);
+  const text = getQuestionText(state.currentIdx);
+  
+  const secPill = document.getElementById('secPill');
+  secPill.className = 'section-pill '+sec.cls;
+  secPill.textContent = sec.section;
+  
+  document.getElementById('qText').textContent = text;
+  
+  const scaleRow = document.getElementById('scaleRow');
+  scaleRow.innerHTML = '';
+  const currentAnswer = state.answers[state.currentIdx];
+  for (let i=1; i<=5; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'scale-btn'+(currentAnswer===i?' '+sec.activeCls:'');
+    let dotsHtml = '';
+    for (let j=0; j<i; j++) dotsHtml += '<span class="dot"></span>';
+    btn.innerHTML = '<span class="scale-num">'+i+'</span><span class="dots">'+dotsHtml+'</span>';
+    btn.addEventListener('click', ()=>selectAnswer(i, sec));
+    scaleRow.appendChild(btn);
+  }
+  
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.className = 'btn-next '+sec.btnCls;
+  nextBtn.disabled = currentAnswer === null;
+  
+  document.getElementById('prevBtn').disabled = state.currentIdx === 0;
+  
+  showScreen('screen-question');
+  updateProgress();
+}
+
+function selectAnswer(value, sec){
+  state.answers[state.currentIdx] = value;
+  saveState();
+  document.querySelectorAll('.scale-btn').forEach(b=>{
+    b.classList.remove('active-N','active-E1','active-E2');
+  });
+  const btns = document.querySelectorAll('.scale-btn');
+  btns[value-1].classList.add(sec.activeCls);
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function goNext(){
+  if (state.currentIdx < 17) {
+    state.currentIdx += 1;
+    saveState();
+    renderQuestion();
+  } else {
+    showLoadingThenResult();
+  }
+}
+
+function goPrev(){
+  if (state.currentIdx > 0) {
+    state.currentIdx -= 1;
+    saveState();
+    renderQuestion();
+  }
+}
+
+function answerSlider(){
+  const slider = document.getElementById('sliderInput');
+  const minutes = parseInt(slider.value, 10);
+  state.snsMinutes = minutes;
+  let scaled;
+  if (minutes <= 0) scaled = 1;
+  else if (minutes <= 30) scaled = 2;
+  else if (minutes <= 90) scaled = 3;
+  else if (minutes <= 180) scaled = 4;
+  else scaled = 5;
+  state.answers[12] = scaled;
+  saveState();
+  state.currentIdx += 1;
+  saveState();
+  renderQuestion();
+}
+
+function calculateResult(){
+  const a1 = state.answers.slice(0,6).reduce((a,b)=>a+(b||0), 0);
+  const a2 = state.answers.slice(6,12).reduce((a,b)=>a+(b||0), 0);
+  const a3 = state.answers.slice(12,18).reduce((a,b)=>a+(b||0), 0);
+  const total = a1+a2+a3;
+  const score = Math.round(((total-18)/72)*100);
+  let segment;
+  if (score >= 67) segment = 'high';
+  else if (score >= 34) segment = 'mid';
+  else segment = 'low';
+  const arr = [a1,a2,a3];
+  let maxIdx=0, maxVal=arr[0];
+  for (let i=1; i<3; i++) if (arr[i]>maxVal){maxVal=arr[i];maxIdx=i;}
+  if (arr[2]===maxVal) maxIdx=2;
+  else if (arr[1]===maxVal && maxIdx!==2) maxIdx=1;
+  return {axis1:a1, axis2:a2, axis3:a3, score, segment, primaryAxis:maxIdx+1};
+}
+
+function showLoadingThenResult(){
+  document.getElementById('topCounter').style.display='none';
+  showScreen('screen-loading');
+  setTimeout(()=>{ renderResult(); showScreen('screen-result'); }, 900);
+}
+
+function renderResult(){
+  const r = calculateResult();
+  const msg = RESULT_MESSAGES[r.segment];
+  const baseInfo = NOISE_BASE[r.primaryAxis];
+  const detailKey = r.segment + '-' + r.primaryAxis;
+  const detail = RESULT_DETAIL[detailKey];
+  const actionDetail = ACTION_DETAIL[r.segment];
+  const sigQuote = SIGNATURE_QUOTE[detailKey];
+  
+  document.getElementById('resTitle').textContent = msg.headline;
+  document.getElementById('resSub').textContent = msg.subline;
+  
+  document.getElementById('scoreNum').textContent = r.score;
+  document.getElementById('scoreLabel').textContent = msg.segmentLabel;
+  const ringFg = document.getElementById('ringFg');
+  const circ = 2*Math.PI*105;
+  ringFg.setAttribute('stroke', msg.color);
+  ringFg.setAttribute('stroke-dasharray', '0 '+circ);
+  setTimeout(()=>{ ringFg.setAttribute('stroke-dasharray', (r.score/100*circ)+' '+circ); }, 100);
+  
+  const ax3Label = state.branch==='sns'?'SNS 알고리즘 노출':'카톡·온라인 노출';
+  document.getElementById('ax3Label').textContent = ax3Label;
+  document.getElementById('ax1Score').textContent = r.axis1;
+  document.getElementById('ax2Score').textContent = r.axis2;
+  document.getElementById('ax3Score').textContent = r.axis3;
+  const bars = [document.getElementById('ax1Bar'), document.getElementById('ax2Bar'), document.getElementById('ax3Bar')];
+  bars.forEach(b=>{ b.classList.remove('primary'); b.style.width='0%'; });
+  bars[r.primaryAxis-1].classList.add('primary');
+  setTimeout(()=>{
+    bars[0].style.width = (r.axis1/30*100)+'%';
+    bars[1].style.width = (r.axis2/30*100)+'%';
+    bars[2].style.width = (r.axis3/30*100)+'%';
+  }, 300);
+  
+  // 가장 강한 잡음 (혼재/심각의 경우 "강조"의 의미, 양호의 경우 "상대적으로 가장 큰" 의미)
+  const primaryName = (r.primaryAxis===3 && state.branch==='kakao')?'카톡·온라인 노출':baseInfo.name;
+  const primaryLabel = document.querySelector('.primary-tag');
+  if (r.segment === 'low') {
+    primaryLabel.textContent = '여러분의 잡음 분포에서 상대적으로 큰 영역';
+  } else {
+    primaryLabel.textContent = '가장 강한 한 가지 잡음';
+  }
+  document.getElementById('primaryName').textContent = primaryName;
+  document.getElementById('primaryDesc').textContent = detail.desc;
+  
+  // 경고/인정 카드 — 양호는 인정, 혼재·심각은 경고
+  const warningCard = document.querySelector('.warning-card');
+  const warningTag = document.querySelector('.warning-tag');
+  if (r.segment === 'low') {
+    // 인정 카드 톤으로 변경 (초록 계열)
+    warningCard.style.background = '#F0FDF4';
+    warningCard.style.borderColor = '#BBF7D0';
+    warningTag.style.color = '#166534';
+    warningTag.style.borderColor = '#BBF7D0';
+    warningTag.className = 'warning-tag icon-affirm';
+    warningTag.textContent = '여러분이 잘 만들어 가고 있는 것';
+    document.getElementById('warningBody').innerHTML = detail.affirmBody.map(p=>'<p>'+p+'</p>').join('');
+    document.getElementById('warningBody').style.color = '#14532D';
+    document.getElementById('warningCite').textContent = '';
+    document.getElementById('warningCite').style.display = 'none';
+  } else {
+    // 경고 카드 톤 복원 (빨간 계열)
+    warningCard.style.background = '#FEF2F2';
+    warningCard.style.borderColor = '#FECACA';
+    warningTag.style.color = '#B91C1C';
+    warningTag.style.borderColor = '#FECACA';
+    warningTag.className = 'warning-tag icon-warn';
+    warningTag.textContent = '이 상태가 지속되면';
+    document.getElementById('warningBody').innerHTML = detail.warningBody;
+    document.getElementById('warningBody').style.color = '#7F1D1D';
+    document.getElementById('warningCite').textContent = '— ' + detail.warningCite;
+    document.getElementById('warningCite').style.display = 'block';
+  }
+  
+  // 진단된 욕구
+  document.getElementById('needTit').textContent = detail.needFoundTitle;
+  document.getElementById('needBody').innerHTML = detail.needFoundBody.map(p=>'<p>'+p+'</p>').join('');
+  
+  // 자기 성찰
+  document.getElementById('reflectTit').textContent = detail.reflectTitle;
+  const rqEl = document.getElementById('reflectQuestions');
+  rqEl.innerHTML = '';
+  detail.reflectQuestions.forEach(q=>{
+    const div = document.createElement('div');
+    div.className = 'reflect-q';
+    div.innerHTML = '<div class="reflect-q-num">Q.'+q.num+'</div><div class="reflect-q-text">'+q.text+'</div>';
+    rqEl.appendChild(div);
+  });
+  
+  // 혼재 단계 가이드 카드 — 양호/심각 단계는 숨김
+  const guideCard = document.getElementById('guideCard');
+  if (r.segment === 'mid' && detail.midGuide) {
+    document.getElementById('guideHealthyTitle').textContent = detail.midGuide.healthyTitle;
+    const ghl = document.getElementById('guideHealthyList');
+    ghl.innerHTML = '';
+    detail.midGuide.healthyItems.forEach(item=>{
+      const li = document.createElement('li');
+      li.textContent = item;
+      ghl.appendChild(li);
+    });
+    document.getElementById('guideCautionTitle').textContent = detail.midGuide.cautionTitle;
+    const gcl = document.getElementById('guideCautionList');
+    gcl.innerHTML = '';
+    detail.midGuide.cautionItems.forEach(item=>{
+      const li = document.createElement('li');
+      li.textContent = item;
+      gcl.appendChild(li);
+    });
+    guideCard.classList.add('show');
+  } else {
+    guideCard.classList.remove('show');
+  }
+  
+  // 작은 실천 카드 — 세그먼트별 다른 배지/제목/내용
+  const stepBadgeEl = document.querySelector('.action-need-step');
+  stepBadgeEl.innerHTML =
+    '<span class="action-need-step-num">' + actionDetail.needStepBadge.num + '</span>' +
+    '<span class="action-need-step-arrow">→</span>' +
+    '<span class="action-need-step-name">' + actionDetail.needStepBadge.name + '</span>';
+  
+  // 작은 실천 카드 색상 — 양호는 초록, 그 외는 골드(원래)
+  const actionCard = document.querySelector('.action-card');
+  const actionTag = document.querySelector('.action-tag');
+  const actionQuoteEl = document.getElementById('actionQuote');
+  const actionTitEl = document.getElementById('actionTit');
+  const actionListEl = document.getElementById('actionList');
+  
+  if (r.segment === 'low') {
+    actionCard.style.background = '#F0FDF4';
+    actionCard.style.borderColor = '#BBF7D0';
+    actionTag.style.background = '#fff';
+    actionTag.style.color = '#166534';
+    actionTag.style.borderColor = '#BBF7D0';
+    actionTag.textContent = '▸ 다음 단계, 작은 시작';
+    actionTitEl.style.color = '#14532D';
+    actionListEl.style.setProperty('--li-color', '#166534');
+    actionQuoteEl.style.color = '#166534';
+    actionQuoteEl.style.borderTopColor = '#BBF7D0';
+  } else {
+    actionCard.style.background = '#FFFBEB';
+    actionCard.style.borderColor = '#FDE68A';
+    actionTag.style.background = '#fff';
+    actionTag.style.color = '#92400E';
+    actionTag.style.borderColor = '#FDE68A';
+    actionTag.textContent = '▸ 오늘 시작하는 작은 실천';
+    actionTitEl.style.color = '#78350F';
+    actionQuoteEl.style.color = '#92400E';
+    actionQuoteEl.style.borderTopColor = '#FDE68A';
+  }
+  
+  actionTitEl.textContent = actionDetail.title;
+  
+  // 실천 항목 — 심각 단계는 잡음별 응급 처치, 양호/혼재는 공통 항목
+  let actionItems = actionDetail.items;
+  if (r.segment === 'high' && (!actionItems || actionItems.length === 0)) {
+    actionItems = HIGH_ACTION_BY_AXIS[r.primaryAxis];
+  }
+  
+  actionListEl.innerHTML = '';
+  actionItems.forEach(item=>{
+    const li = document.createElement('li');
+    li.textContent = item;
+    if (r.segment === 'low') li.style.color = '#166534';
+    actionListEl.appendChild(li);
+  });
+  
+  actionQuoteEl.textContent = '"' + (sigQuote || actionDetail.quote) + '"';
+  
+  // 영상 카드 — 단계별 동적 렌더링
+  const videoContainer = document.getElementById('videoCardsContainer');
+  videoContainer.innerHTML = '';
+  
+  function makeVideoCard(href, platform, title, desc, primary) {
+    const accent = primary ? '#3DAA6B' : '#C9983A';
+    const bgHover = primary ? '#F0FDF4' : '#FFFBEB';
+    return '<a class="video-card" href="' + href + '" target="_blank" rel="noopener noreferrer" ' +
+      'onmouseover="this.style.borderColor=\'' + accent + '\';this.style.background=\'' + bgHover + '\'" ' +
+      'onmouseout="this.style.borderColor=\'#E2E8F0\';this.style.background=\'#fff\'">' +
+      '<div class="video-head">' +
+        '<div class="video-icon">' +
+          '<svg viewBox="0 0 24 24"><path d="M23 7s-.2-1.6-.8-2.3c-.7-.9-1.5-.9-1.9-1C17.5 3.5 12 3.5 12 3.5s-5.5 0-8.3.2c-.4.1-1.2.1-1.9 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.8v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.7.9 1.7.9 2.1 1 1.5.1 6.4.2 8.1.2 0 0 5.5 0 8.3-.2.4-.1 1.2-.1 1.9-1 .6-.7.8-2.3.8-2.3s.2-1.9.2-3.8v-1.8C23.2 8.9 23 7 23 7zM9.7 14.6V8.2l6.4 3.2-6.4 3.2z"/></svg>' +
+        '</div>' +
+        '<div class="video-label">' +
+          '<div class="video-platform">' + platform + '</div>' +
+          '<div class="video-tit">' + title + '</div>' +
+        '</div>' +
+        '<span class="video-arrow" style="color:' + accent + '">→</span>' +
+      '</div>' +
+      '<div class="video-desc">' + desc + '</div>' +
+    '</a>';
+  }
+  
+  if (r.segment === 'low') {
+    // 양호: 일상 루틴 영상 메인 + 잡음 제거 영상 보조
+    videoContainer.innerHTML =
+      makeVideoCard(YT_PLAYLIST_ROUTINE, 'YOUTUBE · 추천', '일상 루틴 설계 시리즈',
+        '잡음이 잘 걸러지고 있는 지금이야말로<br/>여러분만의 루틴을 설계할 황금 타이밍이에요', true) +
+      makeVideoCard(YT_PLAYLIST, 'YOUTUBE', '잡음 제거 시리즈',
+        '잡음을 더 깊이 이해하고 싶으시다면<br/>이 시리즈도 함께 보세요', false);
+  } else if (r.segment === 'mid') {
+    // 혼재: 잡음 제거 영상 메인 + 일상 루틴 영상 보조 (잡음 줄이며 루틴도 시작)
+    videoContainer.innerHTML =
+      makeVideoCard(YT_PLAYLIST, 'YOUTUBE · 추천', '잡음 제거 시리즈',
+        '잡음의 패턴을 알아차리고 줄이는 방법<br/>이 단계에 가장 도움이 되는 시리즈예요', false) +
+      makeVideoCard(YT_PLAYLIST_ROUTINE, 'YOUTUBE', '일상 루틴 설계 시리즈',
+        '잡음이 적은 시간에는 작은 루틴부터<br/>시작해 보는 것도 좋아요', true);
+  } else {
+    // 심각: 잡음 제거 영상만
+    videoContainer.innerHTML =
+      makeVideoCard(YT_PLAYLIST, 'YOUTUBE · 추천', '잡음 제거 시리즈',
+        '환경부터 바꾸는 구체적 방법<br/>나다움설계연구소의 N.E.E.D 영상을 함께 보세요', false);
+  }
+  
+  // 5러 진단 연결 카드 — 양호 단계에서 더 강조 (메시지 변경)
+  const nextDiagH = document.querySelector('.next-diagnosis-h');
+  const nextDiagD = document.querySelector('.next-diagnosis-d');
+  if (nextDiagH && nextDiagD) {
+    if (r.segment === 'low') {
+      nextDiagH.textContent = '잡음이 잘 걸러지고 있어요. 이제 진짜 에너지 패턴을 만날 시간';
+    } else {
+      nextDiagH.textContent = '잡음이 걷히면, 무엇이 남을까요?';
     }
+  }
+  
+  window._resultData = r;
+}
 
-    // 진행 흐름:
-    // 0~5: Q1~Q6 (눈치)        → 일반 문항
-    // 6~11: Q7~Q12 (비교)       → 일반 문항
-    // 12: Q13 (SNS/카톡 시간)   → 슬라이더 화면
-    // 13~14: Q14~Q15 (비교 노출) → 일반 문항
-    // 15: Q16                  → 일반 문항
-    // 16: Q17 (좋아요/반응)     → 일반 문항 (분기 텍스트)
-    // 17: Q18                  → 일반 문항
-    // 총 18문항
+// ============================================================
+// 결과 카드 SVG (라이트 톤)
+// ============================================================
+function generateCardSVG(r, version){
+  const W = 1080;
+  const H = version==='square'?1080:1920;
+  const msg = RESULT_MESSAGES[r.segment];
+  const baseInfo = NOISE_BASE[r.primaryAxis];
+  const color = msg.color;
+  
+  const BG = '#F8F9FB';
+  const CARD = '#FFFFFF';
+  const NAVY = '#1E2761';
+  const TEXT = '#2F2F2F';
+  const SUB = '#718096';
+  const BORDER = '#E2E8F0';
+  const RING_BG = '#F0F1F5';
+  
+  const ax3Label = state.branch==='sns'?'SNS 알고리즘 노출':'카톡·온라인 노출';
+  const primaryName = (r.primaryAxis===3 && state.branch==='kakao')?'카톡·온라인 노출':baseInfo.name;
+  
+  function needLogoSVG(x, y, fs){
+    const ls = fs*0.14;
+    return '<text x="'+x+'" y="'+y+'" font-family="-apple-system, BlinkMacSystemFont, \'Apple SD Gothic Neo\', \'Noto Sans KR\', sans-serif" font-weight="800" font-size="'+fs+'" letter-spacing="'+ls+'">'+
+      '<tspan fill="#2979C8">N.</tspan>'+
+      '<tspan fill="#3DAA6B">E.</tspan>'+
+      '<tspan fill="#C9983A">E.</tspan>'+
+      '<tspan fill="#8B5CF6">D.</tspan>'+
+      '</text>';
+  }
+  
+  function watermarkSVG(cx, y){
+    return '<text x="'+cx+'" y="'+y+'" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="600" font-size="18" letter-spacing="2" fill="'+SUB+'" text-anchor="middle">나다움설계연구소 · NEED SCAN</text>'+
+           '<text x="'+cx+'" y="'+(y+26)+'" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="#9CA3AF" text-anchor="middle">나다움을 설계하다</text>';
+  }
+  
+  function gaugeBar(x, y, width, height, value, max, c, label, score, isPrimary){
+    const fillWidth = (value/max)*width;
+    const barColor = isPrimary?c:'#9CA3AF';
+    return '<g>'+
+      '<text x="'+x+'" y="'+(y-12)+'" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="600" font-size="20" fill="'+TEXT+'">'+label+'</text>'+
+      '<text x="'+(x+width)+'" y="'+(y-12)+'" font-family="-apple-system, sans-serif" font-weight="700" font-size="20" fill="'+(isPrimary?c:SUB)+'" text-anchor="end">'+score+'</text>'+
+      '<rect x="'+x+'" y="'+y+'" width="'+width+'" height="'+height+'" rx="'+(height/2)+'" fill="'+RING_BG+'" />'+
+      '<rect x="'+x+'" y="'+y+'" width="'+fillWidth+'" height="'+height+'" rx="'+(height/2)+'" fill="'+barColor+'" />'+
+    '</g>';
+  }
+  
+  function bigScoreSquare(cx, cy, sc, c){
+    const dasharray = (sc/100)*879.6;
+    return '<g>'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="140" fill="none" stroke="'+RING_BG+'" stroke-width="14" />'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="140" fill="none" stroke="'+c+'" stroke-width="14" stroke-dasharray="'+dasharray+' 879.6" stroke-linecap="round" transform="rotate(-90 '+cx+' '+cy+')" />'+
+      '<text x="'+cx+'" y="'+(cy-8)+'" font-family="-apple-system, sans-serif" font-weight="800" font-size="92" fill="'+NAVY+'" text-anchor="middle" letter-spacing="-2">'+sc+'</text>'+
+      '<text x="'+cx+'" y="'+(cy+38)+'" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="#9CA3AF" text-anchor="middle" letter-spacing="2">/ 100</text>'+
+    '</g>';
+  }
+  
+  function bigScoreStory(cx, cy, sc, c){
+    const dasharray = (sc/100)*1256.6;
+    return '<g>'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="200" fill="none" stroke="'+RING_BG+'" stroke-width="20" />'+
+      '<circle cx="'+cx+'" cy="'+cy+'" r="200" fill="none" stroke="'+c+'" stroke-width="20" stroke-dasharray="'+dasharray+' 1256.6" stroke-linecap="round" transform="rotate(-90 '+cx+' '+cy+')" />'+
+      '<text x="'+cx+'" y="'+(cy-12)+'" font-family="-apple-system, sans-serif" font-weight="800" font-size="148" fill="'+NAVY+'" text-anchor="middle" letter-spacing="-3">'+sc+'</text>'+
+      '<text x="'+cx+'" y="'+(cy+50)+'" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="500" font-size="26" fill="#9CA3AF" text-anchor="middle" letter-spacing="3">/ 100</text>'+
+    '</g>';
+  }
+  
+  let svg = '<?xml version="1.0" encoding="UTF-8"?>';
+  svg += '<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'">';
+  svg += '<rect width="'+W+'" height="'+H+'" fill="'+BG+'" />';
+  
+  if (version === 'square') {
+    svg += '<rect x="60" y="60" width="960" height="960" rx="32" fill="'+CARD+'" stroke="'+BORDER+'" stroke-width="1" />';
+    svg += '<text x="'+(W/2)+'" y="155" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="600" font-size="18" fill="'+SUB+'" text-anchor="middle" letter-spacing="5">나의 잡음 오염도</text>';
+    svg += needLogoSVG(W/2 - 105, 230, 50);
+    svg += bigScoreSquare(W/2, 420, r.score, color);
+    svg += '<text x="'+(W/2)+'" y="640" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="700" font-size="34" fill="'+NAVY+'" text-anchor="middle" letter-spacing="-0.5">'+msg.headline+'</text>';
+    svg += '<text x="'+(W/2)+'" y="685" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="400" font-size="20" fill="'+SUB+'" text-anchor="middle">'+msg.subline+'</text>';
+    svg += gaugeBar(140, 770, 800, 14, r.axis1, 30, color, '눈치 압력', r.axis1, r.primaryAxis===1);
+    svg += gaugeBar(140, 830, 800, 14, r.axis2, 30, color, '비교 압력', r.axis2, r.primaryAxis===2);
+    svg += gaugeBar(140, 890, 800, 14, r.axis3, 30, color, ax3Label, r.axis3, r.primaryAxis===3);
+    svg += watermarkSVG(W/2, 990);
+  } else {
+    svg += '<rect x="60" y="240" width="960" height="1440" rx="40" fill="'+CARD+'" stroke="'+BORDER+'" stroke-width="1" />';
+    svg += '<text x="'+(W/2)+'" y="350" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="600" font-size="20" fill="'+SUB+'" text-anchor="middle" letter-spacing="6">나의 잡음 오염도</text>';
+    svg += needLogoSVG(W/2 - 130, 460, 60);
+    svg += bigScoreStory(W/2, 800, r.score, color);
+    svg += '<text x="'+(W/2)+'" y="1100" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="700" font-size="44" fill="'+NAVY+'" text-anchor="middle" letter-spacing="-0.5">'+msg.headline+'</text>';
+    svg += '<text x="'+(W/2)+'" y="1158" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="400" font-size="26" fill="'+SUB+'" text-anchor="middle">'+msg.subline+'</text>';
+    svg += gaugeBar(160, 1280, 760, 18, r.axis1, 30, color, '눈치 압력', r.axis1, r.primaryAxis===1);
+    svg += gaugeBar(160, 1360, 760, 18, r.axis2, 30, color, '비교 압력', r.axis2, r.primaryAxis===2);
+    svg += gaugeBar(160, 1440, 760, 18, r.axis3, 30, color, ax3Label, r.axis3, r.primaryAxis===3);
+    svg += '<text x="'+(W/2)+'" y="1560" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="#9CA3AF" text-anchor="middle" letter-spacing="3">가장 강한 한 가지 잡음</text>';
+    svg += '<text x="'+(W/2)+'" y="1610" font-family="-apple-system, \'Noto Sans KR\', sans-serif" font-weight="700" font-size="38" fill="'+color+'" text-anchor="middle" letter-spacing="-0.3">'+primaryName+'</text>';
+    svg += watermarkSVG(W/2, 1800);
+  }
+  
+  svg += '</svg>';
+  return svg;
+}
 
-    function getCurrentQuestionText() {
-      const idx = state.currentIdx;
-      // Q17은 분기 텍스트
-      if (idx === 16) {
-        return state.branch === 'sns' ? Q17.sns : Q17.kakao;
-      }
-      // 나머지는 QUESTIONS 배열에서 인덱스 매핑
-      // QUESTIONS[0~11] = Q1~Q12
-      // QUESTIONS[12~14] = Q14, Q15, Q16
-      // QUESTIONS[15] = Q18
-      // 인덱스 매핑:
-      // state.currentIdx 0~11 → QUESTIONS[0~11]
-      // state.currentIdx 13~15 → QUESTIONS[12~14]
-      // state.currentIdx 17 → QUESTIONS[15]
-      let qIdx;
-      if (idx <= 11) qIdx = idx;
-      else if (idx === 12) return null; // 슬라이더
-      else if (idx >= 13 && idx <= 15) qIdx = idx - 1;
-      else if (idx === 16) return null; // 위에서 처리
-      else if (idx === 17) qIdx = 15;
-      return QUESTIONS[qIdx].text;
+function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent); }
+function isAndroid(){ return /Android/i.test(navigator.userAgent); }
+function isMobile(){ return isIOS() || isAndroid(); }
+
+// ============================================================
+// 공유 텍스트 빌더 (두 가지)
+// ============================================================
+const DIAGNOSIS_URL = 'https://commlovekim70.github.io/need-project/noise/';
+
+// 결과 공유용 — 카드와 함께 갈 짧은 멘트
+function buildResultShareText(){
+  const r = window._resultData;
+  if (!r) return '';
+  const baseInfo = NOISE_BASE[r.primaryAxis];
+  const primaryName = (r.primaryAxis===3 && state.branch==='kakao')?'카톡·온라인 노출':baseInfo.name;
+  const segmentCopy = {
+    high: '내 잡음 오염도 '+r.score+'점.\n욕구가 흐려진 건 의지 문제가 아니었네요.\n가장 강한 잡음은 '+primaryName+'.',
+    mid: '내 잡음 오염도 '+r.score+'점.\n흔들릴 때도, 단단할 때도 있는 시기.\n가장 강한 잡음은 '+primaryName+'.',
+    low: '내 잡음 오염도 '+r.score+'점.\n잡음이 잘 걸러지고 있는 상태예요.\n이제 진짜 에너지 패턴을 만날 시간.'
+  };
+  return segmentCopy[r.segment] +
+    '\n\n👉 나의 잡음 오염도 진단해보기\n' + DIAGNOSIS_URL +
+    '\n\n#잡음오염도 #나다움설계 #N_E_E_D';
+}
+
+// 진단 링크 공유용 — 친구 권유 멘트
+function buildLinkShareText(){
+  return '🔍 나의 잡음 오염도는 어느 정도일까?\n\n' +
+    '내 욕구를 흐리게 만드는 잡음이 어디서 오는지\n5분 만에 알아보는 진단이에요.\n\n' +
+    '👉 ' + DIAGNOSIS_URL +
+    '\n\n#잡음오염도 #나다움설계 #N_E_E_D';
+}
+
+// ============================================================
+// SVG → PNG Blob 변환 (강화 — 모바일 안정성)
+// ============================================================
+async function svgToPngBlob(svgString, width, height){
+  const svgDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+  const img = new Image();
+  
+  await new Promise((resolve, reject) => {
+    img.onload = () => resolve();
+    img.onerror = (e) => reject(new Error('이미지 로드 실패'));
+    img.src = svgDataUrl;
+    setTimeout(() => reject(new Error('이미지 로드 타임아웃')), 8000);
+  });
+  
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Canvas 컨텍스트 생성 실패');
+  
+  ctx.fillStyle = '#F8F9FB';
+  ctx.fillRect(0, 0, width, height);
+  ctx.drawImage(img, 0, 0, width, height);
+  
+  // toBlob 시도 (실패 시 dataURL fallback)
+  let pngBlob = await new Promise((resolve) => {
+    try {
+      canvas.toBlob((blob) => resolve(blob), 'image/png');
+    } catch(e) {
+      resolve(null);
     }
-
-    function getCurrentAxisLabel() {
-      const idx = state.currentIdx;
-      if (idx <= 5) return '눈치 압력';
-      if (idx <= 11) return '비교 압력';
-      return '비교 노출';
+  });
+  
+  // toBlob이 null 반환 시 dataURL → Blob fallback
+  if (!pngBlob) {
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const arr = dataUrl.split(',');
+      const mime = arr[0].match(/:(.*?);/)[1];
+      const bstr = atob(arr[1]);
+      let n = bstr.length;
+      const u8arr = new Uint8Array(n);
+      while(n--) u8arr[n] = bstr.charCodeAt(n);
+      pngBlob = new Blob([u8arr], {type:mime});
+    } catch(e) {
+      throw new Error('PNG Blob 생성 실패');
     }
+  }
+  
+  return pngBlob;
+}
 
-    function updateProgress() {
-      const current = state.currentIdx + 1;
-      const total = 18;
-      const pct = (state.currentIdx / total) * 100;
-      document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressText').textContent = current + ' / ' + total;
+// ============================================================
+// 단순 다운로드 (PC 또는 모바일 fallback)
+// ============================================================
+function downloadBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// ============================================================
+// 카드 다운로드 버튼 (정사각/스토리 저장)
+// ============================================================
+async function downloadCard(version){
+  const r = window._resultData;
+  if (!r) {
+    showToast('결과 데이터가 없습니다');
+    return;
+  }
+  
+  showToast('카드를 만들고 있어요...');
+  
+  const W = 1080;
+  const H = version==='square'?1080:1920;
+  const filename = '잡음오염도-'+r.score+'-'+(version==='square'?'카드':'스토리')+'.png';
+  
+  let pngBlob;
+  try {
+    const svgString = generateCardSVG(r, version);
+    pngBlob = await svgToPngBlob(svgString, W, H);
+  } catch (err) {
+    console.error('PNG 변환 실패:', err);
+    // SVG fallback
+    try {
+      const svgString = generateCardSVG(r, version);
+      const svgBlob = new Blob([svgString], {type:'image/svg+xml;charset=utf-8'});
+      downloadBlob(svgBlob, filename.replace('.png', '.svg'));
+      showToast('PNG 변환 실패 — SVG로 저장했어요');
+    } catch (e) {
+      showToast('저장에 실패했습니다');
     }
-
-    function renderQuestion() {
-      // Q13(idx=12) 슬라이더 화면 처리
-      if (state.currentIdx === 12) {
-        document.getElementById('sliderQuestionText').textContent = Q13_TEXT[state.branch];
-        const slider = document.getElementById('sliderInput');
-        const display = document.getElementById('sliderValue');
-        const initial = state.snsMinutes !== null ? state.snsMinutes : 30;
-        slider.value = initial;
-        display.textContent = initial;
-        showScreen('screen-slider');
-        document.getElementById('backBtn').disabled = false;
-        document.getElementById('progressWrap').style.display = 'block';
-        updateProgress();
-        return;
-      }
-
-      // 일반 문항 화면
-      document.getElementById('axisTag').textContent = getCurrentAxisLabel().toUpperCase();
-      document.getElementById('questionNum').textContent = 'Q.' + (state.currentIdx + 1);
-      document.getElementById('questionText').textContent = getCurrentQuestionText();
-
-      const optionsList = document.getElementById('optionsList');
-      optionsList.innerHTML = '';
-      const currentAnswer = state.answers[state.currentIdx];
-      OPTIONS.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'option' + (currentAnswer === opt.num ? ' selected' : '');
-        btn.innerHTML = '<span class="option-num">' + opt.num + '</span><span>' + opt.text + '</span>';
-        btn.addEventListener('click', () => answerQuestion(opt.num));
-        optionsList.appendChild(btn);
-      });
-
-      document.getElementById('backBtn').disabled = state.currentIdx === 0;
-      document.getElementById('progressWrap').style.display = 'block';
-      showScreen('screen-question');
-      updateProgress();
-    }
-
-    function answerQuestion(value) {
-      state.answers[state.currentIdx] = value;
-      saveState();
-
-      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-      const idx = OPTIONS.findIndex(o => o.num === value);
-      if (idx >= 0) document.querySelectorAll('.option')[idx].classList.add('selected');
-
-      setTimeout(() => {
-        if (state.currentIdx < 17) {
-          state.currentIdx += 1;
-          saveState();
-          renderQuestion();
-        } else {
-          showLoadingThenResult();
+    return;
+  }
+  
+  // 모바일 — Web Share API로 사진앱 저장 시도
+  if (isMobile() && navigator.canShare) {
+    try {
+      const file = new File([pngBlob], filename, {type:'image/png'});
+      if (navigator.canShare({files:[file]})) {
+        try {
+          await navigator.share({ files: [file] });
+          showToast(isIOS()?'"이미지 저장"을 누르면 사진앱에 저장돼요':'저장이 완료되었습니다');
+          return;
+        } catch (shareErr) {
+          if (shareErr.name === 'AbortError') return;
         }
-      }, 280);
+      }
+    } catch (e) {}
+  }
+  
+  // Fallback — 일반 다운로드
+  downloadBlob(pngBlob, filename);
+  showToast(isMobile()?'다운로드 폴더에 저장되었습니다':'다운로드 폴더에 저장되었습니다');
+}
+
+// ============================================================
+// 결과 공유하기 — 카드 이미지 + 결과 멘트 (모바일 우선)
+// ============================================================
+async function shareResult(){
+  const r = window._resultData;
+  if (!r) return;
+  
+  showToast('카드를 만들고 있어요...');
+  
+  const W = 1080, H = 1080; // 정사각이 카톡 미리보기에 가장 잘 보임
+  const filename = '잡음오염도-'+r.score+'.png';
+  const shareText = buildResultShareText();
+  
+  let pngBlob;
+  try {
+    const svgString = generateCardSVG(r, 'square');
+    pngBlob = await svgToPngBlob(svgString, W, H);
+  } catch (err) {
+    console.error('카드 생성 실패:', err);
+    // 카드 생성 실패 시 텍스트 공유로 fallback
+    await fallbackShareText(shareText, '결과 멘트가 복사되었습니다. 카드는 따로 저장해주세요.');
+    return;
+  }
+  
+  // 모바일 — Web Share API로 카드 + 텍스트 함께 공유
+  if (isMobile() && navigator.canShare) {
+    try {
+      const file = new File([pngBlob], filename, {type:'image/png'});
+      // 파일 + 텍스트 공유 가능 여부 확인
+      const shareData = { files: [file], text: shareText, title: '나의 잡음 오염도' };
+      if (navigator.canShare(shareData)) {
+        try {
+          await navigator.share(shareData);
+          showToast('공유되었습니다');
+          return;
+        } catch (shareErr) {
+          if (shareErr.name === 'AbortError') return;
+          // 텍스트 포함 실패 시 파일만 시도
+        }
+      }
+      // 파일만 공유 시도
+      if (navigator.canShare({files:[file]})) {
+        try {
+          await navigator.share({ files: [file], title: '나의 잡음 오염도' });
+          // 별도로 텍스트 클립보드 복사
+          await copyToClipboard(shareText);
+          showToast('카드 공유 후, 멘트는 클립보드에 복사되었어요');
+          return;
+        } catch (shareErr) {
+          if (shareErr.name === 'AbortError') return;
+        }
+      }
+    } catch (e) {
+      console.error('Web Share 실패:', e);
     }
+  }
+  
+  // PC 또는 Web Share 미지원 — 카드 다운로드 + 텍스트 클립보드 복사
+  downloadBlob(pngBlob, filename);
+  await copyToClipboard(shareText);
+  showToast('카드는 다운로드, 멘트는 클립보드에 복사되었어요');
+}
 
-    function answerSlider() {
-      const slider = document.getElementById('sliderInput');
-      const minutes = parseInt(slider.value, 10);
-      state.snsMinutes = minutes;
-      // 분 단위 → 0~30 점수 환산 (240분 이상 = 30점)
-      // 환산: 0분=6, 30분=12, 60분=18, 120분=24, 180분=27, 240분+=30
-      let score;
-      if (minutes <= 0) score = 6;
-      else if (minutes <= 240) score = 6 + Math.round((minutes / 240) * 24);
-      else score = 30;
-      // 슬라이더 응답을 5점 척도로 환산해서 저장 (다른 문항과 일관)
-      // 6→1, 12→2, 18→3, 24→4, 30→5
-      let scaled;
-      if (score <= 6) scaled = 1;
-      else if (score <= 12) scaled = 2;
-      else if (score <= 18) scaled = 3;
-      else if (score <= 24) scaled = 4;
-      else scaled = 5;
-      state.answers[12] = scaled;
-      saveState();
+// ============================================================
+// 진단 링크 공유하기 — 텍스트만 (이미지 없음)
+// ============================================================
+async function shareDiagnosisLink(){
+  const shareText = buildLinkShareText();
+  
+  // 모바일 — Web Share API로 텍스트 공유 시트 표시
+  if (isMobile() && navigator.share) {
+    try {
+      await navigator.share({
+        title: '나의 잡음 오염도는?',
+        text: shareText,
+        url: DIAGNOSIS_URL
+      });
+      showToast('공유되었습니다');
+      return;
+    } catch (shareErr) {
+      if (shareErr.name === 'AbortError') return;
+      // fallback
+    }
+  }
+  
+  // PC 또는 Web Share 미지원 — 클립보드 복사
+  await fallbackShareText(shareText, '진단 링크가 복사되었습니다. 친구에게 붙여넣으세요!');
+}
 
-      state.currentIdx += 1;
+// ============================================================
+// 헬퍼: 클립보드 복사
+// ============================================================
+async function copyToClipboard(text){
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch(e) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(err) {
+      return false;
+    }
+  }
+}
+
+async function fallbackShareText(text, successMsg){
+  const ok = await copyToClipboard(text);
+  if (ok) showToast(successMsg);
+  else showToast('복사에 실패했어요. 직접 선택해주세요');
+}
+
+function showToast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 2200);
+}
+
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  state.startedAt = Date.now();
+  saveState();
+  showScreen('screen-branch');
+});
+
+document.querySelectorAll('.branch-opt').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    state.branch = btn.dataset.branch;
+    state.currentIdx = 0;
+    saveState();
+    renderQuestion();
+  });
+});
+
+document.getElementById('prevBtn').addEventListener('click', goPrev);
+document.getElementById('nextBtn').addEventListener('click', goNext);
+document.getElementById('sliderPrevBtn').addEventListener('click', goPrev);
+document.getElementById('sliderNextBtn').addEventListener('click', answerSlider);
+document.getElementById('sliderInput').addEventListener('input', e=>{
+  document.getElementById('sliderValue').textContent = e.target.value;
+});
+
+document.getElementById('dlSquareBtn').addEventListener('click', ()=>downloadCard('square'));
+document.getElementById('dlStoryBtn').addEventListener('click', ()=>downloadCard('story'));
+document.getElementById('shareResultBtn').addEventListener('click', shareResult);
+document.getElementById('shareLinkBtn').addEventListener('click', shareDiagnosisLink);
+
+document.getElementById('restartBtn').addEventListener('click', ()=>{
+  document.getElementById('restartModal').classList.add('show');
+});
+
+document.getElementById('restartYes').addEventListener('click', ()=>{
+  document.getElementById('restartModal').classList.remove('show');
+  clearState();
+  document.getElementById('topCounter').style.display='none';
+  showScreen('screen-intro');
+});
+
+document.getElementById('restartNo').addEventListener('click', ()=>{
+  document.getElementById('restartModal').classList.remove('show');
+});
+
+document.getElementById('restartModal').addEventListener('click', (e)=>{
+  if (e.target.id === 'restartModal') {
+    document.getElementById('restartModal').classList.remove('show');
+  }
+});
+
+document.getElementById('resumeYes').addEventListener('click', ()=>{
+  document.getElementById('resumeModal').classList.remove('show');
+  if (state.branch === null) {
+    showScreen('screen-branch');
+  } else {
+    const firstUnanswered = state.answers.findIndex(a=>a===null);
+    if (firstUnanswered === -1) {
+      showLoadingThenResult();
+    } else {
+      state.currentIdx = firstUnanswered;
       saveState();
       renderQuestion();
     }
+  }
+});
 
-    function goBack() {
-      if (state.currentIdx > 0) {
-        state.currentIdx -= 1;
-        saveState();
-        renderQuestion();
-      }
-    }
+document.getElementById('resumeNo').addEventListener('click', ()=>{
+  clearState();
+  document.getElementById('resumeModal').classList.remove('show');
+});
 
-    function calculateResult() {
-      // 축 1: 인덱스 0~5 (Q1~Q6)
-      const axis1 = state.answers.slice(0, 6).reduce((a, b) => a + (b || 0), 0);
-      // 축 2: 인덱스 6~11 (Q7~Q12)
-      const axis2 = state.answers.slice(6, 12).reduce((a, b) => a + (b || 0), 0);
-      // 축 3: 인덱스 12~17 (Q13~Q18)
-      const axis3 = state.answers.slice(12, 18).reduce((a, b) => a + (b || 0), 0);
+function init(){
+  const saved = loadState();
+  if (saved && (saved.answers.some(a=>a!==null) || saved.branch)) {
+    state = Object.assign({branch:null, snsMinutes:null}, saved);
+    if (!state.answers || state.answers.length < 18) state.answers = new Array(18).fill(null);
+    const cnt = state.answers.filter(a=>a!==null).length;
+    document.getElementById('resumeProg').textContent = cnt+' / 18';
+    document.getElementById('resumeModal').classList.add('show');
+  }
+}
 
-      const total = axis1 + axis2 + axis3;
-      const score = Math.round(((total - 18) / 72) * 100);
-
-      let segment;
-      if (score >= 67) segment = 'high';
-      else if (score >= 34) segment = 'mid';
-      else segment = 'low';
-
-      const axisScores = [axis1, axis2, axis3];
-      let maxIdx = 0, maxVal = axisScores[0];
-      for (let i = 1; i < 3; i++) {
-        if (axisScores[i] > maxVal) { maxVal = axisScores[i]; maxIdx = i; }
-      }
-      // 동점 시 우선순위: 3 > 2 > 1
-      if (axisScores[2] === maxVal) maxIdx = 2;
-      else if (axisScores[1] === maxVal && maxIdx !== 2) maxIdx = 1;
-
-      return { axis1, axis2, axis3, score, segment, primaryAxis: maxIdx + 1 };
-    }
-
-    function showLoadingThenResult() {
-      document.getElementById('progressWrap').style.display = 'none';
-      showScreen('screen-loading');
-      setTimeout(() => {
-        renderResult();
-        showScreen('screen-result');
-      }, 900);
-    }
-
-    function renderResult() {
-      const r = calculateResult();
-      const msg = RESULT_MESSAGES[r.segment];
-      const detail = PRIMARY_NOISE_DETAIL[r.primaryAxis];
-
-      // 점수 원형
-      document.getElementById('scoreNum').textContent = r.score;
-      const ringFg = document.getElementById('ringFg');
-      const circumference = 2 * Math.PI * 105;
-      ringFg.setAttribute('stroke', msg.color);
-      ringFg.setAttribute('stroke-dasharray', '0 ' + circumference);
-      setTimeout(() => {
-        ringFg.setAttribute('stroke-dasharray', (r.score / 100 * circumference) + ' ' + circumference);
-      }, 100);
-
-      // 헤드라인
-      document.getElementById('resultHeadline').textContent = msg.headline;
-      document.getElementById('resultSubline').textContent = msg.subline;
-
-      // 3축 게이지
-      const ax3LabelText = state.branch === 'sns' ? 'SNS 알고리즘 노출' : '카톡·온라인 노출';
-      document.getElementById('ax3Label').textContent = ax3LabelText;
-
-      document.getElementById('ax1Score').textContent = r.axis1;
-      document.getElementById('ax2Score').textContent = r.axis2;
-      document.getElementById('ax3Score').textContent = r.axis3;
-      const bars = [
-        document.getElementById('ax1Bar'),
-        document.getElementById('ax2Bar'),
-        document.getElementById('ax3Bar')
-      ];
-      bars.forEach(b => { b.style.background = 'var(--c-white)'; b.style.width = '0%'; });
-      bars[r.primaryAxis - 1].style.background = msg.color;
-      const pcts = [r.axis1 / 30 * 100, r.axis2 / 30 * 100, r.axis3 / 30 * 100];
-      setTimeout(() => {
-        bars.forEach((b, i) => { b.style.width = pcts[i] + '%'; });
-      }, 300);
-
-      // 가장 강한 잡음
-      const primaryName = (r.primaryAxis === 3 && state.branch === 'kakao') ? '카톡·온라인 노출' : detail.name;
-      document.getElementById('primaryNoise').textContent = primaryName;
-      document.getElementById('primaryNoise').style.color = msg.color;
-      document.getElementById('primaryNoiseDesc').textContent = detail.desc;
-
-      // 진단된 욕구
-      document.getElementById('needFoundTitle').textContent = detail.needFoundTitle;
-      const bodyEl = document.getElementById('needFoundBody');
-      bodyEl.innerHTML = detail.needFoundBody.map(p => '<p>' + p + '</p>').join('');
-
-      // N.E.E.D 노하우
-      document.getElementById('knowHowTitle').textContent = detail.knowHowTitle;
-      const stepsEl = document.getElementById('knowHowSteps');
-      stepsEl.innerHTML = '';
-      detail.steps.forEach((s, i) => {
-        const div = document.createElement('div');
-        div.className = 'step-item';
-        div.innerHTML =
-          '<div class="step-num">' + (i + 1) + '</div>' +
-          '<div class="step-content">' +
-            '<div class="step-name">' + s.name + '</div>' +
-            '<div class="step-desc">' + s.desc + '</div>' +
-          '</div>';
-        stepsEl.appendChild(div);
-      });
-
-      // 챌린지
-      document.getElementById('challengeTitle').textContent = detail.challengeTitle;
-      const challengeListEl = document.getElementById('challengeList');
-      challengeListEl.innerHTML = '';
-      detail.challengeList.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        challengeListEl.appendChild(li);
-      });
-      document.getElementById('challengeQuote').textContent = detail.challengeQuote;
-
-      // 영상 링크
-      document.getElementById('videoResource').href = YT_PLAYLIST;
-
-      window._resultData = r;
-    }
-
-    // ============================================================
-    // 결과 카드 SVG (다운로드용) — 두꺼운 원형 바 유지
-    // ============================================================
-    function generateCardSVG(r, version) {
-      const W = 1080;
-      const H = version === 'square' ? 1080 : 1920;
-      const msg = RESULT_MESSAGES[r.segment];
-      const detail = PRIMARY_NOISE_DETAIL[r.primaryAxis];
-      const color = msg.color;
-
-      const NAVY = '#1E2761';
-      const NAVY_DEEP = '#161B47';
-      const WHITE = '#FFFFFF';
-      const WHITE_70 = 'rgba(255,255,255,0.70)';
-      const WHITE_50 = 'rgba(255,255,255,0.50)';
-
-      const ax3Label = state.branch === 'sns' ? 'SNS 알고리즘 노출' : '카톡·온라인 노출';
-      const primaryName = (r.primaryAxis === 3 && state.branch === 'kakao') ? '카톡·온라인 노출' : detail.name;
-
-      function needLogoSVG(x, y, fs) {
-        const ls = fs * 0.08;
-        return '<text x="' + x + '" y="' + y + '" font-family="Montserrat, \'Pretendard Variable\', sans-serif" font-weight="800" font-size="' + fs + '" letter-spacing="' + ls + '">' +
-          '<tspan fill="#2979C8">N.</tspan>' +
-          '<tspan fill="#3DAA6B">E.</tspan>' +
-          '<tspan fill="#C9983A">E.</tspan>' +
-          '<tspan fill="#8B5CF6">D.</tspan>' +
-          '</text>';
-      }
-      function watermarkSVG(x, y) {
-        return '<text x="' + x + '" y="' + y + '" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="600" font-size="18" letter-spacing="2.5" fill="' + WHITE_70 + '" text-anchor="end">나다움설계연구소 · NEED SCAN</text>' +
-               '<text x="' + x + '" y="' + (y + 26) + '" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="' + WHITE_50 + '" text-anchor="end">나다움을 설계하다</text>';
-      }
-      function gaugeBar(x, y, width, height, value, max, c, label, score) {
-        const fillWidth = (value / max) * width;
-        return '<g>' +
-          '<text x="' + x + '" y="' + (y - 12) + '" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="600" font-size="20" fill="' + WHITE + '" letter-spacing="0.5">' + label + '</text>' +
-          '<text x="' + (x + width) + '" y="' + (y - 12) + '" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" fill="' + c + '" text-anchor="end">' + score + '</text>' +
-          '<rect x="' + x + '" y="' + y + '" width="' + width + '" height="' + height + '" rx="' + (height/2) + '" fill="rgba(255,255,255,0.08)" />' +
-          '<rect x="' + x + '" y="' + y + '" width="' + fillWidth + '" height="' + height + '" rx="' + (height/2) + '" fill="' + c + '" opacity="0.9" />' +
-          '</g>';
-      }
-      function bigScoreSquare(cx, cy, sc, c) {
-        const dasharray = (sc / 100) * 879.6;
-        return '<g>' +
-          '<circle cx="' + cx + '" cy="' + cy + '" r="140" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="14" />' +
-          '<circle cx="' + cx + '" cy="' + cy + '" r="140" fill="none" stroke="' + c + '" stroke-width="14" stroke-dasharray="' + dasharray + ' 879.6" stroke-linecap="round" transform="rotate(-90 ' + cx + ' ' + cy + ')" opacity="0.95" />' +
-          '<text x="' + cx + '" y="' + (cy - 8) + '" font-family="Montserrat, sans-serif" font-weight="800" font-size="92" fill="' + WHITE + '" text-anchor="middle" letter-spacing="-2">' + sc + '</text>' +
-          '<text x="' + cx + '" y="' + (cy + 38) + '" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="2">/ 100</text>' +
-          '</g>';
-      }
-      function bigScoreStory(cx, cy, sc, c) {
-        const dasharray = (sc / 100) * 1256.6;
-        return '<g>' +
-          '<circle cx="' + cx + '" cy="' + cy + '" r="200" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="20" />' +
-          '<circle cx="' + cx + '" cy="' + cy + '" r="200" fill="none" stroke="' + c + '" stroke-width="20" stroke-dasharray="' + dasharray + ' 1256.6" stroke-linecap="round" transform="rotate(-90 ' + cx + ' ' + cy + ')" opacity="0.95" />' +
-          '<text x="' + cx + '" y="' + (cy - 12) + '" font-family="Montserrat, sans-serif" font-weight="800" font-size="148" fill="' + WHITE + '" text-anchor="middle" letter-spacing="-3">' + sc + '</text>' +
-          '<text x="' + cx + '" y="' + (cy + 50) + '" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="26" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="3">/ 100</text>' +
-          '</g>';
-      }
-
-      const id = r.segment + '-' + version;
-      let svg = '<?xml version="1.0" encoding="UTF-8"?>';
-      svg += '<svg xmlns="http://www.w3.org/2000/svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '">';
-      svg += '<defs>';
-      svg += '<linearGradient id="bg-' + id + '" x1="0%" y1="0%" x2="0%" y2="100%">' +
-             '<stop offset="0%" stop-color="' + NAVY + '" />' +
-             '<stop offset="100%" stop-color="' + NAVY_DEEP + '" />' +
-             '</linearGradient>';
-      svg += '<radialGradient id="glow-' + id + '" cx="50%" cy="40%" r="60%">' +
-             '<stop offset="0%" stop-color="' + color + '" stop-opacity="0.16" />' +
-             '<stop offset="100%" stop-color="' + color + '" stop-opacity="0" />' +
-             '</radialGradient>';
-      svg += '</defs>';
-      svg += '<rect width="' + W + '" height="' + H + '" fill="url(#bg-' + id + ')" />';
-      svg += '<rect width="' + W + '" height="' + H + '" fill="url(#glow-' + id + ')" />';
-
-      if (version === 'square') {
-        svg += '<line x1="80" y1="100" x2="' + (W-80) + '" y2="100" stroke="#C9983A" stroke-width="1" opacity="0.18" />';
-        svg += '<line x1="80" y1="' + (H-100) + '" x2="' + (W-80) + '" y2="' + (H-100) + '" stroke="#C9983A" stroke-width="1" opacity="0.18" />';
-        svg += '<text x="' + (W/2) + '" y="148" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="20" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="6">사회구조 잡음 노출 지수</text>';
-        svg += needLogoSVG(W/2 - 110, 220, 50);
-        svg += bigScoreSquare(W/2, 410, r.score, color);
-        svg += '<text x="' + (W/2) + '" y="630" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="700" font-size="36" fill="' + WHITE + '" text-anchor="middle" letter-spacing="-0.5">' + msg.headline + '</text>';
-        svg += '<text x="' + (W/2) + '" y="675" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="400" font-size="22" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="0.3">' + msg.subline + '</text>';
-        svg += gaugeBar(140, 770, 800, 14, r.axis1, 30, WHITE, '눈치 압력', r.axis1);
-        svg += gaugeBar(140, 830, 800, 14, r.axis2, 30, WHITE, '비교 압력', r.axis2);
-        svg += gaugeBar(140, 890, 800, 14, r.axis3, 30, WHITE, ax3Label, r.axis3);
-        svg += needLogoSVG(80, H-70, 28);
-        svg += watermarkSVG(W-80, H-95);
-      } else {
-        svg += '<text x="' + (W/2) + '" y="420" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="22" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="7">사회구조 잡음 노출 지수</text>';
-        svg += needLogoSVG(W/2 - 130, 510, 60);
-        svg += bigScoreStory(W/2, 820, r.score, color);
-        svg += '<text x="' + (W/2) + '" y="1110" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="700" font-size="48" fill="' + WHITE + '" text-anchor="middle" letter-spacing="-0.5">' + msg.headline + '</text>';
-        svg += '<text x="' + (W/2) + '" y="1170" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="400" font-size="28" fill="' + WHITE_70 + '" text-anchor="middle" letter-spacing="0.3">' + msg.subline + '</text>';
-        svg += gaugeBar(160, 1310, 760, 18, r.axis1, 30, WHITE, '눈치 압력', r.axis1);
-        svg += gaugeBar(160, 1390, 760, 18, r.axis2, 30, WHITE, '비교 압력', r.axis2);
-        svg += gaugeBar(160, 1470, 760, 18, r.axis3, 30, WHITE, ax3Label, r.axis3);
-        svg += '<text x="' + (W/2) + '" y="1620" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="500" font-size="22" fill="' + WHITE_50 + '" text-anchor="middle" letter-spacing="3">가장 강한 한 가지 잡음</text>';
-        svg += '<text x="' + (W/2) + '" y="1670" font-family="\'Pretendard Variable\', \'Noto Sans KR\', sans-serif" font-weight="700" font-size="40" fill="' + color + '" text-anchor="middle" letter-spacing="-0.3">' + primaryName + '</text>';
-        svg += needLogoSVG(80, 1820, 32);
-        svg += watermarkSVG(W-80, 1800);
-      }
-      svg += '</svg>';
-      return svg;
-    }
-
-    async function downloadCard(version) {
-      const r = window._resultData;
-      if (!r) return;
-      const svgString = generateCardSVG(r, version);
-      const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const W = 1080;
-      const H = version === 'square' ? 1080 : 1920;
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = url;
-      });
-      const canvas = document.createElement('canvas');
-      canvas.width = W;
-      canvas.height = H;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, W, H);
-      URL.revokeObjectURL(url);
-      canvas.toBlob(blob => {
-        const downloadUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = downloadUrl;
-        a.download = 'NEED-SCAN-' + r.score + '-' + version + '.png';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(downloadUrl);
-        showCopyFeedback('카드가 저장되었습니다');
-      }, 'image/png');
-    }
-
-    function buildShareText() {
-      const r = window._resultData;
-      if (!r) return '';
-      const detail = PRIMARY_NOISE_DETAIL[r.primaryAxis];
-      const primaryName = (r.primaryAxis === 3 && state.branch === 'kakao') ? '카톡·온라인 노출' : detail.name;
-      const segmentCopy = {
-        high: '내 잡음 지수 ' + r.score + '점. 욕구가 흐려진 건 의지 문제가 아니었네.',
-        mid: '내 잡음 지수 ' + r.score + '점. 가장 강한 잡음은 ' + primaryName + '. 한 번에 다 줄이지 말고 하나부터.',
-        low: '내 잡음 지수 ' + r.score + '점. 욕구가 비교적 선명하게 들어오는 상태. 이제 우선가치 설계 단계로.'
-      };
-      return segmentCopy[r.segment] + '\n\n#잡음지수 #나다움설계 #N_E_E_D';
-    }
-
-    async function copyShareText() {
-      const text = buildShareText();
-      try {
-        await navigator.clipboard.writeText(text);
-        showCopyFeedback('공유 문구가 복사되었습니다');
-      } catch (e) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        try { document.execCommand('copy'); showCopyFeedback('공유 문구가 복사되었습니다'); }
-        catch (err) { showCopyFeedback('복사 실패 — 직접 선택해주세요'); }
-        document.body.removeChild(textarea);
-      }
-    }
-
-    function showCopyFeedback(msg) {
-      const el = document.getElementById('copyFeedback');
-      el.textContent = msg;
-      el.classList.add('show');
-      setTimeout(() => el.classList.remove('show'), 2000);
-    }
-
-    // ============================================================
-    // 이벤트
-    // ============================================================
-    document.getElementById('startBtn').addEventListener('click', () => {
-      state.startedAt = Date.now();
-      saveState();
-      showScreen('screen-branch');
-    });
-
-    document.querySelectorAll('.branch-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        state.branch = btn.dataset.branch;
-        state.currentIdx = 0;
-        saveState();
-        renderQuestion();
-      });
-    });
-
-    document.getElementById('backBtn').addEventListener('click', goBack);
-
-    // 슬라이더 실시간 업데이트
-    document.getElementById('sliderInput').addEventListener('input', (e) => {
-      document.getElementById('sliderValue').textContent = e.target.value;
-    });
-    document.getElementById('sliderNextBtn').addEventListener('click', answerSlider);
-
-    document.getElementById('downloadSquareBtn').addEventListener('click', () => downloadCard('square'));
-    document.getElementById('downloadStoryBtn').addEventListener('click', () => downloadCard('story'));
-    document.getElementById('copyTextBtn').addEventListener('click', copyShareText);
-
-    document.getElementById('restartBtn').addEventListener('click', () => {
-      if (confirm('처음부터 다시 진단하시겠어요? 현재 결과는 저장되지 않습니다.')) {
-        clearState();
-        showScreen('screen-intro');
-        document.getElementById('progressWrap').style.display = 'none';
-      }
-    });
-
-    document.getElementById('resumeYesBtn').addEventListener('click', () => {
-      document.getElementById('resumeModal').classList.remove('show');
-      if (state.branch === null) {
-        showScreen('screen-branch');
-      } else {
-        const firstUnanswered = state.answers.findIndex((a, i) => i < 18 && a === null);
-        if (firstUnanswered === -1) {
-          showLoadingThenResult();
-        } else {
-          state.currentIdx = firstUnanswered;
-          saveState();
-          renderQuestion();
-        }
-      }
-    });
-
-    document.getElementById('resumeNoBtn').addEventListener('click', () => {
-      clearState();
-      document.getElementById('resumeModal').classList.remove('show');
-    });
-
-    function init() {
-      const saved = loadState();
-      if (saved && (saved.answers.some(a => a !== null) || saved.branch)) {
-        state = Object.assign({ branch: null, snsMinutes: null }, saved);
-        if (!state.answers || state.answers.length < 18) {
-          state.answers = new Array(18).fill(null);
-        }
-        const answeredCount = state.answers.filter(a => a !== null).length;
-        document.getElementById('resumeProgress').textContent = answeredCount + ' / 18';
-        document.getElementById('resumeModal').classList.add('show');
-      }
-    }
-
-    init();
-  </script>
+init();
+</script>
 </body>
 </html>
