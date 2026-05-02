@@ -257,6 +257,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Ne
 .next-diagnosis-cta{display:inline-flex;align-items:center;gap:8px;background:#3DAA6B;color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:700;border:none;font-family:inherit;cursor:pointer;transition:opacity .15s}
 .next-diagnosis-cta:hover{opacity:.9}
 
+/* 신설 1: 사회구조적 해석 카드 (한국 사회에서 만들어진 이유) */
+.context-card{background:linear-gradient(135deg,#FFF8F1 0%,#FFEFD5 100%);border:1px solid #FCD9A8;border-radius:14px;padding:1.5rem 1.5rem;margin-bottom:1.5rem}
+.context-tag{display:inline-block;font-size:10px;letter-spacing:2px;font-weight:700;color:#9A4F00;background:#fff;padding:3px 10px;border-radius:20px;border:1px solid #FCD9A8;margin-bottom:14px}
+.context-headline{font-size:17px;font-weight:800;color:#7C2D12;line-height:1.5;margin-bottom:14px;word-break:keep-all;letter-spacing:-.3px}
+.context-body{font-size:13.5px;color:#7C2D12;line-height:1.85;word-break:keep-all}
+.context-body p+p{margin-top:14px}
+.context-body strong{color:#5C1E0B;font-weight:700}
+.context-cite{font-size:11px;color:#9C5226;margin-top:14px;padding-top:12px;border-top:1px solid #FCD9A8;font-style:italic;line-height:1.55}
+
+/* 신설 4: 사회구조적 vs 심리적 잡음 비교 표 */
+.diff-table-wrap{margin-top:14px;border-radius:12px;overflow:hidden;border:1px solid #E2E8F0}
+.diff-row{display:grid;grid-template-columns:1fr 1fr;background:#fff}
+.diff-row:not(:last-child){border-bottom:1px solid #F0F1F5}
+.diff-header{background:#F8F9FB;font-weight:700;color:#1E2761;font-size:13px;text-align:center;padding:11px 8px;line-height:1.4}
+.diff-header .diff-sub-label{display:block;font-size:10px;color:#718096;font-weight:500;margin-top:3px}
+.diff-header .diff-sub-label-psy{color:#8B5CF6}
+.diff-col{padding:12px 11px;font-size:12.5px;line-height:1.6;color:#4A5568;word-break:keep-all}
+.diff-col.col-soc{border-right:1px solid #F0F1F5}
+.diff-col.col-psy{background:#FAF5FF}
+.diff-badge{display:inline-block;font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:5px;margin-bottom:5px;letter-spacing:.3px}
+.diff-badge.badge-soc{background:#E2E8F0;color:#4A5568}
+.diff-badge.badge-psy{background:#DDD6FE;color:#5B21B6}
+
+/* 강화 1: 액션 카드 — 오늘 24시간 안에 강조 */
+.action-tit-wrap{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px}
+.action-tit-icon{font-size:20px;flex-shrink:0;line-height:1.2;margin-top:1px}
+.action-tit-text{flex:1}
+.action-highlight{background:#FEF3C7;padding:0 4px;box-shadow:inset 0 -7px 0 rgba(201,152,58,.25)}
+.action-sub{font-size:12.5px;color:#92400E;margin-bottom:14px;line-height:1.65;font-weight:500;word-break:keep-all}
+.action-sub strong{color:#78350F;font-weight:700}
+
+/* 신설 3: 일상 장면 카드 */
+.scene-card{background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.5rem}
+.scene-tag{display:inline-block;font-size:10px;letter-spacing:2px;font-weight:700;color:#1E2761;background:#F0F1F5;padding:3px 10px;border-radius:20px;margin-bottom:14px}
+.scene-tit{font-size:16px;font-weight:700;color:#1E2761;line-height:1.5;margin-bottom:1rem;word-break:keep-all}
+.scene-item{padding:1rem 0;border-bottom:1px solid #F0F1F5}
+.scene-item:last-child{border-bottom:none;padding-bottom:0}
+.scene-item:first-of-type{padding-top:0}
+.scene-when{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#1E2761;margin-bottom:8px}
+.scene-when-emoji{font-size:18px}
+.scene-desc{font-size:13.5px;color:#4A5568;line-height:1.7;margin-bottom:10px;padding-left:26px;word-break:keep-all}
+.scene-accept{display:flex;gap:8px;padding:10px 12px 10px 14px;background:#F0FDF4;border-radius:10px;border-left:3px solid #3DAA6B;margin-left:26px}
+.scene-accept-icon{flex-shrink:0;font-size:14px;line-height:1.5}
+.scene-accept-text{font-size:12.5px;color:#166534;line-height:1.65;word-break:keep-all}
+.scene-accept-text strong{color:#14532D;font-weight:700}
+
 /* 혼재 단계 가이드 카드 */
 .guide-card{display:none;background:#fff;border:1px solid #E2E8F0;border-radius:14px;padding:1.4rem 1.5rem;margin-bottom:1.5rem;overflow:hidden}
 .guide-card.show{display:block}
@@ -490,6 +536,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Ne
       <div class="primary-desc" id="primaryDesc"></div>
     </div>
 
+    <!-- 신설 1: 사회구조적 해석 카드 (혼재·심각 단계에서만 표시) -->
+    <div class="context-card" id="contextCard" style="display:none">
+      <span class="context-tag">📚 이 잡음이 한국 사회에서 만들어진 이유</span>
+      <div class="context-headline" id="contextHeadline"></div>
+      <div class="context-body" id="contextBody"></div>
+      <div class="context-cite" id="contextCite"></div>
+    </div>
+
+    <!-- 신설 3: 일상 장면 카드 -->
+    <div class="scene-card" id="sceneCard">
+      <span class="scene-tag">🎬 여러분의 잡음이 일상에서 작동하는 장면</span>
+      <h3 class="scene-tit" id="sceneTit"></h3>
+      <div id="sceneItems"></div>
+    </div>
+
     <!-- 경각심 카드 -->
     <div class="warning-card">
       <span class="warning-tag icon-warn">이 상태가 지속되면</span>
@@ -529,7 +590,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Ne
         <span class="action-need-step-arrow">→</span>
         <span class="action-need-step-name">Eliminate Noise · 잡음 지도의 첫걸음</span>
       </div>
-      <h3 class="action-tit" id="actionTit"></h3>
+      <div class="action-tit-wrap">
+        <span class="action-tit-icon" id="actionTitIcon">⏳</span>
+        <h3 class="action-tit action-tit-text" id="actionTit"></h3>
+      </div>
+      <p class="action-sub" id="actionSub"></p>
       <ul class="action-list" id="actionList"></ul>
       <p class="action-quote" id="actionQuote"></p>
     </div>
@@ -537,12 +602,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Ne
     <!-- 영상 카드 컨테이너 -->
     <div id="videoCardsContainer"></div>
 
-    <!-- 신규: 심리적 잡음 2편 안내 -->
+    <!-- 신규: 심리적 잡음 2편 안내 + 비교 표 -->
     <div class="next-noise-card">
       <span class="next-noise-tag">💡 이 결과는 사회구조적 잡음만을 다뤘습니다</span>
       <div class="next-noise-h">결과가 "내 잡음을 다 설명하지 못한다"고 느끼셨나요?</div>
       <div class="next-noise-d">그건 정확한 직관입니다. <strong>성장과정에서 형성된 심리적 잡음</strong> — 완벽주의, 자존심 의존, 감정 회피 패턴 등 — 은 사회구조적 잡음과는 별도 차원입니다.</div>
-      <div class="next-noise-meta">📌 심리적 잡음 진단(2편)은 별도 진단으로 곧 출시됩니다.</div>
+
+      <!-- 신설 4: 사회구조적 vs 심리적 잡음 비교 표 -->
+      <div class="diff-table-wrap">
+        <div class="diff-row">
+          <div class="diff-col diff-header">1편 · 사회구조적 잡음<span class="diff-sub-label">현재 진단 (마음 밖에서)</span></div>
+          <div class="diff-col diff-header">2편 · 심리적 잡음<span class="diff-sub-label diff-sub-label-psy">출시 예정 (마음 안에서)</span></div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-col col-soc"><span class="diff-badge badge-soc">발생 원인</span><br/>한국 사회의 압축 근대성, 경쟁 구조, SNS 알고리즘</div>
+          <div class="diff-col col-psy"><span class="diff-badge badge-psy">발생 원인</span><br/>성장 과정의 경험, 가족 관계, 반복된 피드백</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-col col-soc"><span class="diff-badge badge-soc">대표 증상</span><br/>눈치 보기, 상향 비교, SNS 무의식 스크롤</div>
+          <div class="diff-col col-psy"><span class="diff-badge badge-psy">대표 증상</span><br/>완벽주의, 인정 의존, 감정 회피, 자기 비판</div>
+        </div>
+        <div class="diff-row">
+          <div class="diff-col col-soc"><span class="diff-badge badge-soc">접근 방향</span><br/>인식과 통찰, 환경 재설계</div>
+          <div class="diff-col col-psy"><span class="diff-badge badge-psy">접근 방향</span><br/>성찰과 수용, 자기 이해</div>
+        </div>
+      </div>
+
+      <div class="next-noise-meta" style="margin-top:14px">📌 심리적 잡음 진단(2편)은 별도 진단으로 곧 출시됩니다.</div>
     </div>
 
     <!-- 5러 진단 연결 카드 -->
@@ -700,6 +786,138 @@ const NOISE_BASE = {
     surfaceNeed: '세상과 연결되고 싶다',
     coreNeed: '내 시간을 내 의도대로 쓰고 싶다'
   }
+};
+
+// ============================================================
+// 신설 1: 사회구조적 해석 카드 (잡음별)
+// — 검증된 학술 인용만 사용 (Phase A 모체 문서 v2.1 정합)
+// ============================================================
+const CONTEXT_DETAIL = {
+  1: {
+    headline: '여러분의 눈치는 약점이 아니라, 고도로 발달한 생존 기술이었습니다',
+    body: [
+      '눈치(Nunchi)는 한국 사회의 일상적 상호작용에서 살아남기 위해 발달한 <strong>필수적 사회 기술</strong>입니다. 어릴 때부터 우리는 어른의 눈치, 선생님의 눈치, 회의실의 눈치를 읽는 법을 배워왔습니다 — 분위기를 읽지 못하면 무례한 사람이 되는 사회에서요.',
+      '즉, 여러분이 남의 시선을 자주 살피는 건 <strong>유난히 소심하거나 약해서가 아닙니다</strong>. 관계 중심적인 한국 사회 구조가 여러분에게 그렇게 행동하도록 가르쳤을 뿐입니다. 내 마음보다 타인의 신호를 먼저 읽는 것은, 사실 나를 보호하기 위한 훌륭한 방패였음을 스스로 인정해 주세요.'
+    ],
+    cite: '— 최상진 (2000) 『한국인 심리학』 / Heo & Park (2013) 눈치 척도 기반 해석'
+  },
+  2: {
+    headline: '여러분의 잣대가 흔들리는 건, 사회가 끊임없이 정답을 주입했기 때문입니다',
+    body: [
+      '한국 청년의 일상 의사결정은 학력·직장·결혼·소비 등 거의 모든 영역에서 동시대 집단의 평균적 표준 — <strong>"남들만큼은 해야 한다"</strong> — 을 출발점으로 삼습니다. 이는 여러분의 주관이 약해서가 아닙니다.',
+      '한국의 <strong>압축 근대성(Chang, 2010)</strong>이 만들어낸 촘촘하고 경쟁적인 사회 구조에서, 보이지 않는 사회적 기준이 목표를 자동으로 세팅해 버립니다. 그래서 내 진짜 욕구를 발견할 시간조차 빼앗겼던 것입니다. 끊임없는 비교는 여러분의 성격 탓이 아니라 <strong>사회 형태의 결과</strong>입니다.'
+    ],
+    cite: '— Chang (2010) Compressed Modernity / Schwartz (2012) 의사결정 부담 이론 기반 해석'
+  },
+  3: {
+    headline: '의지력이 부족한 게 아닙니다. 게임의 룰 자체가 불공정합니다',
+    body: [
+      'SNS 알고리즘은 사용자의 비교 노출을 <strong>24시간 지속적·증폭적</strong>으로 매개하는 디지털 환경입니다. 큐레이션된 타인의 최상의 순간만을 끝없이 보여주며, 인간의 사회비교 본능을 교묘하게 파고듭니다.',
+      '여러분이 무의식적으로 화면을 켜는 건 자제력 부족이 아닙니다. <strong>수십억 달러가 투입된 고도의 디지털 행동 설계</strong>가 여러분의 주의력을 빼앗아간 결과입니다. 잠시라도 머무를 시간을 주지 않도록 의도적으로 만들어진 환경에서, 의지만으로 버티는 건 처음부터 불가능에 가까웠습니다.'
+    ],
+    cite: '— Festinger (1954) 사회비교 이론 / Charry & Tessitore (2021) SNS 동조 효과 RCT 기반 해석'
+  }
+};
+
+// ============================================================
+// 신설 3: 일상 장면 카드 (잡음별 × 분기별)
+// 각 잡음마다 3개 장면 + 수용 문장
+// ============================================================
+const SCENE_DETAIL = {
+  1: {
+    title: '여러분의 눈치 압력은, 이런 순간에 작동합니다',
+    items: [
+      {
+        when: '회의·모임 자리에서',
+        whenEmoji: '💼',
+        desc: '내 의견이 다른 사람들과 다를 때, "이 말 해도 될까?"를 머릿속으로 수십 번 검토하다 결국 의견을 누르고 만다.',
+        accept: '여러분은 분위기와 맥락을 읽어내는 <strong>탁월한 감각</strong>을 가졌습니다. 사회생활의 훌륭한 자산이에요. 다만 이 감각이 나를 지치게 하지 않도록, 가장 안전한 관계에서부터 잠시 끄는 연습을 시작하면 됩니다.'
+      },
+      {
+        when: '카톡·메시지를 보낼 때',
+        whenEmoji: '💬',
+        desc: '메시지를 보내기 전 여러 번 다시 읽어본다. "이 톤 괜찮을까?", "기분 상하지 않을까?" — 보내고 나서도 한참 신경 쓴다.',
+        accept: '이 섬세함은 <strong>관계를 소중히 여기는 마음</strong>에서 나옵니다. 다만 모든 메시지가 검증을 거칠 필요는 없어요. 하루에 한 통만이라도 편한 사람에게 "그냥 떠오른 그대로" 보내보세요.'
+      },
+      {
+        when: '의견을 물을 때',
+        whenEmoji: '🗣️',
+        desc: '"내 생각은…"으로 시작하기 전에 "다들 어떻게 생각하세요?"가 먼저 나온다. 분위기가 정해진 다음에야 비로소 안전하게 의견을 낼 수 있다.',
+        accept: '이건 <strong>집단주의 문화에서 발달한 생존 기술</strong>입니다. 잘못된 게 아니에요. 다만 "다들"이 사라지면 내 생각이 없어지지 않도록, 혼자 있는 시간에 "내가 진짜 뭘 생각하는지"를 종이에 적어보는 연습이 필요합니다.'
+      }
+    ]
+  },
+  2: {
+    title: '여러분의 비교 압력은, 이런 순간에 작동합니다',
+    items: [
+      {
+        when: '성취를 이룬 직후',
+        whenEmoji: '🏆',
+        desc: '무언가를 해내고도 "남들도 다 이 정도는 하니까"라며 만족감을 온전히 누리지 못한다. 잠깐 기뻐하다가 곧 다음 비교가 시작된다.',
+        accept: '여러분의 성취가 부족한 게 아닙니다. <strong>채점 기준표가 외부에 있었을 뿐</strong>이에요. 사회는 끊임없이 상향된 평균을 정답처럼 보여주며 만족을 무효화시킵니다. 이제 그 채점표를 남의 손에서 내 손으로 가져올 차례입니다.'
+      },
+      {
+        when: '동창회·SNS 소식을 들을 때',
+        whenEmoji: '📰',
+        desc: '나보다 잘 풀린 사람의 소식을 들으면, 그 자리에서 표정 관리는 했지만 집에 돌아와 마음이 한참 뒤척인다. "나는 뭐 하고 살았지" 하는 생각이 든다.',
+        accept: '이 마음의 흔들림은 <strong>인간이 가진 자연스러운 사회비교 본능</strong>(Festinger, 1954)입니다. 부끄러워할 일이 아니에요. 다만 그 흔들림이 가라앉은 후, "그래서 내가 진짜 부러운 건 뭐였지?"를 한 번만 더 묻는 연습이 자기 욕구를 발견하는 길이 됩니다.'
+      },
+      {
+        when: '결정을 내릴 때',
+        whenEmoji: '🤔',
+        desc: '뭘 살까, 어디로 갈까 결정할 때 내 마음보다 "다들 뭐 하는지", "후기가 어떤지"를 먼저 본다. 그래서 결정을 내려도 "이게 정말 내가 원했던 건가?" 의문이 남는다.',
+        accept: '이건 <strong>의사결정 부담을 줄이려는 인지의 자연스러운 작동</strong>(Schwartz, 2012)입니다. 정보가 많을수록 우리는 외부 기준에 의존하게 돼요. 다만 작은 결정 하나라도 "남들 후기 보지 않고" 내려보는 연습이 내 기준을 키워줍니다.'
+      }
+    ]
+  },
+  3: {
+    title: '여러분의 비교 노출은, 이런 순간에 작동합니다',
+    items: [
+      {
+        when: '아침 — 잠에서 깨자마자',
+        whenEmoji: '🌅',
+        desc: '알람을 끄려다 인스타·쇼츠를 30분 본다. 오늘 뭐 할지보다 "남들은 어떻게 살지"부터 보게 된다.',
+        accept: '여러분의 잘못이 아닙니다. <strong>알고리즘은 인간의 뇌과학을 역이용해</strong> 잠시라도 머무를 시간을 빼앗도록 설계되어 있어요(Charry & Tessitore, 2021). 자책하지 마세요. 침대 옆이 아닌 거실에서 알람이 울리도록 위치만 바꿔도 변화가 시작됩니다.'
+      },
+      {
+        when: '낮 — 잠깐의 빈 시간',
+        whenEmoji: '☕️',
+        desc: '점심 후 5분, 회의 전 3분, 화장실에서. 무의식적으로 손이 휴대폰으로 가고, 인스타·쇼츠 피드를 스크롤한다. 보고 나서 뭘 봤는지 기억나지 않는다.',
+        accept: '이건 <strong>수십억 달러가 투입된 디지털 행동 설계</strong>의 결과입니다. 의지로 막을 수 있는 영역이 아니에요. 빈 시간이 생길 때 손에 잡을 다른 것 — 짧은 책, 메모장, 스트레칭 1분 — 을 미리 준비해두면 자연스럽게 손이 그쪽으로 가게 됩니다.'
+      },
+      {
+        when: '밤 — 자기 전 침대에서',
+        whenEmoji: '🌙',
+        desc: '자려고 누웠는데 30초만 보려던 게 1시간이 된다. 알고리즘이 다음 영상을 자동 재생하고, 시간이 어디로 갔는지 모른 채 깊은 밤이다.',
+        accept: '아주 작은 환경 설계 하나로 충분합니다. <strong>자기 전 1시간만 휴대폰을 침대 밖에 두기</strong> — 이 한 가지만으로도 빼앗긴 시간과 진짜 욕구를 되찾기 시작할 수 있어요. 의지가 아니라 거리(distance)가 답입니다.'
+      }
+    ]
+  }
+};
+
+// 카카오 분기용 — 비교 노출(3) 일상 장면 변형
+const SCENE_DETAIL_KAKAO_3 = {
+  title: '여러분의 카톡·온라인 노출은, 이런 순간에 작동합니다',
+  items: [
+    {
+      when: '아침 — 잠에서 깨자마자',
+      whenEmoji: '🌅',
+      desc: '알람을 끄려다 단톡방 알림과 카톡 프사를 차례로 확인한다. 누가 어디 갔는지, 누가 뭘 올렸는지부터 보게 된다.',
+      accept: '여러분의 잘못이 아닙니다. <strong>알림과 프사 업데이트는 우리 뇌의 사회적 비교 본능</strong>을 직접 자극하도록 설계되어 있어요. 자책하지 마세요. 단톡방 알림을 잠시 꺼두는 작은 환경 설계만으로도 변화가 시작됩니다.'
+    },
+    {
+      when: '낮 — 잠깐의 빈 시간',
+      whenEmoji: '☕️',
+      desc: '점심 후 5분, 회의 전 3분. 무의식적으로 카톡 친구 목록을 스크롤하고 단톡방 대화를 훑어본다.',
+      accept: '이건 <strong>인간이 가진 자연스러운 사회비교 본능</strong>(Festinger, 1954)이 디지털로 옮겨진 결과입니다. 빈 시간이 생길 때 손에 잡을 다른 것 — 메모장, 짧은 책, 스트레칭 1분 — 을 미리 준비해두면 자연스럽게 손이 그쪽으로 가게 됩니다.'
+    },
+    {
+      when: '밤 — 자기 전 침대에서',
+      whenEmoji: '🌙',
+      desc: '단톡방 대화를 처음부터 다시 읽고, 친구들의 카톡 프사·상태 메시지를 한참 들여다본다. 시간이 어디로 갔는지 모른 채 깊은 밤이다.',
+      accept: '아주 작은 환경 설계 하나로 충분합니다. <strong>자기 전 1시간만 휴대폰을 침대 밖에 두기</strong> — 이 한 가지만으로도 빼앗긴 시간을 되찾기 시작할 수 있어요. 의지가 아니라 거리(distance)가 답입니다.'
+    }
+  ]
 };
 
 // 결과 상세 메시지 (9가지 조합)
@@ -921,7 +1139,10 @@ const RESULT_DETAIL = {
 const ACTION_DETAIL = {
   'low': {
     needStepBadge: { num: 'N.E.E.D 3·4단계', name: 'Energy Flow + Daily Drive · 다음 단계로' },
+    titIcon: '✨',
     title: '잡음이 적은 지금, 우선가치로 흐를 시간',
+    titHighlight: null,
+    sub: '잡음이 잘 걸러지고 있는 지금이 가장 좋은 시작점입니다. 아래 중 <strong>가장 자연스럽게 끌리는 하나</strong>를 골라 이번 주에 시작해 보세요.',
     items: [
       '하루에 단 한 번, "지금 내가 진짜 원하는 것"을 한 줄로 적어보기',
       '몰입이 잘 되는 시간대·환경을 발견했다면, 그것을 일정에 고정하기',
@@ -931,7 +1152,10 @@ const ACTION_DETAIL = {
   },
   'mid': {
     needStepBadge: { num: 'N.E.E.D 2단계', name: 'Eliminate Noise · 잡음 지도 그리기' },
-    title: '오늘부터 작은 한 걸음',
+    titIcon: '⏳',
+    title: '시작할 일',
+    titHighlight: '오늘 24시간 안에',
+    sub: '결과를 읽고 의지가 가장 높은 지금이 가장 좋은 출발점입니다. 아래 중 <strong>가장 쉬운 딱 한 가지</strong>만 골라 오늘 안에 시작해 보세요.',
     items: [
       '하루에 한 번, 잡음이 작동한 순간을 알아차리고 한 줄로 기록하기',
       '잡음이 적게 느껴지는 시간·장소·관계를 찾아 일주일 관찰하기',
@@ -941,7 +1165,10 @@ const ACTION_DETAIL = {
   },
   'high': {
     needStepBadge: { num: 'N.E.E.D 2단계', name: 'Eliminate Noise · 잡음 차단 응급 처치' },
-    title: '오늘 시작하는, 가장 작은 한 걸음',
+    titIcon: '⏳',
+    title: '시작할 가장 작은 한 걸음',
+    titHighlight: '오늘 24시간 안에',
+    sub: '큰 결심은 필요 없습니다. 아래 중 <strong>가장 쉬운 딱 한 가지</strong>만 골라 오늘 안에 시작해 보세요. 변화는 가장 작은 행동에서 시작됩니다.',
     items: [],
     quote: '환경을 바꿔야, 마음이 회복됩니다'
   }
@@ -1202,6 +1429,40 @@ function renderResult(){
   document.getElementById('primaryDefine').textContent = '— ' + primaryDefine;
   document.getElementById('primaryDesc').innerHTML = detail.desc;
   
+  // 신설 1: 사회구조적 해석 카드 — 혼재·심각 단계에서만 표시
+  // (양호 단계는 칭찬 톤이라 사회구조 비판 카드가 톤 어긋남)
+  const contextCard = document.getElementById('contextCard');
+  if (r.segment === 'mid' || r.segment === 'high') {
+    const ctx = CONTEXT_DETAIL[r.primaryAxis];
+    document.getElementById('contextHeadline').textContent = '"' + ctx.headline + '"';
+    document.getElementById('contextBody').innerHTML = ctx.body.map(p=>'<p>'+p+'</p>').join('');
+    document.getElementById('contextCite').textContent = ctx.cite;
+    contextCard.style.display = 'block';
+  } else {
+    contextCard.style.display = 'none';
+  }
+  
+  // 신설 3: 일상 장면 카드 — 모든 단계에서 표시
+  // (양호 단계도 자기 인식의 가치는 동일)
+  const sceneData = (r.primaryAxis === 3 && state.branch === 'kakao')
+    ? SCENE_DETAIL_KAKAO_3
+    : SCENE_DETAIL[r.primaryAxis];
+  document.getElementById('sceneTit').textContent = sceneData.title;
+  const sceneItemsEl = document.getElementById('sceneItems');
+  sceneItemsEl.innerHTML = '';
+  sceneData.items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'scene-item';
+    div.innerHTML =
+      '<div class="scene-when"><span class="scene-when-emoji">' + item.whenEmoji + '</span><span>' + item.when + '</span></div>' +
+      '<div class="scene-desc">' + item.desc + '</div>' +
+      '<div class="scene-accept">' +
+        '<span class="scene-accept-icon">✨</span>' +
+        '<div class="scene-accept-text">' + item.accept + '</div>' +
+      '</div>';
+    sceneItemsEl.appendChild(div);
+  });
+  
   // 경고/인정 카드
   const warningCard = document.querySelector('.warning-card');
   const warningTag = document.querySelector('.warning-tag');
@@ -1275,6 +1536,8 @@ function renderResult(){
   const actionTag = document.querySelector('.action-tag');
   const actionQuoteEl = document.getElementById('actionQuote');
   const actionTitEl = document.getElementById('actionTit');
+  const actionTitIconEl = document.getElementById('actionTitIcon');
+  const actionSubEl = document.getElementById('actionSub');
   const actionListEl = document.getElementById('actionList');
   
   if (r.segment === 'low') {
@@ -1285,6 +1548,7 @@ function renderResult(){
     actionTag.style.borderColor = '#BBF7D0';
     actionTag.textContent = '▸ 다음 단계, 작은 시작';
     actionTitEl.style.color = '#14532D';
+    if (actionSubEl) actionSubEl.style.color = '#166534';
     actionQuoteEl.style.color = '#166534';
     actionQuoteEl.style.borderTopColor = '#BBF7D0';
   } else {
@@ -1295,11 +1559,25 @@ function renderResult(){
     actionTag.style.borderColor = '#FDE68A';
     actionTag.textContent = '▸ 오늘 시작하는 작은 실천';
     actionTitEl.style.color = '#78350F';
+    if (actionSubEl) actionSubEl.style.color = '#92400E';
     actionQuoteEl.style.color = '#92400E';
     actionQuoteEl.style.borderTopColor = '#FDE68A';
   }
   
-  actionTitEl.textContent = actionDetail.title;
+  // 강화 1: 타이틀 아이콘 + 24시간 강조 처리
+  if (actionTitIconEl) {
+    actionTitIconEl.textContent = actionDetail.titIcon || '✨';
+  }
+  if (actionDetail.titHighlight) {
+    actionTitEl.innerHTML = '<span class="action-highlight">' + actionDetail.titHighlight + '</span> ' + actionDetail.title;
+  } else {
+    actionTitEl.textContent = actionDetail.title;
+  }
+  // 부담 완화 서브카피
+  if (actionSubEl) {
+    actionSubEl.innerHTML = actionDetail.sub || '';
+    actionSubEl.style.display = actionDetail.sub ? 'block' : 'none';
+  }
   
   let actionItems = actionDetail.items;
   if (r.segment === 'high' && (!actionItems || actionItems.length === 0)) {
