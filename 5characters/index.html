@@ -2,2743 +2,924 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5러 에너지 성향 진단 | 나다움설계연구소</title>
-<meta name="description" content="나의 에너지는 지금 어디로 흐르고 있는가? 5분 진단으로 진짜 나의 에너지 패턴을 발견해보세요.">
-<meta property="og:title" content="에너지 성향 진단 | 나의 에너지는 지금 어디로 흐르고 있는가?">
-<meta property="og:description" content="잡음을 걷어내면 자연스럽게 흐르는, 진짜 나의 에너지 패턴은 무엇일까요? 5분 진단.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>나의 에너지는 어디로 흐를까? — 5러 경향성 진단 v2 | 나다움설계연구소</title>
+
+<meta property="og:title" content="나의 에너지는 어디로 흐를까?">
+<meta property="og:description" content="5러 경향성 진단 · 빅파이브 단축형 기반 · 약 5분 · 무료 — 나다움설계연구소 김수정 박사">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://commlovekim70.github.io/need-project/5characters/">
 <meta property="og:image" content="https://commlovekim70.github.io/need-project/5characters/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="나다움설계연구소">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="나의 에너지는 어디로 흐를까?">
+<meta name="twitter:description" content="5러 경향성 진단 · 약 5분 · 무료">
+<meta name="twitter:image" content="https://commlovekim70.github.io/need-project/5characters/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 :root {
-  --navy:   #1E2761;
-  --blue:   #2979C8;
-  --green:  #3DAA6B;
-  --gold:   #C9983A;
+  --primary: #3DAA6B;
+  --primary-light: #EBF7F1;
+  --primary-dark: #2D8252;
+  --navy: #1E2761;
+  --gold: #C9983A;
+  --blue: #2979C8;
   --purple: #8B5CF6;
-  --gray:   #718096;
-  --light:  #F5F6FA;
-  --dark:   #2F2F2F;
-  --white:  #FFFFFF;
-  --red:    #E53E3E;
+  --text: #1A1A1A;
+  --text-soft: #555;
+  --text-mute: #888;
+  --bg: #FAFBFC;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+}
+body { font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.65;
+  -webkit-font-smoothing:antialiased; }
+.container { max-width:720px; margin:0 auto; padding:24px 20px 80px; min-height:100vh; }
 
-  --열정러: #2979C8;
-  --협력러: #3DAA6B;
-  --안정러: #1E2761;
-  --장인러: #8B5CF6;
-  --모험러: #C9983A;
+/* 로고 헤더 */
+.brand-header { display:flex; align-items:center; gap:14px; padding:16px 0 24px;
+  border-bottom:1px solid var(--border); margin-bottom:28px; }
+.logo-need { font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px;
+  letter-spacing:3px; display:flex; align-items:center; }
+.logo-need .l1{color:#2979C8}.logo-need .l2{color:#3DAA6B}
+.logo-need .l3{color:#C9983A}.logo-need .l4{color:#8B5CF6}
+.logo-sep { width:1px; height:26px; background:var(--border); }
+.logo-right { display:flex; flex-direction:column; gap:2px; }
+.logo-right .top { font-size:11px; font-weight:600; letter-spacing:1.5px; color:var(--text-soft); }
+.logo-right .bottom { font-size:13px; font-weight:500; color:var(--text); }
 
-  --열정러-light: #EBF4FF;
-  --협력러-light: #EDFAF3;
-  --안정러-light: #E8EAF6;
-  --장인러-light: #F3EFFE;
-  --모험러-light: #FDF6E8;
-}
+/* 표지 */
+.cover { text-align:center; padding:24px 0 36px; }
+.cover-tag { display:inline-block; padding:6px 14px; background:var(--primary-light);
+  color:var(--primary); border-radius:20px; font-size:13px; font-weight:600; margin-bottom:20px; }
+.cover-title { font-size:28px; font-weight:700; color:var(--navy); line-height:1.4;
+  margin-bottom:12px; word-break:keep-all; }
+.cover-subtitle { font-size:15px; color:var(--text-soft); margin-bottom:28px; word-break:keep-all; }
+.cover-meta { display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
+  font-size:14px; color:var(--text-mute); margin-bottom:36px; }
+.cover-meta span { display:flex; align-items:center; gap:6px; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* 5러 미리보기 카드 */
+.chars-preview { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:32px; }
+.char-mini { background:var(--card); border:1.5px solid var(--border); border-radius:10px;
+  padding:10px 6px; text-align:center; }
+.char-mini .icon { font-size:22px; margin-bottom:4px; }
+.char-mini .name { font-size:11px; font-weight:700; color:var(--navy); }
 
-html { scroll-behavior: smooth; }
+/* 인트로 카드 */
+.intro-card { background:var(--card); border:1px solid var(--border); border-radius:16px;
+  padding:28px 24px; margin-bottom:28px; }
+.intro-card p { font-size:15.5px; color:var(--text); margin-bottom:14px; word-break:keep-all; }
+.intro-card p:last-child { margin-bottom:0; }
+.intro-card .quote { padding:16px 18px; background:var(--primary-light);
+  border-left:4px solid var(--primary); border-radius:8px;
+  font-weight:600; color:var(--navy); margin:16px 0; }
+.notice-box { background:#FFF7ED; border:1px solid #FED7AA; border-radius:12px;
+  padding:14px 16px; font-size:14px; color:#92400E; margin-bottom:16px; word-break:keep-all; }
 
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.7;
-  min-height: 100vh;
-}
+/* 버튼 */
+.btn-primary { display:block; width:100%; padding:18px 24px; background:var(--primary);
+  color:white; border:none; border-radius:14px; font-size:17px; font-weight:700;
+  font-family:inherit; cursor:pointer; transition:all .2s; letter-spacing:.3px; }
+.btn-primary:hover,.btn-primary:active { background:var(--primary-dark);
+  transform:translateY(-1px); box-shadow:0 6px 20px rgba(61,170,107,.25); }
+.btn-secondary { display:block; width:100%; padding:14px 22px; background:white;
+  color:var(--primary); border:1.5px solid var(--primary); border-radius:12px;
+  font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;
+  transition:all .2s; margin-top:12px; text-decoration:none; text-align:center; }
+.btn-secondary:hover { background:var(--primary-light); }
 
-/* ── PROGRESS BAR ── */
-#progress-bar {
-  position: fixed; top: 0; left: 0; width: 0%;
-  height: 4px; background: var(--gold);
-  z-index: 1000; transition: width 0.4s ease;
-}
+/* 진단 화면 */
+.quiz-screen { display:none; }
+.quiz-screen.active { display:block; }
+.progress-bar-wrap { background:var(--border); height:6px; border-radius:4px;
+  overflow:hidden; margin-bottom:8px; }
+.progress-bar { height:100%; background:var(--primary); width:0%;
+  transition:width .3s ease; }
+.progress-text { font-size:13px; color:var(--text-mute); margin-bottom:24px; text-align:right; }
 
-/* ── SCREENS ── */
-.screen { display: none; min-height: 100vh; }
-.screen.active { display: block; animation: fadeIn 0.5s ease; }
-.screen.active.flex-screen { display: flex; }
-#screen-cover.active { display: flex; }
+.section-divider { text-align:center; padding:12px 0; margin-bottom:8px; }
+.section-divider .section-label { display:inline-block; padding:5px 14px;
+  background:var(--primary-light); color:var(--primary); border-radius:16px;
+  font-size:12.5px; font-weight:700; letter-spacing:.5px; }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulseBtn {
-  0%, 100% { box-shadow: 0 6px 28px rgba(201,152,58,0.55); }
-  50%       { box-shadow: 0 6px 36px rgba(201,152,58,0.85), 0 0 0 6px rgba(201,152,58,0.15); }
-}
+.question-card { background:var(--card); border-radius:16px; padding:28px 24px; margin-bottom:20px; }
+.question-num { display:inline-block; font-family:'Montserrat',sans-serif; font-size:13px;
+  font-weight:700; color:var(--primary); letter-spacing:1.5px; margin-bottom:12px; }
+.question-char { display:inline-block; font-size:13px; font-weight:600;
+  color:var(--text-mute); margin-left:8px; }
+.question-text { font-size:17.5px; font-weight:500; color:var(--text); line-height:1.55;
+  margin-bottom:24px; word-break:keep-all; }
 
-/* ══════════════════════════════
-   COVER
-══════════════════════════════ */
-#screen-cover {
-  background: var(--navy);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 32px 24px 36px;
-  min-height: 100vh;
-  position: relative; overflow: hidden;
-}
+.likert-options { display:flex; flex-direction:column; gap:10px; }
+.likert-option { display:flex; align-items:center; gap:14px; padding:14px 16px;
+  background:white; border:1.5px solid var(--border); border-radius:12px;
+  cursor:pointer; transition:all .15s; font-size:15px; }
+.likert-option:hover,.likert-option:active { border-color:var(--primary); background:var(--primary-light); }
+.likert-option.selected { border-color:var(--primary); background:var(--primary-light);
+  font-weight:600; color:var(--primary-dark); }
+.likert-circle { width:22px; height:22px; border:2px solid var(--border); border-radius:50%;
+  flex-shrink:0; transition:all .15s; position:relative; }
+.likert-option.selected .likert-circle { border-color:var(--primary); }
+.likert-option.selected .likert-circle::after { content:""; position:absolute;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  width:10px; height:10px; background:var(--primary); border-radius:50%; }
 
-#screen-cover::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(41,121,200,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(201,152,58,0.12) 0%, transparent 55%);
-  pointer-events: none;
-}
+.nav-buttons { display:flex; gap:10px; margin-top:8px; }
+.btn-nav { flex:1; padding:14px; border-radius:12px; font-size:15px; font-weight:600;
+  font-family:inherit; border:none; cursor:pointer; transition:all .2s; }
+.btn-prev { background:white; color:var(--text-soft); border:1.5px solid var(--border); }
+.btn-prev:hover { background:var(--bg); }
+.btn-next { background:var(--primary); color:white; }
+.btn-next:disabled { background:var(--border); color:var(--text-mute); cursor:not-allowed; }
+.btn-next:not(:disabled):hover { background:var(--primary-dark); }
 
-/* ── 확정 로고 (현황진단 V3 기준) ── */
-.logo-bar {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 24px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.2s forwards;
-}
-.logo-need {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800; font-size: 22px; letter-spacing: 3px;
-}
-.logo-need .n  { color: #2979C8; }
-.logo-need .e1 { color: #3DAA6B; }
-.logo-need .e2 { color: #C9983A; }
-.logo-need .d  { color: #8B5CF6; }
-.logo-sep {
-  width: 1px; height: 26px;
-  background: rgba(255,255,255,0.25);
-}
-.logo-right {
-  display: flex; flex-direction: column; gap: 1px;
-}
-.logo-right .logo-name {
-  font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.75); line-height: 1.3;
-}
-.logo-right .logo-sub-text {
-  font-size: 13px; font-weight: 500;
-  color: rgba(255,255,255,0.55); line-height: 1.3;
-}
+/* 결과 화면 */
+.result-screen { display:none; }
+.result-screen.active { display:block; }
 
-/* quiz 화면 로고 (밝은 배경용) */
-.quiz-logo-bar {
-  display: flex; align-items: center; gap: 8px;
-}
-.quiz-logo-need {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800; font-size: 16px; letter-spacing: 2px;
-}
-.quiz-logo-need .n  { color: #2979C8; }
-.quiz-logo-need .e1 { color: #3DAA6B; }
-.quiz-logo-need .e2 { color: #C9983A; }
-.quiz-logo-need .d  { color: #8B5CF6; }
-.quiz-logo-sep {
-  width: 1px; height: 20px; background: #dce2ee;
-}
-.quiz-logo-right .quiz-logo-name {
-  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
-  color: var(--gray); line-height: 1.3;
-}
-.quiz-logo-right .quiz-logo-sub {
-  font-size: 11px; font-weight: 400; color: #aab0c0; line-height: 1.3;
-}
+/* 주·보조 경향 카드 */
+.tendency-hero { background:linear-gradient(135deg,var(--primary-light),#D1FAE5);
+  border-radius:20px; padding:32px 24px; text-align:center; margin-bottom:20px; }
+.tendency-hero .label { font-size:13px; font-weight:600; color:var(--primary-dark);
+  letter-spacing:.5px; margin-bottom:10px; }
+.tendency-hero .main-char { font-size:52px; margin-bottom:8px; }
+.tendency-hero .main-name { font-size:26px; font-weight:800; color:var(--navy);
+  margin-bottom:6px; }
+.tendency-hero .main-sub { font-size:14px; color:var(--text-soft); margin-bottom:20px; }
+.tendency-hero .divider-line { width:40px; height:2px; background:var(--border);
+  margin:0 auto 20px; }
+.sub-tendency { display:flex; align-items:center; justify-content:center; gap:12px; }
+.sub-tendency .sub-label { font-size:12px; color:var(--text-mute); }
+.sub-tendency .sub-char { font-size:28px; }
+.sub-tendency .sub-name { font-size:16px; font-weight:700; color:var(--navy); }
 
-.cover-badge {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.6);
-  font-size: 11px; font-weight: 500;
-  padding: 5px 14px; border-radius: 20px;
-  letter-spacing: 1px; margin-bottom: 16px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.3s forwards;
-}
+/* 균형형·저활성 배지 */
+.special-badge { display:inline-block; padding:6px 16px; border-radius:20px;
+  font-size:13px; font-weight:700; margin-bottom:16px; }
+.badge-balance { background:#EDE9FE; color:#6D28D9; }
+.badge-low { background:#FEF3C7; color:#92400E; }
 
-.cover-title {
-  font-size: clamp(24px, 5.5vw, 44px);
-  font-weight: 900; color: var(--white);
-  text-align: center; line-height: 1.2;
-  margin-bottom: 12px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.4s forwards;
-}
-.cover-title .gold { color: var(--gold); }
+/* 레이더 차트 카드 */
+.radar-card { background:var(--card); border-radius:16px; padding:24px;
+  margin-bottom:20px; text-align:center; }
+.radar-card h3 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.radar-card .caption { font-size:13px; color:var(--text-mute); margin-bottom:20px; }
+.radar-svg-wrap { max-width:320px; margin:0 auto; }
 
-.cover-sub {
-  font-size: clamp(13px, 2vw, 15px);
-  color: rgba(255,255,255,0.55);
-  font-style: italic; text-align: center;
-  margin-bottom: 28px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.5s forwards;
-}
+/* 경향성 상세 카드 */
+.detail-card { background:var(--card); border-radius:16px; padding:26px 24px;
+  margin-bottom:16px; border-top:4px solid var(--primary); }
+.detail-card.secondary { border-top-color:var(--border); }
+.detail-card .tag { display:inline-block; padding:4px 12px; border-radius:12px;
+  font-size:12px; font-weight:600; margin-bottom:12px; letter-spacing:.5px; }
+.detail-card .tag.main-tag { background:var(--primary-light); color:var(--primary); }
+.detail-card .tag.sub-tag { background:#F3F4F6; color:var(--text-soft); }
+.detail-card .char-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.detail-card .char-icon { font-size:36px; }
+.detail-card .char-info h3 { font-size:20px; font-weight:800; color:var(--navy); }
+.detail-card .char-info .en { font-size:13px; color:var(--text-mute); }
+.detail-card .desc { font-size:15.5px; color:var(--text); margin-bottom:14px;
+  word-break:keep-all; line-height:1.7; }
+.detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.detail-item { background:var(--bg); border-radius:10px; padding:12px 14px; }
+.detail-item .item-label { font-size:11.5px; font-weight:700; color:var(--text-mute);
+  letter-spacing:.5px; margin-bottom:6px; }
+.detail-item .item-val { font-size:14px; color:var(--text); line-height:1.5; }
 
-.cover-info-row {
-  display: flex; gap: 24px; flex-wrap: wrap;
-  justify-content: center; margin-bottom: 24px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.6s forwards;
-}
-.cover-info-item {
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-}
-.cover-info-item .label {
-  font-size: 10px; color: rgba(255,255,255,0.4);
-  letter-spacing: 1.5px; text-transform: uppercase;
-}
-.cover-info-item .value {
-  font-size: 16px; font-weight: 700; color: var(--gold);
-}
+/* 지금 시기의 메시지 */
+.message-card { background:var(--primary-light); border-radius:16px; padding:26px 24px;
+  margin-bottom:20px; border:1.5px solid rgba(61,170,107,.2); }
+.message-card .tag { display:inline-block; padding:4px 12px; background:white;
+  color:var(--primary); border-radius:12px; font-size:12px; font-weight:700;
+  margin-bottom:12px; letter-spacing:.5px; }
+.message-card h3 { font-size:19px; font-weight:700; color:var(--navy); margin-bottom:12px;
+  word-break:keep-all; line-height:1.4; }
+.message-card p { font-size:15.5px; color:var(--text); word-break:keep-all;
+  line-height:1.7; }
 
-.cover-notice {
-  background: rgba(255,255,255,0.06);
-  border-left: 3px solid var(--gold);
-  padding: 14px 18px; border-radius: 0 8px 8px 0;
-  max-width: 480px; margin-bottom: 28px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.65s forwards;
-}
-.cover-notice p {
-  font-size: 12px; color: rgba(255,255,255,0.65);
-  line-height: 1.65; margin-bottom: 6px;
-}
-.cover-notice p:last-child { margin-bottom: 0; }
-.cover-notice strong { color: rgba(255,255,255,0.9); }
-.cover-notice .warn { color: #ff9a9a; font-weight: 500; }
+/* 조심 신호 */
+.caution-card { background:#FFFBEB; border:1.5px solid #FDE68A; border-radius:14px;
+  padding:22px; margin-bottom:20px; }
+.caution-card h3 { font-size:16px; font-weight:700; color:#92400E; margin-bottom:10px; }
+.caution-list { list-style:none; }
+.caution-list li { padding:6px 0; font-size:14.5px; color:var(--text);
+  border-bottom:1px solid #FDE68A; word-break:keep-all; }
+.caution-list li:last-child { border-bottom:none; }
+.caution-list li::before { content:"⚠ "; color:#F59E0B; }
 
-.btn-start {
-  background: var(--gold); color: var(--white);
-  border: none; cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 16px; font-weight: 700;
-  padding: 16px 48px; border-radius: 50px;
-  transition: all 0.25s ease;
-  letter-spacing: 0.5px;
-  opacity: 0; animation: fadeIn 0.6s ease 0.75s forwards;
-  box-shadow: 0 8px 32px rgba(201,152,58,0.35);
-}
-.btn-start:hover {
-  background: #d4a73f;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(201,152,58,0.45);
-}
+/* 작은 실천 */
+.practice-card { background:white; border:1.5px solid var(--primary);
+  border-radius:16px; padding:24px; margin-bottom:20px; }
+.practice-card .tag { display:inline-block; padding:4px 12px; background:var(--primary);
+  color:white; border-radius:12px; font-size:12px; font-weight:700;
+  margin-bottom:12px; letter-spacing:.5px; }
+.practice-card h3 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.practice-card p { font-size:15px; color:var(--text); word-break:keep-all; line-height:1.7; }
 
-/* ══════════════════════════════
-   QUIZ
-══════════════════════════════ */
-#screen-quiz {
-  max-width: 720px; margin: 0 auto;
-  padding: 40px 20px 80px;
-}
+/* 변동성 안내 */
+.variability-card { background:linear-gradient(135deg,#F0FDF4,#DCFCE7);
+  border-radius:16px; padding:24px; margin-bottom:20px; }
+.variability-card h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+.variability-card p { font-size:14.5px; color:var(--text); margin-bottom:10px;
+  word-break:keep-all; line-height:1.65; }
+.variability-card p:last-child { margin-bottom:0; }
+.variability-card .highlight { font-weight:700; color:var(--primary-dark); }
 
-.quiz-top {
-  display: flex; align-items: center;
-  justify-content: space-between; margin-bottom: 32px;
-}
+/* 다음 진단 연결 */
+.next-card { border-radius:16px; padding:24px; margin-bottom:14px;
+  cursor:pointer; text-decoration:none; display:block; transition:all .2s; color:inherit; }
+.next-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.08); }
+.next-card.blue { background:linear-gradient(135deg,#EBF5FF,#DBEAFE); }
+.next-card.gold { background:linear-gradient(135deg,#FFFBEB,#FEF3C7); }
+.next-card .step-tag { display:inline-block; padding:4px 12px; background:white;
+  border-radius:12px; font-size:11.5px; font-weight:700; margin-bottom:10px; letter-spacing:.5px; }
+.next-card.blue .step-tag { color:var(--blue); }
+.next-card.gold .step-tag { color:var(--gold); }
+.next-card h3 { font-size:18px; font-weight:700; color:var(--navy); margin-bottom:6px; word-break:keep-all; }
+.next-card p { font-size:14px; color:var(--text-soft); margin-bottom:10px; word-break:keep-all; }
+.next-card .arrow { font-size:14px; font-weight:600; }
+.next-card.blue .arrow { color:var(--blue); }
+.next-card.gold .arrow { color:var(--gold); }
 
-.quiz-counter {
-  font-size: 13px; color: var(--gray); font-weight: 500;
-}
-.quiz-counter strong { color: var(--navy); font-size: 16px; }
+/* 공유 */
+.share-section { margin-top:32px; padding-top:24px; border-top:1px solid var(--border); }
+.share-section h3 { font-size:15px; font-weight:600; color:var(--text);
+  margin-bottom:14px; text-align:center; }
+.share-buttons { display:flex; gap:10px; }
+.btn-share { flex:1; padding:14px 12px; border:none; border-radius:12px;
+  font-size:14px; font-weight:600; font-family:inherit; cursor:pointer;
+  transition:all .2s; display:flex; align-items:center; justify-content:center; gap:6px; }
+.btn-share-result { background:var(--gold); color:white; }
+.btn-share-result:hover { background:#A87E2C; }
+.btn-share-link { background:var(--primary); color:white; }
+.btn-share-link:hover { background:var(--primary-dark); }
 
-.quiz-track {
-  width: 100%; height: 5px;
-  background: #e2e6f0; border-radius: 10px;
-  margin-bottom: 40px; overflow: hidden;
-}
-.quiz-track-fill {
-  height: 100%; border-radius: 10px;
-  background: linear-gradient(90deg, var(--blue), var(--gold));
-  transition: width 0.5s cubic-bezier(.4,0,.2,1);
-}
+/* 푸터 */
+.footer { text-align:center; margin-top:32px; padding-top:24px;
+  border-top:1px solid var(--border); font-size:12px; color:var(--text-mute); }
+.footer p { margin-bottom:6px; }
+.footer .signature { font-weight:600; color:var(--navy); margin-bottom:8px; font-size:13px; }
 
-/* question card */
-.q-card {
-  background: var(--white);
-  border-radius: 20px;
-  padding: 36px 32px;
-  box-shadow: 0 4px 32px rgba(30,39,97,0.08);
-  margin-bottom: 28px;
-  transition: opacity 0.3s ease;
-}
+/* 모달 */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5);
+  z-index:1000; align-items:center; justify-content:center; padding:20px;
+  animation:fadeIn .2s; }
+.modal-overlay.active { display:flex; }
+.modal-box { background:white; border-radius:16px; padding:28px 24px;
+  max-width:360px; width:100%; text-align:center; animation:slideUp .25s; }
+.modal-box h4 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.modal-box p { font-size:14px; color:var(--text-soft); margin-bottom:20px;
+  word-break:keep-all; line-height:1.6; }
+.modal-buttons { display:flex; gap:8px; }
+.modal-btn { flex:1; padding:12px; border:none; border-radius:10px;
+  font-size:14px; font-weight:600; cursor:pointer; font-family:inherit; }
+.modal-btn-primary { background:var(--primary); color:white; }
+.modal-btn-secondary { background:var(--border); color:var(--text); }
 
-.q-step-badge {
-  display: inline-flex; align-items: center;
-  gap: 8px; margin-bottom: 20px;
-}
-.q-step-num {
-  background: var(--navy); color: var(--white);
-  font-size: 12px; font-weight: 700;
-  padding: 4px 10px; border-radius: 20px;
-  letter-spacing: 0.5px;
-}
-.q-step-intent {
-  font-size: 11px; color: var(--gray);
-  font-style: italic;
-}
+.toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:rgba(30,39,97,.95); color:white; padding:12px 24px; border-radius:24px;
+  font-size:14px; font-weight:500; opacity:0; transition:all .3s; z-index:1100;
+  pointer-events:none; }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-.q-text {
-  font-size: clamp(16px, 2.8vw, 20px);
-  font-weight: 700; color: var(--navy);
-  line-height: 1.5; margin-bottom: 8px;
-}
-.q-note {
-  font-size: 12px; color: var(--gray);
-  margin-bottom: 28px; font-style: italic;
-}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
 
-/* options */
-.options { display: flex; flex-direction: column; gap: 10px; }
-
-.option {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px; border-radius: 12px;
-  border: 2px solid #e8ecf4;
-  cursor: pointer; transition: all 0.2s ease;
-  background: var(--white);
-  position: relative; overflow: hidden;
-}
-.option::before {
-  content: '';
-  position: absolute; inset: 0; opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.option:hover { border-color: var(--navy); transform: translateX(3px); }
-
-.option-label {
-  width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 800;
-  border: 2px solid currentColor;
-  flex-shrink: 0; transition: all 0.2s ease;
-}
-.option-text {
-  font-size: 14px; font-weight: 400;
-  color: var(--dark); line-height: 1.5;
-  flex: 1;
-}
-
-/* selected state per type */
-.option.selected-A { border-color: var(--열정러); background: var(--열정러-light); }
-.option.selected-A .option-label { background: var(--열정러); color: var(--white); border-color: var(--열정러); }
-.option.selected-A .option-text { color: var(--열정러); font-weight: 600; }
-
-.option.selected-B { border-color: var(--협력러); background: var(--협력러-light); }
-.option.selected-B .option-label { background: var(--협력러); color: var(--white); border-color: var(--협력러); }
-.option.selected-B .option-text { color: var(--협력러); font-weight: 600; }
-
-.option.selected-C { border-color: var(--안정러); background: var(--안정러-light); }
-.option.selected-C .option-label { background: var(--안정러); color: var(--white); border-color: var(--안정러); }
-.option.selected-C .option-text { color: var(--안정러); font-weight: 600; }
-
-.option.selected-D { border-color: var(--장인러); background: var(--장인러-light); }
-.option.selected-D .option-label { background: var(--장인러); color: var(--white); border-color: var(--장인러); }
-.option.selected-D .option-text { color: var(--장인러); font-weight: 600; }
-
-.option.selected-E { border-color: var(--모험러); background: var(--모험러-light); }
-.option.selected-E .option-label { background: var(--모험러); color: var(--white); border-color: var(--모험러); }
-.option.selected-E .option-text { color: var(--모험러); font-weight: 600; }
-
-/* option label colors (default) */
-.opt-A .option-label { color: var(--열정러); }
-.opt-B .option-label { color: var(--협력러); }
-.opt-C .option-label { color: var(--안정러); }
-.opt-D .option-label { color: var(--장인러); }
-.opt-E .option-label { color: var(--모험러); }
-
-/* intent box (운영자용) */
-.intent-box {
-  background: #f7f8fc;
-  border-left: 3px solid var(--gray);
-  border-radius: 0 8px 8px 0;
-  padding: 12px 16px; margin-top: 20px;
-}
-.intent-label {
-  font-size: 10px; font-weight: 700;
-  color: var(--gray); letter-spacing: 1.5px;
-  text-transform: uppercase; margin-bottom: 4px;
-}
-.intent-text { font-size: 12px; color: var(--gray); font-style: italic; }
-.concept-text { font-size: 11px; color: #aab0c0; margin-top: 3px; }
-
-/* nav buttons */
-.quiz-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 12px;
-}
-.btn-nav {
-  padding: 14px 32px; border-radius: 50px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px; font-weight: 700;
-  cursor: pointer; transition: all 0.2s ease;
-  border: none;
-}
-.btn-prev {
-  background: transparent;
-  border: 2px solid #dce2ee;
-  color: var(--gray);
-}
-.btn-prev:hover { border-color: var(--navy); color: var(--navy); }
-.btn-next {
-  background: var(--navy); color: var(--white);
-  flex: 1; max-width: 280px;
-}
-.btn-next:hover { background: #253180; transform: translateY(-1px); }
-.btn-next:disabled {
-  background: #c8ccd8; cursor: not-allowed; transform: none;
-}
-
-/* ══════════════════════════════
-   RESULT
-══════════════════════════════ */
-#screen-result {
-  max-width: 720px; margin: 0 auto;
-  padding: 40px 20px 80px;
-}
-
-.result-header {
-  background: var(--navy);
-  border-radius: 20px; padding: 36px 32px;
-  margin-bottom: 24px; text-align: center;
-  position: relative; overflow: hidden;
-}
-.result-header::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(41,121,200,0.2) 0%, transparent 60%);
-}
-.result-header-inner { position: relative; }
-.result-title-small {
-  font-size: 12px; color: rgba(255,255,255,0.5);
-  letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.result-title-main {
-  font-size: clamp(22px, 5vw, 32px);
-  font-weight: 900; color: var(--white);
-  line-height: 1.3; margin-bottom: 8px;
-}
-.result-title-main .gold { color: var(--gold); }
-.result-sub {
-  font-size: 14px; color: rgba(255,255,255,0.55);
-  font-style: italic;
-}
-
-/* primary + secondary card */
-.result-primary-card {
-  border-radius: 20px; padding: 32px;
-  margin-bottom: 16px; position: relative;
-  overflow: hidden;
-}
-.rpc-tag {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  opacity: 0.7; margin-bottom: 12px;
-}
-.rpc-name {
-  font-size: clamp(24px, 5vw, 36px);
-  font-weight: 900; line-height: 1.2;
-  margin-bottom: 8px;
-}
-.rpc-en { font-size: 13px; opacity: 0.6; margin-bottom: 16px; font-style: italic; }
-.rpc-oneline {
-  font-size: 15px; font-style: italic;
-  opacity: 0.85; line-height: 1.6;
-}
-
-.result-secondary-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 12px; margin-bottom: 24px;
-}
-.result-sec-card {
-  background: var(--white); border-radius: 14px;
-  padding: 18px 20px;
-  border: 2px solid #e8ecf4;
-  transition: border-color 0.2s;
-}
-.rsc-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; opacity: 0.6; margin-bottom: 6px; }
-.rsc-name { font-size: 16px; font-weight: 800; }
-.rsc-score { font-size: 12px; color: var(--gray); margin-top: 4px; }
-
-/* score bars */
-.score-section {
-  background: var(--white); border-radius: 20px;
-  padding: 28px 28px; margin-bottom: 24px;
-}
-.score-section-title {
-  font-size: 14px; font-weight: 700; color: var(--navy);
-  margin-bottom: 20px; letter-spacing: 0.5px;
-}
-.score-row { margin-bottom: 16px; }
-.score-row:last-child { margin-bottom: 0; }
-.score-row-top {
-  display: flex; justify-content: space-between;
-  align-items: center; margin-bottom: 6px;
-}
-.score-name {
-  font-size: 14px; font-weight: 700;
-  display: flex; align-items: center; gap: 8px;
-}
-.score-num { font-size: 13px; color: var(--gray); }
-.score-bar-bg {
-  height: 10px; border-radius: 20px;
-  background: #e8ecf4; overflow: hidden;
-}
-.score-bar-fill {
-  height: 100%; border-radius: 20px;
-  width: 0%; transition: width 1.2s cubic-bezier(.4,0,.2,1);
-}
-
-/* type detail card */
-.type-detail {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 24px;
-  box-shadow: 0 2px 16px rgba(30,39,97,0.06);
-}
-.td-header {
-  padding: 24px 28px;
-  display: flex; align-items: center; gap: 14px;
-}
-.td-emoji { font-size: 28px; }
-.td-name { font-size: 20px; font-weight: 900; color: var(--white); }
-.td-en { font-size: 12px; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 2px; }
-.td-body { padding: 24px 28px; }
-.td-oneline {
-  font-size: 15px; font-style: italic;
-  font-weight: 500; margin-bottom: 20px;
-  line-height: 1.6; padding: 14px 16px;
-  border-radius: 10px;
-}
-.td-row {
-  display: flex; gap: 10px; align-items: flex-start;
-  margin-bottom: 12px; font-size: 14px; line-height: 1.6;
-}
-.td-row-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.td-row-label { font-weight: 700; margin-right: 4px; flex-shrink: 0; }
-.td-hook {
-  margin-top: 20px; padding: 16px 20px;
-  background: var(--navy); border-radius: 12px;
-}
-.td-hook-label {
-  font-size: 11px; color: rgba(255,255,255,0.5);
-  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;
-}
-.td-hook-text {
-  font-size: 15px; font-weight: 600;
-  color: var(--white); font-style: italic;
-  line-height: 1.6;
-}
-
-/* 일상 장면 */
-.td-scene {
-  font-size: 12px; color: var(--gray);
-  margin-top: 4px; line-height: 1.6;
-  padding-left: 2px;
-}
-
-/* 일상 패턴 박스 */
-.td-daily {
-  margin: 20px 0 4px;
-  background: var(--light);
-  border-radius: 12px;
-  padding: 16px 18px;
-}
-.td-daily-title {
-  font-size: 13px; font-weight: 700;
-  margin-bottom: 10px; letter-spacing: 0.3px;
-}
-.td-daily-row {
-  display: flex; gap: 8px; align-items: flex-start;
-  font-size: 13px; line-height: 1.65;
-  margin-bottom: 6px;
-}
-.td-daily-row:last-child { margin-bottom: 0; }
-.td-daily-icon { flex-shrink: 0; font-size: 14px; }
-.td-daily-yes { color: var(--dark); }
-.td-daily-no  { color: var(--gray); }
-
-/* declaration */
-.declaration-card {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 24px;
-}
-.dc-header {
-  background: var(--purple); padding: 20px 28px;
-  font-size: 15px; font-weight: 700; color: var(--white);
-  letter-spacing: 0.5px;
-}
-.dc-body { padding: 28px; }
-.dc-line {
-  font-size: clamp(14px, 2.5vw, 17px);
-  line-height: 2; margin-bottom: 8px;
-}
-.dc-line .fill {
-  display: inline-block;
-  border-bottom: 2px solid currentColor;
-  min-width: 120px; font-weight: 800;
-  text-align: center; padding: 0 8px;
-}
-.dc-note {
-  font-size: 12px; color: var(--gray);
-  font-style: italic; margin-top: 12px;
-}
-
-/* reflection */
-.reflection-card {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 24px;
-}
-.rc-header {
-  background: var(--navy); padding: 20px 28px;
-}
-.rc-header-title {
-  font-size: 15px; font-weight: 700; color: var(--white);
-}
-.rc-header-sub {
-  font-size: 12px; color: rgba(255,255,255,0.55);
-  margin-top: 4px; font-style: italic;
-}
-.rc-body { padding: 24px 28px; }
-.rc-q {
-  margin-bottom: 24px;
-}
-.rc-q-top {
-  display: flex; gap: 12px; align-items: flex-start;
-  margin-bottom: 10px;
-}
-.rc-q-num {
-  background: var(--navy); color: var(--white);
-  font-size: 11px; font-weight: 700;
-  padding: 4px 10px; border-radius: 20px;
-  flex-shrink: 0; margin-top: 1px;
-  letter-spacing: 0.5px;
-}
-.rc-q-num.special { background: var(--gold); }
-.rc-q-text { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.6; }
-.rc-q-sub { font-size: 12px; color: var(--gray); margin-top: 3px; font-style: italic; }
-textarea {
-  width: 100%; border: 2px solid #e8ecf4;
-  border-radius: 12px; padding: 14px 16px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px; color: var(--dark);
-  resize: vertical; min-height: 90px;
-  transition: border-color 0.2s; outline: none;
-  background: #fafbfd; line-height: 1.7;
-}
-textarea:focus { border-color: var(--navy); background: var(--white); }
-
-/* closing */
-.closing-card {
-  background: var(--navy); border-radius: 20px;
-  padding: 36px 28px; text-align: center;
-}
-.closing-promise {
-  font-size: clamp(16px, 3vw, 20px);
-  font-weight: 700; color: var(--gold);
-  line-height: 1.5; margin-bottom: 12px;
-}
-.closing-slogan {
-  font-size: 14px; color: rgba(255,255,255,0.6);
-  margin-bottom: 4px;
-}
-.closing-brand {
-  font-size: 12px; color: rgba(255,255,255,0.35);
-  letter-spacing: 1px;
-}
-
-.btn-retry {
-  margin-top: 28px;
-  display: inline-block;
-  background: transparent;
-  border: 2px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.7);
-  padding: 12px 32px; border-radius: 50px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px; font-weight: 500; cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn-retry:hover {
-  border-color: var(--gold); color: var(--gold);
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 500px) {
-  .result-secondary-row { grid-template-columns: 1fr; }
-  .q-card { padding: 24px 18px; }
-  .td-body { padding: 18px 20px; }
-  .dc-body, .rc-body { padding: 20px; }
-}
-
-/* ── NOISE SECTION ── */
-.noise-card {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 24px;
-  box-shadow: 0 2px 16px rgba(30,39,97,0.06);
-}
-.noise-header {
-  padding: 20px 28px;
-  display: flex; align-items: center; gap: 10px;
-}
-.noise-header-title { font-size: 15px; font-weight: 700; color: var(--white); }
-.noise-header-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
-.noise-body { padding: 20px 28px; }
-.noise-item {
-  display: flex; gap: 10px; align-items: flex-start;
-  padding: 10px 14px; border-radius: 10px;
-  margin-bottom: 8px; font-size: 14px; line-height: 1.6;
-  background: var(--light);
-}
-.noise-item:last-child { margin-bottom: 0; }
-.noise-icon { flex-shrink: 0; font-size: 15px; }
-
-/* ── 사회구조 메커니즘 (왜 이것이 욕구를 흐리게 만드는가) ── */
-.mechanism-block {
-  margin-top: 18px; padding: 18px 18px 14px;
-  background: linear-gradient(135deg, rgba(30,39,97,0.04) 0%, rgba(41,121,200,0.04) 100%);
-  border-radius: 12px; border-left: 3px solid var(--navy);
-}
-.mechanism-title {
-  font-size: 13px; font-weight: 800; color: var(--navy);
-  margin-bottom: 10px; letter-spacing: 0.2px;
-}
-.mechanism-sub {
-  font-size: 11.5px; color: var(--gray); margin-bottom: 14px; line-height: 1.6;
-}
-.mechanism-item {
-  display: flex; gap: 10px; align-items: flex-start;
-  padding: 10px 0; border-top: 1px dashed rgba(30,39,97,0.12);
-}
-.mechanism-item:first-of-type { border-top: none; padding-top: 4px; }
-.mechanism-tag {
-  flex-shrink: 0; font-size: 11px; font-weight: 800;
-  color: var(--white); background: var(--navy);
-  padding: 4px 10px; border-radius: 20px; letter-spacing: 0.3px;
-  white-space: nowrap; margin-top: 1px;
-}
-.mechanism-text {
-  font-size: 13px; line-height: 1.7; color: var(--dark);
-}
-.mechanism-text strong { color: var(--navy); font-weight: 700; }
-
-/* ── Energy Flow 자가체크 (충전 vs 소모) ── */
-.eflow-check {
-  margin-top: 16px; padding: 16px 18px;
-  background: var(--white); border-radius: 12px;
-  border: 2px dashed var(--green);
-}
-.eflow-check-label {
-  font-size: 11px; font-weight: 800; color: var(--green);
-  letter-spacing: 1.5px; text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.eflow-check-q {
-  font-size: 14px; font-weight: 700; color: var(--navy);
-  line-height: 1.6; margin-bottom: 4px;
-}
-.eflow-check-sub {
-  font-size: 12px; color: var(--gray); line-height: 1.6;
-}
-
-/* ── 교차 분석 인사이트 카드 ── */
-.cross-insight {
-  background: linear-gradient(135deg, var(--navy) 0%, #2A3678 100%);
-  border-radius: 16px; padding: 22px 22px 20px;
-  margin-bottom: 16px; position: relative; overflow: hidden;
-}
-.cross-insight::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(201,152,58,0.15) 0%, transparent 60%);
-  pointer-events: none;
-}
-.cross-insight-label {
-  position: relative; font-size: 11px; font-weight: 800;
-  color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.cross-insight-pattern {
-  position: relative; font-size: 17px; font-weight: 900;
-  color: var(--white); line-height: 1.5; margin-bottom: 12px;
-}
-.cross-insight-pattern .pattern-key {
-  background: rgba(201,152,58,0.2); color: var(--gold);
-  padding: 2px 10px; border-radius: 6px;
-  font-size: 15px; margin: 0 2px;
-}
-.cross-insight-text {
-  position: relative; font-size: 13.5px; color: rgba(255,255,255,0.85);
-  line-height: 1.85;
-}
-.cross-insight-hook {
-  position: relative; margin-top: 14px; padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  font-size: 13px; color: var(--gold); font-style: italic;
-  line-height: 1.6;
-}
-
-/* ── 차별화 문구 (signature line) ── */
-.signature-line {
-  text-align: center; margin: 20px 0 8px;
-  padding: 14px 16px; background: rgba(201,152,58,0.08);
-  border-radius: 10px;
-}
-.signature-line-text {
-  font-size: 14px; font-weight: 700; color: var(--navy);
-  letter-spacing: 0.3px; line-height: 1.5;
-}
-.signature-line-text .gold-accent {
-  color: var(--gold);
-}
-
-/* ── SUMMARY CARD (N.E.E.D 연결 결과) ── */
-.summary-card {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 24px;
-  box-shadow: 0 2px 16px rgba(30,39,97,0.06);
-}
-.summary-header {
-  background: var(--navy); padding: 20px 28px;
-}
-.summary-header-title { font-size: 15px; font-weight: 700; color: var(--white); }
-.summary-header-sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; font-style: italic; }
-.summary-body { padding: 24px 28px; }
-.summary-q-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e8ecf4; }
-.summary-q-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-.summary-q-label {
-  display: flex; align-items: center; gap: 8px;
-  margin-bottom: 8px;
-}
-.summary-q-num {
-  font-size: 10px; font-weight: 700; padding: 3px 8px;
-  border-radius: 20px; letter-spacing: 0.5px;
-  background: var(--navy); color: var(--white);
-}
-.summary-q-num.special { background: var(--gold); }
-.summary-q-title { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.5; }
-.summary-q-answer {
-  font-size: 14px; color: var(--dark); line-height: 1.7;
-  background: var(--light); border-radius: 10px;
-  padding: 12px 16px; font-style: italic;
-  border-left: 3px solid var(--gold);
-  white-space: pre-wrap;
-}
-.summary-q-empty {
-  font-size: 13px; color: var(--gray); font-style: italic;
-  padding: 8px 0;
-}
-.summary-connection {
-  margin-top: 20px; padding: 20px;
-  background: linear-gradient(135deg, #1E2761 0%, #2979C8 100%);
-  border-radius: 14px;
-}
-.summary-connection-title {
-  font-size: 12px; color: rgba(255,255,255,0.6);
-  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
-}
-.summary-connection-text {
-  font-size: 15px; color: var(--white); font-weight: 600;
-  line-height: 1.7;
-}
-.summary-connection-text .highlight { color: var(--gold); }
-
-/* ── SHARE BUTTON ── */
-.share-section {
-  display: flex; gap: 12px; flex-wrap: wrap;
-  justify-content: center; margin-top: 20px;
-}
-.btn-share {
-  padding: 13px 28px; border-radius: 50px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px; font-weight: 600; cursor: pointer;
-  transition: all 0.2s ease; border: none;
-  display: flex; align-items: center; gap: 8px;
-}
-.btn-share-copy {
-  background: var(--gold); color: var(--white);
-  box-shadow: 0 4px 16px rgba(201,152,58,0.3);
-}
-.btn-share-copy:hover { background: #d4a73f; transform: translateY(-1px); }
-.btn-share-copy.copied { background: var(--green); }
-.toast {
-  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
-  background: var(--dark); color: var(--white);
-  padding: 12px 24px; border-radius: 30px;
-  font-size: 14px; font-weight: 500;
-  opacity: 0; transition: opacity 0.3s ease;
-  pointer-events: none; z-index: 9999; white-space: nowrap;
-}
-.toast.show { opacity: 1; }
-
-/* ── VALUE SCREEN ── */
-.value-cover {
-  background: var(--navy); border-radius: 20px;
-  padding: 36px 28px; margin-bottom: 24px;
-  position: relative; overflow: hidden;
-}
-.value-cover::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(201,152,58,0.2) 0%, transparent 60%);
-  pointer-events: none;
-}
-.value-cover-inner { position: relative; }
-.value-cover-step {
-  font-size: 11px; color: rgba(255,255,255,0.5);
-  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
-}
-.value-cover-title {
-  font-size: clamp(20px, 4vw, 28px); font-weight: 900;
-  color: var(--white); line-height: 1.3; margin-bottom: 10px;
-}
-.value-cover-title .gold { color: var(--gold); }
-.value-cover-sub {
-  font-size: 14px; color: rgba(255,255,255,0.6);
-  line-height: 1.7; margin-bottom: 20px;
-}
-.value-benefit-row {
-  display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px;
-}
-.value-benefit-item {
-  display: flex; gap: 10px; align-items: flex-start;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px; padding: 12px 16px;
-  font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6;
-}
-.value-benefit-icon { font-size: 16px; flex-shrink: 0; }
-
-.value-q-card {
-  background: var(--white); border-radius: 20px;
-  padding: 32px 28px; margin-bottom: 20px;
-  box-shadow: 0 4px 24px rgba(30,39,97,0.08);
-}
-.value-q-num {
-  display: inline-block; background: var(--gold); color: var(--white);
-  font-size: 11px; font-weight: 700; padding: 4px 12px;
-  border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 16px;
-}
-.value-q-text {
-  font-size: clamp(15px,2.5vw,18px); font-weight: 700;
-  color: var(--navy); line-height: 1.5; margin-bottom: 8px;
-}
-.value-q-hint {
-  font-size: 13px; color: var(--gray); margin-bottom: 20px;
-  line-height: 1.6; font-style: italic;
-}
-.value-textarea {
-  width: 100%; border: 2px solid #e8ecf4; border-radius: 12px;
-  padding: 14px 16px; font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px; color: var(--dark); resize: vertical;
-  min-height: 100px; line-height: 1.7; outline: none;
-  background: #fafbfd; transition: border-color 0.2s;
-}
-.value-textarea:focus { border-color: var(--gold); background: var(--white); }
-.value-chips {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
-}
-.value-chip {
-  padding: 6px 14px; border-radius: 20px; font-size: 13px;
-  font-weight: 500; cursor: pointer; border: 2px solid #e8ecf4;
-  background: var(--white); color: var(--gray);
-  transition: all 0.15s ease; font-family: 'Noto Sans KR', sans-serif;
-}
-.value-chip:hover { border-color: var(--gold); color: var(--gold); }
-.value-chip.selected { background: var(--gold); border-color: var(--gold); color: var(--white); }
-
-/* 분기 버튼 */
-.value-branch-btn {
-  display: flex; gap: 14px; align-items: center;
-  padding: 16px 18px; border-radius: 14px;
-  border: 2px solid #e8ecf4; background: var(--white);
-  cursor: pointer; text-align: left; width: 100%;
-  font-family: 'Noto Sans KR', sans-serif;
-  transition: all 0.18s ease; color: var(--dark);
-}
-.value-branch-btn:hover { border-color: var(--gold); }
-.value-branch-btn.selected-align { border-color: var(--green); background: var(--협력러-light); }
-.value-branch-btn.selected-conflict { border-color: var(--gold); background: var(--모험러-light); }
-
-/* VALUE RESULT */
-.vr-hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #2979C8 100%);
-  border-radius: 20px; padding: 36px 28px; margin-bottom: 24px;
-  text-align: center;
-}
-.vr-hero-label {
-  font-size: 11px; color: rgba(255,255,255,0.5);
-  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
-}
-.vr-hero-title {
-  font-size: clamp(18px,4vw,26px); font-weight: 900;
-  color: var(--white); line-height: 1.4; margin-bottom: 8px;
-}
-.vr-hero-title .gold { color: var(--gold); }
-.vr-hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
-
-.vr-card {
-  background: var(--white); border-radius: 20px;
-  overflow: hidden; margin-bottom: 20px;
-  box-shadow: 0 2px 16px rgba(30,39,97,0.06);
-}
-.vr-card-header {
-  padding: 16px 24px; font-size: 14px; font-weight: 700; color: var(--white);
-}
-.vr-card-body { padding: 20px 24px; }
-.vr-value-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 18px; border-radius: 24px; margin: 4px;
-  font-size: 14px; font-weight: 700; color: var(--white);
-}
-.vr-statement {
-  font-size: 16px; font-weight: 600; color: var(--navy);
-  line-height: 1.8; padding: 16px 20px;
-  background: var(--light); border-radius: 12px;
-  border-left: 4px solid var(--gold);
-}
-.vr-answer-block { margin-bottom: 16px; }
-.vr-answer-label {
-  font-size: 11px; font-weight: 700; color: var(--gray);
-  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px;
-}
-.vr-answer-text {
-  font-size: 14px; color: var(--dark); line-height: 1.7;
-  padding: 12px 16px; background: var(--light); border-radius: 10px;
-  font-style: italic; border-left: 3px solid var(--gold);
+@media (max-width:480px) {
+  .container { padding:16px 16px 60px; }
+  .cover-title { font-size:24px; }
+  .chars-preview { grid-template-columns:repeat(5,1fr); gap:5px; }
+  .char-mini { padding:8px 4px; }
+  .char-mini .icon { font-size:18px; }
+  .char-mini .name { font-size:10px; }
+  .question-text { font-size:16.5px; }
+  .tendency-hero .main-char { font-size:42px; }
+  .tendency-hero .main-name { font-size:22px; }
+  .detail-grid { grid-template-columns:1fr; }
+  .share-buttons { flex-direction:column; }
 }
 </style>
 </head>
 <body>
+<div class="container">
 
-<div id="progress-bar"></div>
-<div class="toast" id="toast">✅ 클립보드에 복사됐습니다!</div>
-
-<!-- ══ COVER ══ -->
-<section id="screen-cover" class="screen active">
-  <div class="logo-bar">
+<!-- ===== 표지 ===== -->
+<div id="cover-screen">
+  <div class="brand-header">
     <div class="logo-need">
-      <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D</span>
+      <span class="l1">N.</span><span class="l2">E.</span><span class="l3">E.</span><span class="l4">D</span>
     </div>
     <div class="logo-sep"></div>
     <div class="logo-right">
-      <span class="logo-name">NEED SCAN · 나다움설계연구소</span>
-      <span class="logo-sub-text">나다움을 설계하다</span>
-    </div>
-  </div>
-  <div class="cover-badge">NEED SCAN · 나다움설계연구소</div>
-  <h1 class="cover-title">
-    5러 에너지 성향<br><span class="gold">진단</span>
-  </h1>
-  <p class="cover-sub">나의 에너지는 지금 어디로 흐르고 있는가?</p>
-
-  <div class="cover-info-row">
-    <div class="cover-info-item">
-      <span class="label">소요 시간</span>
-      <span class="value">5 ~ 10분</span>
-    </div>
-    <div class="cover-info-item">
-      <span class="label">총 문항</span>
-      <span class="value">10 문항</span>
-    </div>
-    <div class="cover-info-item">
-      <span class="label">성향</span>
-      <span class="value">5 가지</span>
+      <div class="top">NEED SCAN · 나다움설계연구소</div>
+      <div class="bottom">나다움을 설계하다</div>
     </div>
   </div>
 
-  <div class="cover-notice">
-    <p>이 진단은 여러분을 하나의 유형으로 분류하지 않습니다.<br>
-    <strong>지금 이 시기, 나의 에너지가 어떤 방향으로 흐르고 있는지</strong>를 읽는 도구입니다.</p>
-    <p>일뿐 아니라 <strong>일상 전반(가족, 취미, 개인 시간 포함)</strong>에서 지금의 나를 떠올리며 답하세요.</p>
-    <p class="warn">※ 높은 점수 = 선호 / 낮은 점수 = 열등이 아닙니다. 성향은 시기와 맥락에 따라 달라집니다.</p>
-  </div>
+  <div class="cover">
+    <span class="cover-tag">N단계 — Need Scan · 에너지 경향성 읽기</span>
+    <h1 class="cover-title">나의 에너지는<br>어디로 흐를까?</h1>
+    <p class="cover-subtitle">5러 경향성 진단 v2<br>빅파이브 단축형 기반 · Big Five / McCrae & Costa</p>
 
-  <button class="btn-start" onclick="startQuiz()">진단 시작하기 →</button>
-</section>
-
-<!-- ══ QUIZ ══ -->
-<section id="screen-quiz" class="screen">
-  <div class="quiz-top">
-    <div class="quiz-logo-bar">
-      <div class="quiz-logo-need">
-        <span class="n">N.</span><span class="e1">E.</span><span class="e2">E.</span><span class="d">D</span>
-      </div>
-      <div class="quiz-logo-sep"></div>
-      <div class="quiz-logo-right">
-        <div class="quiz-logo-name">나다움설계연구소</div>
-        <div class="quiz-logo-sub">나다움을 설계하다</div>
-      </div>
+    <div class="chars-preview">
+      <div class="char-mini"><div class="icon">🔥</div><div class="name">열정러</div></div>
+      <div class="char-mini"><div class="icon">🤝</div><div class="name">협력러</div></div>
+      <div class="char-mini"><div class="icon">⚓</div><div class="name">안정러</div></div>
+      <div class="char-mini"><div class="icon">🛠</div><div class="name">장인러</div></div>
+      <div class="char-mini"><div class="icon">🚀</div><div class="name">모험러</div></div>
     </div>
-    <div class="quiz-counter">
-      <strong id="q-current">1</strong> / 10
+
+    <div class="cover-meta">
+      <span>⏱ 약 5분</span>
+      <span>📋 15문항</span>
+      <span>🆓 무료</span>
     </div>
   </div>
 
-  <div class="quiz-track">
-    <div class="quiz-track-fill" id="quiz-fill"></div>
+  <div class="intro-card">
+    <div class="notice-box">
+      ⚡ 이 진단은 고정된 \"유형\"이 아닌 <strong>지금 시기의 에너지 흐름</strong>을 읽는 도구입니다.
+      한 달 후 다시 진단하면 결과가 달라질 수 있어요.
+    </div>
+    <p>요즘 어떤 활동에서 에너지를 얻고 있나요?</p>
+    <p>목표를 보면 가슴이 뛰는 시기인가요, 함께할 때 빛나는 시기인가요?</p>
+    <div class="quote">지금 나의 에너지가 어디로 흐르는지 알면,<br>더 자연스럽게 흐를 수 있습니다.</div>
+    <p style="font-size:14px;color:var(--text-soft);">\"요즘\", \"지금\", \"최근\"을 기준으로 솔직하게 응답해 주세요.</p>
   </div>
 
-  <div id="q-card-wrap"></div>
+  <button class="btn-primary" onclick="startQuiz()">진단 시작하기</button>
+</div>
 
-  <div class="quiz-nav">
-    <button class="btn-nav btn-prev" id="btn-prev" onclick="prevQ()">← 이전</button>
-    <button class="btn-nav btn-next" id="btn-next" onclick="nextQ()" disabled>다음 →</button>
+<!-- ===== 진단 화면 ===== -->
+<div id="quiz-screen" class="quiz-screen">
+  <div class="brand-header">
+    <div class="logo-need">
+      <span class="l1">N.</span><span class="l2">E.</span><span class="l3">E.</span><span class="l4">D</span>
+    </div>
+    <div class="logo-sep"></div>
+    <div class="logo-right">
+      <div class="top">5러 경향성 진단</div>
+      <div class="bottom">나의 에너지는 어디로 흐를까?</div>
+    </div>
   </div>
-</section>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+  <div class="progress-text" id="progress-text">1 / 15</div>
+  <div class="question-card">
+    <span class="question-num" id="q-num">Q01</span>
+    <span class="question-char" id="q-char"></span>
+    <p class="question-text" id="q-text"></p>
+    <div class="likert-options" id="likert-options"></div>
+  </div>
+  <div class="nav-buttons">
+    <button class="btn-nav btn-prev" id="btn-prev" onclick="prevQuestion()">이전</button>
+    <button class="btn-nav btn-next" id="btn-next" onclick="nextQuestion()" disabled>다음</button>
+  </div>
+</div>
 
-<!-- ══ RESULT ══ -->
-<section id="screen-result" class="screen">
-  <div id="result-content"></div>
-</section>
+<!-- ===== 결과 화면 ===== -->
+<div id="result-screen" class="result-screen">
+  <div class="brand-header">
+    <div class="logo-need">
+      <span class="l1">N.</span><span class="l2">E.</span><span class="l3">E.</span><span class="l4">D</span>
+    </div>
+    <div class="logo-sep"></div>
+    <div class="logo-right">
+      <div class="top">진단 결과 · 나다움설계연구소</div>
+      <div class="bottom">나의 에너지 흐름</div>
+    </div>
+  </div>
 
-<!-- ══ VALUE (우선가치 만들기) ══ -->
-<section id="screen-value" class="screen">
-  <div id="value-content" style="max-width:720px; margin:0 auto; padding:40px 20px 80px;"></div>
-</section>
+  <div id="tendency-hero-container"></div>
+  <div id="radar-container"></div>
+  <div id="main-detail-container"></div>
+  <div id="sub-detail-container"></div>
+  <div id="message-container"></div>
+  <div id="caution-container"></div>
+  <div id="practice-container"></div>
+  <div id="variability-container"></div>
+  <div id="next-container"></div>
 
-<!-- ══ VALUE RESULT ══ -->
-<section id="screen-value-result" class="screen">
-  <div id="value-result-content" style="max-width:720px; margin:0 auto; padding:40px 20px 80px;"></div>
-</section>
+  <div class="share-section">
+    <h3>이 진단을 친구와 나누어 보세요</h3>
+    <div class="share-buttons">
+      <button class="btn-share btn-share-result" onclick="shareResult()">🎴 결과 공유하기</button>
+      <button class="btn-share btn-share-link" onclick="shareLink()">🔗 진단 링크 공유하기</button>
+    </div>
+  </div>
+  <button class="btn-secondary" onclick="restart()">다시 진단하기</button>
+  <div class="footer">
+    <p class="signature">우선가치가 선명하면, 모든 선택이 명료해진다</p>
+    <p>나다움설계연구소 · 김수정 박사</p>
+    <p>나다움은 발견이 아니라 설계다</p>
+  </div>
+</div>
 
-<!-- ══ REFLECT (N.E.E.D 연결) ══ -->
-<section id="screen-reflect" class="screen">
-  <div id="reflect-content" style="max-width:720px; margin:0 auto; padding:40px 20px 80px;"></div>
-</section>
+</div><!-- /container -->
 
-<!-- ══ STEP 2 — N.E.E.D 연결 안내 ══ -->
-<section id="screen-step2" class="screen" style="min-height:100vh; display:none; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; background:var(--navy); position:relative; overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%, rgba(41,121,200,0.2) 0%, transparent 60%);pointer-events:none;"></div>
-  <div id="step2-inner" style="position:relative; width:100%; max-width:480px; text-align:center;"></div>
-</section>
-
-<!-- ══ STEP 3 — 우선가치 안내 ══ -->
-<section id="screen-step3" class="screen" style="min-height:100vh; display:none; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; background:linear-gradient(135deg,#C9983A 0%,#d4a73f 100%); position:relative; overflow:hidden;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 55%);pointer-events:none;"></div>
-  <div id="step3-inner" style="position:relative; width:100%; max-width:480px; text-align:center;"></div>
-</section>
-
-<!-- ══ SHARE — 결과 공유 ══ -->
-<section id="screen-share" class="screen" style="min-height:100vh; display:none; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; background:var(--light);">
-  <div id="share-inner" style="width:100%; max-width:480px; text-align:center;"></div>
-</section>
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <h4 id="modal-title">알림</h4>
+    <p id="modal-message">메시지</p>
+    <div class="modal-buttons">
+      <button class="modal-btn modal-btn-secondary" onclick="closeModal()">취소</button>
+      <button class="modal-btn modal-btn-primary" onclick="closeModal()">확인</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────
-const TYPES = {
-  A: { name:'열정러', en:'Achiever', emoji:'🔥', color:'var(--열정러)', light:'var(--열정러-light)' },
-  B: { name:'협력러', en:'Harmonious Connector', emoji:'🤝', color:'var(--협력러)', light:'var(--협력러-light)' },
-  C: { name:'안정러', en:'Solid Anchor', emoji:'⚓', color:'var(--안정러)', light:'var(--안정러-light)' },
-  D: { name:'장인러', en:'Deep Specialist', emoji:'💎', color:'var(--장인러)', light:'var(--장인러-light)' },
-  E: { name:'모험러', en:'Bold Explorer', emoji:'🚀', color:'var(--모험러)', light:'var(--모험러-light)' },
-};
+/* ============================================
+   5러 경향성 진단 v2
+   15문항, 5경향 × 3문항, 주·보조 경향 산출
+   ============================================ */
 
-const TYPE_DETAIL = {
+// ===== 경향성 데이터 =====
+const CHARS = {
   A: {
-    oneLine: '"결과로 나를 증명할 때 가장 뜨거워지는 에너지"',
-    flow:    '"목표가 보이니까 멈출 수가 없어"',
-    flowScene: '마감 직전 완전 몰입, 프로젝트 완성 후 성취감, "이번엔 더 잘할 거야" 다짐',
-    drain:   '"목표가 안 보여서 동력이 없어"',
-    drainScene: '성과가 불분명한 프로젝트, 반복되는 무의미한 업무, 방향 없는 회의',
-    tip:     '성취 에너지를 우선가치와 연결하세요. "무엇을 이루고 싶은가"보다 "왜 이루고 싶은가"를 먼저 확인하면 방향 없는 달리기를 멈출 수 있습니다.',
-    daily_yes: 'To-do 리스트 작성이 즐거움, 주말에도 자연스럽게 계획 세움, "이번 주 뭐 이뤘지?" 스스로 점검',
-    daily_no:  '결과 없이 과정만 이어지면 급격히 동력 저하, 칭찬보다 성과 미달이 더 오래 기억에 남음',
-    noise:   ['성과 없는 반복 회의나 업무', '비교 문화 — "저 사람은 벌써 저기까지 갔는데"', '방향이 없는 칭찬만 있는 환경', 'SNS에서 타인의 성취를 반복해서 보는 것'],
-    noise_mechanism: [
-      { tag:'비교 문화', text:'타인의 성취가 기준이 되는 순간, <strong>내 성취 욕구의 방향이 바깥에서 세팅됩니다.</strong>' },
-      { tag:'SNS 관람', text:'알고리즘이 반복 노출한 성공 이미지가 <strong>내 욕구의 자리를 차지합니다.</strong>' },
-      { tag:'눈치 문화', text:'성과를 인정받지 못할까 봐 <strong>도전 욕구 자체가 표현되기 전에 걸러집니다.</strong>' },
-    ],
-    hook:    '지금 이 일이 나를 증명하는 결과로 남는가?',
-  },
-  B: {
-    oneLine: '"따뜻하게 연결될 때 내 엔진이 돌아가는 에너지"',
-    flow:    '"같이 만들어가는 이 느낌이 최고야"',
-    flowScene: '팀과 함께 결과물 완성, 힘든 친구 옆에 있어주기, "우리 같이 하면 돼" 자연스럽게 나옴',
-    drain:   '"혼자 하려니까 에너지가 안 나와"',
-    drainScene: '개인 작업 강요, 소외감 느낄 때, 신뢰 깨진 관계 안에서 일할 때',
-    tip:     '연결 에너지는 강점이지만, 진짜 충전이 되는 관계와 의무감으로 유지하는 관계를 구분해보세요.',
-    daily_yes: '그룹 채팅 활발하게 참여, 1:1 통화 자연스럽게 즐김, 모임 분위기 자연스럽게 챙김',
-    daily_no:  '갈등 회피를 위해 자신의 의견을 접는 경우 있음, 혼자 있는 시간이 길어지면 에너지 급격히 감소',
-    noise:   ['혼자 해야 하는 고립된 환경', '관계 갈등이나 신뢰 균열', '"남들 눈에 어떻게 보일까" 눈치 문화', 'SNS 비교 — 남의 관계가 더 풍요로워 보일 때'],
-    noise_mechanism: [
-      { tag:'눈치 문화', text:'주변 반응을 먼저 살피는 사이 <strong>내가 진짜 원하는 관계의 모습이 표현되기 전에 걸러집니다.</strong>' },
-      { tag:'SNS 관람', text:'타인의 관계가 더 풍요로워 보이는 이미지가 반복되면 <strong>내 관계의 만족 기준이 외부에서 세팅됩니다.</strong>' },
-      { tag:'비교 문화', text:'"남들만큼은 어울려야지"가 먼저 작동하면 <strong>진짜 신뢰하는 관계와 의무감 관계가 뒤섞입니다.</strong>' },
-    ],
-    hook:    '지금 나는 신뢰할 수 있는 사람들과 함께인가?',
+    key:"A", name:"열정러", en:"Achiever", icon:"🔥",
+    source:"목표 · 도전 · 결과",
+    identity:"목표를 보면 가슴이 뛰는 패턴",
+    flow:"\"결과를 만들어 내는 과정\" 자체에서 에너지를 얻는 시기",
+    drain:"목표가 보이지 않아 동력이 없는 시기",
+    best:"도전적 목표와 마감이 있는 환경",
+    cautions:["목표가 없을 때 무기력·공허감 급격히 상승","번아웃 후 회복이 느릴 수 있음","결과만 보다 과정의 의미를 놓치는 경우"]
   },
   C: {
-    oneLine: '"탄탄한 기본기 위에서 평온함을 느끼는 에너지"',
-    flow:    '"내 리듬 안에 있으니까 깊이 들어갈 수 있어"',
-    flowScene: '아침 루틴 그대로 진행된 날, 정리정돈 후 집중 시작, 계획대로 하루가 흘러갈 때',
-    drain:   '"루틴이 깨져서 리듬을 못 찾겠어"',
-    drainScene: '갑작스러운 일정 변경, 동시에 여러 일 처리 요구, 예측 불가한 환경의 연속',
-    tip:     '안정 에너지는 지속력의 근거입니다. 이 루틴이 어떤 우선가치를 지지하는지 주기적으로 확인하세요.',
-    daily_yes: '달력이 꽉 차 있어야 마음이 편함, 정리 마니아, 예측 가능한 상황에서 가장 깊이 집중',
-    daily_no:  '변화 자체에 저항감 생길 수 있음, 루틴이 깨지면 하루 전체가 흔들리는 느낌',
-    noise:   ['갑작스러운 변경 요청과 즉흥적인 환경', '"빠르게빠르게" 압박 문화', '완벽하지 않아도 된다는 주변의 무관심', 'SNS 자극의 연속 — 알림, 트렌드 변화, 정보 과부하'],
-    noise_mechanism: [
-      { tag:'속도 압박 문화', text:'"빠르게빠르게"가 기준이 되는 순간 <strong>깊이 있는 리듬을 원하는 욕구가 표현되기 전에 걸러집니다.</strong>' },
-      { tag:'SNS 관람', text:'알림과 트렌드 변화가 끊임없이 노출되면 <strong>안정된 리듬의 자리를 자극이 차지하게 됩니다.</strong>' },
-      { tag:'비교 문화', text:'"남들은 더 빠르게 가는데"가 작동하면 <strong>내 안정 욕구가 부족함으로 잘못 읽힙니다.</strong>' },
-    ],
-    hook:    '지금 내 일상은 흔들리지 않는 질 위에 서 있는가?',
+    key:"C", name:"협력러", en:"Harmonious Connector", icon:"🤝",
+    source:"연결 · 협업 · 관계",
+    identity:"함께할 때 더 빛나는 패턴",
+    flow:"\"우리\"라는 감각이 있을 때 동력이 생기는 시기",
+    drain:"혼자 하는 작업이 많아 에너지가 빠지는 시기",
+    best:"신뢰할 수 있는 사람들과 함께하는 환경",
+    cautions:["혼자 하는 작업이 많을 때 급격히 소진","타인의 기대를 먼저 충족하려다 자신의 욕구를 외면","갈등 상황에서 에너지 소모가 큼"]
+  },
+  S: {
+    key:"S", name:"안정러", en:"Solid Anchor", icon:"⚓",
+    source:"리듬 · 안정 · 깊이",
+    identity:"일정한 리듬 속에서 깊게 집중하는 패턴",
+    flow:"탄탄한 기본기 위에서 평온함을 느끼는 시기",
+    drain:"루틴이 깨져 리듬을 못 찾는 시기",
+    best:"예측 가능한 환경, 충분한 준비 시간",
+    cautions:["갑작스러운 변화에 불안·저항 강함","새로운 자극이 없어 답답함을 느끼는 경우","변화를 너무 늦게 수용하는 경향"]
   },
   D: {
-    oneLine: '"\'왜 하는지\'가 \'재미\'보다 훨씬 중요한 에너지"',
-    flow:    '"이걸 끝까지 파야 직성이 풀려"',
-    flowScene: '한 주제 수십 개 키워드 정리, 완성도에 대한 집착, 완벽 마무리 후 진짜 성취감',
-    drain:   '"기준에 안 맞으면 넘어갈 수가 없어"',
-    drainScene: '엉성한 결과물 강요, 얕고 빠른 작업 반복, "이 정도면 됐잖아"라는 압박',
-    tip:     '"충분히 좋다"는 기준도 의미 있는 판단입니다. 완벽주의가 탐구를 가로막고 있지는 않은지 점검하세요.',
-    daily_yes: '한 주제를 몇 달씩 깊이 파기, 퀄리티에 대한 높은 기준, 의미 없는 일엔 자연스럽게 에너지 안 나옴',
-    daily_no:  '완벽주의로 시작을 미루거나 마무리를 못 짓는 경우, 속도보다 깊이를 중시해 답답하다는 말 들을 수 있음',
-    noise:   ['"이 정도면 됐잖아" 속도 압박 문화', '의미 없는 업무의 반복', '남들과 비교해 "나는 왜 이렇게 느리지?" 자책', 'SNS 성과 자랑 — 깊이 없는 성공이 더 빛나 보일 때'],
-    noise_mechanism: [
-      { tag:'속도 압박 문화', text:'"이 정도면 됐잖아"가 반복되면 <strong>깊이 있는 완성을 원하는 욕구가 표현되기 전에 걸러집니다.</strong>' },
-      { tag:'비교 문화', text:'"남들은 빠르게 결과 내는데"가 작동하면 <strong>내 깊이 있는 탐구 욕구가 비효율로 잘못 읽힙니다.</strong>' },
-      { tag:'SNS 관람', text:'얕고 빠른 성공 이미지가 반복 노출되면 <strong>본질을 추구하는 욕구의 자리를 \'보여지는 성과\'가 차지합니다.</strong>' },
-    ],
-    hook:    '이 과정이 나에게 어떤 본질적인 의미를 주는가?',
+    key:"D", name:"장인러", en:"Deep Specialist", icon:"🛠",
+    source:"탐구 · 완성 · 의미",
+    identity:"한 가지를 깊이 파는 패턴",
+    flow:"\"왜 하는지의 본질적 의미\"가 분명한 시기",
+    drain:"기준에 안 맞아 넘어가지 못하는 시기",
+    best:"완성도를 인정받는 환경, 충분한 탐구 시간",
+    cautions:["완벽주의로 인한 작업 속도 저하","의미 없다고 느껴지면 전혀 동력이 안 생김","팀 작업보다 독립적 작업 선호"]
   },
   E: {
-    oneLine: '"내 시간의 핸들을 직접 쥘 때 자유로워지는 에너지"',
-    flow:    '"처음 해보는 건데 완전 빠져들어"',
-    flowScene: '새로운 앱·취미 즉흥 도전, 한 번도 안 가본 카페 탐험, "이거 재밌네?" 순간 몰입',
-    drain:   '"맨날 같은 거만 하니까 질린다"',
-    drainScene: '매일 똑같은 출퇴근 루틴, 반복 업무 강요, "이대로면 안 돼"라는 불안감 누적',
-    tip:     '새로움 자체가 목적이 되지 않도록, 탐험이 나의 우선가치와 연결될 때 에너지가 진짜로 흐릅니다.',
-    daily_yes: '플레이리스트 매주 바꿈, 새로운 길로 출근, "한 번 해보자"가 자연스럽게 나오는 입버릇',
-    daily_no:  '계획 없이 흘러가다 중요한 것을 놓치기도 함, 새로움에 끌려 시작은 많은데 완성이 적을 수 있음',
-    noise:   ['선택권 없는 반복 루틴 강요', '"왜 또 바꿔?" 변화 불허 환경', '"안전하게 가자"는 주변의 압박', 'SNS 알고리즘 — 비슷한 콘텐츠만 반복 노출되는 관람 패턴'],
-    noise_mechanism: [
-      { tag:'눈치 문화', text:'"왜 또 바꿔?"라는 주변 시선이 작동하면 <strong>새로움을 향한 욕구가 표현되기 전에 걸러집니다.</strong>' },
-      { tag:'SNS 관람', text:'알고리즘이 비슷한 콘텐츠만 반복 노출하면 <strong>진짜 새로운 자극을 향한 욕구의 자리를 \'노출된 것\'이 차지합니다.</strong>' },
-      { tag:'비교 문화', text:'"남들처럼 안정적으로 살아야지"가 작동하면 <strong>탐험 욕구가 산만함이나 미성숙으로 잘못 읽힙니다.</strong>' },
-    ],
-    hook:    '지금 이 선택의 주도권은 온전히 나에게 있는가?',
-  },
+    key:"E", name:"모험러", en:"Bold Explorer", icon:"🚀",
+    source:"새로움 · 자극 · 자율",
+    identity:"새로운 자극과 모험에서 에너지를 얻는 패턴",
+    flow:"시간의 핸들을 직접 쥘 때 자유로운 시기",
+    drain:"맨날 같은 것만 해서 질리는 시기",
+    best:"자율성과 새로운 프로젝트가 있는 환경",
+    cautions:["반복·루틴에 빠르게 식어버림","시작은 잘 하지만 마무리가 약한 경향","구조와 규칙이 강한 환경에서 답답함 강함"]
+  }
 };
 
+// ===== 문항 풀 (15개, 시기 표지어 포함) =====
 const QUESTIONS = [
-  {
-    q: '새로운 일을 시작할 때 가장 먼저 끌리는 것은?',
-    note: '업무/개인 모두 해당',
-    intent: '시작 행동 패턴 — 각 경향성의 핵심 동기 유발 요인',
-    concept: '성취 동기 / 연결 동기 / 안정 동기 / 의미 동기 / 자율 동기',
-    options: [
-      { label:'A', text:'빠르게 추진 계획을 짜고 실행에 들어간다', type:'A' },
-      { label:'B', text:'함께할 사람들의 강점과 역할을 먼저 파악한다', type:'B' },
-      { label:'C', text:'전체 흐름을 안정적으로 배치해 루틴을 만든다', type:'C' },
-      { label:'D', text:'핵심 개념을 깊이 파악해 본질을 먼저 이해한다', type:'D' },
-      { label:'E', text:'기존과 다른 새로운 방식을 먼저 탐색해본다', type:'E' },
-    ]
-  },
-  {
-    q: '에너지가 가장 넘치는 순간은 언제인가요?',
-    note: '',
-    intent: '보상 감정 — 각 경향성의 핵심 에너지 원천 직격',
-    concept: '성취 보상 / 관계 보상 / 리듬 보상 / 탐구 보상 / 새로움 보상',
-    options: [
-      { label:'A', text:'도전적인 목표를 달성해 결과가 눈에 보일 때', type:'A' },
-      { label:'B', text:'신뢰하는 사람들과 함께 무언가를 만들어갈 때', type:'B' },
-      { label:'C', text:'익숙한 리듬 안에서 꾸준히 집중할 때', type:'C' },
-      { label:'D', text:'한 주제를 깊이 파다가 핵심을 발견할 때', type:'D' },
-      { label:'E', text:'새로운 환경이나 방식을 직접 시도해볼 때', type:'E' },
-    ]
-  },
-  {
-    q: '일이 예상대로 안 풀릴 때 가장 힘든 점은?',
-    note: '',
-    intent: '스트레스 취약점 — 각 경향성의 에너지 차단 상황',
-    concept: '목표 상실 / 고립감 / 불안정 / 피상적 처리 / 반복 강요',
-    options: [
-      { label:'A', text:'목표가 불분명해 성과 방향이 보이지 않을 때', type:'A' },
-      { label:'B', text:'혼자 고립되어 연결감이 없을 때', type:'B' },
-      { label:'C', text:'예측 불가능한 변화로 리듬이 깨질 때', type:'C' },
-      { label:'D', text:'깊이 생각할 시간 없이 빠르게 처리해야 할 때', type:'D' },
-      { label:'E', text:'매일 같은 방식만 반복하도록 강요받을 때', type:'E' },
-    ]
-  },
-  {
-    q: '여유 시간이 생겼을 때 자연스럽게 하는 것은?',
-    note: '',
-    intent: '자발적 행동 패턴 — 의식 없이 끌리는 자연스러운 회복 방식',
-    concept: '성장 지향 / 관계 지향 / 루틴 지향 / 탐구 지향 / 자극 지향',
-    options: [
-      { label:'A', text:'다음 목표를 세우거나 성장 관련 콘텐츠를 본다', type:'A' },
-      { label:'B', text:'가족/친구와 시간을 보내거나 새로운 사람을 만난다', type:'B' },
-      { label:'C', text:'산책, 독서 등 혼자만의 규칙적 루틴을 지킨다', type:'C' },
-      { label:'D', text:'관심 분야를 깊게 파거나 개인 작품을 완성한다', type:'D' },
-      { label:'E', text:'미뤄뒀던 새로운 장소나 활동을 즉흥적으로 시도한다', type:'E' },
-    ]
-  },
-  {
-    q: '일상에서 자연스럽게 맡게 되는 역할은?',
-    note: '팀/개인 모두 해당',
-    intent: '사회적 역할 경향 — 상황 의존성 제거, 일상 전반으로 확대',
-    concept: '리더십 / 연결자 / 안정자 / 전문가 / 혁신자',
-    options: [
-      { label:'A', text:'방향을 제시하고 추진력을 불어넣는 역할', type:'A' },
-      { label:'B', text:'사람들 사이를 연결하고 분위기를 맞추는 역할', type:'B' },
-      { label:'C', text:'안정적 기반을 만들고 질서를 유지하는 역할', type:'C' },
-      { label:'D', text:'한 분야의 전문성을 깊이 파서 조언하는 역할', type:'D' },
-      { label:'E', text:'새로운 아이디어를 제안하며 변화를 만드는 역할', type:'E' },
-    ]
-  },
-  {
-    q: '결과물을 만들었을 때 가장 뿌듯한 것은?',
-    note: '',
-    intent: '만족 기준 — A(외부 가시성·속도) vs D(내면 의미·깊이) 대비',
-    concept: '성과 달성 / 관계 만족 / 지속성 / 의미 충족 / 차별성',
-    options: [
-      { label:'A', text:'남들에게도 보이는 성취로 목표를 달성함', type:'A' },
-      { label:'B', text:'함께한 사람들이 만족하고 고마워함', type:'B' },
-      { label:'C', text:'꾸준한 노력이 안정적 결과로 이어짐', type:'C' },
-      { label:'D', text:'나만의 기준과 깊은 의미를 충족시킴', type:'D' },
-      { label:'E', text:'기존과 다른 새로운 가치를 창출함', type:'E' },
-    ]
-  },
-  {
-    q: '중요한 선택을 할 때 가장 우선시하는 것은?',
-    note: '',
-    intent: '의사결정 가치 — 경향성 간 구분력이 가장 높은 핵심 지표',
-    concept: '목표 기여도 / 관계 영향 / 안정성 / 본질적 의미 / 자율·가능성',
-    options: [
-      { label:'A', text:'목표 달성에 얼마나 기여하는가', type:'A' },
-      { label:'B', text:'관계와 협력에 어떤 도움이 되는가', type:'B' },
-      { label:'C', text:'일상 리듬과 안정성을 유지하는가', type:'C' },
-      { label:'D', text:'나에게 본질적 의미가 있는가', type:'D' },
-      { label:'E', text:'자율성과 새로운 가능성을 여는가', type:'E' },
-    ]
-  },
-  {
-    q: '가장 쉽게 몰입하는 환경은?',
-    note: '',
-    intent: '몰입 조건 — 환경-경향성 매칭, 외적 조건과 내적 성향의 연결',
-    concept: '도전 환경 / 협력 환경 / 안정 환경 / 탐구 환경 / 자율 환경',
-    options: [
-      { label:'A', text:'명확한 목표/마감이 있고 경쟁·도전이 있는 곳', type:'A' },
-      { label:'B', text:'신뢰할 수 있는 사람들과 협력하는 분위기', type:'B' },
-      { label:'C', text:'방해 없이 예측 가능한 조용한 공간', type:'C' },
-      { label:'D', text:'탐구와 완성에 충분한 시간이 주어지는 곳', type:'D' },
-      { label:'E', text:'자율적으로 방식을 선택하고 실험할 수 있는 곳', type:'E' },
-    ]
-  },
-  {
-    q: '에너지가 고갈될 때 가장 필요한 것은?',
-    note: '',
-    intent: '회복 전략 — 각 경향성의 에너지 보충 방식, 실제 행동 중심',
-    concept: '의미 재확인 / 연결 회복 / 루틴 복귀 / 집중 복원 / 자극 전환',
-    options: [
-      { label:'A', text:'지금 하는 일의 성과와 의미를 다시 확인하기', type:'A' },
-      { label:'B', text:'믿을 만한 사람과 깊은 대화 나누기', type:'B' },
-      { label:'C', text:'모든 자극을 끊고 혼자만의 루틴 시간 갖기', type:'C' },
-      { label:'D', text:'정말 중요한 일에만 집중할 환경 만들기', type:'D' },
-      { label:'E', text:'완전히 새로운 자극이나 환경으로 전환하기', type:'E' },
-    ]
-  },
-  {
-    q: '5년 후 이상적인 삶에서 가장 중요한 것은?',
-    note: '',
-    intent: '장기 가치 방향 — 이상적 자아의 핵심 동기 노출, 우선가치와 직결',
-    concept: '성취 정체성 / 관계 정체성 / 안정 정체성 / 의미 정체성 / 자유 정체성',
-    options: [
-      { label:'A', text:'의미 있는 성취와 성장의 흔적', type:'A' },
-      { label:'B', text:'따뜻하고 지속적인 소중한 관계', type:'B' },
-      { label:'C', text:'안정적이고 균형 잡힌 삶의 리듬', type:'C' },
-      { label:'D', text:'나만의 의미 있는 일에 몰입하는 삶', type:'D' },
-      { label:'E', text:'자유롭게 탐험하며 살아가는 삶', type:'E' },
-    ]
-  },
+  { id:1,  char:"A", text:"요즘 나는 도전적인 목표가 보이면 가슴이 먼저 뛴다." },
+  { id:2,  char:"A", text:"지금 나는 \"결과를 만들어 내는 과정\" 자체에서 에너지를 얻는 편이다." },
+  { id:3,  char:"A", text:"최근 나는 마감과 도전이 있을 때 더 집중이 잘 된다고 느낀다." },
+  { id:4,  char:"C", text:"요즘 나는 신뢰할 수 있는 사람들과 같이 일할 때 가장 빛난다고 느낀다." },
+  { id:5,  char:"C", text:"지금 나는 \"우리\"라는 감각이 있을 때 동력이 더 잘 생긴다." },
+  { id:6,  char:"C", text:"최근 나는 혼자 하는 작업보다 함께 만들어가는 작업에서 에너지를 더 얻는다." },
+  { id:7,  char:"S", text:"요즘 나는 일정한 리듬과 루틴 안에 있을 때 가장 깊이 집중할 수 있다." },
+  { id:8,  char:"S", text:"지금 나는 \"흔들리지 않는 기본기\" 위에 있을 때 마음이 가장 평온하다." },
+  { id:9,  char:"S", text:"최근 나는 큰 변화보다는 차분한 지속에서 에너지를 충전하는 편이다." },
+  { id:10, char:"D", text:"요즘 나는 한 가지 주제를 깊이 파고들 때 가장 살아 있다고 느낀다." },
+  { id:11, char:"D", text:"지금 나는 결과보다 \"왜 이걸 하는지의 본질적 의미\"가 더 중요하다." },
+  { id:12, char:"D", text:"최근 나는 어떤 일을 끝까지 완성하지 않으면 잘 넘어가지지 않는다." },
+  { id:13, char:"E", text:"요즘 나는 새로운 자극과 처음 해보는 일에서 가장 큰 에너지를 얻는다." },
+  { id:14, char:"E", text:"지금 나는 시간의 핸들을 내가 직접 쥘 때 가장 자유롭다고 느낀다." },
+  { id:15, char:"E", text:"최근 나는 같은 일이 반복되면 에너지가 빠르게 식어버린다." }
 ];
 
-// ── REFLECTIONS (동적 생성 — 주성향 이름 삽입) ──────────────────────────
-function buildReflections(primaryName, secondaryName, primaryEmoji, pDetail) {
-  return [
-    {
-      num: 'Q1', special: true,
-      text: `지금 이 순간, <strong style="color:var(--navy)">${primaryEmoji} ${primaryName}</strong>로서 에너지가 가장 잘 흐르는 상황은 어떤 모습인가요?`,
-      sub: `${primaryName}의 에너지 원천: ${pDetail.flow}`,
-      ph: `${primaryName} 성향이 살아날 때 나는 어떤 모습인가요? 지금 일상에서 그 순간이 충분히 있나요?`,
-    },
-    {
-      num: 'Q2', special: true,
-      text: `지난 한 주, 실제로 <strong style="color:var(--navy)">${primaryEmoji} ${primaryName}</strong> 에너지가 흐른 순간이 있었나요? 없었다면 무엇이 막고 있었나요?`,
-      sub: '있었다면 어떤 상황이었는지, 없었다면 어떤 환경이 걸림돌이었는지 적어보세요',
-      ph: `${primaryName} 에너지가 실제로 살아있었나요? 솔직하게 떠올려보세요`,
-    },
-    {
-      num: 'Q3', special: false,
-      text: `<strong style="color:var(--navy)">${primaryEmoji} ${primaryName}</strong> 성향의 에너지가 잘 흐르지 않을 때, 주변 환경에서 어떤 점이 걸림돌이 되고 있나요?`,
-      sub: `${primaryName}이(가) 소모되는 상황: ${pDetail.drain}`,
-      ph: `지금 나를 가장 소모시키는 환경이나 상황이 있다면 적어보세요`,
-    },
-    {
-      num: 'Q4', special: false,
-      text: `나의 <strong style="color:var(--navy)">${primaryEmoji} ${primaryName}</strong> 에너지는 내가 중요하게 여기는 가치(우선가치)와 어떻게 연결되나요?`,
-      sub: '',
-      ph: '내가 소중하게 여기는 것과 이 성향이 어떻게 이어지는지 적어보세요',
-    },
-    {
-      num: 'Q5', special: false,
-      text: `6개월 후, 나의 주성향은 지금과 어떻게 달라져 있을 것 같나요?`,
-      sub: '성향은 고정된 정체성이 아닙니다. 어떤 맥락의 변화가 예상되나요?',
-      ph: '상황이나 환경이 달라지면 성향도 달라질 수 있습니다',
-    },
-  ];
-}
+const LIKERT_LABELS = [
+  {value:1,label:"전혀 그렇지 않다"},
+  {value:2,label:"그렇지 않다"},
+  {value:3,label:"보통이다"},
+  {value:4,label:"그렇다"},
+  {value:5,label:"매우 그렇다"}
+];
 
-// ── STATE ─────────────────────────────────────────────────────────────────
-let current = 0;
-const answers = new Array(10).fill(null);
+// ===== 26개 메시지 =====
+const CHAR_KEYS = ["A","C","S","D","E"];
 
-const typeColorMap = {
-  A: '#2979C8', B: '#3DAA6B', C: '#1E2761', D: '#8B5CF6', E: '#C9983A'
+const COMBO_MESSAGES = {
+  // 열정러 주된
+  "A_C":"지금은 결과를 향해 달리면서도 함께하는 사람들에게서 동력을 얻는 시기입니다. 혼자 하는 것보다 팀과 함께 목표를 설정할 때 가장 빛나는 조합입니다.",
+  "A_S":"지금은 목표를 향해 달리되 흔들리지 않는 루틴이 받쳐줄 때 가장 강한 시기입니다. 목표와 리듬이 함께 있으면 번아웃 없이 오래 갑니다.",
+  "A_D":"지금은 도전적 목표와 깊이 있는 탐구가 함께 흐르는 시기입니다. 단순한 속도가 아니라 의미 있는 결과를 만들어낼 때 가장 살아납니다.",
+  "A_E":"지금은 새로운 도전과 목표가 동시에 들어올 때 최고조가 되는 시기입니다. 다만 에너지가 너무 넓게 퍼지지 않도록 우선순위 하나를 정하는 게 좋습니다.",
+  // 협력러 주된
+  "C_A":"지금은 함께하되 명확한 목표가 있을 때 가장 빛나는 시기입니다. 팀의 결과를 이끌어내는 역할에서 에너지가 충전됩니다.",
+  "C_S":"지금은 안정된 관계 속에서 함께 천천히 나아가는 시기입니다. 신뢰가 쌓인 사람들과 리듬을 맞추는 것이 가장 자연스러운 흐름입니다.",
+  "C_D":"지금은 의미 있는 일을 좋은 사람들과 함께할 때 가장 깊이 들어가는 시기입니다. \"우리가 왜 이것을 하는가\"가 분명할 때 폭발적인 에너지가 나옵니다.",
+  "C_E":"지금은 새로운 사람들과 새로운 일을 함께 탐험하는 것에서 에너지를 얻는 시기입니다. 고정된 팀보다 다양한 연결이 자극이 되는 시기.",
+  // 안정러 주된
+  "S_A":"지금은 리듬 안에서 목표를 착실히 쌓아가는 시기입니다. 급하게 달리기보다 안정적인 루틴 위에서 목표를 달성할 때 가장 오래 갑니다.",
+  "S_C":"지금은 믿을 수 있는 사람들과 예측 가능한 리듬 속에서 일하는 것이 가장 편안한 시기입니다. 안정감이 협력의 기반이 됩니다.",
+  "S_D":"지금은 흔들리지 않는 루틴 위에서 깊이 파고드는 작업이 가장 맞는 시기입니다. 집중력이 길게 유지되는 가장 강력한 조합입니다.",
+  "S_E":"지금은 안정적인 기반 위에서 새로운 자극을 조금씩 받아들이는 시기입니다. 루틴은 유지하되 그 안에서 변화를 찾는 것이 좋습니다.",
+  // 장인러 주된
+  "D_A":"지금은 의미 있는 목표를 끝까지 완성하려는 힘이 강한 시기입니다. 결과와 의미가 함께 있을 때 가장 강력한 동력이 나옵니다.",
+  "D_C":"지금은 함께하는 사람들과 의미 있는 작업을 깊이 탐구하는 것에서 에너지를 얻는 시기입니다. 혼자가 아닌, 공감하는 동료와 함께하는 탐구가 좋습니다.",
+  "D_S":"지금은 안정적인 환경에서 한 가지를 깊이 파는 작업이 가장 잘 맞는 시기입니다. 집중과 완성도가 모두 살아나는 조합입니다.",
+  "D_E":"지금은 새로운 주제를 깊이 탐구하고 싶은 욕구가 강한 시기입니다. 탐구의 출발은 새로움이지만, 끝까지 완성하는 것까지 가야 만족합니다.",
+  // 모험러 주된
+  "E_A":"지금은 새로운 도전 목표를 향해 달리는 것에서 에너지가 넘치는 시기입니다. 처음 해보는 일에 목표까지 더해지면 최고조가 됩니다.",
+  "E_C":"지금은 새로운 사람들을 만나고 다양한 연결을 탐험하는 것에서 에너지를 얻는 시기입니다. 기존 관계보다 새로운 만남이 더 자극이 되는 시기.",
+  "E_S":"지금은 자유롭게 탐험하면서도 돌아올 수 있는 안정적인 기반이 있는 시기입니다. 완전한 방랑보다 안전한 기반 위의 탐험이 더 오래갑니다.",
+  "E_D":"지금은 새로운 주제를 발견하면 깊이 파고들고 싶은 욕구가 동시에 있는 시기입니다. 탐험과 탐구가 같이 흐르는 가장 지적인 조합.",
+  // 균형형 5개
+  "A_A":"지금은 열정러 에너지가 중심이면서 전반적으로 고르게 활성화된 시기입니다. 다양한 방향에서 에너지를 얻고 있으니, 한 가지 목표로 집중하면 더욱 강해집니다.",
+  "C_C":"지금은 협력러 에너지가 중심이면서 전반적으로 고르게 흐르는 시기입니다. 여러 관계에서 에너지를 얻고 있으니, 가장 신뢰하는 한 팀에 집중해 보세요.",
+  "S_S":"지금은 안정러 에너지가 중심이면서 전반적으로 균형 잡힌 시기입니다. 지속 가능한 리듬 안에서 천천히 깊어지는 것이 지금의 자연스러운 흐름입니다.",
+  "D_D":"지금은 장인러 에너지가 중심이면서 전반적으로 고르게 흐르는 시기입니다. 한 가지 주제에 완전히 몰입하는 것이 지금 가장 잘 맞는 방식입니다.",
+  "E_E":"지금은 모험러 에너지가 중심이면서 전반적으로 활성화된 시기입니다. 다양한 자극에서 에너지를 얻고 있으니, 하나의 탐험에 집중하면 더욱 빛납니다.",
+  // 저활성
+  "LOW":"지금은 다섯 경향 모두 활성도가 낮은 시기입니다. 에너지가 어디로도 강하게 흐르지 않는다면, 잡음이 너무 많거나 회복이 먼저 필요한 단계일 수 있습니다. 잡음 진단을 먼저 권장합니다."
 };
 
-// flex가 필요한 화면 목록
-const FLEX_SCREENS = new Set(['screen-cover','screen-step2','screen-step3','screen-share']);
+// ===== 작은 실천 5종 =====
+const PRACTICES = {
+  A:{title:"열정러를 위한 오늘의 실천",body:"지금 당장 달성 가능한 도전 목표 하나를 정하고, 오늘 안에 첫 번째 행동을 하나 실행해 보세요. 목표가 눈에 보이면 에너지가 돌아옵니다."},
+  C:{title:"협력러를 위한 오늘의 실천",body:"지금 신뢰하는 한 사람에게 연락해 보세요. 같이 하고 싶은 일이 있다면 제안해도 좋습니다. 연결되는 것 자체가 에너지가 됩니다."},
+  S:{title:"안정러를 위한 오늘의 실천",body:"오늘 하루의 루틴 중 지키고 싶은 것 한 가지를 정하고 반드시 실행해 보세요. 작은 리듬 하나가 안정감을 회복시킵니다."},
+  D:{title:"장인러를 위한 오늘의 실천",body:"지금 가장 깊이 파고 싶은 주제를 한 가지 정하고, 오늘 30분만 방해 없이 그 주제에만 집중해 보세요. 의미의 실마리가 잡히기 시작합니다."},
+  E:{title:"모험러를 위한 오늘의 실천",body:"오늘 처음 해보는 것 한 가지를 해보세요. 크지 않아도 됩니다. 새로운 카페, 새로운 루트, 새로운 사람. 자극이 에너지를 깨웁니다."}
+};
 
-// ── HELPERS ───────────────────────────────────────────────────────────────
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => {
-    s.classList.remove('active','flex-screen');
-    s.style.display = 'none';
-  });
-  const el = document.getElementById(id);
-  el.style.display = FLEX_SCREENS.has(id) ? 'flex' : 'block';
-  el.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'instant' });
-}
+// ===== 상태 =====
+let currentQ = 0;
+let answers = new Array(15).fill(null);
+let _result = null;
 
-function updateProgressBar(pct) {
-  document.getElementById('progress-bar').style.width = pct + '%';
-}
-
-// ── QUIZ ──────────────────────────────────────────────────────────────────
+// ===== 시작 =====
 function startQuiz() {
-  current = 0;
-  answers.fill(null);
-  initShuffledOptions();
-  showScreen('screen-quiz');
+  document.getElementById('cover-screen').style.display = 'none';
+  document.getElementById('quiz-screen').classList.add('active');
+  currentQ = 0;
   renderQuestion();
+  window.scrollTo(0,0);
 }
 
+// ===== 문항 렌더링 =====
 function renderQuestion() {
-  const q = QUESTIONS[current];
-  const selected = answers[current];
+  const q = QUESTIONS[currentQ];
+  const char = CHARS[q.char];
+  document.getElementById('q-num').textContent = `Q${String(q.id).padStart(2,'0')}`;
+  document.getElementById('q-char').textContent = `${char.icon} ${char.name}`;
+  document.getElementById('q-text').textContent = q.text;
 
-  document.getElementById('q-current').textContent = current + 1;
-  document.getElementById('quiz-fill').style.width = ((current) / 10 * 100) + '%';
-  updateProgressBar((current / 10) * 100);
+  const pct = ((currentQ+1)/15)*100;
+  document.getElementById('progress-bar').style.width = pct+'%';
+  document.getElementById('progress-text').textContent = `${currentQ+1} / 15`;
 
-  document.getElementById('btn-prev').style.visibility = current === 0 ? 'hidden' : 'visible';
-  document.getElementById('btn-next').textContent = current === 9 ? '결과 보기 →' : '다음 →';
-  document.getElementById('btn-next').disabled = selected === null;
-
-  const wrap = document.getElementById('q-card-wrap');
-  wrap.style.opacity = '0';
-
-  setTimeout(() => {
-    const opts = shuffledOptions[current] || q.options;
-    wrap.innerHTML = `
-      <div class="q-card">
-        <div class="q-step-badge">
-          <span class="q-step-num">Q${current+1}</span>
-        </div>
-        <div class="q-text">${q.q}</div>
-        ${q.note ? `<div class="q-note">* ${q.note}</div>` : ''}
-        <div class="options">
-          ${opts.map((opt, i) => `
-            <div class="option opt-${opt.type} ${selected === opt.type ? 'selected-'+opt.type : ''}"
-                 onclick="selectOption('${opt.type}')">
-              <div class="option-label" style="color:var(--gray)">${i+1}</div>
-              <div class="option-text">${opt.text}</div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-    wrap.style.opacity = '1';
-    wrap.style.transition = 'opacity 0.3s ease';
-  }, 150);
-}
-
-function selectOption(type) {
-  answers[current] = type;
-  document.getElementById('btn-next').disabled = false;
-
-  const opts = shuffledOptions[current] || QUESTIONS[current].options;
-  document.querySelectorAll('.option').forEach((el, i) => {
-    const t = opts[i].type;
-    el.className = `option opt-${t}`;
-    if (t === type) el.classList.add('selected-' + type);
+  const opts = document.getElementById('likert-options');
+  opts.innerHTML = '';
+  LIKERT_LABELS.forEach(opt => {
+    const div = document.createElement('div');
+    div.className = 'likert-option';
+    if (answers[currentQ] === opt.value) div.classList.add('selected');
+    div.innerHTML = `<div class="likert-circle"></div><span>${opt.label}</span>`;
+    div.onclick = () => selectOption(opt.value);
+    opts.appendChild(div);
   });
 
-  if (current === 9) {
-    document.getElementById('btn-next').textContent = '결과 분석 중...';
-    setTimeout(() => { showResult(); }, 600);
-  }
+  document.getElementById('btn-prev').disabled = currentQ === 0;
+  document.getElementById('btn-prev').style.opacity = currentQ===0 ? .4 : 1;
+  document.getElementById('btn-next').disabled = answers[currentQ] === null;
+  document.getElementById('btn-next').textContent = currentQ===14 ? "결과 보기" : "다음";
+
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function nextQ() {
-  if (answers[current] === null) return;
-  if (current === 9) { showResult(); return; }
-  current++;
-  renderQuestion();
+function selectOption(value) { answers[currentQ]=value; renderQuestion(); }
+function prevQuestion() { if(currentQ>0){currentQ--;renderQuestion();} }
+function nextQuestion() {
+  if(answers[currentQ]===null) return;
+  if(currentQ===14) calculateAndShowResult();
+  else { currentQ++; renderQuestion(); }
 }
 
-function prevQ() {
-  if (current === 0) return;
-  current--;
-  renderQuestion();
-}
-
-// ── RESULT ────────────────────────────────────────────────────────────────
-// textarea 답변 저장용
-let reflectionAnswers = [];
-
-function showResult() {
-  const counts = { A:0, B:0, C:0, D:0, E:0 };
-  answers.forEach(a => { if(a) counts[a]++; });
-  const ranked = Object.entries(counts).sort((a,b) => b[1]-a[1]);
-  const [first, second] = ranked;
-
-  showScreen('screen-result');
-  updateProgressBar(100);
-
-  const primary   = TYPES[first[0]];
-  const pDetail   = TYPE_DETAIL[first[0]];
-  const secondary = TYPES[second[0]];
-  const sDetail   = TYPE_DETAIL[second[0]];
-
-  const scoreBars = ranked.map(([k, v]) => {
-    const tp = TYPES[k];
-    return `
-      <div class="score-row">
-        <div class="score-row-top">
-          <div class="score-name" style="color:${tp.color}">${tp.emoji} ${tp.name}</div>
-          <div class="score-num">${v} / 10</div>
-        </div>
-        <div class="score-bar-bg">
-          <div class="score-bar-fill" style="background:${tp.color}" data-w="${v*10}"></div>
-        </div>
-      </div>`;
-  }).join('');
-
-  const noiseItems = pDetail.noise.map(n =>
-    `<div class="noise-item"><span class="noise-icon">🔇</span><span>${n}</span></div>`
-  ).join('');
-
-  const mechanismItems = (pDetail.noise_mechanism || []).map(m =>
-    `<div class="mechanism-item">
-      <span class="mechanism-tag">${m.tag}</span>
-      <div class="mechanism-text">${m.text}</div>
-    </div>`
-  ).join('');
-
-  document.getElementById('result-content').innerHTML = `
-
-    <!-- 결과 헤더 -->
-    <div class="result-header">
-      <div class="result-header-inner">
-        <div class="result-title-small">N.E.E.D 루틴 · Need Scan 결과</div>
-        <div class="result-title-main">
-          지금 나의 에너지는<br><span class="gold">${primary.emoji} ${primary.name}</span> 중심으로 흐르고 있습니다
-        </div>
-        <div class="result-sub">성향은 고정된 정체성이 아닙니다. 시기와 맥락에 따라 달라집니다.</div>
-      </div>
-    </div>
-
-    <!-- 주성향 카드 -->
-    <div class="result-primary-card" style="background:${primary.light}; border: 2px solid ${primary.color}20;">
-      <div class="rpc-tag" style="color:${primary.color}">주성향</div>
-      <div class="rpc-name" style="color:${primary.color}">${primary.emoji} ${primary.name}</div>
-      <div class="rpc-en" style="color:${primary.color}">${primary.en}</div>
-      <div class="rpc-oneline" style="color:var(--navy)">${pDetail.oneLine}</div>
-    </div>
-
-    <!-- 스크롤 안내 배너 -->
-    <div id="scroll-notice" style="
-      background: linear-gradient(135deg, var(--gold) 0%, #d4a73f 100%);
-      border-radius: 14px; padding: 16px 20px; margin-bottom: 16px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      box-shadow: 0 4px 20px rgba(201,152,58,0.3);">
-      <div style="flex:1;">
-        <div style="font-size:11px; color:rgba(255,255,255,0.75); margin-bottom:4px; line-height:1.4;">
-          아래는 여러분 성향에 대한 상세분석입니다
-        </div>
-        <div style="font-size:14px; font-weight:800; color:var(--white); line-height:1.4;">
-          상세분석을 다 읽으시면, 진짜 욕구 찾는 방법이 나오니 놓치지마세요! ✨
-        </div>
-      </div>
-      <button onclick="document.getElementById('result-next-btn').scrollIntoView({behavior:'smooth'})"
-        style="background:rgba(255,255,255,0.2); border:2px solid rgba(255,255,255,0.4);
-               color:var(--white); cursor:pointer; font-family:'Noto Sans KR',sans-serif;
-               font-size:12px; font-weight:700; padding:10px 14px; border-radius:10px;
-               white-space:nowrap; flex-shrink:0; line-height:1.4;">
-        진짜 욕구 찾기로<br>바로 이동 ↓
-      </button>
-    </div>
-
-    <!-- 보조성향 + 요약 -->
-    <div class="result-secondary-row">
-      <div class="result-sec-card" style="border-color:${secondary.color}40">
-        <div class="rsc-tag" style="color:${secondary.color}">보조성향</div>
-        <div class="rsc-name" style="color:${secondary.color}">${secondary.emoji} ${secondary.name}</div>
-        <div class="rsc-score">점수: ${second[1]} / 10</div>
-      </div>
-      <div class="result-sec-card">
-        <div class="rsc-tag" style="color:var(--gray)">진단 요약</div>
-        <div class="rsc-name" style="color:var(--navy); font-size:13px; font-weight:600; line-height:1.6;">
-          주성향 ${primary.name}<br>보조성향 ${secondary.name}
-        </div>
-      </div>
-    </div>
-
-    <!-- 점수 바 -->
-    <div class="score-section">
-      <div class="score-section-title">📊 전체 성향 점수</div>
-      ${scoreBars}
-    </div>
-
-    <!-- 주성향 상세 -->
-    <div class="type-detail">
-      <div class="td-header" style="background:${primary.color}">
-        <div class="td-emoji">${primary.emoji}</div>
-        <div>
-          <div class="td-name">${primary.name}</div>
-          <div class="td-en">${primary.en}</div>
-        </div>
-      </div>
-      <div class="td-body">
-        <div class="td-oneline" style="background:${primary.light}; color:${primary.color}">${pDetail.oneLine}</div>
-        <div class="td-row">
-          <span class="td-row-icon">💚</span>
-          <div>
-            <span class="td-row-label" style="color:${primary.color}">몰입할 때: </span>${pDetail.flow}
-            <div class="td-scene">${pDetail.flowScene}</div>
-          </div>
-        </div>
-        <div class="td-row">
-          <span class="td-row-icon">⚡</span>
-          <div>
-            <span class="td-row-label" style="color:var(--red)">고갈될 때: </span>${pDetail.drain}
-            <div class="td-scene">${pDetail.drainScene}</div>
-          </div>
-        </div>
-        <div class="td-daily">
-          <div class="td-daily-title" style="color:${primary.color}">🎯 일상에서 보이는 모습</div>
-          <div class="td-daily-row td-daily-yes">
-            <span class="td-daily-icon">✅</span><span>${pDetail.daily_yes}</span>
-          </div>
-          <div class="td-daily-row td-daily-no">
-            <span class="td-daily-icon">⚠️</span><span>${pDetail.daily_no}</span>
-          </div>
-        </div>
-        <div class="td-row" style="margin-top:16px;">
-          <span class="td-row-icon">💡</span>
-          <div><span class="td-row-label" style="color:var(--navy)">이런 나에게: </span>${pDetail.tip}</div>
-        </div>
-        <div class="td-hook">
-          <div class="td-hook-label">Hook 질문</div>
-          <div class="td-hook-text">"${pDetail.hook}"</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 잡음 섹션 -->
-    <div class="noise-card">
-      <div class="noise-header" style="background:${primary.color}">
-        <div>
-          <div class="noise-header-title">🔇 ${primary.name}에게 주로 잡음이 발생하는 상황</div>
-          <div class="noise-header-sub">Eliminate Noise — 이런 상황이 나의 욕구를 흐리게 만듭니다</div>
-        </div>
-      </div>
-      <div class="noise-body">
-        ${noiseItems}
-
-        <!-- 사회구조 메커니즘: 왜 이 잡음이 욕구를 흐리게 만드는가 -->
-        <div class="mechanism-block">
-          <div class="mechanism-title">🧭 이 잡음이 욕구를 흐리게 만드는 방식</div>
-          <div class="mechanism-sub">
-            잡음은 그냥 불편한 환경이 아닙니다. 사회 구조가 욕구가 표현되기도 전에 걸러내거나, 다른 것으로 바꿔치우는 방식으로 작동합니다.
-          </div>
-          ${mechanismItems}
-        </div>
-
-        <div style="margin-top:14px; padding:12px 14px; background:var(--light); border-radius:10px;">
-          <div style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:4px;">💡 회고 질문</div>
-          <div style="font-size:13px; color:var(--dark); line-height:1.7;">
-            지금 나의 일상에서 위 상황 중 어떤 것이 가장 자주 나타나고 있나요?<br>
-            그것이 나의 에너지를 어떻게 흐리게 만들고 있는지 떠올려보세요.
-          </div>
-        </div>
-
-        <!-- Energy Flow Hook 자가체크 -->
-        <div class="eflow-check">
-          <div class="eflow-check-label">⚡ Energy Flow 자가체크</div>
-          <div class="eflow-check-q">이 활동은 나를 충전시키나, 소모시키나?</div>
-          <div class="eflow-check-sub">
-            오늘 하루 가장 많이 한 활동 하나를 떠올려보세요. 끝난 뒤 에너지가 차오르나요, 빠져나가나요?
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 보조성향 상세 -->
-    <div class="type-detail">
-      <div class="td-header" style="background:${secondary.color}">
-        <div class="td-emoji">${secondary.emoji}</div>
-        <div>
-          <div class="td-name">${secondary.name} <span style="font-size:13px;opacity:0.7;font-weight:400;">보조성향</span></div>
-          <div class="td-en">${secondary.en}</div>
-        </div>
-      </div>
-      <div class="td-body">
-        <div class="td-oneline" style="background:${secondary.light}; color:${secondary.color}">${sDetail.oneLine}</div>
-        <div class="td-row">
-          <span class="td-row-icon">💚</span>
-          <div>
-            <span class="td-row-label" style="color:${secondary.color}">몰입할 때: </span>${sDetail.flow}
-            <div class="td-scene">${sDetail.flowScene}</div>
-          </div>
-        </div>
-        <div class="td-row">
-          <span class="td-row-icon">⚡</span>
-          <div>
-            <span class="td-row-label" style="color:var(--red)">고갈될 때: </span>${sDetail.drain}
-            <div class="td-scene">${sDetail.drainScene}</div>
-          </div>
-        </div>
-        <div class="td-hook">
-          <div class="td-hook-label">Hook 질문</div>
-          <div class="td-hook-text">"${sDetail.hook}"</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 성향 선언 -->
-    <div class="declaration-card">
-      <div class="dc-header">나의 에너지 성향 선언</div>
-      <div class="dc-body">
-        <div class="dc-line">
-          주성향: 지금 나의 에너지는
-          <span class="fill" style="color:${primary.color}; border-color:${primary.color}">${primary.name}</span>
-          중심으로 흐르고 있다.
-        </div>
-        <div class="dc-line">
-          보조성향: 그 아래에는
-          <span class="fill" style="color:${secondary.color}; border-color:${secondary.color}">${secondary.name}</span>
-          에너지도 함께 흐르고 있다.
-        </div>
-        <div class="dc-note">※ 성향은 고정된 정체성이 아닙니다. 시기와 맥락에 따라 달라집니다.</div>
-      </div>
-    </div>
-
-    <!-- 결과 하단 CTA — 강조 버전 -->
-    <div id="result-next-btn" style="
-      background: linear-gradient(135deg, #1E2761 0%, #2979C8 100%);
-      border-radius: 20px; padding: 28px 24px; margin-bottom: 16px;
-      text-align: center; position: relative; overflow: hidden;
-      box-shadow: 0 8px 40px rgba(30,39,97,0.3);">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);pointer-events:none;"></div>
-      <div style="position:relative;">
-        <div style="display:inline-block; background:rgba(255,255,255,0.12); border-radius:20px;
-                    padding:5px 14px; font-size:11px; color:rgba(255,255,255,0.7);
-                    letter-spacing:1.5px; margin-bottom:14px;">
-          다음 단계
-        </div>
-        <div style="font-size:clamp(17px,4vw,22px); font-weight:900; color:var(--white);
-                    line-height:1.4; margin-bottom:8px;">
-          성향을 알았다면,<br>이제 <span style="color:var(--gold)">왜 이 에너지인지</span> 알아볼 차례예요
-        </div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.65); margin-bottom:24px; line-height:1.7;">
-          5가지 짧은 질문으로<br>지금 내 에너지의 진짜 욕구를 확인합니다
-        </div>
-        <button onclick="showStep2Screen('${first[0]}','${second[0]}')"
-          style="width:100%; background:var(--gold); color:var(--white); border:none; cursor:pointer;
-                 font-family:'Noto Sans KR',sans-serif; font-size:18px; font-weight:900;
-                 padding:22px; border-radius:14px; letter-spacing:0.3px;
-                 box-shadow:0 6px 28px rgba(201,152,58,0.55);
-                 transition:all 0.25s ease; animation:pulseBtn 2.5s ease-in-out infinite;"
-          onmouseover="this.style.transform='translateY(-3px) scale(1.01)'; this.style.boxShadow='0 10px 36px rgba(201,152,58,0.65)'"
-          onmouseout="this.style.transform=''; this.style.boxShadow='0 6px 28px rgba(201,152,58,0.55)'">
-          내 에너지의 진짜 욕구 알아보기 →
-        </button>
-      </div>
-    </div>
-
-    <!-- 차별화 문구 -->
-    <div class="signature-line">
-      <div class="signature-line-text">
-        더 빠르게가 아니라 <span class="gold-accent">더 선명하게</span>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-bottom:24px;">
-      <button class="btn-retry" style="color:var(--gray); border-color:#dce2ee; font-size:13px; padding:10px 24px;"
-        onclick="startQuiz()">↺ 다시 진단하기</button>
-    </div>
-  `;
-
-  reflectionAnswers = new Array(5).fill('');
-
-  setTimeout(() => {
-    document.querySelectorAll('.score-bar-fill').forEach(el => {
-      el.style.width = el.dataset.w + '%';
-    });
-  }, 400);
-}
-
-function saveReflection(idx, val) {
-  reflectionAnswers[idx] = val;
-}
-
-// ── STEP 2 화면 ────────────────────────────────────────────────────────────
-function showStep2Screen(firstKey, secondKey) {
-  resultFirstKey  = firstKey;
-  resultSecondKey = secondKey;
-  const primary = TYPES[firstKey];
-
-  showScreen('screen-step2');
-
-  document.getElementById('step2-inner').innerHTML = `
-    <div style="font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:3px; text-transform:uppercase; margin-bottom:20px;">2단계</div>
-    <div style="font-size:clamp(26px,7vw,40px); font-weight:900; color:var(--white); line-height:1.25; margin-bottom:16px;">
-      ${primary.emoji} ${primary.name}인 나,<br>왜 이 에너지로<br><span style="color:var(--gold)">움직이는 걸까요?</span>
-    </div>
-    <div style="font-size:15px; color:rgba(255,255,255,0.65); line-height:1.9; margin-bottom:36px;">
-      5가지 짧은 질문에 답하면<br>지금 내 에너지의 <strong style="color:rgba(255,255,255,0.9)">진짜 욕구</strong>가<br>보이기 시작합니다
-    </div>
-    <button onclick="showReflectScreen('${firstKey}','${secondKey}')"
-      style="width:100%; background:var(--gold); color:var(--white); border:none; cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:17px; font-weight:800;
-             padding:20px; border-radius:16px; margin-bottom:14px;
-             box-shadow:0 8px 32px rgba(201,152,58,0.5); transition:all 0.2s ease;"
-      onmouseover="this.style.transform='translateY(-2px)'"
-      onmouseout="this.style.transform=''">
-      질문 답하러 가기 →
-    </button>
-    <button onclick="showStep3Screen('${firstKey}','${secondKey}')"
-      style="width:100%; background:transparent; color:rgba(255,255,255,0.5);
-             border:2px solid rgba(255,255,255,0.2); cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:14px; font-weight:500;
-             padding:14px; border-radius:16px; margin-bottom:14px; transition:all 0.2s ease;">
-      건너뛰고 다음으로 →
-    </button>
-    <button onclick="showScreen('screen-result'); window.scrollTo(0,0);"
-      style="background:transparent; border:none; color:rgba(255,255,255,0.3);
-             font-family:'Noto Sans KR',sans-serif; font-size:13px; cursor:pointer; padding:8px;">
-      ← 결과로 돌아가기
-    </button>
-  `;
-}
-
-// ── STEP 3 화면 ────────────────────────────────────────────────────────────
-function showStep3Screen(firstKey, secondKey) {
-  resultFirstKey  = firstKey || resultFirstKey;
-  resultSecondKey = secondKey || resultSecondKey;
-  const primary = TYPES[resultFirstKey];
-
-  showScreen('screen-step3');
-
-  document.getElementById('step3-inner').innerHTML = `
-    <div style="font-size:clamp(26px,7vw,40px); font-weight:900; color:var(--white); line-height:1.25; margin-bottom:16px; margin-top:20px;">
-      ${primary.emoji} ${primary.name}인 나,<br>지금 가장<br><span style="color:var(--navy); background:rgba(255,255,255,0.9); padding:0 8px; border-radius:6px;">중요한 것</span>은?
-    </div>
-    <div style="font-size:15px; color:rgba(255,255,255,0.85); line-height:1.9; margin-bottom:36px;">
-      4가지 질문에 답하면<br>나만의 <strong style="color:var(--white)">선택 기준 한 문장</strong>이<br>완성됩니다
-    </div>
-    <button onclick="showValueScreen('${resultFirstKey}')"
-      style="width:100%; background:var(--white); color:var(--gold); border:none; cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:17px; font-weight:800;
-             padding:20px; border-radius:16px; margin-bottom:14px;
-             box-shadow:0 8px 32px rgba(0,0,0,0.15); transition:all 0.2s ease;"
-      onmouseover="this.style.transform='translateY(-2px)'"
-      onmouseout="this.style.transform=''">
-      나의 선택 기준 만들기 →
-    </button>
-    <button onclick="showShareScreen('${resultFirstKey}','${resultSecondKey}')"
-      style="width:100%; background:transparent; color:rgba(255,255,255,0.6);
-             border:2px solid rgba(255,255,255,0.3); cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:14px; font-weight:500;
-             padding:14px; border-radius:16px; margin-bottom:14px; transition:all 0.2s ease;">
-      건너뛰고 결과 공유하기 →
-    </button>
-    <button onclick="showStep2Screen('${resultFirstKey}','${resultSecondKey}')"
-      style="background:transparent; border:none; color:rgba(255,255,255,0.4);
-             font-family:'Noto Sans KR',sans-serif; font-size:13px; cursor:pointer; padding:8px;">
-      ← 이전으로
-    </button>
-  `;
-}
-
-// ── SHARE 화면 ─────────────────────────────────────────────────────────────
-function showShareScreen(firstKey, secondKey) {
-  resultFirstKey  = firstKey || resultFirstKey;
-  resultSecondKey = secondKey || resultSecondKey;
-  const primary   = TYPES[resultFirstKey];
-  const secondary = TYPES[resultSecondKey];
-  const pDetail   = TYPE_DETAIL[resultFirstKey];
-
-  showScreen('screen-share');
-
-  document.getElementById('share-inner').innerHTML = `
-    <!-- 결과 요약 카드 -->
-    <div style="background:var(--navy); border-radius:20px; padding:28px; margin-bottom:20px; text-align:center; position:relative; overflow:hidden;">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 20%, rgba(41,121,200,0.18) 0%, transparent 60%);pointer-events:none;"></div>
-      <div style="position:relative;">
-        <div style="font-size:12px; color:rgba(255,255,255,0.45); letter-spacing:2px; text-transform:uppercase; margin-bottom:14px;">나의 에너지 성향</div>
-        <div style="font-size:clamp(28px,8vw,44px); font-weight:900; color:var(--white); margin-bottom:6px;">${primary.emoji} ${primary.name}</div>
-        <div style="font-size:14px; color:rgba(255,255,255,0.55); margin-bottom:16px;">${primary.en}</div>
-        <div style="font-size:14px; color:var(--gold); font-style:italic; line-height:1.6; margin-bottom:16px;">${pDetail.oneLine}</div>
-        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
-          <span style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); font-size:13px; padding:6px 14px; border-radius:20px;">
-            주성향 ${primary.emoji} ${primary.name}
-          </span>
-          <span style="background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.5); font-size:13px; padding:6px 14px; border-radius:20px;">
-            보조 ${secondary.emoji} ${secondary.name}
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 공유 버튼 -->
-    <button id="btn-copy-share" onclick="copyResultFromShare('${resultFirstKey}','${resultSecondKey}')"
-      style="width:100%; background:var(--gold); color:var(--white); border:none; cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:16px; font-weight:800;
-             padding:18px; border-radius:16px; margin-bottom:12px;
-             box-shadow:0 6px 24px rgba(201,152,58,0.4); transition:all 0.2s ease;">
-      📋 결과 복사해서 공유하기
-    </button>
-
-    <!-- 시그니처 -->
-    <div style="background:var(--white); border-radius:16px; padding:20px; margin-bottom:16px;">
-      <div style="font-size:15px; font-weight:700; color:var(--gold); line-height:1.6; margin-bottom:6px;">
-        우선가치가 선명하면,<br>모든 선택이 명료해진다
-      </div>
-      <div style="font-size:13px; color:var(--gray);">나다움은 발견이 아니라 설계다</div>
-      <div style="font-size:12px; color:#bbb; margin-top:4px;">나다움설계연구소 · 김수정 박사</div>
-    </div>
-
-    <!-- 유튜브 링크 카드 -->
-    <div style="background:var(--white); border-radius:16px; padding:20px; margin-bottom:20px;
-                border-left:4px solid #FF0000;">
-      <div style="font-size:12px; color:var(--gray); margin-bottom:8px; font-weight:600; letter-spacing:0.5px;">
-        📺 나다움설계연구소 유튜브
-      </div>
-      <div style="font-size:14px; color:var(--dark); line-height:1.7; margin-bottom:4px;">
-        우선가치 발견은 나다움설계연구소 채널과 함께 하세요!
-      </div>
-      <div style="font-size:13px; color:var(--gray); line-height:1.6; margin-bottom:14px;">
-        지금 나의 성향을 확인했다면, 다음은 <strong style="color:var(--navy)">에너지를 흐르게 하는 나다움 설계</strong>를 시작할 차례입니다.
-      </div>
-      <a href="https://www.youtube.com/@nadaumlab" target="_blank"
-        style="display:flex; align-items:center; justify-content:center; gap:8px;
-               width:100%; background:#FF0000; color:var(--white);
-               text-decoration:none; text-align:center; font-family:'Noto Sans KR',sans-serif;
-               font-size:14px; font-weight:700; padding:14px; border-radius:10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="flex-shrink:0"><path fill="#fff" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        나다움설계연구소 유튜브 채널 바로가기
-      </a>
-    </div>
-
-    <!-- 하단 버튼 -->
-    <button onclick="startQuiz()"
-      style="width:100%; background:transparent; border:2px solid #dce2ee; color:var(--gray); cursor:pointer;
-             font-family:'Noto Sans KR',sans-serif; font-size:14px; font-weight:600;
-             padding:14px; border-radius:16px; margin-bottom:12px; transition:all 0.2s ease;">
-      ↺ 처음부터 다시 진단하기
-    </button>
-    <button onclick="showStep3Screen()"
-      style="background:transparent; border:none; color:var(--gray);
-             font-family:'Noto Sans KR',sans-serif; font-size:13px; cursor:pointer; padding:8px;">
-      ← 이전 단계로
-    </button>
-  `;
-}
-
-function copyResultFromShare(firstKey, secondKey) {
-  copyResult(firstKey, secondKey);
-  // 버튼 피드백
-  const btn = document.getElementById('btn-copy-share');
-  if (btn) { btn.textContent = '✅ 복사 완료!'; setTimeout(()=>{ btn.textContent = '📋 결과 복사해서 공유하기'; }, 2500); }
-}
-
-function showReflectScreen(firstKey, secondKey) {
-  resultFirstKey  = firstKey;
-  resultSecondKey = secondKey;
-
-  const primary   = TYPES[firstKey];
-  const secondary = TYPES[secondKey];
-  const pDetail   = TYPE_DETAIL[firstKey];
-
-  const reflections = buildReflections(primary.name, secondary.name, primary.emoji, pDetail);
-  const reflectionItems = reflections.map((r, i) => `
-    <div class="rc-q">
-      <div class="rc-q-top">
-        <span class="rc-q-num ${r.special ? 'special' : ''}">${r.num}</span>
-        <div>
-          <div class="rc-q-text">${r.text}</div>
-          ${r.sub ? `<div class="rc-q-sub">${r.sub}</div>` : ''}
-        </div>
-      </div>
-      <textarea id="ref-${i}" placeholder="${r.ph}"
-        oninput="saveReflection(${i}, this.value)">${reflectionAnswers[i] || ''}</textarea>
-    </div>`).join('');
-
-  showScreen('screen-reflect');
-  updateProgressBar(100);
-
-  document.getElementById('reflect-content').innerHTML = `
-
-    <!-- 헤더 -->
-    <div style="background:var(--navy); border-radius:20px; padding:28px 28px 24px; margin-bottom:24px; position:relative; overflow:hidden;">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%, rgba(41,121,200,0.18) 0%, transparent 60%);pointer-events:none;"></div>
-      <div style="position:relative;">
-        <div style="font-size:clamp(18px,4vw,26px); font-weight:900; color:var(--white); line-height:1.3; margin-bottom:8px;">
-          ${primary.emoji} ${primary.name}로서<br>지금 나의 에너지는 <span style="color:var(--gold)">어디로 흐르고 있나요?</span>
-        </div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.6); font-style:italic;">
-          5가지 질문에 솔직하게 답할수록 더 선명해집니다
-        </div>
-      </div>
-    </div>
-
-    <!-- 질문 카드 -->
-    <div class="reflection-card">
-      <div class="rc-body">
-        ${reflectionItems}
-        <button class="btn-nav btn-next" style="width:100%; margin-top:8px; max-width:100%; border-radius:12px;"
-          onclick="buildSummary('${firstKey}','${secondKey}')">
-          내 답변 정리 보기 →
-        </button>
-      </div>
-    </div>
-
-    <!-- 요약 (처음엔 숨김) -->
-    <div id="summary-section" style="display:none;">
-      <div class="summary-card">
-        <div class="summary-header">
-          <div class="summary-header-title">📋 나의 에너지 흐름 요약</div>
-          <div class="summary-header-sub">내가 직접 답한 내용을 정리했습니다</div>
-        </div>
-        <div class="summary-body" id="summary-body"></div>
-      </div>
-
-      <!-- 요약 후 우선가치 진단으로 -->
-      <button onclick="showStep3Screen('${firstKey}','${secondKey}')"
-        style="width:100%; background:var(--gold); color:var(--white); border:none; cursor:pointer;
-               font-family:'Noto Sans KR',sans-serif; font-size:16px; font-weight:800;
-               padding:18px; border-radius:14px; margin-top:16px; margin-bottom:24px;
-               box-shadow:0 6px 24px rgba(201,152,58,0.45); transition:all 0.2s ease;"
-        onmouseover="this.style.transform='translateY(-2px)'"
-        onmouseout="this.style.transform=''">
-        나의 선택 기준 만들러 가기 →
-      </button>
-    </div>
-
-    <!-- 결과로 돌아가기 -->
-    <div style="text-align:center; margin-bottom:40px;">
-      <button class="btn-nav btn-prev" style="border-radius:50px; padding:12px 24px; font-size:14px;"
-        onclick="showStep2Screen('${firstKey}','${secondKey}')">
-        ← 이전으로
-      </button>
-    </div>
-  `;
-}
-
-function buildSummary(firstKey, secondKey) {
-  const primary   = TYPES[firstKey];
-  const secondary = TYPES[secondKey];
-  const pDetail   = TYPE_DETAIL[firstKey];
-  const reflections = buildReflections(primary.name, secondary.name, primary.emoji, pDetail);
-
-  const summaryBody = document.getElementById('summary-body');
-  const blocks = reflections.map((r, i) => {
-    const ans = reflectionAnswers[i] ? reflectionAnswers[i].trim() : '';
-    return `
-      <div class="summary-q-block">
-        <div class="summary-q-label">
-          <span class="summary-q-num ${r.special ? 'special' : ''}">${r.num}</span>
-          <span class="summary-q-title">${r.text.replace(/<[^>]+>/g, '')}</span>
-        </div>
-        ${ans
-          ? `<div class="summary-q-answer">${ans}</div>`
-          : `<div class="summary-q-empty">— 답변이 없습니다</div>`}
-      </div>`;
-  }).join('');
-
-  // 우선가치 연결 인사이트
-  const q4ans = reflectionAnswers[3] ? reflectionAnswers[3].trim() : '';
-  const connectionText = q4ans
-    ? `<div class="summary-connection">
-        <div class="summary-connection-title">에너지 인사이트</div>
-        <div class="summary-connection-text">
-          <span class="highlight">${primary.emoji} ${primary.name}</span> 에너지를 가진 나는,<br>
-          "${q4ans}"와(과) 연결될 때<br>
-          가장 나답게 움직이게 됩니다.
-        </div>
-      </div>`
-    : `<div class="summary-connection">
-        <div class="summary-connection-title">오늘의 질문</div>
-        <div class="summary-connection-text">
-          <span class="highlight">${primary.emoji} ${primary.name}</span> 에너지의 핵심:<br>
-          "${pDetail.hook}"<br>
-          이 질문을 오늘 하루 한 번 떠올려보세요.
-        </div>
-      </div>`;
-
-  summaryBody.innerHTML = blocks + connectionText;
-
-  const section = document.getElementById('summary-section');
-  section.style.display = 'block';
-  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  // 답변 정리 후 다음 단계 버튼이 보이도록
-  setTimeout(() => {
-    const nextBtn = section.querySelector('button');
-    if (nextBtn) nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 500);
-}
-
-function copyResult(firstKey, secondKey) {
-  const primary   = TYPES[firstKey];
-  const secondary = TYPES[secondKey];
-  const pDetail   = TYPE_DETAIL[firstKey];
-  const reflections = buildReflections(primary.name, secondary.name, primary.emoji, pDetail);
-
-  let text = `✨ 5러 에너지 성향 진단 결과\n`;
-  text += `나다움설계연구소 · N.E.E.D 루틴 Need Scan\n\n`;
-  text += `📍 주성향: ${primary.emoji} ${primary.name}\n`;
-  text += `📍 보조성향: ${secondary.emoji} ${secondary.name}\n\n`;
-  text += `${pDetail.oneLine}\n\n`;
-  text += `💚 몰입할 때: ${pDetail.flow}\n`;
-  text += `⚡ 고갈될 때: ${pDetail.drain}\n\n`;
-  text += `--- 나의 N.E.E.D 연결 ---\n`;
-  reflections.forEach((r, i) => {
-    const ans = reflectionAnswers[i] ? reflectionAnswers[i].trim() : '(미작성)';
-    text += `${r.num}. ${r.text.replace(/<[^>]+>/g, '')}\n→ ${ans}\n\n`;
+// ===== 채점 =====
+function calculateScores() {
+  const scores = {A:0,C:0,S:0,D:0,E:0};
+  const counts = {A:0,C:0,S:0,D:0,E:0};
+  QUESTIONS.forEach((q,i) => {
+    scores[q.char] += answers[i];
+    counts[q.char]++;
   });
-  text += `🧭 Hook: "${pDetail.hook}"\n\n`;
-  text += `더 빠르게가 아니라, 더 선명하게\n`;
-  text += `우선가치가 선명하면, 모든 선택이 명료해진다\n`;
-  text += `나다움은 발견이 아니라 설계다`;
+  const avgs = {};
+  CHAR_KEYS.forEach(k => avgs[k] = scores[k]/counts[k]);
 
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('btn-copy');
-    btn.classList.add('copied');
-    btn.textContent = '✅ 복사 완료!';
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-      btn.classList.remove('copied');
-      btn.textContent = '📋 결과 복사해서 공유하기';
-    }, 2500);
-  });
+  // 정렬
+  const sorted = CHAR_KEYS.slice().sort((a,b)=>avgs[b]-avgs[a]);
+  const primary = sorted[0];
+  const secondary = sorted[1];
+  const diff12 = avgs[primary] - avgs[secondary];
+  const diffMax = avgs[primary] - avgs[sorted[4]];
+
+  let caseType = "normal";
+  if (diffMax < 0.5) caseType = "low";
+  else if (diff12 < 0.3) caseType = "balance";
+
+  return { avgs, sorted, primary, secondary, diff12, diffMax, caseType };
 }
 
-// keyboard nav
-document.addEventListener('keydown', e => {
-  if (document.getElementById('screen-quiz').classList.contains('active')) {
-    if (e.key === 'ArrowRight' || e.key === 'Enter') {
-      if (!document.getElementById('btn-next').disabled) nextQ();
-    }
-    if (e.key === 'ArrowLeft') prevQ();
-    if (['a','b','c','d','e'].includes(e.key.toLowerCase())) {
-      const map = {a:'A',b:'B',c:'C',d:'D',e:'E'};
-      selectOption(map[e.key.toLowerCase()]);
-    }
-  }
-});
-
-// ── 선택지 섞기 (Fisher-Yates) ─────────────────────────────────────────────
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+function calculateAndShowResult() {
+  _result = calculateScores();
+  document.getElementById('quiz-screen').classList.remove('active');
+  document.getElementById('result-screen').classList.add('active');
+  window.scrollTo(0,0);
+  renderResult(_result);
 }
 
-// 문항별 섞인 순서 저장 (앞뒤 이동 시 일관성 유지)
-let shuffledOptions = [];
+// ===== 결과 렌더링 =====
+function renderResult(r) {
+  const p = CHARS[r.primary];
+  const s = CHARS[r.secondary];
 
-function initShuffledOptions() {
-  shuffledOptions = QUESTIONS.map(q => shuffle(q.options));
-}
-
-// ── 우선가치 화면 ──────────────────────────────────────────────────────────
-let valueKey = '';
-let valueAnswers = {};
-const VALUE_CHIPS = ['자유', '성장', '관계', '안정', '창의', '영향력', '의미', '탁월함', '균형', '용기', '진정성', '기여'];
-const MAX_CHIPS = 3;
-
-function showValueScreen(primaryKey) {
-  valueKey = primaryKey;
-  valueAnswers = { golden: '', obstacle: '', priority: '', statement: '', chips: [], branch: '', isConflict: false };
-  const primary = TYPES[primaryKey];
-
-  showScreen('screen-value');
-
-  // 커버만 먼저 렌더
-  document.getElementById('value-content').innerHTML = `
-    <div class="value-cover">
-      <div class="value-cover-inner">
-        <div class="value-cover-title">
-          ${primary.emoji} ${primary.name}인 나,<br>
-          지금 나에게 <span class="gold">가장 중요한 것</span>은?
-        </div>
-        <div class="value-cover-sub">
-          4가지 질문에 답하면<br>
-          <strong style="color:rgba(255,255,255,0.9)">나만의 선택 기준 한 문장</strong>이 완성됩니다.
-        </div>
-        <div class="value-benefit-row">
-          <div class="value-benefit-item">
-            <span class="value-benefit-icon">✍️</span>
-            <span>나만의 <strong>선택 기준 문장</strong>이 완성됩니다</span>
-          </div>
-          <div class="value-benefit-item">
-            <span class="value-benefit-icon">🔍</span>
-            <span>지금 내 에너지가 <strong>진짜 원하는 것</strong>에서 시작되는지 확인합니다</span>
-          </div>
-          <div class="value-benefit-item">
-            <span class="value-benefit-icon">💡</span>
-            <span>흔들리는 순간 <strong>기준이 되는 한 문장</strong>을 갖게 됩니다</span>
-          </div>
-        </div>
-        <button onclick="showValueQuestions('${primaryKey}')"
-          style="background:var(--gold); color:var(--white); border:none; cursor:pointer;
-                 font-family:'Noto Sans KR',sans-serif; font-size:16px; font-weight:700;
-                 padding:16px 44px; border-radius:50px; margin-top:8px;
-                 box-shadow:0 6px 24px rgba(201,152,58,0.4); transition:all 0.2s ease;"
-          onmouseover="this.style.transform='translateY(-2px)'"
-          onmouseout="this.style.transform=''">
-          시작하기 →
-        </button>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:16px;">
-      <button class="btn-nav btn-prev" style="border-radius:50px; padding:12px 24px; font-size:14px;"
-        onclick="showScreen('screen-result')">← 결과로 돌아가기</button>
-    </div>
-    <div id="value-questions-wrap"></div>
-  `;
-}
-
-function showValueQuestions(primaryKey) {
-  const primary = TYPES[primaryKey];
-  const pDetail = TYPE_DETAIL[primaryKey];
-
-  const chipsHTML = VALUE_CHIPS.map(c =>
-    `<button class="value-chip" onclick="toggleChip(this,'${c}')">${c}</button>`
-  ).join('');
-
-  document.getElementById('value-questions-wrap').innerHTML = `
-
-    <!-- Q1: 황금기 회상 -->
-    <div class="value-q-card" style="margin-top:24px;">
-      <div class="value-q-num">Q 1 / 4</div>
-      <div class="value-q-text">에너지가 넘쳤던 '황금기' 한 순간을 떠올려보세요</div>
-      <div class="value-q-hint">
-        ${primary.emoji} ${primary.name} 성향이 가장 잘 살아있던 순간입니다.<br>
-        언제, 무엇을 하고 있었나요? 그때 무엇이 좋았나요?
-      </div>
-      <textarea class="value-textarea" id="va-golden"
-        placeholder="예) 작년에 팀 프로젝트를 마감하던 날 밤, 모두 함께 달려가던 그 순간이 가장 뜨거웠다"
-        oninput="valueAnswers.golden=this.value"></textarea>
-    </div>
-
-    <!-- Q2: 가로막는 것 -->
-    <div class="value-q-card">
-      <div class="value-q-num">Q 2 / 4</div>
-      <div class="value-q-text">지금 그 에너지를 가로막고 있는 것이 있다면?</div>
-      <div class="value-q-hint">
-        아래 잡음 중 지금 나에게 가장 크게 작동하는 것은 무엇인가요?<br>
-        <span style="color:var(--navy); font-weight:600;">${pDetail.noise.join(' / ')}</span>
-      </div>
-      <textarea class="value-textarea" id="va-obstacle"
-        placeholder="예) 성과가 보이지 않는 반복 업무가 쌓이면서 왜 하는지 모르겠다는 생각이 든다"
-        oninput="valueAnswers.obstacle=this.value"></textarea>
-    </div>
-
-    <!-- Q3: 우선가치 키워드 (최대 3개) -->
-    <div class="value-q-card">
-      <div class="value-q-num">Q 3 / 4</div>
-      <div class="value-q-text">지금 나에게 가장 중요한 가치 키워드는?</div>
-      <div class="value-q-hint">최대 3개를 고르거나, 직접 입력해도 됩니다.</div>
-      <div class="value-chips" id="chip-wrap">${chipsHTML}</div>
-      <div id="chip-warning" style="display:none; font-size:12px; color:var(--red); margin-top:6px;">
-        ※ 최대 3개까지 선택할 수 있습니다
-      </div>
-      <input type="text" class="value-textarea" id="va-priority"
-        style="min-height:unset; height:48px; margin-top:12px;"
-        placeholder="직접 입력 (예: 도전, 몰입, 연결, 자녀와의 친밀함...)"
-        oninput="valueAnswers.priority=this.value">
-    </div>
-
-    <!-- Q4: 성향-우선가치 관계 분기형 -->
-    <div class="value-q-card">
-      <div class="value-q-num">Q 4 / 4</div>
-      <div class="value-q-text">
-        지금 나의 ${primary.emoji} ${primary.name} 성향과<br>삶의 우선가치는 어떤 관계인가요?
-      </div>
-      <div class="value-q-hint">솔직하게 느껴지는 쪽을 선택하세요.</div>
-
-      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
-        <button class="value-branch-btn" id="vb-align" onclick="selectBranch('align')">
-          <span style="font-size:18px;">💚</span>
-          <div>
-            <div style="font-weight:700; margin-bottom:2px;">연결되어 있다</div>
-            <div style="font-size:12px; color:var(--gray);">성향대로 살면서 우선가치도 채워지고 있다</div>
-          </div>
-        </button>
-        <button class="value-branch-btn" id="vb-conflict" onclick="selectBranch('conflict')">
-          <span style="font-size:18px;">⚡</span>
-          <div>
-            <div style="font-weight:700; margin-bottom:2px;">상충하고 있다</div>
-            <div style="font-size:12px; color:var(--gray);">더 중요한 것을 위해 성향을 잠시 내려놓고 있다</div>
-          </div>
-        </button>
-      </div>
-
-      <!-- 분기 A: 연결 -->
-      <div id="branch-align" style="display:none;">
-        <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:8px;">
-          어떻게 연결되고 있나요?
-        </div>
-        <textarea class="value-textarea" id="va-align-text"
-          placeholder="예) 성취 에너지가 지금 하는 일의 방향과 맞아서, 일할 때 진짜 나답다는 느낌이 든다"
-          oninput="valueAnswers.statement=this.value"></textarea>
-      </div>
-
-      <!-- 분기 B: 상충 -->
-      <div id="branch-conflict" style="display:none;">
-        <div style="padding:14px 16px; background:#FDF6E8; border-radius:12px; margin-bottom:16px; border-left:3px solid var(--gold);">
-          <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px;">💛 먼저 이 말을 드리고 싶습니다</div>
-          <div style="font-size:13px; color:var(--dark); line-height:1.8;">
-            성향을 억누르고 있는 게 아닙니다.<br>
-            <strong>지금 더 중요한 것을 선택하고 있는 겁니다.</strong><br>
-            그 선택 자체가 이미 우선가치입니다.
-          </div>
-        </div>
-        <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:8px;">
-          어떤 우선가치 때문에 성향을 잠시 내려놓고 있나요?
-        </div>
-        <textarea class="value-textarea" id="va-conflict-text"
-          placeholder="예) 아이가 어릴 때 곁에 있어주는 것이 지금 나에게 가장 중요하다. 열정러 에너지는 아이가 크면 다시 펼칠 수 있다."
-          oninput="valueAnswers.statement=this.value"></textarea>
-      </div>
-    </div>
-
-    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
-      <button class="btn-nav btn-next" style="flex:1; max-width:100%; border-radius:12px;"
-        onclick="submitValue()">우선가치 결과 보기 →</button>
-    </div>
-  `;
-
-  // 질문 영역으로 부드럽게 스크롤
-  setTimeout(() => {
-    document.getElementById('value-questions-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
-}
-
-function toggleChip(el, val) {
-  if (!el.classList.contains('selected') && valueAnswers.chips.length >= MAX_CHIPS) {
-    const warn = document.getElementById('chip-warning');
-    if (warn) { warn.style.display = 'block'; setTimeout(() => { warn.style.display = 'none'; }, 2000); }
-    return;
-  }
-  el.classList.toggle('selected');
-  if (el.classList.contains('selected')) {
-    valueAnswers.chips.push(val);
+  // 1. 주·보조 경향 카드
+  let heroHTML = '';
+  if (r.caseType === 'low') {
+    heroHTML = `
+      <div class="tendency-hero">
+        <div class="label">지금 시기의 에너지 흐름</div>
+        <span class="special-badge badge-low">전반적 저활성 — 회복 필요 시기</span>
+        <div class="main-char">🌿</div>
+        <div class="main-name">충전이 필요한 시기</div>
+        <div class="main-sub">다섯 경향 모두 활성도가 낮습니다</div>
+      </div>`;
+  } else if (r.caseType === 'balance') {
+    heroHTML = `
+      <div class="tendency-hero">
+        <div class="label">지금 시기의 에너지 흐름</div>
+        <span class="special-badge badge-balance">균형형 — 두 흐름이 비슷하게 작동 중</span>
+        <div class="main-char">${p.icon}${s.icon}</div>
+        <div class="main-name">${p.name} + ${s.name}</div>
+        <div class="main-sub">두 경향이 비슷한 강도로 흐르고 있어요</div>
+      </div>`;
   } else {
-    valueAnswers.chips = valueAnswers.chips.filter(v => v !== val);
+    heroHTML = `
+      <div class="tendency-hero">
+        <div class="label">지금 시기의 주된 에너지 흐름</div>
+        <div class="main-char">${p.icon}</div>
+        <div class="main-name">${p.name}</div>
+        <div class="main-sub">${p.source} · ${p.en}</div>
+        <div class="divider-line"></div>
+        <div class="sub-tendency">
+          <div class="sub-label">보조 흐름</div>
+          <div class="sub-char">${s.icon}</div>
+          <div class="sub-name">${s.name}</div>
+        </div>
+      </div>`;
   }
-  const warn = document.getElementById('chip-warning');
-  if (warn) warn.style.display = 'none';
-}
+  document.getElementById('tendency-hero-container').innerHTML = heroHTML;
 
-function selectBranch(type) {
-  valueAnswers.branch = type;
-  valueAnswers.isConflict = (type === 'conflict');
-  // 분기 전환 시 이전 statement 초기화
-  valueAnswers.statement = '';
-  document.getElementById('vb-align').className = 'value-branch-btn' + (type === 'align' ? ' selected-align' : '');
-  document.getElementById('vb-conflict').className = 'value-branch-btn' + (type === 'conflict' ? ' selected-conflict' : '');
-  document.getElementById('branch-align').style.display   = type === 'align'    ? 'block' : 'none';
-  document.getElementById('branch-conflict').style.display = type === 'conflict' ? 'block' : 'none';
-  // 해당 분기 textarea 초기화
-  const taAlign    = document.getElementById('va-align-text');
-  const taConflict = document.getElementById('va-conflict-text');
-  if (taAlign)    taAlign.value    = '';
-  if (taConflict) taConflict.value = '';
-}
+  // 2. 레이더 차트 (SVG 펜타곤)
+  document.getElementById('radar-container').innerHTML = renderRadar(r.avgs);
 
-// ── 교차 분석 데이터 (5러 × 우선가치 키워드) ──────────────────────────────
-// 각 키워드를 의미 그룹으로 매핑
-const VALUE_GROUPS = {
-  '자유': '자율',  '용기': '자율',  '창의': '자율',
-  '성장': '성장',  '탁월함': '성장', '의미': '성장',
-  '관계': '연결',  '기여': '연결',
-  '안정': '안정',  '균형': '안정',
-  '영향력': '영향', '진정성': '영향',
-};
-
-// 5러 경향성 × 가치 그룹의 패턴 라이브러리
-const CROSS_PATTERNS = {
-  // 열정러 (A)
-  'A_성장': {
-    label: '성취-성장 정렬형',
-    text: '결과로 자신을 증명하고 싶은 에너지가, 더 나은 자신으로 성장하려는 가치와 같은 방향을 향하고 있습니다. 두 힘이 같은 곳을 가리킬 때 가장 큰 추진력이 나옵니다.',
-    hook: '오늘의 성취가 6개월 후의 나에게 어떤 의미로 남을지 물어보세요.',
-  },
-  'A_자율': {
-    label: '주도적 추진형',
-    text: '결과를 만들고 싶은 욕구가, 내 방식대로 가고 싶은 자율 가치와 만났습니다. 누군가 정해준 목표가 아니라 내가 선택한 목표일 때 에너지가 가장 강하게 흐릅니다.',
-    hook: '지금 추구하는 결과는 누가 정한 것인가요?',
-  },
-  'A_연결': {
-    label: '함께 이루는 성취형',
-    text: '결과 지향 에너지가 관계·기여 가치와 만나면, 혼자가 아니라 함께 만든 결과에서 가장 깊은 만족을 느낍니다. 단독 성취보다 공동 성취가 더 오래 남습니다.',
-    hook: '이 성취를 누구와 함께 만들고 싶은가요?',
-  },
-  'A_안정': {
-    label: '지속가능한 성취형',
-    text: '강한 추진력과 안정·균형 가치가 함께 있다면, 단기 폭주가 아니라 길게 꾸준히 가는 성취 패턴이 잘 맞습니다. 번아웃을 가장 경계해야 할 조합입니다.',
-    hook: '이 속도로 1년을 갈 수 있는가요?',
-  },
-  'A_영향': {
-    label: '의미 지향 성취형',
-    text: '성취 욕구가 영향력·진정성 가치와 정렬되면, "무엇을 이루는가"보다 "어떤 영향을 남기는가"가 진짜 동력이 됩니다.',
-    hook: '이 결과가 누구의 무엇을 바꾸나요?',
-  },
-
-  // 협력러 (B)
-  'B_연결': {
-    label: '관계 중심 정렬형',
-    text: '함께할 때 가장 빛나는 에너지와 관계·기여 가치가 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬이지만, 모든 관계가 진짜 충전이 되는지 구분이 중요합니다.',
-    hook: '지금 가까운 관계 중 진짜 충전이 되는 관계는 몇 개인가요?',
-  },
-  'B_성장': {
-    label: '관계 속 성장형',
-    text: '연결 에너지가 성장·의미 가치와 만나면, 혼자 성장하는 것이 아니라 사람을 통해 성장하는 패턴이 됩니다. 멘토·동료가 곧 성장의 주된 통로입니다.',
-    hook: '지금 나를 성장시키는 관계는 누구와의 관계인가요?',
-  },
-  'B_자율': {
-    label: '자유로운 연결형',
-    text: '함께하고 싶은 에너지와 자유·자율 가치가 함께 있다면, 의무로 묶인 관계가 아니라 내가 선택한 관계에서 진짜 에너지가 흐릅니다.',
-    hook: '지금 내 관계 중 의무감으로 유지되는 것과 진짜 원해서 유지되는 것을 구분할 수 있나요?',
-  },
-  'B_안정': {
-    label: '신뢰 기반 연결형',
-    text: '연결 에너지와 안정·균형 가치가 만나면, 넓은 관계보다 깊고 신뢰할 수 있는 소수의 관계에서 가장 잘 작동합니다.',
-    hook: '내가 가장 깊이 신뢰하는 사람은 누구인가요?',
-  },
-  'B_영향': {
-    label: '진정성 있는 연결형',
-    text: '함께하는 에너지가 진정성·영향력 가치와 정렬되면, 표면적 친목보다 서로에게 진짜 영향을 주고받는 관계가 핵심이 됩니다.',
-    hook: '나는 이 사람에게 진짜 영향을 주고 있는가, 받고 있는가?',
-  },
-
-  // 안정러 (C)
-  'C_안정': {
-    label: '깊은 안정 정렬형',
-    text: '리듬과 안정 위에서 깊이 들어가는 에너지가, 안정·균형 가치와 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬입니다. 다만 변화 자체에 저항하지 않도록 주기적인 점검이 필요합니다.',
-    hook: '지금 이 안정은 나를 보호하는가, 멈추게 하는가?',
-  },
-  'C_성장': {
-    label: '점진적 깊이 추구형',
-    text: '안정된 리듬 위에서 깊이 들어가는 에너지가, 성장·탁월함 가치와 만났습니다. 빠른 변화보다 매일 조금씩 쌓아가는 누적의 힘이 가장 강한 패턴입니다.',
-    hook: '지난 한 달 동안 매일 조금씩 쌓인 것은 무엇인가요?',
-  },
-  'C_연결': {
-    label: '안정된 관계형',
-    text: '안정 에너지와 관계·기여 가치가 만나면, 새로운 사람을 자주 만나는 것보다 익숙한 사람들과 깊고 일관된 관계를 유지할 때 가장 만족합니다.',
-    hook: '지난 1년간 한결같이 곁에 있어준 사람은 누구인가요?',
-  },
-  'C_자율': {
-    label: '내 리듬 보호형',
-    text: '안정 에너지와 자유·자율 가치가 만나면, "남들의 리듬에 맞추지 않고 내 리듬을 지킨다"가 핵심 기준이 됩니다.',
-    hook: '내 리듬을 흔드는 외부 압력에 어떻게 대응하고 있나요?',
-  },
-  'C_영향': {
-    label: '꾸준한 영향형',
-    text: '안정 에너지와 영향력·진정성 가치가 정렬되면, 한 번의 큰 임팩트보다 오래 꾸준히 누군가의 곁에 있어주는 방식의 영향력을 발휘합니다.',
-    hook: '내가 1년 동안 한결같이 영향을 주고 있는 대상은 누구인가요?',
-  },
-
-  // 장인러 (D)
-  'D_성장': {
-    label: '본질 추구형',
-    text: '한 가지를 깊게 파는 에너지가, 성장·탁월함·의미 가치와 같은 방향을 향하고 있습니다. 가장 본질적인 정렬이지만, "충분히 좋다"의 기준도 함께 만들어야 완성으로 갈 수 있습니다.',
-    hook: '이 깊이는 어디서 멈추면 충분한가요?',
-  },
-  'D_자율': {
-    label: '깊이 있는 자율형',
-    text: '깊이 파는 에너지와 자유·창의 가치가 만나면, 누군가의 기준이 아니라 내가 정한 기준으로 끝까지 가는 것이 가장 중요합니다.',
-    hook: '지금 내가 따르는 기준은 누가 정한 것인가요?',
-  },
-  'D_연결': {
-    label: '의미 있는 연결형',
-    text: '깊이 파는 에너지와 관계·기여 가치가 만나면, 넓은 인맥보다 같은 깊이로 대화할 수 있는 소수와의 깊은 교류가 핵심이 됩니다.',
-    hook: '내가 진짜 깊이 있게 대화할 수 있는 사람은 몇 명인가요?',
-  },
-  'D_안정': {
-    label: '깊고 흔들림 없는 형',
-    text: '깊이 파는 에너지와 안정·균형 가치가 만나면, 외부 자극에 흔들리지 않고 한 우물을 오래 파는 패턴이 가장 잘 작동합니다.',
-    hook: '지난 6개월간 흔들림 없이 파고 있는 한 가지는 무엇인가요?',
-  },
-  'D_영향': {
-    label: '본질로 영향 주는 형',
-    text: '깊이 파는 에너지와 영향력·진정성 가치가 정렬되면, "보여지는 성과"가 아니라 "본질적 깊이"로 영향을 주는 방식이 자연스럽습니다.',
-    hook: '내 깊이가 누군가에게 어떤 본질적 변화를 만들고 있나요?',
-  },
-
-  // 모험러 (E)
-  'E_자율': {
-    label: '자유로운 탐험형',
-    text: '새로움을 향한 에너지가, 자유·자율·창의 가치와 같은 방향을 향하고 있습니다. 가장 자연스러운 정렬입니다. 다만 시작은 많은데 완성이 적지 않은지 점검이 필요합니다.',
-    hook: '시작한 것 중 끝까지 간 것은 무엇인가요?',
-  },
-  'E_성장': {
-    label: '탐험적 성장형',
-    text: '새로움을 향한 에너지가 성장·탁월함 가치와 만나면, 한 분야에 머무르는 성장이 아니라 여러 영역을 넘나드는 확장형 성장 패턴이 잘 맞습니다.',
-    hook: '내가 넘나든 영역들을 연결하면 어떤 한 가지 방향이 보이나요?',
-  },
-  'E_연결': {
-    label: '새로운 연결 추구형',
-    text: '탐험 에너지가 관계·기여 가치와 만나면, 익숙한 관계보다 새로운 사람과의 만남에서 가장 강한 에너지가 흐릅니다.',
-    hook: '최근 3개월 안에 새로 만난 사람 중 가장 흥미로운 사람은 누구인가요?',
-  },
-  'E_안정': {
-    label: '안정 안의 모험형',
-    text: '탐험 에너지와 안정·균형 가치가 함께 있다면, 모든 것을 흔드는 모험이 아니라 안정된 베이스 위에서 작은 모험을 반복하는 패턴이 가장 잘 작동합니다.',
-    hook: '내 안전 영역과 모험 영역의 비율은 어느 정도가 적당한가요?',
-  },
-  'E_영향': {
-    label: '새로움으로 영향 주는 형',
-    text: '탐험 에너지가 영향력·진정성 가치와 정렬되면, 기존 방식이 아니라 "새로운 방식으로 사람들에게 무언가를 보여주는 것"이 핵심이 됩니다.',
-    hook: '내가 시도한 새로움이 누군가의 시야를 어떻게 넓혔나요?',
-  },
-};
-
-// 패턴 매칭 함수: 주성향 + 우선가치 키워드들 → 가장 적합한 패턴 1개 반환
-function findCrossPattern(typeKey, chips, customKeyword) {
-  if (!typeKey) return null;
-
-  // 모든 키워드 수집 (chip + 직접입력)
-  const allKeywords = [...(chips || [])];
-  if (customKeyword && customKeyword.trim()) {
-    // 직접입력에서 그룹 추출
-    const c = customKeyword.trim();
-    Object.keys(VALUE_GROUPS).forEach(k => {
-      if (c.includes(k)) allKeywords.push(k);
-    });
+  // 3. 주된 경향 상세
+  if (r.caseType !== 'low') {
+    document.getElementById('main-detail-container').innerHTML = renderDetailCard(p, true);
+    document.getElementById('sub-detail-container').innerHTML = renderDetailCard(s, false);
+  } else {
+    document.getElementById('main-detail-container').innerHTML = '';
+    document.getElementById('sub-detail-container').innerHTML = '';
   }
-  if (allKeywords.length === 0) return null;
 
-  // 그룹별 빈도 계산
-  const groupCount = {};
-  allKeywords.forEach(k => {
-    const g = VALUE_GROUPS[k];
-    if (g) groupCount[g] = (groupCount[g] || 0) + 1;
-  });
-  if (Object.keys(groupCount).length === 0) return null;
-
-  // 가장 빈도 높은 그룹 선택
-  const topGroup = Object.entries(groupCount).sort((a,b) => b[1]-a[1])[0][0];
-  const patternKey = `${typeKey}_${topGroup}`;
-  return CROSS_PATTERNS[patternKey] || null;
-}
-
-function submitValue() {
-  const primary   = TYPES[valueKey];
-  const pDetail   = TYPE_DETAIL[valueKey];
-  const chips     = valueAnswers.chips.length ? valueAnswers.chips : [];
-  const priority  = valueAnswers.priority || chips.join(', ') || '아직 탐색 중';
-  const golden    = valueAnswers.golden  || '(미작성)';
-  const obstacle  = valueAnswers.obstacle || '(미작성)';
-  const isConflict = valueAnswers.isConflict || false;
-  const statementRaw = valueAnswers.statement || '';
-  const statement = statementRaw.trim()
-    ? statementRaw
-    : isConflict
-      ? '(지금은 더 중요한 것을 위해 성향을 잠시 내려놓고 있습니다)'
-      : '(아직 작성 중입니다)';
-
-  showScreen('screen-value-result');
-
-  const allChips = [...valueAnswers.chips, ...(valueAnswers.priority ? [valueAnswers.priority] : [])];
-  const chipsHTML = allChips.map(c =>
-    `<span class="vr-value-pill" style="background:${primary.color}">${c}</span>`
-  ).join('');
-
-  // ── 교차 분석 인사이트 (5러 × 우선가치 키워드 패턴 매칭) ──
-  const crossPattern = findCrossPattern(valueKey, valueAnswers.chips, valueAnswers.priority);
-  const matchedKeywords = (valueAnswers.chips || []).filter(k => VALUE_GROUPS[k]);
-  const crossInsightHTML = (crossPattern && !isConflict) ? `
-    <div class="cross-insight">
-      <div class="cross-insight-label">🔗 교차 인사이트</div>
-      <div class="cross-insight-pattern">
-        <span class="pattern-key">${primary.name}</span> × <span class="pattern-key">${matchedKeywords.join(', ') || '선택한 가치'}</span><br>
-        = ${crossPattern.label}
-      </div>
-      <div class="cross-insight-text">${crossPattern.text}</div>
-      <div class="cross-insight-hook">💭 ${crossPattern.hook}</div>
-    </div>` : '';
-
-  // 분기별 히어로 + 인사이트 카드
-  const heroSection = isConflict ? `
-    <div class="vr-hero">
-      <div class="vr-hero-title">
-        ${primary.emoji} ${primary.name}이지만,<br>
-        지금은 <span class="gold">더 중요한 것</span>을 선택하고 있습니다
-      </div>
-      <div class="vr-hero-sub">그 선택 자체가 이미 나의 기준입니다</div>
-    </div>
-    <div class="vr-card">
-      <div class="vr-card-header" style="background:var(--gold)">💛 상충하는 삶을 살고 있는 당신에게</div>
-      <div class="vr-card-body">
-        <div style="font-size:15px; line-height:1.9; color:var(--dark); margin-bottom:16px;">
-          ${primary.emoji} <strong>${primary.name}</strong> 에너지를 가진 당신이<br>
-          지금 그 에너지를 잠시 내려놓고 있다면,<br>
-          그것은 <strong style="color:var(--navy)">억누름이 아니라 선택</strong>입니다.
-        </div>
-        <div style="padding:14px 16px; background:var(--light); border-radius:10px; font-size:14px; color:var(--dark); line-height:1.8; border-left:4px solid var(--gold);">
-          선택 기준은 나를 빛나게 하는 것만이 아닙니다.<br>
-          <strong>"내가 무엇을 위해 기꺼이 기다리는가"</strong>를 보여주는 것이기도 합니다.<br><br>
-          지금 당신의 선택 기준은, 이미 살아있습니다.
-        </div>
-        <div style="margin-top:14px; font-size:13px; color:var(--gray); line-height:1.7;">
-          💡 ${primary.name} 에너지는 사라지지 않습니다. 지금 더 중요한 것이 끝나거나 달라질 때,<br>
-          그 에너지는 다시 자연스럽게 흐르기 시작할 겁니다.
-        </div>
-      </div>
-    </div>` : `
-    <div class="vr-hero">
-      <div class="vr-hero-title">
-        ${primary.emoji} ${primary.name}의<br>
-        <span class="gold">나의 선택 기준</span>이 완성됐습니다
-      </div>
-      <div class="vr-hero-sub">나다움을 설계하는 첫 번째 문장</div>
+  // 4. 지금 시기의 메시지
+  const msgKey = r.caseType === 'low' ? 'LOW' : (r.primary + '_' + (r.caseType === 'balance' ? r.primary : r.secondary));
+  const msg = COMBO_MESSAGES[msgKey] || COMBO_MESSAGES['LOW'];
+  const msgTitle = r.caseType === 'low' ? '지금은 회복이 먼저입니다'
+    : r.caseType === 'balance' ? `${p.name} + ${s.name} 균형 시기의 흐름`
+    : `${p.name} + ${s.name} 조합의 이 시기`;
+  document.getElementById('message-container').innerHTML = `
+    <div class="message-card">
+      <span class="tag">지금 시기의 메시지</span>
+      <h3>${msgTitle}</h3>
+      <p>${msg}</p>
     </div>`;
 
-  document.getElementById('value-result-content').innerHTML = `
-
-    ${heroSection}
-
-    <!-- 선언문 / 상충 답변 -->
-    <div class="vr-card">
-      <div class="vr-card-header" style="background:${primary.color}">
-        ${isConflict ? '⚡ 지금 나의 선택 기준' : '✍️ 나의 선택 기준 문장'}
-      </div>
-      <div class="vr-card-body">
-        <div class="vr-statement">${statement}</div>
-        ${allChips.length ? `<div style="margin-top:14px;">${chipsHTML}</div>` : ''}
-      </div>
-    </div>
-
-    <!-- 황금기 + 잡음 -->
-    <div class="vr-card">
-      <div class="vr-card-header" style="background:var(--navy)">🔍 에너지 흐름 분석</div>
-      <div class="vr-card-body">
-        <div class="vr-answer-block">
-          <div class="vr-answer-label">💚 에너지가 흘렀던 순간</div>
-          <div class="vr-answer-text">${golden}</div>
-        </div>
-        <div class="vr-answer-block">
-          <div class="vr-answer-label">🔇 지금 나를 흐리게 만드는 것</div>
-          <div class="vr-answer-text">${obstacle}</div>
-        </div>
-        <div style="margin-top:16px; padding:14px 16px; background:var(--light); border-radius:10px; font-size:13px; color:var(--dark); line-height:1.7;">
-          <strong style="color:${primary.color}">💡 인사이트:</strong>
-          ${isConflict
-            ? `에너지가 흘렀던 순간과 지금의 상황 사이의 간극을 인식하는 것 자체가 시작입니다. 언제, 어떤 조건에서 그 에너지를 다시 흐르게 할 수 있을지 작은 가능성을 찾아보세요.`
-            : `에너지가 넘쳤던 순간과 지금 가로막는 것 사이의 간극이 선택 기준이 가장 필요한 자리입니다.`}
-        </div>
-      </div>
-    </div>
-
-    ${crossInsightHTML}
-
-    <!-- 차별화 문구 -->
-    <div class="signature-line">
-      <div class="signature-line-text">
-        더 빠르게가 아니라 <span class="gold-accent">더 선명하게</span>
-      </div>
-    </div>
-
-    <!-- 마무리 + 공유 -->
-    <div class="closing-card">
-      <div class="closing-promise">우선가치가 선명하면,<br>모든 선택이 명료해진다</div>
-      <div class="closing-slogan">나다움은 발견이 아니라 설계다</div>
-      <div class="closing-brand">나다움설계연구소 · 김수정 박사</div>
-      <div class="share-section">
-        <button class="btn-share btn-share-copy" id="btn-copy-value" onclick="copyValueResult()">
-          📋 결과 복사해서 공유하기
-        </button>
-        <button class="btn-retry" onclick="startQuiz()">↺ 처음부터 다시</button>
-      </div>
-    </div>
-
-    <!-- 유튜브 링크 -->
-    <div style="background:var(--white); border-radius:16px; padding:20px; margin-top:16px;
-                border-left:4px solid #FF0000;">
-      <div style="font-size:12px; color:var(--gray); margin-bottom:8px; font-weight:600;">
-        📺 나다움설계연구소 유튜브 — 우선가치 시리즈
-      </div>
-      <div style="font-size:14px; color:var(--dark); line-height:1.7; margin-bottom:4px;">
-        우선가치 발견은 나다움설계연구소와 함께 하세요!
-      </div>
-      <div style="font-size:13px; color:var(--gray); line-height:1.6; margin-bottom:14px;">
-        나의 선택 기준 문장이 완성됐다면, 이제 그것을 <strong style="color:var(--navy)">일상에서 실제로 살아내는 방법</strong>을 우선가치 재생목록에서 만나보세요.
-      </div>
-      <a href="https://www.youtube.com/playlist?list=PLwcKc-MRqyaUNxl7pW7l3FAIUASGxz6sP" target="_blank"
-        style="display:flex; align-items:center; justify-content:center; gap:8px;
-               width:100%; background:#FF0000; color:var(--white);
-               text-decoration:none; text-align:center; font-family:'Noto Sans KR',sans-serif;
-               font-size:14px; font-weight:700; padding:14px; border-radius:10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" style="flex-shrink:0"><path fill="#fff" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        도움이 되는 영상들 →
-      </a>
-    </div>
-  `;
-}
-
-function copyValueResult() {
-  const primary = TYPES[valueKey];
-  const pDetail = TYPE_DETAIL[valueKey];
-  const allChips = [...valueAnswers.chips, ...(valueAnswers.priority ? [valueAnswers.priority] : [])];
-  const crossPattern = findCrossPattern(valueKey, valueAnswers.chips, valueAnswers.priority);
-
-  let text = `✨ 나다움설계연구소 · 나의 선택 기준 결과\n\n`;
-  text += `📍 주성향: ${primary.emoji} ${primary.name}\n`;
-  text += `🎯 중요한 가치: ${allChips.join(', ') || '탐색 중'}\n\n`;
-  text += `✍️ 나의 선택 기준 문장\n${valueAnswers.statement || '(미작성)'}\n\n`;
-  text += `💚 에너지가 흘렀던 순간\n${valueAnswers.golden || '(미작성)'}\n\n`;
-  text += `🔇 지금 나를 흐리게 만드는 것\n${valueAnswers.obstacle || '(미작성)'}\n\n`;
-
-  if (crossPattern && !valueAnswers.isConflict) {
-    text += `🔗 교차 인사이트 — ${crossPattern.label}\n`;
-    text += `${crossPattern.text}\n`;
-    text += `💭 ${crossPattern.hook}\n\n`;
+  // 5. 조심 신호
+  if (r.caseType !== 'low') {
+    const cautions = p.cautions.map(c=>`<li>${c}</li>`).join('');
+    document.getElementById('caution-container').innerHTML = `
+      <div class="caution-card">
+        <h3>⚠ ${p.name}의 조심 신호</h3>
+        <ul class="caution-list">${cautions}</ul>
+      </div>`;
+  } else {
+    document.getElementById('caution-container').innerHTML = '';
   }
 
-  text += `더 빠르게가 아니라, 더 선명하게\n`;
-  text += `우선가치가 선명하면, 모든 선택이 명료해진다\n나다움은 발견이 아니라 설계다`;
+  // 6. 작은 실천
+  const prac = r.caseType === 'low' ? {
+    title:"오늘의 작은 실천 — 회복 먼저",
+    body:"오늘 하루, 아무것도 하지 않아도 됩니다. 에너지가 어디로도 흐르지 않을 때는 회복이 먼저입니다. 잡음 진단 후 무엇이 소진시키고 있는지 살펴보는 것이 첫 번째 실천입니다."
+  } : PRACTICES[r.primary];
+  document.getElementById('practice-container').innerHTML = `
+    <div class="practice-card">
+      <span class="tag">오늘부터 1분</span>
+      <h3>${prac.title}</h3>
+      <p>${prac.body}</p>
+    </div>`;
 
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('btn-copy-value');
-    btn.textContent = '✅ 복사 완료!';
-    btn.style.background = 'var(--green)';
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-      btn.textContent = '📋 결과 복사해서 공유하기';
-      btn.style.background = '';
-    }, 2500);
-  });
+  // 7. 변동성 안내
+  document.getElementById('variability-container').innerHTML = `
+    <div class="variability-card">
+      <h3>📌 이 결과에 대해 기억해 주세요</h3>
+      <p>이 결과는 <span class="highlight">\"지금 시기의 에너지 흐름\"</span>입니다.
+      한 달 후, 또는 큰 변화 시점에 다시 진단해 보면 결과가 달라질 수 있습니다.</p>
+      <p>5러 경향성은 <span class="highlight">\"고정된 유형\"이 아니라 시기와 맥락에 따라 달라지는 에너지 패턴</span>입니다.
+      사람을 칸에 넣지 않습니다. 지금의 흐름을 읽는 도구일 뿐입니다.</p>
+      <p>그러니 <span class="highlight">\"나는 ○○러다\"</span>가 아니라,<br>
+      <span class="highlight">\"지금 나의 에너지는 ○○ 중심으로 흐르고 있다\"</span>고 표현해 보세요.</p>
+    </div>`;
+
+  // 8. 다음 진단 연결
+  const nextHTML = r.caseType === 'low' ?
+    `<a href="../noise/" class="next-card gold">
+      <span class="step-tag">강력 추천 — 잡음 점검 먼저</span>
+      <h3>지금 무엇이 잡음으로 들어와 있는지 살펴볼까요?</h3>
+      <p>잡음 오염도 진단 · 약 5분 · 회복의 첫걸음</p>
+      <span class="arrow">바로 가기 →</span>
+    </a>` :
+    `<a href="../needscan/" class="next-card blue">
+      <span class="step-tag">함께 보면 좋은 — Need Scan 축 1</span>
+      <h3>지금 나의 욕구는 어디서 시작되고 있을까요?</h3>
+      <p>욕구 출발점 진단 · 약 7분 · 에너지 흐름과 함께 보는 진단</p>
+      <span class="arrow">바로 가기 →</span>
+    </a>
+    <a href="../noise/" class="next-card gold" style="margin-top:12px">
+      <span class="step-tag">다음 단계 — Eliminate Noise</span>
+      <h3>지금 무엇이 잡음으로 들어와 있는지 살펴볼까요?</h3>
+      <p>잡음 오염도 진단 · 약 5분</p>
+      <span class="arrow">바로 가기 →</span>
+    </a>`;
+  document.getElementById('next-container').innerHTML = nextHTML;
 }
+
+// ===== 레이더 차트 =====
+function renderRadar(avgs) {
+  const size = 260;
+  const cx = size/2, cy = size/2, r_max = 100;
+  const labels = [
+    {key:"A",label:"열정러",icon:"🔥"},
+    {key:"C",label:"협력러",icon:"🤝"},
+    {key:"E",label:"모험러",icon:"🚀"},
+    {key:"D",label:"장인러",icon:"🛠"},
+    {key:"S",label:"안정러",icon:"⚓"}
+  ];
+  const n = labels.length;
+  const angles = labels.map((_,i)=> (Math.PI*2*i/n) - Math.PI/2);
+
+  const gridLevels = [1,2,3,4,5];
+  let gridSVG = gridLevels.map(lv => {
+    const pts = angles.map(a => {
+      const rr = (lv/5)*r_max;
+      return `${cx+rr*Math.cos(a)},${cy+rr*Math.sin(a)}`;
+    }).join(' ');
+    return `<polygon points="${pts}" fill="none" stroke="#E5E7EB" stroke-width="1"/>`;
+  }).join('');
+
+  let axesSVG = angles.map(a => {
+    return `<line x1="${cx}" y1="${cy}" x2="${cx+r_max*Math.cos(a)}" y2="${cy+r_max*Math.sin(a)}" stroke="#E5E7EB" stroke-width="1"/>`;
+  }).join('');
+
+  const dataPts = labels.map(({key},i) => {
+    const val = avgs[key];
+    const rr = (val/5)*r_max;
+    return `${cx+rr*Math.cos(angles[i])},${cy+rr*Math.sin(angles[i])}`;
+  }).join(' ');
+
+  let labelSVG = labels.map(({label,icon},i) => {
+    const rr = r_max + 24;
+    const lx = cx + rr*Math.cos(angles[i]);
+    const ly = cy + rr*Math.sin(angles[i]);
+    return `<text x="${lx}" y="${ly-6}" text-anchor="middle" font-size="16">${icon}</text>
+      <text x="${lx}" y="${ly+12}" text-anchor="middle" font-size="11" fill="#555" font-family="Noto Sans KR, sans-serif">${label}</text>
+      <text x="${lx}" y="${ly+26}" text-anchor="middle" font-size="11" font-weight="700" fill="#2D8252" font-family="Montserrat, sans-serif">${avgs[labels[i].key].toFixed(1)}</text>`;
+  }).join('');
+
+  return `<div class="radar-card">
+    <h3>5가지 경향성 점수</h3>
+    <p class="caption">\"요즘/지금/최근\"을 기준으로 응답한 에너지 흐름입니다</p>
+    <div class="radar-svg-wrap">
+      <svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+        ${gridSVG}${axesSVG}
+        <polygon points="${dataPts}" fill="rgba(61,170,107,.18)" stroke="#3DAA6B" stroke-width="2.5"/>
+        ${labels.map(({key},i)=>{
+          const val=avgs[key]; const rr=(val/5)*r_max;
+          return `<circle cx="${cx+rr*Math.cos(angles[i])}" cy="${cy+rr*Math.sin(angles[i])}" r="5" fill="#3DAA6B"/>`;
+        }).join('')}
+        ${labelSVG}
+      </svg>
+    </div>
+  </div>`;
+}
+
+// ===== 경향성 상세 카드 =====
+function renderDetailCard(char, isMain) {
+  return `<div class="detail-card ${isMain?'':'secondary'}">
+    <span class="tag ${isMain?'main-tag':'sub-tag'}">${isMain?'주된 경향':'보조 경향'}</span>
+    <div class="char-row">
+      <div class="char-icon">${char.icon}</div>
+      <div class="char-info">
+        <h3>${char.name}</h3>
+        <div class="en">${char.en}</div>
+      </div>
+    </div>
+    <p class="desc">${char.identity}</p>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="item-label">에너지 원천</div>
+        <div class="item-val">${char.source}</div>
+      </div>
+      <div class="detail-item">
+        <div class="item-label">몰입 상태</div>
+        <div class="item-val">${char.flow}</div>
+      </div>
+      <div class="detail-item">
+        <div class="item-label">에너지 고갈 신호</div>
+        <div class="item-val">${char.drain}</div>
+      </div>
+      <div class="detail-item">
+        <div class="item-label">최적 환경</div>
+        <div class="item-val">${char.best}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ===== 공유 =====
+function shareLink() {
+  const url = "https://commlovekim70.github.io/need-project/5characters/";
+  const text = `"나의 에너지는 어디로 흐를까?" 5러 경향성 진단을 해봤어요. 약 5분이에요.\n\n${url}`;
+  if (navigator.share) navigator.share({title:"5러 경향성 진단",text}).catch(()=>copyToClipboard(text));
+  else copyToClipboard(text);
+}
+
+async function shareResult() {
+  if (!_result) return;
+  const p = _result.caseType==='low' ? "충전이 필요한 시기" : CHARS[_result.primary].name;
+  const s = _result.caseType==='low' ? "" : CHARS[_result.secondary].name;
+  const text = `나의 5러 경향성 진단 결과\n주된 경향: ${p}${s?` / 보조: ${s}` : ""}\n\n나다움설계연구소 · https://commlovekim70.github.io/need-project/5characters/`;
+  try {
+    if (navigator.share) { await navigator.share({text}); return; }
+  } catch(e) {}
+  copyToClipboard(text);
+}
+
+function copyToClipboard(text) {
+  if(navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(()=>showToast('링크가 복사되었습니다')).catch(()=>legacyCopy(text));
+  } else legacyCopy(text);
+}
+function legacyCopy(text) {
+  const ta=document.createElement('textarea'); ta.value=text;
+  ta.style.position='fixed'; ta.style.left='-9999px';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy');showToast('링크가 복사되었습니다');}
+  catch(e){showToast('복사 실패');}
+  document.body.removeChild(ta);
+}
+
+function showToast(msg) {
+  const t=document.getElementById('toast'); t.textContent=msg;
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200);
+}
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+function restart() {
+  currentQ=0; answers=new Array(15).fill(null); _result=null;
+  document.getElementById('result-screen').classList.remove('active');
+  document.getElementById('cover-screen').style.display='block';
+  window.scrollTo(0,0);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('cover-screen').style.display='block';
+});
 </script>
 </body>
 </html>
